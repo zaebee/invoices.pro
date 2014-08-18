@@ -1,0 +1,16 @@
+*.pyc
+*.swo
+*~
+.idea
+.ropeproject/
+*.egg-info/
+dist/
+*.db
+*.swp
+*.zip
+*.orig
+.env
+invoicetome/static/.webassets-cache
+invoicetome/static/cache
+invoicetome/settings_local.py
+invoicetome/dev
