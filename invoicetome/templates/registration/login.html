@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title|default:"Login Page" }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  {% if user.is_anonymous %}
+    <div class="row-fluid">
+      <div class="span4 offset4">
+          {% include "registration/login_form.html" with f=form %}
+      </div>
+    </div>
+  {% else %}
+    <div class="row-fluid">
+        <div class="span12">
+        </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span8 offset2">
+        <h3>Login</h3>
+        <p>You already logged in. You can <a href="{% url 'logout' %}">logout</a></p>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{% endblock %}

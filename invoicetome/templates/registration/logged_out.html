@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span8 offset2">
+      <h3>Logged out</h3>
+      <p>Thanks for spending some quality time with the Web site today.</p>
+      <p>You can <a href="{% url 'login' %}">login here</a>.</p>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

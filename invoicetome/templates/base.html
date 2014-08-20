@@ -20,6 +20,7 @@
 
   <!-- Included CSS Files (Compressed) -->
   <link rel="stylesheet" href="{{ STATIC_URL }}css/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css" type="text/css" media="screen">
   {% block extracss %}{% endblock extracss %}
   {% assets "all_css" %}
     <style type="text/css" media="screen">
@@ -40,9 +41,7 @@
   {% endblock %}
   </div>
 
-  <script type="text/javascript" language="javascript" src="{{ STATIC_URL }}js/page.js" charset="utf-8">
-      // <![CDATA[// ]]>
-  </script>
+  <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.full&lang=ru-RU" type="text/javascript"></script>
   {% assets  "all_js" %}
     <script type="text/javascript" language="javascript" src="{{ ASSET_URL }}" charset="utf-8">
         // <![CDATA[// ]]>

@@ -1,0 +1,17 @@
+Hi, {{ user.username }}
+
+Welcome to QuantGo and on-demand historical data.
+
+Before you can login into your VQL we need to verify your email address.
+Please click the follow link to do this:
+https://quantgo.com/signup/activate/{{ activation_key }}/
+
+Once you email is verified, you will be able to login into your account
+using your username and password at:
+
+https://quantgo.com/login/
+
+For questions please email us at support@quantgo.com
+
+Thanks,
+QuantGo team

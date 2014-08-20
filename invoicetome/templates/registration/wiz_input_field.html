@@ -1,0 +1,19 @@
+{% load widget_tweaks %}
+<div class="control-group {% if f.errors %}error{% endif %}" id="signupInputGroup-{{ f.name }}">
+  <label class="control-label" for="{{f.id_for_label}}">{{ f.label|capfirst|safe }}</label>
+    <div class="controls">
+      {% if f.name == 'needs_description' or f.name = 'firm_notes' %}
+        {{ f|add_class:"input-xxlarge" }}
+        {% else %}
+        {{ f }}
+        {% endif %}
+        {% if f.errors %}
+            <span class="help-inline">
+                {% for error in f.errors %}
+                    {{ error|escape }}
+                {% endfor %}
+            </span>
+        {% endif %}
+        {% if f.help_text %}<p class="muted">{{ f.help_text }}</p>{% endif %}
+    </div>
+</div>

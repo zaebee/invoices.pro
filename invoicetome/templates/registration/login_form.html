@@ -1,0 +1,34 @@
+<!-- TODO: Remove inline CSS. -->
+<form class="form-horizontal" action="{% url 'login' %}" method="post" id="loginForm">{% csrf_token %}
+  {% if form.non_field_errors %}
+    <div class="alert alert-error">
+      {{ form.non_field_errors }}
+    </div>
+  {% endif %}
+  <fieldset>
+      {% for field in f %}
+          {% if field.errors %}
+              <div class="control-group error">
+                  <label class="control-label" style="width: auto">{{ field.label }}</label>
+                  <div class="controls" style="margin-left: 100px">{{ field }}
+                      <span class="help-inline">
+                          {% for error in  field.errors %}{{ error }}{% endfor %}
+                      </span>
+                  </div>
+              </div>
+          {% else %}
+              <div class="control-group">
+                  <label class="control-label" style="width: auto">{{ field.label }}</label>
+                  <div class="controls" style="margin-left: 100px">{{ field }}
+                      {% if field.help_text %}
+                          <p class="help-inline"><small>{{ field.help_text }}</small></p>
+                      {% endif %}
+                  </div>
+              </div>
+          {% endif %}
+      {% endfor %}
+      <div class="control-group">
+          <button type="submit" class="go-btn btn-primary">Login</button>
+      </div>
+  </fieldset>
+</form>

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Signup{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <ul class="breadcrumb">
+                <li>Signup <span class="divider">></span></li>
+                <li>Contact information <span class="divider">></span></li>
+                <li>Credit Card <span class="divider">></span></li>
+                <li class="active">Confirm Terms and Conditions</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span8 offset2">
+            <p>QNet provides researchers a secure, anonymous, scalable and neutral platform and 3rd party
+                data providers a place to deliver data without losing control of their data. QNet has data
+                agreements with 3rd party data providers and requires one master agreement from our users.
+                While you can immediately start using your VQL,  within 5 days QNet must receive a returned
+                agreement in one of the following ways:</p>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span8 offset2">
+            <dl class="dl-horizontal">
+                <dt>Email</dt>
+                <dd>Scan and email it to us. QNet will print it out and file it in a safe and delete email.</dd>
+                <dt>Courier</dt>
+                <dd>Send physical copy and we will it file it in a physical safe.</dd>
+                <dt>Law Firm</dt>
+                <dd>Mail physical copy to our law firm. QNet does not have access to the document (for anonymity) and law firm will inform QNet that agreement is complete. Law firm charges a fee for this service, payable to them.</dd>
+            </dl>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span8 offset2">
+            <p>Please review the following terms and conditions which will be superseded by your signed agreement:</p>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span8 offset2 terms-and-conditions">
+            <p>terms and conditions TODO</p>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span8 offset2" style="padding-top: 15px;">
+        <p>As the owner of Credit Card number with last 4 digits {{ wizard.form.customer.cards.data.0.last4 }},
+                I have read and agreed to be bound by the terms of this Agreement.</p>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span8 offset2">
+            <form class="form-horizontal" action="" method="post" id="signupForm">
+                {% csrf_token %}
+                {{ wizard.management_form }}
+                <fieldset>
+                    {% include "registration/wiz_input_field.html" with f=wizard.form.cc_digits %}
+                    <div class="form-actions">
+                        <!--<button name="wizard_goto_step" class="btn btn-primary" type="submit" value="{{ wizard.steps.prev }}">Previous</button>-->
+                        <button type="submit" class="btn btn-primary" id="submitNext">Continue</button>
+                        <button class="btn">Cancel</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--- <script src="{{ STATIC_URL }}js/registration/wiz_signup.js"></script> -->
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <ul class="breadcrumb">
+                <li>Signup <span class="divider">></span></li>
+                <li class="active">Contact information</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span7">
+            <form class="form-horizontal" action="" method="post" id="signupForm">
+                {% csrf_token %}
+                {{ wizard.management_form }}
+                <fieldset>
+                    {% include "registration/wiz_input_field.html" with f=wizard.form.username %}
+                    {% include "registration/wiz_input_field.html" with f=wizard.form.password1 %}
+                    {% include "registration/wiz_input_field.html" with f=wizard.form.password2 %}
+                    {% include "registration/wiz_input_field.html" with f=wizard.form.name %}
+                    {% include "registration/wiz_input_field.html" with f=wizard.form.country %}
+                    {% include "registration/wiz_input_field.html" with f=wizard.form.email %}
+                    {% include "registration/wiz_input_field.html" with f=wizard.form.security_question %}
+                    {% include "registration/wiz_input_field.html" with f=wizard.form.security_answer %}
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" id="submitNext">Continue</button>
+                        <button class="btn">Cancel</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="span4">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="alert">
+                        <strong>Warning!</strong> <p>Your research is the most valuable asset you have and
+                        anonymity is the best first line of defense. Do not use a username or email for example which can identify
+                        you. </p>
+
+                        <p>Upon signup and Credit Card authorization (does not require name or address and CC number held by
+                        Credit Card processor) you can immediately start using the Virtual Quant Lab and any data services you subscribe to.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="alert">
+                        <p>For a password reset or to prove you are the account owner (remember we cannot identify you),
+                        please create a security hint and an answer.  The answer should be something you can remember exactly, as if it will fail
+                        if not an exact match.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--- <script src="{{ STATIC_URL }}js/registration/wiz_signup.js"></script> -->
+
+{% endblock %}
