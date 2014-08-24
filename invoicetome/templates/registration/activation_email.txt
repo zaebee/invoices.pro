@@ -1,17 +1,15 @@
-Hi, {{ user.username }}
+Привет,
 
-Welcome to QuantGo and on-demand historical data.
+Для активации твоего аккаунта mebelstock.com - нажмите на ссылку валадиции:
+http://{{ site }}/accounts/activate/{{ activation_key }}/
 
-Before you can login into your VQL we need to verify your email address.
-Please click the follow link to do this:
-https://quantgo.com/signup/activate/{{ activation_key }}/
+Спасибо.
 
-Once you email is verified, you will be able to login into your account
-using your username and password at:
+=======================
 
-https://quantgo.com/login/
+Hello,
 
-For questions please email us at support@quantgo.com
+To activate your account on mebelstock.com - click on validation link:
+http://{{ site }}/accounts/activate/{{ activation_key }}/
 
-Thanks,
-QuantGo team
+Thank you.

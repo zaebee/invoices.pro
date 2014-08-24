@@ -44,6 +44,8 @@ INSTALLED_APPS = (
     #'django.contrib.staticfiles',
     'django_assets',
     'local',
+    'invoice',
+    'widget_tweaks',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -102,6 +104,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'
 MEDIA_ROOT = rel('media')
 MEDIA_URL = '/media/'
 

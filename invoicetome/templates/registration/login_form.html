@@ -1,34 +1,31 @@
-<!-- TODO: Remove inline CSS. -->
-<form class="form-horizontal" action="{% url 'login' %}" method="post" id="loginForm">{% csrf_token %}
-  {% if form.non_field_errors %}
-    <div class="alert alert-error">
-      {{ form.non_field_errors }}
-    </div>
-  {% endif %}
-  <fieldset>
-      {% for field in f %}
-          {% if field.errors %}
-              <div class="control-group error">
-                  <label class="control-label" style="width: auto">{{ field.label }}</label>
-                  <div class="controls" style="margin-left: 100px">{{ field }}
-                      <span class="help-inline">
-                          {% for error in  field.errors %}{{ error }}{% endfor %}
-                      </span>
-                  </div>
-              </div>
-          {% else %}
-              <div class="control-group">
-                  <label class="control-label" style="width: auto">{{ field.label }}</label>
-                  <div class="controls" style="margin-left: 100px">{{ field }}
-                      {% if field.help_text %}
-                          <p class="help-inline"><small>{{ field.help_text }}</small></p>
-                      {% endif %}
-                  </div>
-              </div>
-          {% endif %}
-      {% endfor %}
-      <div class="control-group">
-          <button type="submit" class="go-btn btn-primary">Login</button>
+{% load widget_tweaks i18n %}
+<form enctype="multipart/form-data" action="." id="enter-form" role="form" method="post" novalidate="novalidate">
+
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+      <div class="alert alert-error">
+        {{ form.non_field_errors }}
       </div>
-  </fieldset>
+    {% endif %}
+
+    {{ form.username.errors }}
+    <div class="control-group">
+      {{ form.username|append_attr:"placeholder:Username or email"|add_error_class:"error" }}
+    </div>
+    {{ form.password.errors }}
+    <div class="control-group">
+      {{ form.password|append_attr:"placeholder:Enter Password"|add_error_class:"error" }}
+      <a href="{% url 'password_reset' %}" class="reset-link">{% trans 'Forgot Passwrod?' %}</a>
+    </div>
+
+    <div class="row">
+      <hr class="hr span3">
+    </div>
+    <label class="checkbox inline" id="remember-label">
+      <input type="checkbox" id="remember" value="option1"> Запомнить меня
+    </label>
+
+    <button type="submit" id="enter-btn" style="width:85px;">Войти</button>
+    <input type="hidden" name="next" value="{{ next }}" />
+
 </form>
