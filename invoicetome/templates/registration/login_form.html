@@ -1,31 +1,30 @@
 {% load widget_tweaks i18n %}
-<form enctype="multipart/form-data" action="." id="enter-form" role="form" method="post" novalidate="novalidate">
+<h3>{% trans 'Join on site' %} <a href="/">Invoiceto.me</></h3>
+<form enctype="multipart/form-data" action="." role="form" method="post" novalidate="novalidate">
 
-    {% csrf_token %}
-    {% if form.non_field_errors %}
-      <div class="alert alert-error">
-        {{ form.non_field_errors }}
-      </div>
-    {% endif %}
-
-    {{ form.username.errors }}
-    <div class="control-group">
-      {{ form.username|append_attr:"placeholder:Username or email"|add_error_class:"error" }}
+  {% csrf_token %}
+  {% if form.non_field_errors %}
+    <div class="alert alert-error">
+      {{ form.non_field_errors }}
     </div>
-    {{ form.password.errors }}
-    <div class="control-group">
-      {{ form.password|append_attr:"placeholder:Enter Password"|add_error_class:"error" }}
-      <a href="{% url 'password_reset' %}" class="reset-link">{% trans 'Forgot Passwrod?' %}</a>
-    </div>
+  {% endif %}
 
-    <div class="row">
-      <hr class="hr span3">
-    </div>
-    <label class="checkbox inline" id="remember-label">
-      <input type="checkbox" id="remember" value="option1"> Запомнить меня
-    </label>
+  {{ form.username.errors }}
+  <div class="form-group {% if form.username.errors %}has-error{% endif %}">
+    {{ form.username|add_class:"form-control"|append_attr:"placeholder:Username or email"|add_error_class:"error" }}
+  </div>
+  {{ form.password.errors }}
+  <div class="form-group {% if form.password.errors %}has-error{% endif %}">
+    {{ form.password|add_class:"form-control"|append_attr:"placeholder:Enter Password"|add_error_class:"error" }}
+    <a href="{% url 'password_reset' %}" class="reset-link">{% trans 'Forgot Password?' %}</a>
+    <a href="{% url 'password_reset' %}" class="register-link pull-right">{% trans 'Register account' %}</a>
+  </div>
 
-    <button type="submit" id="enter-btn" style="width:85px;">Войти</button>
-    <input type="hidden" name="next" value="{{ next }}" />
+  <div class="row">
+    <hr class="hr span3">
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-lg">{% trans 'join' %}</button>
+  <input type="hidden" name="next" value="{{ next }}" />
 
 </form>

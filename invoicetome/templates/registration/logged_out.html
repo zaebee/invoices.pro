@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}{{ title }}{% endblock %}
+{% block title %}{{ title|default:"Logout Page" }}{% endblock %}
 
 {% block content %}
-<div class="container-fluid">
+<div id="invoice" class="container">
   <div class="row-fluid">
     <div class="span8 offset2">
       <h3>Logged out</h3>
@@ -11,7 +11,6 @@
       <p>You can <a href="{% url 'login' %}">login here</a>.</p>
     </div>
   </div>
-
 </div>
 
 {% endblock %}

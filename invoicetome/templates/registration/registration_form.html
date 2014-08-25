@@ -5,12 +5,11 @@
 
 <div class="row">
   <div class="large-8 columns">
-    <!--<h3 class="label label-black"><a href="#">{% trans 'Register shop' %}</a></h3>-->
-    <form class="custom" method="POST" action="" id="register-form">
+    <form role="form" method="POST" action="" id="register-form">
 
       <fieldset>
         <legend>
-          <h3 class="label label-black">{% trans 'Register shop' %}</h3>
+          <h3 class="label label-black">{% trans 'Register' %}</h3>
         </legend>
         {% csrf_token %}
         {% for field in form %}
@@ -36,99 +35,10 @@
         {% endfor %}
 
       </fieldset>
-      <input type="submit" disabled class="button disabled" value="{% trans 'register' %}">
+      <input type="submit" class="btn btn-default" value="{% trans 'register' %}">
     </form>
   </div>
 
-  <div class="large-8 columns">
-    <form class="custom">
-      <fieldset>
-        <legend>
-          <h3 class="label label-black">{% trans 'Term of service' %}</h3>
-        </legend>
-        <textarea disabled class="disabled" style="height:28.4em; overflow-y:scroll;">{% include 'rules.txt' %}</textarea>
-        <label for="id_accept_rules">
-          <input type="checkbox" id="id_accept_rules" name="accept_rules">
-          {% trans 'I have read and agree to the Terms of Service' %}
-        </label>
-      </fieldset>
-    </form>
-    <!--
-    <form class="custom" method="POST" action="/register/user/">
-
-      <fieldset>
-        <legend>
-          <h3 class="label label-black">{% trans 'Register user' %}</h3>
-        </legend>
-        {% csrf_token %}
-          <div class="row">
-            <div class="large-16 columns">
-                <label for="id_user_username">
-                  {% trans 'Username' %}
-                </label>
-                <span class="required has-tip" data-tooltip="" title="Поле обязательно для заполнения">*</span>
-                <input type="text" id="id_user_username" placeholder="{% trans 'enter the username' %}">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="large-16 columns">
-                <label for="id_user_email">
-                  {% trans 'Email' %}
-                </label>
-                <span class="required has-tip" data-tooltip="" title="Поле обязательно для заполнения">*</span>
-                <input type="text" id="id_user_email" placeholder="{% trans 'enter the email' %}">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="large-16 columns">
-                <label for="id_user_password">
-                  {% trans 'Password' %}
-                </label>
-                <span class="required has-tip" data-tooltip="" title="Поле обязательно для заполнения">*</span>
-                <input type="text" id="id_user_password" placeholder="{% trans 'enter the password' %}">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="large-16 columns">
-                <label for="id_user_password2">
-                  {% trans 'Password again' %}
-                </label>
-                <span class="required has-tip" data-tooltip="" title="Поле обязательно для заполнения">*</span>
-                <input type="text" id="id_user_password2" placeholder="{% trans 'enter the password again' %}">
-            </div>
-          </div>
-
-      </fieldset>
-      <input type="submit" class="button" value="{% trans 'register' %}">
-    </form>
-    -->
-  </div>
 </div>
-
-{% endblock %}
-
-
-{% block extrajs %}
-<script>
-$(document).ready(function(){
-  $('#id_accept_rules').change(function(event){
-    event.preventDefault();
-    var $target = $(event.currentTarget),
-        checked = $target.is(':checked');
-    if (checked) {
-        $('#register-form input[type=submit]').attr('disabled', !checked);
-        $('#register-form input[type=submit]').removeClass('disabled');
-      } else {
-        $('#register-form input[type=submit]').attr('disabled', !checked);
-        $('#register-form input[type=submit]').addClass('disabled');
-      }
-
-  });
-});
-
-</script>
 
 {% endblock %}
