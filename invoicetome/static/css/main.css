@@ -363,3 +363,19 @@ a.button:active {
 html {
 	padding-top:20px;
 }
+
+#login-block {
+    position: absolute;
+    left: 1090px;
+    top: -130px;
+}
+.greetings {
+    color: #fff;
+    font-size: 1.7em;
+}
+.logout-link {
+    font-size: 15px;
+    color: #6ce;
+    font-weight: 700;
+    text-decoration: none;
+}

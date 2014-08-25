@@ -1,7 +1,21 @@
+{% load i18n %}
 <form action="/index.php" method="post"> 
  
-  <p id="ad" class="tools" onClick="_gaq.push(['_trackEvent', 'Ad', 'Intercom']);"><span>Ad
-  </span> <a href="http://intercom.io/">Intercom – communicate personally with every single customer</a></p>
+  <p id="ad" class="tools" onClick="_gaq.push(['_trackEvent', 'Ad', 'Intercom']);">
+    <span>Ad</span> 
+    <a href="http://intercom.io/">Intercom – communicate personally with every single customer</a>
+  </p>
+   
+  {% if user.is_anonymous %}
+  <div id="login-block" class="">
+    <a class="button" href="{% url 'login' %}">join</a>
+  </div>
+  {% else %}
+  <div id="login-block" class="">
+    <span class="greetings">Hi, {{ user.email }}</span><br>
+    <a class="logout-link" href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+  </div>
+  {% endif %}
    
   <div class="tools" id="one">
     <h5>invoiceto.me</h5>
