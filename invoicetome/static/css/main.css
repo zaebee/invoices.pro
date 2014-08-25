@@ -192,7 +192,7 @@ tbody td:last-child {
 	}
 
 #one {
-	margin-top: 50px;
+	margin-top: 100px;
 }
 
 #two {
@@ -292,7 +292,7 @@ input {
 
 #invoice {
 	vertical-align: top;
-    margin-top:30px;
+    margin-top: 20px;
 }
 
 a.button:link, a.button:visited {
@@ -347,7 +347,7 @@ a.button:active {
 	font-weight:bold;
 	text-shadow: 0 0 10px rgba(0,0,0,0.5);
 	height:55px;
-    line-height:260%;
+    line-height:180%;
 }
 
 #ad span {
@@ -357,14 +357,14 @@ a.button:active {
 	margin-right:5px;
 }
 
-html {
-	padding-top:20px;
+.wrapper {
+    margin-top: 80px;
 }
 
 #login-block {
     position: absolute;
     left: 1000px;
-    top: -120px;
+    top: -130px;
 }
 .greetings {
     color: #fff;

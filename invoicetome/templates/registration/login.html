@@ -3,21 +3,17 @@
 {% block title %}{{ title|default:"Login Page" }}{% endblock %}
 
 {% block content %}
-<div id="invoice" class="base-container">
-  {% if user.is_anonymous %}
-    <div class="row">
-      <div class="col-md-12">
+
+<div id="invoice" class="container">
+  <div class="row">
+    <div class="col-md-12">
+      {% if user.is_anonymous %}
           {% include "registration/login_form.html" with form=form %}
-      </div>
-    </div>
-  {% else %}
-    <div class="row">
-      <div class="col-md-12">
+      {% else %}
         <h3>Login</h3>
         <p>You already logged in. You can <a href="{% url 'logout' %}">logout</a></p>
-      </div>
+      {% endif %}
     </div>
-  {% endif %}
+  </div>
 </div>
-
 {% endblock %}
