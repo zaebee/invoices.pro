@@ -15,9 +15,9 @@ def invoice_detail(request, pk):
     data = {'invoice': invoice}
 
     if request.is_ajax():
-        return render(request, 'includes/_invoice.html', data)
+        return render(request, 'includes/_invoice_detail.html', data)
     else:
-        return render(request, 'invoice/detail_invoice.html', data)
+        return render(request, 'invoice/invoice_detail.html', data)
 
 
 def set_language(request):

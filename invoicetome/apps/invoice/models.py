@@ -9,7 +9,18 @@ from django.contrib.auth.models import User
 
 
 class Invoice(models.Model):
-    owner = models.ForeignKey(User, verbose_name=_('Owner'), related_name='invoices')
+    STATUS_SAVED = 'saved'
+    STATUS_SENDED = 'sended'
+    STATUS_RECIEVED = 'recieved'
+
+    STATUS_CHOICES = {
+        STATUS_SAVED: _("Saved"),
+        STATUS_SENDED: _("Sended"),
+        STATUS_RECIEVED: _("Recieved"),
+    }
+
+    owner = models.ForeignKey(User, verbose_name=_('Owner'), related_name='created_invoices')
+    recipient = models.ForeignKey(User, verbose_name=_('Recipient'), related_name='sended_invoices')
 
     company_name = models.CharField(_('Company Name'), max_length=255)
     address = models.CharField(_('Address'), max_length=255)
@@ -29,14 +40,16 @@ class Invoice(models.Model):
     notes_top = models.CharField(_('Notes Top'), max_length=255, null=True, blank=True)
     notes_bottom = models.CharField(_('Notes Bottom'), max_length=255, null=True, blank=True)
 
-    subtotal = models.DecimalField(_(u'Subtotal Price'), decimal_places=2, max_digits=20)
+    subtotal = models.DecimalField(_('Subtotal Price'), decimal_places=2, max_digits=20)
     tax = models.DecimalField(_('Sales Tax %'), decimal_places=2, max_digits=6, default=0)
     total = models.DecimalField(_('Total Price'), decimal_places=2, max_digits=20, editable=False)
 
     date_added = models.DateTimeField(_(u'Date Added'), auto_now_add=True)
+    records = models.ForeignKey('Record', verbose_name=_('Records'), related_name='records', null=True, blank=True)
+    status = models.CharField(max_length=255, choices=STATUS_CHOICES.items())
 
     def save(self, *args, **kwargs):
-        super(Item, self).save(*args, **kwargs)
+        super(Invoice, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return "%s - #%s" % (seldf.email, self.invoice_uid)
@@ -44,3 +57,10 @@ class Invoice(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('invoice_detail', None, {'pk': self.id})
+
+
+class Record(models.Model):
+    description = models.TextField(_('Description'))
+    quantity = models.PositiveIntegerField(_('Quantity'))
+    unit_price = models.DecimalField(_('Unit Price'), decimal_places=2, max_digits=20)
+    total = models.DecimalField(_('Total'), decimal_places=2, max_digits=20)
