@@ -375,6 +375,9 @@ a.button:active {
     font-weight: 700;
     text-decoration: none;
 }
+.logout-link:hover {
+    color: #fff;
+}
 
 #invoice-list {
     position: absolute;

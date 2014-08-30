@@ -1,18 +1,13 @@
 {% load i18n %}
 <form action="/index.php" method="post">
 
-  <p id="ad" class="tools" onClick="_gaq.push(['_trackEvent', 'Ad', 'Intercom']);">
-    <span>Ad</span>
-    <a href="http://intercom.io/">Intercom – communicate personally with every single customer</a>
-  </p>
-
   {% if user.is_anonymous %}
   <div id="login-block" class="">
-    <a class="button" href="{% url 'login' %}">join</a>
+    <a class="button" href="{% url 'login' %}">{% trans 'join' %}</a>
   </div>
   {% else %}
   <div id="login-block" class="">
-    <span class="greetings">Hi, {{ user.email }}</span>&nbsp;
+    <span class="greetings">{% trans 'Hi,' %} {{ user.email }}</span>&nbsp;
     <a class="logout-link" href="{% url 'logout' %}">{% trans 'Logout' %}</a>
   </div>
   {% endif %}
@@ -30,20 +25,20 @@
 
   <div class="tools" id="one">
     <h5><a href="/">invoiceto.me</a></h5>
-    <p>Edit the fields to make an invoice &rarr;</p>
+    <p>{% trans 'Edit the fields to make an invoice &rarr;' %}</p>
   </div>
   <div class="tools" id="two">
-    <h5>Finished editing?</h5>
+    <h5>{% trans 'Finished editing?' %}</h5>
     <ul class="nav nav-pills nav-justified">
-      <li><a id="get-pdf" class="button" href="#">Get PDF</a></li>
-      <li><a id="save-invoice" class="button" href="#">Save</a></li>
+      <li><a id="get-pdf" class="button" href="#">{% trans 'Get PDF' %}</a></li>
+      <li><a id="save-invoice" class="button" href="#">{% trans 'Save' %}</a></li>
     </ul>
   </div>
   <div class="tools" id="three">
-    <h5>Resize table</h5>
+    <h5>{% trans 'Resize table' %}</h5>
     <ul>
-      <li><a id="addRow" href="#" title="test"><span style="padding-right:5px;">+</span> Add row</a></li>
-      <li><a id="delRow" href="#"><span style="padding-right:5px;padding-left:1px;">&ndash;</span> Delete row</a></li>
+      <li><a id="addRow" href="#" title="test"><span style="padding-right:5px;">+</span> {% trans 'Add row' %}</a></li>
+      <li><a id="delRow" href="#"><span style="padding-right:5px;padding-left:1px;">&ndash;</span> {% trans 'Delete row' %}</a></li>
     </ul>
   </div>
 

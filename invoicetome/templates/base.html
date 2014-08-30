@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  {% load assets %}
+  {% load assets i18n %}
 
   <!-- Set the viewport width to device width for mobile -->
   <meta name="viewport" content="width=device-width">
@@ -16,7 +16,7 @@
   <meta name='title' content="{% block meta_title %}{% endblock %}">
 	<meta name="description" content="Quickly edit and publish a PDF invoice">
 
-	<title>{% block pagetitle %}invoiceto.me &middot; Make a free invoice PDF online{% endblock %}</title>
+  <title>{% block pagetitle %}{% trans 'invoiceto.me &middot; Make a free invoice PDF online' %}{% endblock %}</title>
 
   <!-- Included CSS Files (Compressed) -->
   <link rel="stylesheet" href="{{ STATIC_URL }}css/screen.css" type="text/css" media="screen, projection">

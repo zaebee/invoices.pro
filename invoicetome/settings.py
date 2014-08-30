@@ -13,6 +13,8 @@ import os
 import sys
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+ugettext = lambda s: s
+
 def rel(*x):
     return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
 
@@ -91,6 +93,14 @@ TEMPLATE_DIRS = (
 
 LANGUAGE_CODE = 'en-us'
 
+LANGUAGES = (
+    ('ru', ugettext('rus')),
+    ('en', ugettext('eng')),
+)
+
+LOCALE_PATHS = (
+    rel('locale'),
+)
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
