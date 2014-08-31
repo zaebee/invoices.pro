@@ -20,7 +20,7 @@ class Invoice(models.Model):
     }
 
     owner = models.ForeignKey(User, verbose_name=_('Owner'), related_name='created_invoices')
-    recipient = models.ForeignKey(User, verbose_name=_('Recipient'), related_name='sended_invoices')
+    recipient = models.ForeignKey(User, verbose_name=_('Recipient'), related_name='sended_invoices', blank=True, null=True)
 
     company_name = models.CharField(_('Company Name'), max_length=255)
     address = models.CharField(_('Address'), max_length=255)

@@ -13,6 +13,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^invoices/', include('invoice.urls')),
+    url(r'^localeurl/', include('localeurl.urls')),
 )
 
 urlpatterns += patterns('',

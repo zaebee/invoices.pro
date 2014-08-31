@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'local',
     'invoice',
     'widget_tweaks',
+    'localeurl',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -67,6 +68,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'localeurl.middleware.LocaleURLMiddleware',
 )
 
 ROOT_URLCONF = 'invoicetome.urls'
@@ -109,6 +111,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+AUTHENTICATION_BACKENDS = (
+    'local.backends.EmailOrUsernameModelBackend',
+    'django.contrib.auth.backends.ModelBackend'
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
@@ -120,6 +126,10 @@ MEDIA_URL = '/media/'
 
 STATIC_ROOT = rel('static')
 STATIC_URL = '/static/'
+
+LOCALE_INDEPENDENT_PATHS = (
+    r'^/api/',
+)
 
 try:
     from settings_local import *

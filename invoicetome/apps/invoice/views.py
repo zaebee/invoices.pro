@@ -4,12 +4,14 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.utils import translation
 from django.http import Http404, HttpResponseRedirect
 from django.utils.translation import check_for_language
+from django.contrib.auth.decorators import login_required
 
 from django.conf import settings
 
 from .models import Invoice
 
 
+@login_required
 def invoice_detail(request, pk):
     invoice = get_object_or_404(Invoice, id=pk)
     data = {'invoice': invoice}
