@@ -27,8 +27,16 @@
   <div class="tools" id="three">
     <h5>{% trans 'Resize table' %}</h5>
     <ul>
-      <li><a id="addRow" href="#" title="test"><span style="padding-right:5px;">+</span> {% trans 'Add row' %}</a></li>
-      <li><a id="delRow" href="#"><span style="padding-right:5px;padding-left:1px;">&ndash;</span> {% trans 'Delete row' %}</a></li>
+      <li>
+        <a id="addRow" onclick="app.tasks.fire('add');return false;" href="#" title="test">
+          <span style="padding-right:5px;">+</span> {% trans 'Add row' %}
+        </a>
+      </li>
+      <li>
+      <a id="delRow" onclick="app.tasks.fire('destroy');return false;" href="#">
+        <span style="padding-right:5px;padding-left:1px;">&ndash;</span> {% trans 'Delete row' %}
+      </a>
+      </li>
     </ul>
   </div>
   <!--
