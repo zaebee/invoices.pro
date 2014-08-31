@@ -1,0 +1,37 @@
+{% load i18n %}
+<div class="aside">
+  {% if user.is_authenticated %}
+  <div class="tools" id="invoice-list">
+    <h5>{% trans 'My invoices' %}</h5>
+    <div class="list-group">
+      <a href="#" class="list-group-item active">Cras justo odio</a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
+  </div>
+  {% endif %}
+
+  <!--
+  <div class="tools" id="one">
+    <h5><a href="/">invoiceto.me</a></h5>
+    <p>{% trans 'Edit the fields to make an invoice &rarr;' %}</p>
+  </div>
+  <div class="tools" id="two">
+    <h5>{% trans 'Finished editing?' %}</h5>
+    <ul class="nav nav-pills nav-justified">
+      <li><a id="get-pdf" class="button" href="#">{% trans 'Get PDF' %}</a></li>
+      <li><a id="save-invoice" class="button" href="#">{% trans 'Save' %}</a></li>
+    </ul>
+  </div>
+  <div class="tools" id="three">
+    <h5>{% trans 'Resize table' %}</h5>
+    <ul>
+      <li><a id="addRow" href="#" title="test"><span style="padding-right:5px;">+</span> {% trans 'Add row' %}</a></li>
+      <li><a id="delRow" href="#"><span style="padding-right:5px;padding-left:1px;">&ndash;</span> {% trans 'Delete row' %}</a></li>
+    </ul>
+  </div>
+  -->
+</div>
+

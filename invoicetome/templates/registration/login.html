@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %}{{ title|default:"Login Page" }}{% endblock %}
 
@@ -10,8 +11,10 @@
       {% if user.is_anonymous %}
           {% include "registration/login_form.html" with form=form %}
       {% else %}
-        <h3>Login</h3>
+      <h3>{% trans 'Login' %}</h3>
+      {% blocktrans %}
         <p>You already logged in. You can <a href="{% url 'logout' %}">logout</a></p>
+      {% endblocktrans%}
       {% endif %}
     </div>
   </div>

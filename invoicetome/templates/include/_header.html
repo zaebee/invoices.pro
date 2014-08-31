@@ -1,0 +1,48 @@
+{% load i18n %} 
+<div class="header container">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#invoice-navbar-collapse">
+          <span class="sr-only">{% trans 'Toggle navigation' %}</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Invoiceto.me</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="invoice-navbar-collapse">
+
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Language' %}<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Ru</a></li>
+              <li><a href="#">En</a></li>
+              <li><a href="#">De</a></li>
+            </ul>
+          </li>
+        </ul>   
+
+        {% if user.is_anonymous %}
+          <form method="POST" action="{% url 'login' %}" class="navbar-form navbar-right" role="auth">
+            {% csrf_token %}
+            <div class="form-group">
+              <input type="text" name="username" class="form-control" placeholder="email">
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" class="form-control" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">{% trans 'Join' %}</button>
+          </form>
+        {% else %}
+          <a role="button" href="{% url 'logout' %}" class="btn btn-default navbar-btn navbar-right">{% trans 'logout' %}</a>
+          <p class="navbar-text navbar-right">{% trans 'Signed in as' %} <a href="#" class="navbar-link">{{ user.email }}</a>&nbsp;</p>
+        {% endif %}
+
+      </div>
+    </div>
+  </nav>
+
+</div>

@@ -34,8 +34,10 @@
 
 <body>
 
-  <div class="wrapper">
+  <div class="wrapper container">
   {% block content %}
+  {% include 'include/_header.html' %}
+  {% include 'include/_aside.html' %}
   {% include 'include/_order_form.html' %}
   {% endblock %}
   </div>

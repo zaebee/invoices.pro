@@ -1,5 +1,5 @@
 {% load i18n %}
-<div id="invoice" class="base-container">
+<div id="invoice" class="">
 
   <div id="header">
     <input id="company" class="span-12 ll" value="{% trans 'Your Company Name' %}" />
@@ -14,7 +14,7 @@
     <div id="meta" class="span-12 last">
       <input id="date" class="rr" value="12/11/2010" />
       <input class="rr" value="{% trans 'Invoice #2334889' %}" />
-      <input class="rr" value="{5 trans 'PO 456001200' %}" />
+      <input class="rr" value="{% trans 'PO 456001200' %}" />
       <input style="margin-top:20px;" class="client rr" value="{% trans 'Att: Ms. Jane Doe' %}" />
       <input style="margin-bottom:30px;" class="client rr" value="{% trans 'Client Company Name' %}" />
     </div>
