@@ -113,12 +113,50 @@
 
 (function (app) {
 
+  var notes_top =
+    "Dear Ms. Jane Doe,\n\n" +
+    "\tPlease find below a cost-breakdown for the recent work completed. Please make payment at your earliest convenience, and do not hesitate to contact me with any questions.\n\r" +
+    "\tMany thanks,\n" +
+    "\tYour Name"
+
+  var notes_bottom =
+    "Many thanks for your custom! I look forward to doing business with you again in due course.\n\n" +
+    "\tPayment terms: to be received within 60 days."
+
+
   app.User = Backbone.Model.extend({
     urlRoot: '/api/user/',
   });
 
   app.Invoice = Backbone.Model.extend({
     urlRoot: '/api/invoice/',
+    defaults: {
+      company_name: gettext('Your Company Name'),
+      address: gettext('123 Your Street'),
+      city: gettext('Your Town'),
+      address_second: gettext('Address Line 3'),
+      phone: gettext('(123) 456 789'),
+      email: gettext('email@yourcompany.com'),
+      invoice_name: gettext('Invoice'),
+      invoice_uid: gettext('Invoice #') + _.uniqueId('10000'),
+      invoice_po: gettext('PO 456001200'),
+      client_name: gettext('Att: Ms. Jane Doe'),
+      client_company: gettext('Client Company Name'),
+      notes_top: gettext(notes_top),
+      notes_bottom: gettext(notes_bottom),
+      subtotal: 0,
+      tax: 0,
+      total: 0,
+      headers: {
+        h_description: gettext('Item Description'),
+        h_quantity: gettext('Quantity'),
+        h_unit_price: gettext('Unit Price (€)'),
+        h_total: gettext('Total (€)'),
+        subtotal: gettext('Subtotal'),
+        tax: gettext('Sales tax (20%)'),
+        total: gettext('Total'),
+      },
+    },
   });
 
   app.Task = Backbone.Model.extend({

@@ -6,6 +6,10 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 admin.autodiscover()
 
+js_info_dict = {
+    'packages': ('apps.invoice',),
+}
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'invoicetome.views.home', name='home'),
@@ -14,6 +18,13 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^invoices/', include('invoice.urls')),
     url(r'^localeurl/', include('localeurl.urls')),
+
+)
+
+urlpatterns += patterns('',
+    url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),
+    url(r'^jsi18n/null/$', 'django.views.i18n.null_javascript_catalog'),
 )
 
 urlpatterns += patterns('',

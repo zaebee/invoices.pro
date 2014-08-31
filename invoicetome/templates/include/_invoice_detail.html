@@ -1,137 +1,88 @@
 {% load i18n %}
-<div id="invoice" class="">
+{% verbatim %}
 
-  <div class="container-fluid" id="header">
-    <div class="row">
-      <input id="company" class="col-md-6" value="{% trans 'Your Company Name' %}" />
-      <input id="title" class="col-md-6 pull-right text-right" value="{% trans 'INVOICE' %}" />
-    </div>
-    <div class="row">
-      <div id="address" class="col-md-6">
-        <div class="row">
-          <input class="ll col-md-12" value="{% trans '123 Your Street' %}" />
-          <input class="ll col-md-12" value="{% trans 'Your Town' %}" />
-          <input class="ll col-md-12" value="{% trans 'Address Line 3' %}" />
-          <input style="margin-top:20px;" class="ll col-md-12" value="(123) 456 789" />
-          <input style="margin-bottom:30px;" class="ll col-md-12" value="email@yourcompany.com" />
+<script id="invoice-template" type="text/ractive">
+  {{#with invoice}}
+    <div class="container-fluid" id="header">
+      <div class="row">
+        <input id="company" class="col-md-6" value="{{company_name}}" />
+        <input id="title" class="col-md-6 pull-right text-right" value="{{invoice_name}}" />
+      </div>
+      <div class="row">
+        <div id="address" class="col-md-6">
+          <div class="row">
+            <input class="ll col-md-12" value="{{address}}" />
+            <input class="ll col-md-12" value="{{city}}" />
+            <input class="ll col-md-12" value="{{address_second}}" />
+            <input style="margin-top:20px;" class="ll col-md-12" value="{{phone}}" />
+            <input style="margin-bottom:30px;" class="ll col-md-12" value="{{email}}" />
+          </div>
+        </div>
+        <div id="meta" class="col-md-6">
+          <div class="row">
+            <input id="date" class="rr col-md-12" value="{{date()}}" />
+            <input class="rr col-md-12" value="{{invoice_uid}}" />
+            <input class="rr col-md-12" value="{{invoice_po}}" />
+            <input style="margin-top:20px;" class="client rr col-md-12" value="{{client_name}}" />
+            <input style="margin-bottom:30px;" class="client rr col-md-12" value="{{client_company}}" />
+          </div>
         </div>
       </div>
-      <div id="meta" class="col-md-6">
-        <div class="row">
-          <input id="date" class="rr col-md-12" value="12/11/2010" />
-          <input class="rr col-md-12" value="{% trans 'Invoice #2334889' %}" />
-          <input class="rr col-md-12" value="{% trans 'PO 456001200' %}" />
-          <input style="margin-top:20px;" class="client rr col-md-12" value="{% trans 'Att: Ms. Jane Doe' %}" />
-          <input style="margin-bottom:30px;" class="client rr col-md-12" value="{% trans 'Client Company Name' %}" />
-        </div>
-      </div>
+
+    <hr>
+
+    <div class="row">
+    <textarea class="notes col-md-12" id="textone" cols="95" rows="1">{{notes_top}}</textarea>
     </div>
 
-  <hr>
 
-  <div class="row">
-    <textarea class="notes col-md-12" id="textone" cols="95" rows="1">{% blocktrans %}Dear Ms. Jane Doe,
+    <div class="row">
+      <table class="col-md-12">
+        <thead>
+        <tr>
+          <th class="span-2" ><input value="#" /></th>
+          <th class="span-10"><input value="{{headers.h_description}}" /></th>
+          <th class="span-4"><input value="{{headers.h_quantity}}" /></th>
+          <th class="span-4"><input value="{{headers.h_unit_price}}" /></th>
+          <th class="span-4"><input value="{{headers.h_total}}" /></th>
+        </tr>
+        </thead>
+        <tbody id="task-list"></tbody>
+        <tfoot>
+          <tr>
+            <th id="subtotallabel" colspan="4" class="span-20"><input value="{{headers.subtotal}}" /></th>
+            <th id="formsubtotal" class="span-4 noteditable">{{format(subtotal)}}</th>
+          </tr>
+          <tr>
+            <th id="taxrate" colspan="4" class="span-20"><input value="{{headers.tax}}" /></th>
+            <th id="formtax" class="span-4 noteditable">{{format(tax)}}</th>
+          </tr>
+          <tr id="total">
+            <th id="totallabel" colspan="4" class="span-20"><input value="{{headers.total}}" /></th>
+            <th id="formtotal" class="span-4 noteditable">{{format(total)}}</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
 
-    Please find below a cost-breakdown for the recent work completed. Please make payment at your earliest convenience, and do not hesitate to contact me with any questions.
+    <div class="row">
+      <textarea class="notes col-md-12" id="texttwo" cols="95">{{notes_bottom}}</textarea>
+    </div>
 
-    Many thanks,
-    Your Name{% endblocktrans %}</textarea>
-  </div>
+    </div>
+  {{/with}}
+</script>
 
+<script id="task-template" type="text/ractive">
+{{#each tasks:i}}
+  <tr>
+  <td class="noteditable" title="{% trans 'This field is done automatically' %}">{{i+1}}</td>
+    <td><input value="{{description}}" /></td>
+    <td><input value="{{quantity}}" /></td>
+    <td><input value="{{format(unit_price)}}" /></td>
+    <td class="noteditable" title="{% trans 'This field is done automatically' %}">{{format(quantity * unit_price)}}</td>
+  </tr>
+{{/each}}
+</script>
 
-  <div class="row">
-    <table class="col-md-12">
-      <thead>
-      <tr>
-        <th class="span-2" ><input value="#" /></th>
-        <th class="span-10"><input value="{% trans 'Item Description' %}" /></th>
-          <th class="span-4"><input value="{% trans 'Quantity' %}" /></th>
-          <th class="span-4"><input value="{% trans 'Unit price (€)' %}" /></th>
-          <th class="span-4"><input value="{% trans 'Total (€)' %}" /></th>
-      </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="noteditable" title="{% trans 'This field is done automatically' %}">1</td>
-          <td><input value="{% trans 'Supporting of in-house project (hours worked)' %}" /></td>
-          <td><input value="40" /></td>
-          <td><input value="125" /></td>
-          <td class="noteditable" title="{% trans 'This field is done automatically' %}"></td>
-        </tr>
-        <tr>
-          <td class="noteditable" title="{% trans 'This field is done automatically' %}">2</td>
-            <td><input value="" /></td>
-            <td><input value="" /></td>
-            <td><input value="" /></td>
-            <td class="noteditable" title="{% trans 'This field is done automatically' %}"></td>
-        </tr>
-        <tr>
-          <td class="noteditable" title="{% trans 'This field is done automatically' %}">3</td>
-            <td><input value="" /></td>
-            <td><input value="" /></td>
-            <td><input value="" /></td>
-            <td class="noteditable" title="{% trans 'This field is done automatically' %}"></td>
-        </tr>
-        <tr>
-          <td class="noteditable" title="{% trans 'This field is done automatically' %}">4</td>
-            <td><input value="" /></td>
-            <td><input value="" /></td>
-            <td><input value="" /></td>
-            <td class="noteditable" title="{% trans 'This field is done automatically' %}"></td>
-        </tr>
-        <tr>
-          <td class="noteditable" title="{% trans 'This field is done automatically' %}">5</td>
-            <td><input value="" /></td>
-            <td><input value="" /></td>
-            <td><input value="" /></td>
-            <td class="noteditable" title="{% trans 'This field is done automatically' %}"></td>
-        </tr>
-        <tr>
-          <td class="noteditable" title="{% trans 'This field is done automatically' %}">6</td>
-            <td><input value="" /></td>
-            <td><input value="" /></td>
-            <td><input value="" /></td>
-            <td class="noteditable" title="{% trans 'This field is done automatically' %}"></td>
-        </tr>
-        <tr>
-          <td class="noteditable" title="{% trans 'This field is done automatically' %}">7</td>
-            <td><input value="" /></td>
-            <td><input value="" /></td>
-            <td><input value="" /></td>
-            <td class="noteditable" title="{% trans 'This field is done automatically' %}"></td>
-        </tr>
-        <tr>
-          <td class="noteditable" title="{% trans 'This field is done automatically' %}">8</td>
-            <td><input value="" /></td>
-            <td><input value="" /></td>
-            <td><input value="" /></td>
-            <td class="noteditable" title="{% trans 'This field is done automatically' %}"></td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th id="subtotallabel" colspan="4" class="span-20"><input value="{% trans 'Subtotal' %}" /></th>
-            <th id="formsubtotal" class="span-4 noteditable">0</th>
-        </tr>
-        <tr>
-          <th id="taxrate" colspan="4" class="span-20"><input value="{% trans 'Sales Tax (20%)' %}" /></th>
-            <th id="formtax" class="span-4 noteditable">0</th>
-        </tr>
-        <tr id="total">
-          <th id="totallabel" colspan="4" class="span-20"><input value="{% trans 'Total' %}" /></th>
-            <th id="formtotal" class="span-4 noteditable">0</th>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
-
-  <div class="row">
-    <textarea class="notes col-md-12" id="texttwo" cols="95">{% blocktrans %}Many thanks for your custom! I look forward to doing business with you again in due course.
-
-      Payment terms: to be received within 60 days.{% endblocktrans %}</textarea>
-  </div>
-
-  </div>
-</div>
-
-<textarea name="html" id="markup" cols="60" rows="20" style="display:none;"></textarea>
+{% endverbatim %}

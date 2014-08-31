@@ -34,15 +34,6 @@ var app = app || {};
     adaptors: [ Ractive.adaptors.Backbone ],
   });
 
-  // Создаем Ractive компонент снизу страницы
-  // присоединяем к элементу с классом `.invheader-account`
-  app.account = new RactiveUser({
-    el: '.invbody-account',
-    //template: JST['assets/templates/invbody-account.html'](),
-    data: backboneUser,
-    adaptors: [ Ractive.adaptors.Backbone ],
-  });
-  
   // Подписываемся на измениния Id юзера
   // если id изменилось (то есть юзера сохранили)
   // привязваем инвойс к этому пользователю

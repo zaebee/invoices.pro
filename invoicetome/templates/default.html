@@ -30,6 +30,7 @@
   {% endassets %}
   <script src="{{ STATIC_URL }}js/modernizr.js"></script>
   <script src="{{ STATIC_URL }}js/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="{% url 'django.views.i18n.javascript_catalog' %}"></script>
 </head>
 
 <body>
@@ -42,7 +43,9 @@
   {% endblock %}
   </div>
 
+  <!--
   <script type="text/javascript" language="javascript" src="{{ STATIC_URL }}js/page.js" charset="utf-8">
+    -->
       // <![CDATA[// ]]>
   </script>
   {% assets  "all_js" %}

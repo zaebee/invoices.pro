@@ -3,44 +3,41 @@ var app = app || {};
 (function (app) {
 
   app.invoice = new Ractive({
-    //el: '#invoice',
-    //template: JST['assets/templates/invheader-lower.html'](),
+    el: '#invoice',
+    template: '#invoice-template',
     data: {
-
       invoice: new app.Invoice, // наша Backbone модель
 
-      // хэлпер дв шаблоне {{ lastFour(id) }}
-      lastFour: function (str) {
-          return str.slice(-4);
+      date: function () {
+          return new Date();
+      },
+
+      // хэлпер используется в шаблоне {{ format(price) }}
+      format: function ( num ) {
+        return num.toFixed( 2 );
+      },
+
+      set_total: function(tax_percent) {
+        var subtotal = this.invoice.get('subtotal');
+        var tax = this.invoice.get('subtotal') * tax_percent;
+        this.invoice.set('tax', tax);
+        this.invoice.set('total', parseFloat(subtotal) + parseFloat(tax));
       }
     },
     adaptors: [ Ractive.adaptors.Backbone ],
   });
 
-  app.invoice.on({
-    // Обрабатываем нажатие на кнопку редактирования
-    // в шаблоне `on-click="edit"`
-    edit: function (event) {
-      console.log(event);
-      var editing = this.get('editing');
-      this.set( 'editing', !editing );
-      if (editing) {
-        this.data.invoice.save({owner: app.user.data.id});
-      }
-    },
-
-    // Показываем или скрываем кнопку для редактирования данных
-    // в шаблоне `on-hover="toggleBtn"`
-    toggleBtn: function (event) {
-      if ( event.hover ) {
-        $(event.node).find('[role=button]').removeClass('hide');
-      } else {
-        $(event.node).find('[role=button]').addClass('hide');
-      }
-    }
+  app.invoice.observe('invoice.headers.tax', function(tax, old, keypath){
+    var tax_percent = tax.replace(/\,/g, '').replace(/,/g,'.').replace(/[^\d\.]/g,'') / 100;
+    this.data.set_total(tax_percent);
+  });
+  app.invoice.observe('invoice.subtotal', function(subtotal, old, keypath){
+    var tax_percent = this.get('invoice.headers.tax').replace(/\,/g, '').replace(/,/g,'.').replace(/[^\d\.]/g,'') / 100;
+    this.data.set_total(tax_percent);
   });
 
   // сразу сохраняем инвойс на сервер
-  app.invoice.data.invoice.save();
+  $("textarea.notes").growfield();
+  //app.invoice.data.invoice.save();
 
 })(app);

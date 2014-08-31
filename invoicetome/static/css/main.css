@@ -201,8 +201,9 @@ tbody td:last-child {
     position: absolute;
     right: 43px;
     width: 185px;
-    bottom: 40px;
+    bottom: 60px;
     z-index: 4;
+    padding: 10px;
 }
 
 #three {
@@ -316,7 +317,7 @@ a.button:link, a.button:visited {
 	border-top: 1px solid rgba(0,0,0,0.1);
 	margin-left:0;
 	position: relative;
-	font-size:17px;
+	font-size:14px;
 	cursor: pointer;
 	background:#27a ;
 	background-image: linear-gradient(top, #0ac, #27a);
@@ -326,7 +327,7 @@ a.button:link, a.button:visited {
 	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.8);
 	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.8);
     text-align: center;
-    width:130px;
+    width:160px;
 
 	}
 

@@ -9,11 +9,13 @@ from django.contrib.auth.models import User
 
 
 class Invoice(models.Model):
+    STATUS_DRAFT = 'draft'
     STATUS_SAVED = 'saved'
     STATUS_SENDED = 'sended'
     STATUS_RECIEVED = 'recieved'
 
     STATUS_CHOICES = {
+        STATUS_DRAFT: _("Draft"),
         STATUS_SAVED: _("Saved"),
         STATUS_SENDED: _("Sended"),
         STATUS_RECIEVED: _("Recieved"),
@@ -46,7 +48,7 @@ class Invoice(models.Model):
 
     date_added = models.DateTimeField(_(u'Date Added'), auto_now_add=True)
     records = models.ForeignKey('Record', verbose_name=_('Records'), related_name='records', null=True, blank=True)
-    status = models.CharField(max_length=255, choices=STATUS_CHOICES.items())
+    status = models.CharField(max_length=255, choices=STATUS_CHOICES.items(), default=STATUS_DRAFT)
 
     def save(self, *args, **kwargs):
         super(Invoice, self).save(*args, **kwargs)
