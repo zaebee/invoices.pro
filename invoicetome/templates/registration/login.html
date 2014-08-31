@@ -12,9 +12,7 @@
           {% include "registration/login_form.html" with form=form %}
       {% else %}
       <h3>{% trans 'Login' %}</h3>
-      {% blocktrans %}
-        <p>You already logged in. You can <a href="{% url 'logout' %}">logout</a></p>
-      {% endblocktrans%}
+      <p>{% trans 'You already logged in. You can' %} <a href="{% url 'logout' %}">{% trans 'logout' %}</a></p>
       {% endif %}
     </div>
   </div>
