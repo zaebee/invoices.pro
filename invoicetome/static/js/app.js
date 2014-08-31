@@ -1,6 +1,6 @@
 (function(){
 
-  window.App = (function(){
+  window.app = (function(){
     "use strict";
     var spinner_options = {
             lines: 11,
@@ -109,5 +109,25 @@
 
   }());
 
-
 })();
+
+(function (app) {
+
+  app.User = Backbone.Model.extend({
+    urlRoot: '/api/user/',
+  });
+
+  app.Invoice = Backbone.Model.extend({
+    urlRoot: '/api/invoice/',
+  });
+
+  app.Task = Backbone.Model.extend({
+    urlRoot: '/api/task/',
+  });
+
+  app.Tasks = Backbone.Collection.extend({
+    url: '/api/task/',
+    model: app.Task
+  });
+})(app);
+
