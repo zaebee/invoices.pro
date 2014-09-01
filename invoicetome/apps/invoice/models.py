@@ -33,28 +33,30 @@ class Invoice(models.Model):
     email = models.EmailField(_('Email'))
 
     invoice_name = models.CharField(_('Invoice Name'), max_length=255)
-    invoice_uid = models.PositiveIntegerField(_('Invoice Uid'))
-    invoice_po = models.PositiveIntegerField(_('Invoice PO'))
+    invoice_uid = models.CharField(_('Invoice Uid'), max_length=255)
+    invoice_po = models.CharField(_('Invoice PO'), max_length=255)
 
     client_name = models.CharField(_('Client Name'), max_length=255)
     client_company = models.CharField(_('Client Company'), max_length=255)
 
-    notes_top = models.CharField(_('Notes Top'), max_length=255, null=True, blank=True)
-    notes_bottom = models.CharField(_('Notes Bottom'), max_length=255, null=True, blank=True)
+    notes_top = models.CharField(_('Notes Top'),
+                                 max_length=255, null=True, blank=True)
+    notes_bottom = models.CharField(_('Notes Bottom'),
+                                    max_length=255, null=True, blank=True)
 
-    subtotal = models.DecimalField(_('Subtotal Price'), decimal_places=2, max_digits=20)
-    tax = models.DecimalField(_('Sales Tax %'), decimal_places=2, max_digits=6, default=0)
-    total = models.DecimalField(_('Total Price'), decimal_places=2, max_digits=20, editable=False)
+    subtotal = models.DecimalField(_('Subtotal Price'),
+                                   decimal_places=2, max_digits=20)
+    tax = models.DecimalField(_('Sales Tax %'),
+                              decimal_places=2, max_digits=6, default=0)
+    total = models.DecimalField(_('Total Price'),
+                                decimal_places=2, max_digits=20)
 
     date_added = models.DateTimeField(_(u'Date Added'), auto_now_add=True)
-    records = models.ForeignKey('Record', verbose_name=_('Records'), related_name='records', null=True, blank=True)
-    status = models.CharField(max_length=255, choices=STATUS_CHOICES.items(), default=STATUS_DRAFT)
-
-    def save(self, *args, **kwargs):
-        super(Invoice, self).save(*args, **kwargs)
+    status = models.CharField(max_length=255, choices=STATUS_CHOICES.items(),
+                              default=STATUS_DRAFT)
 
     def __unicode__(self):
-        return "%s - #%s" % (seldf.email, self.invoice_uid)
+        return "%s - #%s" % (self.email, self.invoice_uid)
 
     @models.permalink
     def get_absolute_url(self):
@@ -62,7 +64,27 @@ class Invoice(models.Model):
 
 
 class Record(models.Model):
+    invoice = models.ForeignKey(Invoice, verbose_name=_('Invoice'),
+                                related_name='records', null=True, blank=True)
     description = models.TextField(_('Description'))
     quantity = models.PositiveIntegerField(_('Quantity'))
     unit_price = models.DecimalField(_('Unit Price'), decimal_places=2, max_digits=20)
     total = models.DecimalField(_('Total'), decimal_places=2, max_digits=20)
+
+    def __unicode__(self):
+        return self.description
+
+
+class Header(models.Model):
+    invoice = models.OneToOneField(Invoice, verbose_name=_('Invoice'),
+                                   null=True, blank=True)
+    h_description = models.CharField(_('Description'), max_length=255)
+    h_quantity = models.CharField(_('Quantity'), max_length=255)
+    h_unit_price = models.CharField(_('Unit Price'), max_length=255)
+    h_total = models.CharField(_('Total'), max_length=255)
+    subtotal = models.CharField(_('Subtotal'), max_length=255)
+    tax = models.CharField(_('Tax'), max_length=255)
+    total = models.CharField(_('Total'), max_length=255)
+
+    def __unicode__(self):
+        return self.h_description

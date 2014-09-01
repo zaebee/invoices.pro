@@ -80,7 +80,7 @@
     <td><input value="{{description}}" /></td>
     <td><input value="{{quantity}}" /></td>
     <td><input value="{{unit_price}}" /></td>
-    <td class="noteditable" title="{% trans 'This field is done automatically' %}">{{format(quantity * unit_price)}}</td>
+    <td class="noteditable" title="{% trans 'This field is done automatically' %}">{{format(total)}}</td>
   </tr>
 {{/each}}
 </script>

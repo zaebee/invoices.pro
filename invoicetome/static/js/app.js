@@ -1,3 +1,11 @@
+$(document).ready(function() {
+  $.ajaxSetup({
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader('X-CSRFToken', $.cookie('csrftoken'));
+    }
+  });
+});
+
 (function(){
 
   window.app = (function(){
@@ -125,12 +133,13 @@
 
 
   app.User = Backbone.Model.extend({
-    urlRoot: '/api/user/',
+    urlRoot: '/api/users/',
   });
 
   app.Invoice = Backbone.Model.extend({
-    urlRoot: '/api/invoice/',
+    urlRoot: '/api/invoices/',
     defaults: {
+      status: 'draft',
       company_name: gettext('Your Company Name'),
       address: gettext('123 Your Street'),
       city: gettext('Your Town'),
@@ -160,11 +169,11 @@
   });
 
   app.Task = Backbone.Model.extend({
-    urlRoot: '/api/task/',
+    urlRoot: '/api/tasks/',
   });
 
   app.Tasks = Backbone.Collection.extend({
-    url: '/api/task/',
+    url: '/api/tasks/',
     model: app.Task
   });
 })(app);

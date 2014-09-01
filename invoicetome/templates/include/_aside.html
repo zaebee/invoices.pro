@@ -20,8 +20,8 @@
   <div class="tools" id="two">
     <h5>{% trans 'Finished editing?' %}</h5>
     <ul class="nav nav-pills nav-stacked">
-      <li><a id="get-pdf" class="button" href="#">{% trans 'Get PDF' %}</a></li>
-      <li><a id="save-invoice" class="button" href="#">{% trans 'Save' %}</a></li>
+      <li><a id="get-pdf" onclick="app.invoice.fire('generate_pdf', event)" class="button" href="#">{% trans 'Get PDF' %}</a></li>
+      <li><a id="save-invoice" onclick="app.invoice.fire('save', event)" class="button" href="#">{% trans 'Save' %}</a></li>
     </ul>
   </div>
   <div class="tools" id="three">

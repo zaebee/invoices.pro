@@ -9,12 +9,14 @@ var app = app || {};
 
       // хэлпер используется в шаблоне {{ format(price) }}
       format: function ( num ) {
-        return num.toFixed( 2 );
+        return parseFloat(num).toFixed( 2 );
       },
 
-      // хэлпер используется в шаблоне {{ total(tasks) }}
-      total: function ( collection ) {
+      // хэлпер используется в шаблоне {{ total_tasks(tasks) }}
+      total_tasks: function ( collection ) {
         var total = collection.reduce(function( sum, el ) {
+          var total = el.get('quantity') * el.get('unit_price');
+          el.set('total', parseFloat(total));
           return el.get('quantity') * el.get('unit_price') + sum;
         }, 0 );
         return total.toFixed( 2 );
@@ -33,12 +35,14 @@ var app = app || {};
           description: gettext('Supporting of in-house project (hours worked)'),
           quantity: 40,
           unit_price: 125,
+          total: 6000,
         }
       } else {
         var params = {
           description: '',
           quantity: 0,
           unit_price: 0,
+          total: 0,
         };
       };
       var tasks = this.get('tasks');
@@ -53,6 +57,14 @@ var app = app || {};
         }
       });
       */
+    },
+
+    save: function ( event ) {
+      this.get('tasks').each(function ( task ) {
+        if (task.get('description')) {
+          task.save();
+        };
+      });
     },
 
     // удаляем таск с сервера тоже
@@ -70,7 +82,7 @@ var app = app || {};
   // сумму также меняем у инвойса
   // TODO нужно сохранять инвойс после изменения суммы
   app.tasks.observe('tasks.*.quantity tasks.*.unit_price', function(tasks, old, keypath){
-    var subtotal = this.data.total(this.data.tasks);
+    var subtotal = this.data.total_tasks(this.data.tasks);
     app.invoice.set('invoice.subtotal', parseFloat(subtotal));
   });
   // Добавляем первый заполненный таск и 7 пустых

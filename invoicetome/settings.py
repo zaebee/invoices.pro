@@ -45,10 +45,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     #'django.contrib.staticfiles',
     'django_assets',
+    'annoying',
     'local',
     'invoice',
     'widget_tweaks',
     'localeurl',
+    'rest_framework',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

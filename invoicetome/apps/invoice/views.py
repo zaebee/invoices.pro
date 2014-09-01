@@ -2,40 +2,71 @@
 
 from django.shortcuts import get_object_or_404, render, redirect
 from django.utils import translation
-from django.http import Http404, HttpResponseRedirect
-from django.utils.translation import check_for_language
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from django.conf import settings
 
-from .models import Invoice
+from .models import Invoice, Record
 
 
-@login_required
-def invoice_detail(request, pk):
-    invoice = get_object_or_404(Invoice, id=pk)
-    data = {'invoice': invoice}
+from .serializers import InvoiceSerializer, RecordSerializer
 
-    if request.is_ajax():
-        return render(request, 'includes/_invoice_detail.html', data)
-    else:
-        return render(request, 'invoice/invoice_detail.html', data)
+from rest_framework.decorators import detail_route
+from rest_framework import viewsets
 
 
-def set_language(request):
-    nextU = request.REQUEST.get('next', None)
-    if not nextU:
-        nextU = request.META.get('HTTP_REFERER', None)
-    if not nextU:
-        nextU = '/'
-    response = HttpResponseRedirect(nextU)
-    if request.method == 'GET':
-        lang_code = request.GET.get('lang', None)
-        if lang_code and check_for_language(lang_code):
-            if hasattr(request, 'session'):
-                request.session['django_language'] = lang_code
-            else:
-                response.set_cookie(settings.LANGUAGE_COOKIE_NAME, lang_code)
-            translation.activate(lang_code)
-            request.session.modified = True
-    return response
+
+class InvoiceViewSet(viewsets.ModelViewSet):
+    """
+    This viewset automatically provides `list`, `create`, `retrieve`,
+    `update` and `destroy` actions.
+
+    Additionally we also provide an extra `highlight` action.
+    """
+    queryset = Invoice.objects.all()
+    serializer_class = InvoiceSerializer
+    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+    #                      IsOwnerOrReadOnly,)
+
+    def pre_save(self, obj):
+        #import ipdb;ipdb.set_trace()
+        if self.request.user.is_anonymous():
+            user, _ = User.objects.get_or_create(email=obj.email)
+        else:
+            user = self.request.user
+        obj.owner = user
+
+    def _create(self, request, *args, **kwargs):
+        import ipdb;ipdb.set_trace()
+        serializer = self.get_serializer(data=request.DATA, files=request.FILES)
+
+        if serializer.is_valid():
+            self.pre_save(serializer.object)
+            self.object = serializer.save(force_insert=True)
+            self.post_save(self.object, created=True)
+            headers = self.get_success_headers(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED,
+                            headers=headers)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class RecordViewSet(viewsets.ModelViewSet):
+    """
+    This viewset automatically provides `list`, `create`, `retrieve`,
+    `update` and `destroy` actions.
+
+    Additionally we also provide an extra `highlight` action.
+    """
+    queryset = Record.objects.all()
+    serializer_class = RecordSerializer
+    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+    #                      IsOwnerOrReadOnly,)
+
+    def _pre_save(self, obj):
+        if self.request.user.is_anonymous():
+            user, _ = User.objects.get_or_create(email=obj.email)
+        else:
+            user = self.request.user
+        obj.owner = user

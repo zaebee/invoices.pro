@@ -3,7 +3,6 @@ from django_assets import Bundle, register
 #Javascript
 register('all_js',
         Bundle(
-            #'js/page.js',
             'js/vendor/lodash.compat.min.js',
             'js/vendor/backbone-min.js',
             'js/vendor/ractive-legacy.min.js',
@@ -11,6 +10,7 @@ register('all_js',
             'js/jquery.browser.min.js',
             'js/jquery.growfield2.js',
             'js/spin.min.js',
+            'js/jquery.cookie.js',
             'js/jquery.spin.js',
             'js/bootstrap.min.js',
             'js/app.js',

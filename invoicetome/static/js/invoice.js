@@ -14,7 +14,7 @@ var app = app || {};
 
       // хэлпер используется в шаблоне {{ format(price) }}
       format: function ( num ) {
-        return num.toFixed( 2 );
+        return parseFloat(num).toFixed( 2 );
       },
 
       set_total: function(tax_percent) {
@@ -27,6 +27,40 @@ var app = app || {};
     adaptors: [ Ractive.adaptors.Backbone ],
   });
 
+  app.invoice.on({
+    save: function(event) {
+      event.preventDefault();
+      var spinner = new app.buttonSpinner(
+        $('#save-invoice'),
+        '&nbsp;',
+        $('#save-invoice')
+      );
+      spinner.start();
+
+      var tasks = app.tasks.get('tasks').filter(function(el){
+        return el.get('description');
+      }).map(function(el){
+        return el.toJSON();
+      });
+      this.set('invoice.records', tasks);
+      this.get('invoice').save(null, {
+        success: function(model, response) {
+          spinner.stop();
+        },
+      });
+    },
+
+    generate_pdf: function(event) {
+      event.preventDefault();
+      var spinner = new app.buttonSpinner($('#get-pdf'), '&nbsp;', $('#get-pdf'));
+      spinner.start();
+      setTimeout(function(){
+        spinner.stop();
+      },3000);
+    },
+  });
+
+
   app.invoice.observe('invoice.headers.tax', function(tax, old, keypath){
     var tax_percent = tax.replace(/\,/g, '').replace(/,/g,'.').replace(/[^\d\.]/g,'') / 100;
     this.data.set_total(tax_percent);
@@ -36,8 +70,8 @@ var app = app || {};
     this.data.set_total(tax_percent);
   });
 
-  // сразу сохраняем инвойс на сервер
   $("textarea.notes").growfield();
+  // сразу сохраняем инвойс на сервер
   //app.invoice.data.invoice.save();
 
 })(app);
