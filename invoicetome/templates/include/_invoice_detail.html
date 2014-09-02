@@ -85,4 +85,10 @@
 {{/each}}
 </script>
 
+<script id="invoice-list-template" type="text/ractive">
+{{#each invoices:i}}
+  <a on-click="activate:{{this}}" title="{{client_name}} - {{client_company}}" href="#" class="list-group-item">{{invoice_uid}}</a>
+{{/each}}
+</script>
+
 {% endverbatim %}

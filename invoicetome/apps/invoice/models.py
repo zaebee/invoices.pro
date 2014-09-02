@@ -66,7 +66,7 @@ class Invoice(models.Model):
 class Record(models.Model):
     invoice = models.ForeignKey(Invoice, verbose_name=_('Invoice'),
                                 related_name='records', null=True, blank=True)
-    description = models.TextField(_('Description'))
+    description = models.TextField(_('Description'), blank=True, null=True)
     quantity = models.PositiveIntegerField(_('Quantity'))
     unit_price = models.DecimalField(_('Unit Price'), decimal_places=2, max_digits=20)
     total = models.DecimalField(_('Total'), decimal_places=2, max_digits=20)
@@ -77,7 +77,7 @@ class Record(models.Model):
 
 class Header(models.Model):
     invoice = models.OneToOneField(Invoice, verbose_name=_('Invoice'),
-                                   null=True, blank=True)
+                                   related_name='headers', null=True, blank=True)
     h_description = models.CharField(_('Description'), max_length=255)
     h_quantity = models.CharField(_('Quantity'), max_length=255)
     h_unit_price = models.CharField(_('Unit Price'), max_length=255)

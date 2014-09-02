@@ -6,14 +6,13 @@ from django.contrib.auth.models import User
 
 from django.conf import settings
 
-from .models import Invoice, Record
-
-
-from .serializers import InvoiceSerializer, RecordSerializer
-
 from rest_framework.decorators import detail_route
 from rest_framework import viewsets
+from rest_framework import permissions
 
+from .models import Invoice, Record
+from .serializers import InvoiceSerializer, RecordSerializer
+from .permissions import IsInvoiceOwner
 
 
 class InvoiceViewSet(viewsets.ModelViewSet):
@@ -25,31 +24,26 @@ class InvoiceViewSet(viewsets.ModelViewSet):
     """
     queryset = Invoice.objects.all()
     serializer_class = InvoiceSerializer
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,
-    #                      IsOwnerOrReadOnly,)
+    permission_classes = (IsInvoiceOwner,)
+
+    def get_queryset(self):
+        """
+        This view should return a list of all the purchases
+        for the currently authenticated user.
+        """
+        user = self.request.user
+        return Invoice.objects.filter(owner=user)
 
     def pre_save(self, obj):
-        #import ipdb;ipdb.set_trace()
+        """
+        Set request.user as  owner for new invoice
+        or create new user by email
+        """
         if self.request.user.is_anonymous():
             user, _ = User.objects.get_or_create(email=obj.email)
         else:
             user = self.request.user
         obj.owner = user
-
-    def _create(self, request, *args, **kwargs):
-        import ipdb;ipdb.set_trace()
-        serializer = self.get_serializer(data=request.DATA, files=request.FILES)
-
-        if serializer.is_valid():
-            self.pre_save(serializer.object)
-            self.object = serializer.save(force_insert=True)
-            self.post_save(self.object, created=True)
-            headers = self.get_success_headers(serializer.data)
-            return Response(serializer.data, status=status.HTTP_201_CREATED,
-                            headers=headers)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 
 class RecordViewSet(viewsets.ModelViewSet):

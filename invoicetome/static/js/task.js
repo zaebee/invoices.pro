@@ -61,9 +61,7 @@ var app = app || {};
 
     save: function ( event ) {
       this.get('tasks').each(function ( task ) {
-        if (task.get('description')) {
-          task.save();
-        };
+        task.save();
       });
     },
 

@@ -147,7 +147,7 @@ $(document).ready(function() {
       phone: gettext('(123) 456 789'),
       email: gettext('email@yourcompany.com'),
       invoice_name: gettext('Invoice'),
-      invoice_uid: gettext('Invoice #') + _.uniqueId('10000'),
+      invoice_uid: gettext('Invoice #') + _.random('10000'),
       invoice_po: gettext('PO 456001200'),
       client_name: gettext('Att: Ms. Jane Doe'),
       client_company: gettext('Client Company Name'),
@@ -166,6 +166,11 @@ $(document).ready(function() {
         total: gettext('Total'),
       },
     },
+  });
+
+  app.Invoices = Backbone.Collection.extend({
+    url: '/api/invoices/',
+    model: app.Invoice
   });
 
   app.Task = Backbone.Model.extend({

@@ -2,6 +2,15 @@ var app = app || {};
 
 (function (app) {
 
+  app.invoiceList = new Ractive({
+    el: '#invoice-list .list-group',
+    template: '#invoice-list-template',
+    data: {
+      invoices: new app.Invoices(), // наша Backbone модель
+    },
+    adaptors: [ Ractive.adaptors.Backbone ],
+  });
+
   app.invoice = new Ractive({
     el: '#invoice',
     template: '#invoice-template',
@@ -25,6 +34,18 @@ var app = app || {};
       }
     },
     adaptors: [ Ractive.adaptors.Backbone ],
+  });
+
+  app.invoiceList.on({
+    activate: function(event) {
+      console.log(event);
+      event.original.preventDefault();
+      $(event.node).addClass('active');
+      $(event.node).siblings().removeClass('active');
+      app.invoice.set('invoice', event.context);
+      var tasks = event.context.get('records');
+      app.tasks.set('tasks', tasks);
+    },
   });
 
   app.invoice.on({
@@ -71,7 +92,5 @@ var app = app || {};
   });
 
   $("textarea.notes").growfield();
-  // сразу сохраняем инвойс на сервер
-  //app.invoice.data.invoice.save();
 
 })(app);
