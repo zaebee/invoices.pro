@@ -50,8 +50,7 @@ var app = app || {};
   });
 
   app.invoice.on({
-    save: function(event) {
-      event.preventDefault();
+    save: function( event ) {
       var spinner = new app.buttonSpinner(
         $('#save-invoice'),
         '&nbsp;',
@@ -69,8 +68,7 @@ var app = app || {};
       });
     },
 
-    generate_pdf: function(event) {
-      event.preventDefault();
+    generate_pdf: function( event ) {
       var spinner = new app.buttonSpinner($('#get-pdf'), '&nbsp;', $('#get-pdf'));
       spinner.start();
       setTimeout(function(){

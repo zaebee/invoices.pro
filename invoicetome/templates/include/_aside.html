@@ -2,20 +2,28 @@
 <div class="aside">
   {% if user.is_authenticated %}
   <div class="tools" id="invoice-list">
-    <h5>{% trans 'My invoices' %}</h5>
+    <h5>{% trans 'My invoices' %}
+    </h5>
+    <div class="btn-group btn-group-xs">
+      <button type="button" class="btn btn-default">{% trans 'Saved' %}</button>
+      <button type="button" class="btn btn-default">{% trans 'Sended' %}</button>
+      <button type="button" class="btn btn-default">{% trans 'Recieved' %}</button>
+    </div>
     <div class="list-group"></div>
   </div>
   {% endif %}
 
   <div class="tools" id="one">
-    <h5><a href="/">invoiceto.me</a></h5>
+    <h5>
+      <a href="/">invoiceto.me</a>
+    </h5>
     <p>{% trans '&larr; Edit the fields to make an invoice' %}</p>
   </div>
   <div class="tools" id="two">
     <h5>{% trans 'Finished editing?' %}</h5>
     <ul class="nav nav-pills nav-stacked">
-      <li><a id="get-pdf" onclick="app.invoice.fire('generate_pdf', event)" class="button" href="#">{% trans 'Get PDF' %}</a></li>
-      <li><a id="save-invoice" onclick="app.invoice.fire('save', event)" class="button" href="#">{% trans 'Save' %}</a></li>
+      <li><a id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button" href="#">{% trans 'Get PDF' %}</a></li>
+      <li><a id="save-invoice" onclick="app.invoice.fire('save');return false;" class="button" href="#">{% trans 'Save' %}</a></li>
     </ul>
   </div>
   <div class="tools" id="three">

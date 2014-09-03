@@ -54,16 +54,12 @@ var app = app || {};
       };
     },
 
-    save: function ( event ) {
-      this.get('tasks').each(function ( task ) {
-        task.save();
-      });
-    },
-
     // удаляем таск с сервера тоже
     destroy: function ( event ) {
       var task = this.get('tasks').last();
       if (task) {
+        var tasks = app.invoice.get('invoice').get('records').slice(0, -1);
+        app.invoice.get('invoice').set('records', tasks);
         task.destroy();
       };
     },
