@@ -44,6 +44,7 @@ var app = app || {};
       $(event.node).siblings().removeClass('active');
       app.invoice.set('invoice', event.context);
       var tasks = event.context.get('records');
+      tasks = new app.Tasks(tasks);
       app.tasks.set('tasks', tasks);
     },
   });
@@ -58,14 +59,11 @@ var app = app || {};
       );
       spinner.start();
 
-      var tasks = app.tasks.get('tasks').filter(function(el){
-        return el.get('description');
-      }).map(function(el){
-        return el.toJSON();
-      });
+      var tasks = app.tasks.get('tasks').toJSON();
       this.set('invoice.records', tasks);
       this.get('invoice').save(null, {
         success: function(model, response) {
+          app.invoiceList.get('invoices').add(model);
           spinner.stop();
         },
       });
@@ -92,5 +90,6 @@ var app = app || {};
   });
 
   $("textarea.notes").growfield();
+  app.invoiceList.get('invoices').fetch();
 
 })(app);

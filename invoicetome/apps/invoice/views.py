@@ -32,7 +32,10 @@ class InvoiceViewSet(viewsets.ModelViewSet):
         for the currently authenticated user.
         """
         user = self.request.user
-        return Invoice.objects.filter(owner=user)
+        if user.is_anonymous():
+            return Invoice.objects.none()
+        else:
+            return Invoice.objects.filter(owner=user)
 
     def pre_save(self, obj):
         """

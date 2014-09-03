@@ -48,15 +48,10 @@ var app = app || {};
       var tasks = this.get('tasks');
       var task = new app.Task(params);
       tasks.add(task);
-      /*
-      task.save(null, {
-        // хак, чтобы привязать новый созданный таск к текущему инвойсу
-        success: function() {
-          task.set('invoice', app.invoice.data.invoice.id);
-          task.save();
-        }
-      });
-      */
+      if (app.invoice.get('invoice.id')) {
+        task.set('invoice', app.invoice.get('invoice.id'));
+        task.save();
+      };
     },
 
     save: function ( event ) {
@@ -75,7 +70,7 @@ var app = app || {};
 
   });
 
-  // подписываемся на изменения параметров `hours` и `rate` для тасков
+  // подписываемся на изменения параметров `quantity` и `unit_price` для тасков
   // чтобы пересчитивать сумму
   // сумму также меняем у инвойса
   // TODO нужно сохранять инвойс после изменения суммы
