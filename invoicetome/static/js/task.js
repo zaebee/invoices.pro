@@ -80,4 +80,7 @@ var app = app || {};
     app.tasks.fire('add');
   });
 
+  var tasks = app.tasks.get('tasks').toJSON();
+  app.invoice.set('invoice.records', tasks);
+
 })(app);
