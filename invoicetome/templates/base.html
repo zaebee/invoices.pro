@@ -35,15 +35,13 @@
 <body>
 
   <div class="wrapper">
+  {% include 'include/_header.html' %}
   {% block content %}
   {% include 'include/_order_form.html' %}
   {% endblock %}
   </div>
 
   {% assets  "all_js" %}
-    <script type="text/javascript" language="javascript" src="{{ ASSET_URL }}" charset="utf-8">
-        // <![CDATA[// ]]>
-    </script>
   {% endassets %}
 
   {% block extrajs %}{% endblock %}
