@@ -1,11 +1,3 @@
-$(document).ready(function() {
-  $.ajaxSetup({
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader('X-CSRFToken', $.cookie('csrftoken'));
-    }
-  });
-});
-
 (function(){
 
   window.app = (function(){
@@ -181,5 +173,25 @@ $(document).ready(function() {
     url: '/api/tasks/',
     model: app.Task
   });
+
+  app.saveSpinner = new app.buttonSpinner(
+    $('#save-invoice'),
+    '&nbsp;',
+    $('#save-invoice')
+  );
+  app.pdfSpinner = new app.buttonSpinner(
+    $('#get-pdf'),
+    '&nbsp;',
+    $('#get-pdf')
+  );
+
 })(app);
 
+
+$(document).ready(function() {
+  $.ajaxSetup({
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader('X-CSRFToken', $.cookie('csrftoken'));
+    }
+  });
+});

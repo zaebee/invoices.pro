@@ -45,14 +45,13 @@ var app = app || {};
           total: 0,
         };
       };
-      var tasks = this.get('tasks');
       var task = new app.Task(params);
-      tasks.add(task);
+      this.get('tasks').add(task);
       if (app.invoice.get('invoice.id')) {
         task.set('invoice', app.invoice.get('invoice.id'));
         task.save(null, {
-          success: function(response) {
-            app.invoice.get('invoice').fetch();
+          success: function(model, response) {
+            app.invoice.push('invoice.records', model.toJSON());
           },
         });
       };
@@ -62,8 +61,7 @@ var app = app || {};
     destroy: function ( event ) {
       var task = this.get('tasks').last();
       if (task) {
-        var tasks = app.invoice.get('invoice').get('records').slice(0, -1);
-        app.invoice.get('invoice').set('records', tasks);
+        app.invoice.pop('invoice.records');
         task.destroy();
       };
     },

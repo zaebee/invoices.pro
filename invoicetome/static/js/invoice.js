@@ -52,38 +52,36 @@ var app = app || {};
 
   app.invoice.on({
     save: function( event ) {
-      var spinner = new app.buttonSpinner(
-        $('#save-invoice'),
-        '&nbsp;',
-        $('#save-invoice')
-      );
-      spinner.start();
+      app.saveSpinner.start();
 
       var tasks = app.tasks.get('tasks').toJSON();
       this.set('invoice.records', tasks);
-      return this.get('invoice').save(null, {
+      this.get('invoice').save(null, {
         success: function(model, response) {
           app.invoiceList.get('invoices').add(model);
           var tasks = model.get('records');
           tasks = new app.Tasks(tasks);
           app.tasks.set('tasks', tasks);
-          spinner.stop();
+          app.saveSpinner.stop();
         },
       });
     },
 
     generate_pdf: function( event ) {
-      var spinner = new app.buttonSpinner($('#get-pdf'), '&nbsp;', $('#get-pdf'));
-      var id = this.get('invoice.id');
-      if (id) {
-        document.location.href = '/api/generate/' + id;
-        return;
-      } else {
-      };
-      spinner.start();
-      setTimeout(function(){
-        spinner.stop();
-      },3000);
+      app.pdfSpinner.start();
+      var tasks = app.tasks.get('tasks').toJSON();
+      this.set('invoice.records', tasks);
+
+      app.invoice.get('invoice').save(null, {
+        success: function (model, response) {
+          app.invoiceList.get('invoices').add(model);
+          var tasks = model.get('records');
+          tasks = new app.Tasks(tasks);
+          app.tasks.set('tasks', tasks);
+          document.location.href = '/api/generate/' + model.get('id');
+          app.pdfSpinner.stop();
+        }
+      });
     },
   });
 
