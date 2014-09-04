@@ -18,7 +18,9 @@ var app = app || {};
       invoice: new app.Invoice, // наша Backbone модель
 
       date: function () {
-          return new Date();
+        var date = this.get('invoice.date_added') || new Date();
+        var date = moment(date);
+        return date.lang('en').format('DD MMMM YYYY');
       },
 
       // хэлпер используется в шаблоне {{ format(price) }}
@@ -38,7 +40,6 @@ var app = app || {};
 
   app.invoiceList.on({
     activate: function(event) {
-      console.log(event);
       event.original.preventDefault();
       $(event.node).addClass('active');
       $(event.node).siblings().removeClass('active');
@@ -60,9 +61,12 @@ var app = app || {};
 
       var tasks = app.tasks.get('tasks').toJSON();
       this.set('invoice.records', tasks);
-      this.get('invoice').save(null, {
+      return this.get('invoice').save(null, {
         success: function(model, response) {
           app.invoiceList.get('invoices').add(model);
+          var tasks = model.get('records');
+          tasks = new app.Tasks(tasks);
+          app.tasks.set('tasks', tasks);
           spinner.stop();
         },
       });
@@ -70,6 +74,12 @@ var app = app || {};
 
     generate_pdf: function( event ) {
       var spinner = new app.buttonSpinner($('#get-pdf'), '&nbsp;', $('#get-pdf'));
+      var id = this.get('invoice.id');
+      if (id) {
+        document.location.href = '/api/generate/' + id;
+        return;
+      } else {
+      };
       spinner.start();
       setTimeout(function(){
         spinner.stop();

@@ -20,6 +20,7 @@ class RecordSerializer(serializers.ModelSerializer):
 class InvoiceSerializer(serializers.ModelSerializer):
     records = RecordSerializer(source='records', many=True, required=False)
     headers = HeaderSerializer(source='headers', required=False)
+    date_added = serializers.DateTimeField(read_only=True)
 
     class Meta:
         model = Invoice

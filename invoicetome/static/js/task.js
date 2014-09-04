@@ -50,7 +50,11 @@ var app = app || {};
       tasks.add(task);
       if (app.invoice.get('invoice.id')) {
         task.set('invoice', app.invoice.get('invoice.id'));
-        task.save();
+        task.save(null, {
+          success: function(response) {
+            app.invoice.get('invoice').fetch();
+          },
+        });
       };
     },
 
