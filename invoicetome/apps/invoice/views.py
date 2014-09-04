@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import pdfcrowd
-import xhtml2pdf.pisa as pisa
-import cStringIO as StringIO
+#import xhtml2pdf.pisa as pisa
+#import cStringIO as StringIO
 
 from django import http
 from django.shortcuts import get_object_or_404, render, redirect
