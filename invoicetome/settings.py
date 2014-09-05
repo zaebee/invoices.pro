@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     #'django.contrib.staticfiles',
     'django_assets',
     'annoying',
+    'mailer',
     'local',
     'invoice',
     'widget_tweaks',
@@ -87,6 +88,8 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+EMAIL_BACKEND = "mailer.backend.DbBackend"
 
 TEMPLATE_DIRS = (
     rel('templates')
@@ -135,6 +138,7 @@ STATIC_URL = '/static/'
 
 LOCALE_INDEPENDENT_PATHS = (
     r'^/api/',
+    r'^/admin/',
 )
 
 try:

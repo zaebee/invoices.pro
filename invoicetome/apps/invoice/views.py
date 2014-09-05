@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import pdfcrowd
+import uuid
 #import xhtml2pdf.pisa as pisa
 #import cStringIO as StringIO
 
@@ -52,7 +53,9 @@ class InvoiceViewSet(viewsets.ModelViewSet):
         or create new user by email
         """
         if self.request.user.is_anonymous():
-            user, _ = User.objects.get_or_create(email=obj.email)
+            username = uuid.uuid1()
+            user, _ = User.objects.get_or_create(email=obj.email,
+                                                 username=username.get_hex())
         else:
             user = self.request.user
         obj.owner = user
