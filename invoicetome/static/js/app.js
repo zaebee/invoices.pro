@@ -194,4 +194,5 @@ $(document).ready(function() {
       xhr.setRequestHeader('X-CSRFToken', $.cookie('csrftoken'));
     }
   });
+  $('[data-toggle=tooltip]').tooltip();
 });

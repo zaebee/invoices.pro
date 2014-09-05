@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+import uuid
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -54,6 +55,7 @@ class Invoice(models.Model):
     date_added = models.DateTimeField(_(u'Date Added'), auto_now_add=True)
     status = models.CharField(max_length=255, choices=STATUS_CHOICES.items(),
                               default=STATUS_DRAFT)
+    uuid = models.CharField(_('Uuid'), max_length=255, blank=True, null=True)
 
     def __unicode__(self):
         return "%s - #%s" % (self.email, self.invoice_uid)
@@ -61,6 +63,11 @@ class Invoice(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('invoice_detail', None, {'pk': self.id})
+
+    def save(self, *args, **kwargs):
+        if not self.uuid:
+            self.uuid = uuid.uuid4()
+        super(Invoice, self).save(*args, **kwargs)
 
 
 class Record(models.Model):

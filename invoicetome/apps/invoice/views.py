@@ -22,6 +22,7 @@ from .serializers import InvoiceSerializer, RecordSerializer
 from .permissions import IsInvoiceOwner
 
 
+
 class InvoiceViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list`, `create`, `retrieve`,
@@ -32,6 +33,7 @@ class InvoiceViewSet(viewsets.ModelViewSet):
     queryset = Invoice.objects.all()
     serializer_class = InvoiceSerializer
     permission_classes = (IsInvoiceOwner,)
+    filter_fields = ('status', 'client_company')
 
     def get_queryset(self):
         """
@@ -104,6 +106,16 @@ def invoice_detail(request, pk):
         'invoice': invoice
     }
     return render(request, 'detail.html', data)
+
+
+def invoice_share(request, uuid):
+    invoice = get_object_or_404(Invoice, uuid=uuid)
+    data = {
+        'invoice': invoice,
+        'share': True
+    }
+    return render(request, 'detail.html', data)
+
 
 @login_required
 def invoice_pdf(request, pk):

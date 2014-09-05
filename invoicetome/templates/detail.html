@@ -20,6 +20,17 @@
 
   <!-- Included CSS Files (Compressed) -->
   {% include 'include/_pdf_styles.html' %}
+  {% if share %}
+  <style>
+    #invoice {
+      width: 960px;
+    }
+    body {
+      background:#27a;
+      padding: 40px 0;
+    }
+  </style>
+  {% endif %}
 </head>
 
 <body>

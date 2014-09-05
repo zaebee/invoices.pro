@@ -7,6 +7,11 @@ var app = app || {};
     template: '#invoice-list-template',
     data: {
       invoices: new app.Invoices(), // наша Backbone модель
+      status: {
+        draft: gettext('Draft'),
+        sended: gettext('Sended'),
+        recieved: gettext('Recieved'),
+      },
     },
     adaptors: [ Ractive.adaptors.Backbone ],
   });
@@ -47,6 +52,20 @@ var app = app || {};
       var tasks = event.context.get('records');
       tasks = new app.Tasks(tasks);
       app.tasks.set('tasks', tasks);
+    },
+    filter: function(event, status) {
+      console.log(event, status);
+      $(event.node).parent().siblings().find('.btn').removeClass('active');
+      $(event.node).addClass('active');
+      this.get('invoices').fetch({
+        data: {
+          status: status
+        },
+      });
+      //app.invoice.set('invoice', event.context);
+      //var tasks = event.context.get('records');
+      //tasks = new app.Tasks(tasks);
+      //app.tasks.set('tasks', tasks);
     },
   });
 
@@ -96,6 +115,10 @@ var app = app || {};
   });
 
   $("textarea.notes").growfield();
-  app.invoiceList.get('invoices').fetch();
+  app.invoiceList.get('invoices').fetch({
+    data: {
+      status: 'draft'
+    }
+  });
 
 })(app);

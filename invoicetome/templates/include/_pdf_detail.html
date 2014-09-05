@@ -5,26 +5,26 @@
   
     <div class="container-fluid" id="header">
       <div class="row">
-        <input id="company" class="col-md-6" value="{{invoice.company_name}}" />
-        <input id="title" class="col-md-6 pull-right text-right" value="{{invoice.invoice_name}}" />
+        <input disabled id="company" class="col-md-6" value="{{invoice.company_name}}" />
+        <input disabled id="title" class="col-md-6 pull-right text-right" value="{{invoice.invoice_name}}" />
       </div>
       <div class="row">
         <div id="address" class="col-md-6">
           <div class="row">
-            <input class="ll col-md-12" value="{{invoice.address}}" />
-            <input class="ll col-md-12" value="{{invoice.city}}" />
-            <input class="ll col-md-12" value="{{invoice.address_second}}" />
-            <input style="margin-top:20px;" class="ll col-md-12" value="{{invoice.phone}}" />
-            <input style="margin-bottom:30px;" class="ll col-md-12" value="{{invoice.email}}" />
+            <input disabled class="ll col-md-12" value="{{invoice.address}}" /> 
+            <input disabled class="ll col-md-12" value="{{invoice.city}}" />
+            <input disabled class="ll col-md-12" value="{{invoice.address_second}}" />
+            <input disabled style="margin-top:20px;" class="ll col-md-12" value="{{invoice.phone}}" />
+            <input disabled style="margin-bottom:30px;" class="ll col-md-12" value="{{invoice.email}}" />
           </div>
         </div>
         <div id="meta" class="col-md-6">
           <div class="row">
-            <input id="date" class="rr col-md-12" value="{{invoice.date_added}}" />
-            <input class="rr col-md-12" value="{{invoice.invoice_uid}}" />
-            <input class="rr col-md-12" value="{{invoice.invoice_po}}" />
-            <input style="margin-top:20px;" class="client rr col-md-12" value="{{invoice.client_name}}" />
-            <input style="margin-bottom:30px;" class="client rr col-md-12" value="{{invoice.client_company}}" />
+            <input disabled id="date" class="rr col-md-12" value="{{invoice.date_added}}" />
+            <input disabled class="rr col-md-12" value="{{invoice.invoice_uid}}" />
+            <input disabled class="rr col-md-12" value="{{invoice.invoice_po}}" />
+            <input disabled style="margin-top:20px;" class="client rr col-md-12" value="{{invoice.client_name}}" />
+            <input disabled style="margin-bottom:30px;" class="client rr col-md-12" value="{{invoice.client_company}}" />
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@
     <hr>
 
     <div class="row">
-    <textarea class="notes col-md-12" id="textone" cols="95" style="height:200px;">{{invoice.notes_top}}</textarea>
+    <textarea disabled class="notes col-md-12" id="textone" cols="95" style="height:200px;">{{invoice.notes_top}}</textarea>
     </div>
 
 
@@ -40,44 +40,44 @@
       <table>
         <thead>
         <tr>
-          <th class="span-2" ><input value="#" /></th>
-          <th class="span-10"><input value="{{invoice.headers.h_description}}" /></th>
-          <th class="span-4"><input value="{{invoice.headers.h_quantity}}" /></th>
-          <th class="span-4"><input value="{{invoice.headers.h_unit_price}}" /></th>
-          <th class="span-4"><input value="{{invoice.headers.h_total}}" /></th>
+          <th class="span-2" ><input disabled value="#" /></th>
+          <th class="span-10"><input disabled value="{{invoice.headers.h_description}}" /></th>
+          <th class="span-4"><input disabled value="{{invoice.headers.h_quantity}}" /></th>
+          <th class="span-4"><input disabled value="{{invoice.headers.h_unit_price}}" /></th>
+          <th class="span-4"><input disabled value="{{invoice.headers.h_total}}" /></th>
         </tr>
         </thead>
         <tbody id="task-list">
         
           {% for task in invoice.records.all %}
             <tr>
-            <td class="noteditable" title="{% trans 'This field is done automatically' %}">1</td>
-              <td><input value="{{task.description}}" /></td>
-              <td><input value="{{task.quantity}}" /></td>
-              <td><input value="{{task.unit_price}}" /></td>
-              <td class="noteditable" title="{% trans 'This field is done automatically' %}">{{task.total}}</td>
+              <td class="noteditable" title="{% trans 'This field is done automatically' %}">{{ forloop.counter }}</td>
+              <td><input disabled value="{{task.description}}" /></td>
+              <td><input disabled value="{{task.quantity|default:''|floatformat:2}}" /></td>
+              <td><input disabled value="{{task.unit_price|default:''|floatformat:2}}" /></td>
+              <td class="noteditable" title="{% trans 'This field is done automatically' %}">{{task.total|default:'-'|floatformat:"2"}}</td>
             </tr>
           {% endfor %}
         </tbody>
         <tfoot>
           <tr>
-            <th id="subtotallabel" colspan="4" class="span-20"><input value="{{invoice.headers.subtotal}}" /></th>
-            <th id="formsubtotal" class="span-4 noteditable">{{invoice.subtotal}}</th>
+            <th id="subtotallabel" colspan="4" class="span-20"><input disabled value="{{invoice.headers.subtotal}}" /></th>
+            <th id="formsubtotal" class="span-4 noteditable">{{invoice.subtotal|floatformat:2}}</th>
           </tr>
           <tr>
-            <th id="taxrate" colspan="4" class="span-20"><input value="{{invoice.headers.tax}}" /></th>
-            <th id="formtax" class="span-4 noteditable">{{invoice.tax}}</th>
+            <th id="taxrate" colspan="4" class="span-20"><input disabled value="{{invoice.headers.tax}}" /></th>
+            <th id="formtax" class="span-4 noteditable">{{invoice.tax|floatformat:2}}</th>
           </tr>
           <tr id="total">
-            <th id="totallabel" colspan="4" class="span-20"><input value="{{invoice.headers.total}}" /></th>
-            <th id="formtotal" class="span-4 noteditable">{{invoice.total}}</th>
+            <th id="totallabel" colspan="4" class="span-20"><input disabled value="{{invoice.headers.total}}" /></th>
+            <th id="formtotal" class="span-4 noteditable">{{invoice.total|floatformat:2}}</th>
           </tr>
         </tfoot>
       </table>
     </div>
 
     <div class="row">
-      <textarea class="notes col-md-12" id="texttwo" cols="95" style="height:200px;">{{invoice.notes_bottom}}</textarea>
+      <textarea disabled class="notes col-md-12" id="texttwo" cols="95" style="height:200px;">{{invoice.notes_bottom}}</textarea>
     </div>
 
     </div>
