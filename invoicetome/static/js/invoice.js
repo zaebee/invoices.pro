@@ -9,7 +9,7 @@ var app = app || {};
       invoices: new app.Invoices(), // наша Backbone модель
       status: {
         draft: gettext('Draft'),
-        sended: gettext('Sended'),
+        sended: gettext('Sent'),
         recieved: gettext('Recieved'),
       },
     },
