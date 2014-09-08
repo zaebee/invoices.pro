@@ -19,6 +19,7 @@ register('all_js',
             'js/invoice.js',
             'js/task.js',
             'js/user.js',
+            'js/utils.js',
         ),
         filters='jsmin',
         output='cache/packed.js')
