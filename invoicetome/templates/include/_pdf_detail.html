@@ -52,9 +52,9 @@
           {% for task in invoice.records.all %}
             <tr>
               <td class="noteditable" title="{% trans 'This field is done automatically' %}">{{ forloop.counter }}</td>
-              <td><input disabled value="{{task.description}}" /></td>
-              <td><input disabled value="{{task.quantity|default:''|floatformat:2}}" /></td>
-              <td><input disabled value="{{task.unit_price|default:''|floatformat:2}}" /></td>
+              <td class="noteditable">{{task.description}}</td>
+              <td class="noteditable">{{task.quantity|default:''|floatformat:2}}</td>
+              <td class="noteditable">{{task.unit_price|default:''|floatformat:2}}</td>
               <td class="noteditable" title="{% trans 'This field is done automatically' %}">{{task.total|default:'-'|floatformat:"2"}}</td>
             </tr>
           {% endfor %}

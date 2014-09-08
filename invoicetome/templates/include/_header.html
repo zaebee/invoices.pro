@@ -30,6 +30,7 @@
         </ul>   
 
         {% if user.is_anonymous %}
+          <a role="button" href="#" class="btn btn-default navbar-btn navbar-right">{% trans 'Register' %}</a>
           <form method="POST" action="{% url 'login' %}" class="navbar-form navbar-right" role="auth">
             {% csrf_token %}
             <div class="form-group">
@@ -38,7 +39,7 @@
             <div class="form-group">
               <input type="password" name="password" class="form-control" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-primary">{% trans 'Join' %}</button>
+            <button type="submit" class="btn btn-primary">{% trans 'Sign in' %}</button>&nbsp;
           </form>
         {% else %}
           <a role="button" href="{% url 'logout' %}" class="btn btn-default navbar-btn navbar-right">{% trans 'logout' %}</a>

@@ -201,7 +201,7 @@ tbody td:last-child {
     position: absolute;
     right: 43px;
     width: 185px;
-    bottom: 60px;
+    top: 210px;
     z-index: 4;
     padding: 10px;
 }

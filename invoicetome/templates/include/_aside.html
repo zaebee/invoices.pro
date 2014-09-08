@@ -18,7 +18,9 @@
     <h5>{% trans 'Finished editing?' %}</h5>
     <ul class="nav nav-pills nav-stacked">
       <li><a id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button" href="#">{% trans 'Get PDF' %}</a></li>
+      {% if user.is_authenticated %}
       <li><a id="save-invoice" onclick="app.invoice.fire('save');return false;" class="button" href="#">{% trans 'Save' %}</a></li>
+      {% endif %}
     </ul>
   </div>
   <div class="tools" id="three">
