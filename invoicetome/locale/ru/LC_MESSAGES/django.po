@@ -200,7 +200,7 @@ msgstr "Регистрация"
 
 #: templates/include/_header.html:42 templates/registration/login_form.html:27
 msgid "Sign in"
-msgstr "Вы вошли как"
+msgstr "Войти"
 
 #: templates/include/_header.html:45 templates/registration/login.html:15
 msgid "logout"

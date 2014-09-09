@@ -29,7 +29,7 @@ urlpatterns += patterns('',
 
 urlpatterns += patterns('',
     url(r'^login/$', auth_views.login, name='login'),
-    url(r'^logout/$', auth_views.logout, name='logout'),
+    url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'^password/change/$',
         auth_views.password_change,
         name='password_change'),
