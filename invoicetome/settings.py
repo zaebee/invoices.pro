@@ -139,6 +139,7 @@ STATIC_URL = '/static/'
 LOCALE_INDEPENDENT_PATHS = (
     r'^/api/',
     r'^/admin/',
+    r'^/index',
 )
 
 try:
