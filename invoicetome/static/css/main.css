@@ -178,16 +178,17 @@ tbody td:last-child {
 	-moz-border-radius: 4px;
 	border-radius: 4px;
 	font-size:14px;
-	text-shadow: rgba(0,0,0,0.5) 1px 1px;
 	background: #336;
 	background:rgba(0,0,0,0.3);
 	border: 1px solid rgba(0,0,0,0.8);
 	text-align:left;
-	color:white;
 	position:relative;
-	overflow: hidden;
 	-webkit-box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);
 	}
+.tools p {
+	text-shadow: rgba(0,0,0,0.5) 1px 1px;
+	color:white;
+}
 
 #one {
     position: absolute;

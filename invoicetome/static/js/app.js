@@ -179,6 +179,11 @@
     '&nbsp;',
     $('#save-invoice')
   );
+  app.sendSpinner = new app.buttonSpinner(
+    $('#send-invoice'),
+    '&nbsp;',
+    $('#send-invoice')
+  );
   app.pdfSpinner = new app.buttonSpinner(
     $('#get-pdf'),
     '&nbsp;',
@@ -195,4 +200,7 @@ $(document).ready(function() {
     }
   });
   $('[data-toggle=tooltip]').tooltip();
+  //$('[data-toggle=popover]').popover({
+  //  html:true
+  //});
 });

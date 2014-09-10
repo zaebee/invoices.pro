@@ -12,6 +12,13 @@ var app = app || {};
         sended: gettext('Sent'),
         recieved: gettext('Recieved'),
       },
+      title: function (recipient) {
+        if (recipient) {
+          return gettext('Sent to ') + recipient;
+        } else {
+          return '';
+        } 
+      },
     },
     adaptors: [ Ractive.adaptors.Backbone ],
   });
@@ -86,6 +93,23 @@ var app = app || {};
       });
     },
 
+    send: function( event ) {
+      console.log('fired send');
+      var $client_email = $('[name=client_email]');
+      if ($client_email.length) {
+        var email = $client_email.val();
+        if (email) {
+        app.sendSpinner.start();
+        setTimeout(function () {
+          app.sendSpinner.stop();
+        }, 1500);
+        }
+        $('[data-toggle=popover]').popover('hide');
+      } else {
+        $('[data-toggle=popover]').popover('show');
+      }
+    },
+
     generate_pdf: function( event ) {
       app.pdfSpinner.start();
       var tasks = app.tasks.get('tasks').toJSON();
@@ -96,7 +120,6 @@ var app = app || {};
           var tasks = model.get('records');
           tasks = new app.Tasks(tasks);
           app.tasks.set('tasks', tasks);
-          //document.location.href = '/api/generate/' + model.get('id');
           app.pdfSpinner.stop();
         }
       });
