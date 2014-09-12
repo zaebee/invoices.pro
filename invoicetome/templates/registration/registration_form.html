@@ -1,44 +1,49 @@
-{% extends 'default.html' %}
+{% extends "base.html" %}
 {% load i18n widget_tweaks %}
+
+{% block title %}{{ title|default:"Register Page" }}{% endblock %}
 
 {% block content %}
 
-<div class="row">
-  <div class="large-8 columns">
-    <form role="form" method="POST" action="" id="register-form">
+<div id="invoice" class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>{% trans 'Join on site' %} <a href="/">Invoiceto.me</></a></h3>
+      <form enctype="multipart/form-data" action="." role="form" method="post" novalidate="novalidate">
 
-      <fieldset>
-        <legend>
-          <h3 class="label label-black">{% trans 'Register' %}</h3>
-        </legend>
         {% csrf_token %}
-        {% for field in form %}
-          <div class="row">
-            <div class="large-16 columns">
-              {% if field.html_name == 'subscribed' %}
-                <label for="id_subscribed">
-                  {{ field|add_error_class:"error" }}
-                  {{ field.label|safe }}
-                  {{ field.errors }}
-                </label>
-                <br>
-              {% else %}
-                {{ field.label_tag }}
-                {% if field.label.required %}
-                  <span class="required has-tip" data-tooltip title="{% trans 'Field is required' %}">*</span>
-                {% endif %}
-                {{ field|add_error_class:"error" }}
-                {{ field.errors }}
-              {% endif %}
-            </div>
+        {% if form.non_field_errors %}
+          <div class="alert alert-error">
+            {{ form.non_field_errors }}
           </div>
-        {% endfor %}
+        {% endif %}
 
-      </fieldset>
-      <input type="submit" class="btn btn-default" value="{% trans 'register' %}">
-    </form>
+        {{ form.username.errors }}
+        <div class="form-group {% if form.username.errors %}has-error{% endif %}">
+          {{ form.username|add_class:"form-control"|append_attr:"placeholder:Enter Username"|add_error_class:"error" }}
+        </div>
+        {{ form.email.errors }}
+        <div class="form-group {% if form.email.errors %}has-error{% endif %}">
+          {{ form.email|add_class:"form-control"|append_attr:"placeholder:Enter Email"|add_error_class:"error" }}
+        </div>
+        {{ form.password1.errors }}
+        <div class="form-group {% if form.password1.errors %}has-error{% endif %}">
+          {{ form.password1|add_class:"form-control"|append_attr:"placeholder:Enter Password"|add_error_class:"error" }}
+        </div>
+        {{ form.password2.errors }}
+        <div class="form-group {% if form.password2.errors %}has-error{% endif %}">
+          {{ form.password2|add_class:"form-control"|append_attr:"placeholder:Enter Password Again"|add_error_class:"error" }}
+        </div>
+
+        <div class="row">
+          <hr class="hr span3">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg">{% trans 'Sign in' %}</button>
+        <input type="hidden" name="next" value="{{ next }}" />
+
+      </form>
+    </div>
   </div>
-
 </div>
-
 {% endblock %}

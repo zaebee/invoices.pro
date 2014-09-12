@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include('invoice.urls')),
     url(r'^localeurl/', include('localeurl.urls')),
+    url('^registration/', include('registration.urls')),
 
 )
 

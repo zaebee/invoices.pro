@@ -42,7 +42,6 @@ class InvoiceViewSet(viewsets.ModelViewSet):
         This view should return a list of all the invoices
         for the currently authenticated user.
         """
-        #import ipdb;ipdb.set_trace()
         #status = self.request.QUERY_PARAMS.get('status')
         user = self.request.user
         if user.is_anonymous():

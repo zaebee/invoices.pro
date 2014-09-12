@@ -46,12 +46,16 @@ INSTALLED_APPS = (
     #'django.contrib.staticfiles',
     'django_assets',
     'annoying',
+
     'mailer',
     'local',
     'invoice',
+
+    'registration',
     'widget_tweaks',
     'localeurl',
     'rest_framework',
+    'south',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

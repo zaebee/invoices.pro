@@ -30,7 +30,7 @@
         </ul>   
 
         {% if user.is_anonymous %}
-          <a role="button" href="#" class="btn btn-default navbar-btn navbar-right">{% trans 'Register' %}</a>
+          <a role="button" href="{% url 'registration_register'%}" class="btn btn-default navbar-btn navbar-right">{% trans 'Register' %}</a>
           <form method="POST" action="{% url 'login' %}" class="navbar-form navbar-right" role="auth">
             {% csrf_token %}
             <div class="form-group">

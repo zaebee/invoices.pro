@@ -1,7 +1,7 @@
 Привет,
 
-Для активации твоего аккаунта mebelstock.com - нажмите на ссылку валадиции:
-http://{{ site }}/accounts/activate/{{ activation_key }}/
+Для активации твоего аккаунта invoicetome.me - нажмите на ссылку валадиции:
+http://{{ site }}/registration/activate/{{ activation_key }}/
 
 Спасибо.
 
@@ -9,7 +9,7 @@ http://{{ site }}/accounts/activate/{{ activation_key }}/
 
 Hello,
 
-To activate your account on mebelstock.com - click on validation link:
-http://{{ site }}/accounts/activate/{{ activation_key }}/
+To activate your account on invoiceto.me - click on validation link:
+http://{{ site }}/registration/activate/{{ activation_key }}/
 
 Thank you.

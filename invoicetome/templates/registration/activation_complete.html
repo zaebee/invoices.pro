@@ -1,15 +1,18 @@
-{% extends "default.html" %}
+{% extends "registration/registration_base.html" %}
 {% load i18n %}
 {% block content %}
-<div class="row">
-  <div class="large-8 large-offset-4">
-    {% blocktrans %}
-    <h1>Activation</h1>
-    Hello!<br/>
-    Your account is activated.
-    {% endblocktrans %}
-    <a href="{% url 'auth_login' %}">{% trans 'Welcome' %}</a>{% trans ' to our site.' %}
-    <br/><br/>
+
+<div id="invoice" class="base-container">
+  <div class="row-fluid">
+    <div class="span8 offset2">
+      {% blocktrans %}
+      <h1>Activation</h1>
+      Hello!<br/>
+      Your account is activated.
+      {% endblocktrans %}
+      <a href="{% url 'login' %}">{% trans 'Welcome' %}</a>{% trans ' to our site.' %}
+      <br/><br/>
+    </div>
   </div>
 </div>
 {% endblock %}
