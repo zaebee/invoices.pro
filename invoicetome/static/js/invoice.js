@@ -69,10 +69,6 @@ var app = app || {};
           status: status
         },
       });
-      //app.invoice.set('invoice', event.context);
-      //var tasks = event.context.get('records');
-      //tasks = new app.Tasks(tasks);
-      //app.tasks.set('tasks', tasks);
     },
   });
 
@@ -99,12 +95,23 @@ var app = app || {};
       if ($client_email.length) {
         var email = $client_email.val();
         if (email) {
-        app.sendSpinner.start();
-        setTimeout(function () {
-          app.sendSpinner.stop();
-        }, 1500);
+          app.sendSpinner.start();
+          var tasks = app.tasks.get('tasks').toJSON();
+          this.set('invoice.records', tasks);
+          this.set('invoice.recipient', email);
+          this.get('invoice').save(null, {
+            success: function (model, response) {
+              app.invoiceList.get('invoices').add(model);
+              var tasks = model.get('records');
+              tasks = new app.Tasks(tasks);
+              app.tasks.set('tasks', tasks);
+              app.sendSpinner.stop();
+              $('[data-toggle=popover]').popover('hide');
+            },
+          });
+        } else {
+          $('[data-toggle=popover]').popover('hide');
         }
-        $('[data-toggle=popover]').popover('hide');
       } else {
         $('[data-toggle=popover]').popover('show');
       }

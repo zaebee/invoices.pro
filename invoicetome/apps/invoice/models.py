@@ -2,10 +2,16 @@
 import os
 import uuid
 
+from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
+from templated_email import send_templated_mail
+
+from . import signals
+
+DEFAULT_FROM_EMAIL = getattr(settings, 'DEFAULT_FROM_EMAIL', 'info@invoiceto.me')
 #from transmeta import TransMeta
 
 
@@ -62,7 +68,7 @@ class Invoice(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('invoice_detail', None, {'pk': self.id})
+        return ('invoice_share', None, {'uuid': self.uuid})
 
     def save(self, *args, **kwargs):
         if not self.uuid:
@@ -95,3 +101,14 @@ class Header(models.Model):
 
     def __unicode__(self):
         return self.h_description
+
+
+def send_invoice(sender, invoice, request, **kwargs):
+    invoice.status = Invoice.STATUS_SENDED
+    data = {
+        'invoice': invoice
+    }
+    send_templated_mail('invoice', DEFAULT_FROM_EMAIL, [invoice.recipient.email], data)
+    invoice.save()
+
+signals.invoice_sended.connect(send_invoice)

@@ -19,6 +19,7 @@ from rest_framework import viewsets
 from rest_framework import permissions
 
 from .models import Invoice, Record
+from . import signals
 from .serializers import InvoiceSerializer, RecordSerializer
 from .permissions import IsInvoiceOwner
 
@@ -41,11 +42,18 @@ class InvoiceViewSet(viewsets.ModelViewSet):
         This view should return a list of all the invoices
         for the currently authenticated user.
         """
+        #import ipdb;ipdb.set_trace()
+        #status = self.request.QUERY_PARAMS.get('status')
         user = self.request.user
         if user.is_anonymous():
-            return Invoice.objects.none()
+            qs = Invoice.objects.none()
         else:
-            return Invoice.objects.filter(owner=user)
+            qs = Invoice.objects.filter(owner=user)
+            #if status == Invoice.STATUS_RECIEVED:
+            #    qs = Invoice.objects.filter(recipient=user)
+            #else:
+            #    qs = qs.filter(status=status)
+        return qs
 
     def pre_save(self, obj):
         """
@@ -63,6 +71,12 @@ class InvoiceViewSet(viewsets.ModelViewSet):
                                                    username=recipient)
             obj.recipient = recipient
         obj.owner = user
+
+    def post_save(self, obj, *args, **kwargs):
+        if obj.recipient:
+            signals.invoice_sended.send(sender=self.__class__,
+                                        invoice=obj,
+                                        request=self.request)
 
 
 class RecordViewSet(viewsets.ModelViewSet):

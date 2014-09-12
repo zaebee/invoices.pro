@@ -142,6 +142,9 @@ LOCALE_INDEPENDENT_PATHS = (
     r'^/index',
 )
 
+TEMPLATED_EMAIL_TEMPLATE_DIR = 'templated_email/' #use '' for top level template dir, ensure there is a trailing slash
+TEMPLATED_EMAIL_FILE_EXTENSION = 'html'
+
 try:
     from settings_local import *
 except:
