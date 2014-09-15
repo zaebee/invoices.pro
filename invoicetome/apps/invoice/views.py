@@ -35,23 +35,19 @@ class InvoiceViewSet(viewsets.ModelViewSet):
     queryset = Invoice.objects.all()
     serializer_class = InvoiceSerializer
     permission_classes = (IsInvoiceOwner,)
-    filter_fields = ('status', 'client_company')
+    filter_fields = ('status', 'recipient')
 
     def get_queryset(self):
         """
         This view should return a list of all the invoices
         for the currently authenticated user.
         """
-        #status = self.request.QUERY_PARAMS.get('status')
+        status = self.request.QUERY_PARAMS.get('status')
         user = self.request.user
         if user.is_anonymous():
             qs = Invoice.objects.none()
         else:
             qs = Invoice.objects.filter(owner=user)
-            #if status == Invoice.STATUS_RECIEVED:
-            #    qs = Invoice.objects.filter(recipient=user)
-            #else:
-            #    qs = qs.filter(status=status)
         return qs
 
     def pre_save(self, obj):

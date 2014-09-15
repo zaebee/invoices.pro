@@ -45,6 +45,12 @@
   {% endblock %}
   </div>
 
+  <script>
+    window.USER = {
+      email: '{{ user.email }}',
+      username: '{{user.username}}',
+    };
+  </script>
   {% assets  "all_js" %}
     <script type="text/javascript" language="javascript" src="{{ ASSET_URL }}" charset="utf-8">
         // <![CDATA[// ]]>

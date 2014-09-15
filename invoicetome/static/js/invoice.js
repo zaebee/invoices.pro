@@ -7,6 +7,7 @@ var app = app || {};
     template: '#invoice-list-template',
     data: {
       invoices: new app.Invoices(), // наша Backbone модель
+      user: USER,
       status: {
         draft: gettext('Draft'),
         sended: gettext('Sent'),
@@ -64,10 +65,18 @@ var app = app || {};
       console.log(event, status);
       $(event.node).parent().siblings().find('.btn').removeClass('active');
       $(event.node).addClass('active');
+      if (status == 'recieved') {
+        var data = {
+          recipient__email: this.get('user.email'),
+        };
+        console.log(data);
+      } else {
+        var data = {
+          status: status,
+        };
+      }
       this.get('invoices').fetch({
-        data: {
-          status: status
-        },
+        data: data,
       });
     },
   });
