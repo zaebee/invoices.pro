@@ -132,6 +132,7 @@ REST_FRAMEWORK = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
+ACCOUNT_ACTIVATION_DAYS = 5
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 MEDIA_ROOT = rel('media')

@@ -17,7 +17,7 @@
   <div class="form-group {% if form.password.errors %}has-error{% endif %}">
     {{ form.password|add_class:"form-control"|append_attr:"placeholder:Enter Password"|add_error_class:"error" }}
     <a href="{% url 'password_reset' %}" class="reset-link">{% trans 'Forgot Password?' %}</a>
-    <a href="{% url 'password_reset' %}" class="register-link pull-right">{% trans 'Register account' %}</a>
+    <a href="{% url 'registration_register' %}" class="register-link pull-right">{% trans 'Register account' %}</a>
   </div>
 
   <div class="row">
