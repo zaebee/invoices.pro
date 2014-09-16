@@ -9,6 +9,7 @@ class HeaderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Header
+        exclude = ('invoice',)
 
 
 class RecordSerializer(serializers.ModelSerializer):
