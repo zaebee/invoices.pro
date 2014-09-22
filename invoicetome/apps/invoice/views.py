@@ -56,14 +56,12 @@ class InvoiceViewSet(viewsets.ModelViewSet):
         or create new user by email
         """
         if self.request.user.is_anonymous():
-            user, _ = User.objects.get_or_create(email=obj.email,
-                                                 username=obj.email)
+            user, _ = User.objects.get_or_create(email=obj.email)
         else:
             user = self.request.user
         recipient = self.request.DATA.get('recipient', None)
         if recipient:
-            recipient, _ = User.objects.get_or_create(email=recipient,
-                                                   username=recipient)
+            recipient, _ = User.objects.get_or_create(email=recipient)
             obj.recipient = recipient
         obj.owner = user
 
