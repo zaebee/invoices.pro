@@ -13,13 +13,13 @@ $(document).ready(function(){
 
     var i = 0;
     $("#task-list tr").each(function() {
-      s="";
+      var s = "";
       if (i % 2 === 0 ){
-        var s="tint";
+        s = "tint";
       };
       if (i>$('#task-list tr').length){
         return;
-      } else if (i>0) {
+      } else if (i>=0) {
         $("#markup").val($("#markup").val()+"<tr class=\"" + s + "\"><td>"+$(this).find("td:nth-child(1)").text()+"</td><td>"+$(this).find("td:nth-child(2) input").val()+"</td><td>"+$(this).find("td:nth-child(3) input").val()+"</td><td>"+$(this).find("td:nth-child(4) input").val()+"</td><td>"+$(this).find("td:nth-child(5)").text()+"</td></tr>");
       };
       i = i + 1;
