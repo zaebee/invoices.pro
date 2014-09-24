@@ -4,6 +4,10 @@ from django.conf import settings
 from django.views.generic import TemplateView, RedirectView
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+
+from registration.backends.default.views import RegistrationView
+from registration.forms import RegistrationFormUniqueEmail
+
 admin.autodiscover()
 
 js_info_dict = {
@@ -18,7 +22,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include('invoice.urls')),
     url(r'^localeurl/', include('localeurl.urls')),
-    url('^registration/', include('registration.urls')),
+    url(r'^registration/register/$', RegistrationView.as_view(form_class=RegistrationFormUniqueEmail), name='registration_register'),
+    url(r'^registration/', include('registration.backends.default.urls')),
 
 )
 
