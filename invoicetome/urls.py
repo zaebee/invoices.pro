@@ -6,7 +6,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
 from registration.backends.default.views import RegistrationView
-from registration.forms import RegistrationFormUniqueEmail
+from local.forms import RegistrationForm
 
 admin.autodiscover()
 
@@ -22,7 +22,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include('invoice.urls')),
     url(r'^localeurl/', include('localeurl.urls')),
-    url(r'^registration/register/$', RegistrationView.as_view(form_class=RegistrationFormUniqueEmail), name='registration_register'),
+    url(r'^registration/register/$', RegistrationView.as_view(form_class=RegistrationForm), name='registration_register'),
     url(r'^registration/', include('registration.backends.default.urls')),
 
 )
