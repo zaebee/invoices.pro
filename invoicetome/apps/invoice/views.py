@@ -71,7 +71,6 @@ class InvoiceViewSet(viewsets.ModelViewSet):
         recipient_email = self.request.DATA.get('recipient_email', None)
         if recipient_email != obj.recipient_email:
             obj.recipient_email = recipient_email
-            obj.save()
             signals.invoice_sended.send(sender=self.__class__,
                                         invoice=obj,
                                         request=self.request)
