@@ -29,7 +29,7 @@ class Invoice(models.Model):
     }
 
     owner = models.ForeignKey(User, verbose_name=_('Owner'), related_name='created_invoices')
-    recipient = models.ForeignKey(User, verbose_name=_('Recipient'), related_name='sended_invoices', blank=True, null=True)
+    recipient_email = models.CharField(_('Recipient Email'), max_length=255, blank=True, null=True)
 
     company_name = models.CharField(_('Company Name'), max_length=255)
     address = models.CharField(_('Address'), max_length=255)
@@ -108,7 +108,7 @@ def send_invoice(sender, invoice, request, **kwargs):
     data = {
         'invoice': invoice
     }
-    send_templated_mail('invoice', DEFAULT_FROM_EMAIL, [invoice.recipient.email], data)
+    send_templated_mail('invoice', DEFAULT_FROM_EMAIL, [invoice.recipient_email], data)
     invoice.save()
 
 signals.invoice_sended.connect(send_invoice)

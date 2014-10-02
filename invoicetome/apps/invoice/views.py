@@ -35,7 +35,7 @@ class InvoiceViewSet(viewsets.ModelViewSet):
     queryset = Invoice.objects.all()
     serializer_class = InvoiceSerializer
     permission_classes = (IsInvoiceOwner,)
-    filter_fields = ('status', 'recipient__email')
+    filter_fields = ('status', 'recipient_email')
 
     def get_queryset(self):
         """
@@ -59,17 +59,13 @@ class InvoiceViewSet(viewsets.ModelViewSet):
             user, _ = User.objects.get_or_create(email=obj.email)
         else:
             user = self.request.user
-        recipient = self.request.DATA.get('recipient', None)
-        if recipient:
-            recipient, _ = User.objects.get_or_create(email=recipient)
-            obj.recipient = recipient
-        obj.owner = user
-
-    def post_save(self, obj, *args, **kwargs):
-        if obj.recipient:
+        recipient_email = self.request.DATA.get('recipient_email', None)
+        if recipient_email != obj.recipient_email:
+            obj.recipient_email = recipient_email
             signals.invoice_sended.send(sender=self.__class__,
                                         invoice=obj,
                                         request=self.request)
+        obj.owner = user
 
 
 class RecordViewSet(viewsets.ModelViewSet):

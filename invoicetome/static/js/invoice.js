@@ -67,7 +67,7 @@ var app = app || {};
       $(event.node).addClass('active');
       if (status == 'recieved') {
         var data = {
-          recipient__email: this.get('user.email'),
+          recipient_email: this.get('user.email'),
         };
         console.log(data);
       } else {
@@ -107,7 +107,7 @@ var app = app || {};
           app.sendSpinner.start();
           var tasks = app.tasks.get('tasks').toJSON();
           this.set('invoice.records', tasks);
-          this.set('invoice.recipient', email);
+          this.set('invoice.recipient_email', email);
           this.get('invoice').save(null, {
             success: function (model, response) {
               app.invoiceList.get('invoices').add(model);
