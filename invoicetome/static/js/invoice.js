@@ -123,6 +123,7 @@ var app = app || {};
         }
       } else {
         $('[data-toggle=popover]').popover('show');
+	$client_email.focus();
       }
     },
 
