@@ -62,13 +62,19 @@ class InvoiceViewSet(viewsets.ModelViewSet):
                 user.save()
         else:
             user = self.request.user
+        obj.owner = user
+
+    def post_save(self, obj, *args, **kwargs):
+        """
+        Send invoice via email
+        """
         recipient_email = self.request.DATA.get('recipient_email', None)
         if recipient_email != obj.recipient_email:
             obj.recipient_email = recipient_email
+            obj.save()
             signals.invoice_sended.send(sender=self.__class__,
                                         invoice=obj,
                                         request=self.request)
-        obj.owner = user
 
 
 class RecordViewSet(viewsets.ModelViewSet):
