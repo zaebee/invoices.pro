@@ -109,5 +109,6 @@ def send_invoice(sender, invoice, request, **kwargs):
         'invoice': invoice
     }
     send_templated_mail('invoice', DEFAULT_FROM_EMAIL, [invoice.recipient_email], data)
+    invoice.save()
 
 signals.invoice_sended.connect(send_invoice)
