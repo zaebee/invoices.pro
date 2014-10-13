@@ -47,7 +47,7 @@
 
   <script>
     window.USER = {
-      email: '{{ user.email }}',
+      email: '{{ user.email }}' || 'email@yourcompany.com',
       username: '{{user.username}}',
     };
   </script>
