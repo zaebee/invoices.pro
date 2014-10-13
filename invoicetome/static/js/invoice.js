@@ -28,6 +28,7 @@ var app = app || {};
     el: '#invoice',
     template: '#invoice-template',
     data: {
+      user: USER,
       invoice: new app.Invoice, // наша Backbone модель
 
       date: function () {
