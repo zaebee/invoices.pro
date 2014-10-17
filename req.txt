@@ -16,6 +16,7 @@ ipython==2.2.0
 jsmin==2.0.11
 mailer==0.7
 pdfcrowd==2.6
+psycopg2==2.5.4
 setproctitle==1.1.8
 webassets==0.10
 wsgiref==0.1.2
