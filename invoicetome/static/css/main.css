@@ -409,6 +409,10 @@ a.button:active {
 #invoice-list a.active i {
     color: #404040;
 }
+#invoice-list a i.btn-remove {
+    color: #fff;
+    background: #c9302c;
+}
 #invoice-history {
     width: 860px;
     margin: 0 auto;

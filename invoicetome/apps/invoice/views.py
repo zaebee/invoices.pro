@@ -17,6 +17,7 @@ from django.conf import settings
 from rest_framework.decorators import detail_route
 from rest_framework import viewsets
 from rest_framework import permissions
+from rest_framework import filters
 
 from .models import Invoice, Record
 from . import signals
@@ -32,10 +33,10 @@ class InvoiceViewSet(viewsets.ModelViewSet):
 
     Additionally we also provide an extra `highlight` action.
     """
+    filter_fields = ('status', 'recipient_email')
     queryset = Invoice.objects.all()
     serializer_class = InvoiceSerializer
     permission_classes = (IsInvoiceOwner,)
-    filter_fields = ('status', 'recipient_email')
 
     def get_queryset(self):
         """

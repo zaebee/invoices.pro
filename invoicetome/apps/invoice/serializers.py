@@ -27,3 +27,5 @@ class InvoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Invoice
         exclude = ('owner',)
+        #ordering_fields = ('id',)
+        #ordering = '-id'

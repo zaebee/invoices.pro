@@ -117,14 +117,9 @@
   </div>
   <span class="list-group-item"></span>
   {{#each invoices:i}}
-  <a on-click="activate:{{this}}" title="{{invoice_uid}}" href="#" class="list-group-item">
-  {{client_name}} <small>({{client_company}}) <i>{{date_short()}}</i></small>
-
-  <!--
-  <span data-toggle="tooltip" data-placement="right" title="{{title(recipient)}}" class="label label-success pull-right">
-    <i class="glyphicon glyphicon-send"></i>
-  </span>
-  -->
+  <a on-click="activate:{{this}}" title="{{invoice_uid}}" href="#" class="list-group-item {{#if active}}active{{/if}}">
+    {{client_name}} <small>({{client_company}})
+    <i>{{date_short()}}</i></small>&nbsp;<i tltle="Delete invoice" on-click="delete:{{this}}" class="btn-remove glyphicon glyphicon-remove pull-right"></i>
   </a>
   {{/each}}
 </script>
