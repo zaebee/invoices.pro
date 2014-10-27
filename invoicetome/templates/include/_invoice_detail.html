@@ -117,8 +117,9 @@
   </div>
   <br>
   {{#each invoices:i}}
-  <a on-click="activate:{{this}}" title="{{client_name}} - {{client_company}}" href="#" class="list-group-item">
-  {{invoice_uid}}
+  <a on-click="activate:{{this}}" title="{{invoice_uid}}" href="#" class="list-group-item">
+  {{client_name}} <small>({{client_company}}) <i>{{date_short()}}</i></small>
+
   <!--
   <span data-toggle="tooltip" data-placement="right" title="{{title(recipient)}}" class="label label-success pull-right">
     <i class="glyphicon glyphicon-send"></i>

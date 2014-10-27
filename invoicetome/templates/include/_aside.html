@@ -2,8 +2,11 @@
 <div class="aside">
   {% if user.is_authenticated %}
   <div class="tools" id="invoice-list">
+    <a id="create-new" onclick="app.invoice.fire('save');return false;" href="#" class="button">{% trans 'Create New' %}</a>
+    <a class="toggler btn btn-default pull-left">
+      <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
     <h5>{% trans 'My invoices' %}</h5>
-
     <div class="list-group"></div>
   </div>
   {% endif %}

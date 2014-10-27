@@ -20,6 +20,12 @@ var app = app || {};
           return '';
         } 
       },
+      date_short: function () {
+        var date = this.get('invoice.date_added') || new Date();
+        var date = moment(date);
+        return date.lang('en').format('DD.MM.YYYY');
+      },
+
     },
     adaptors: [ Ractive.adaptors.Backbone ],
   });
