@@ -174,6 +174,11 @@
     model: app.Task
   });
 
+  app.createNewSpinner = new app.buttonSpinner(
+    $('#create-new'),
+    '&nbsp;',
+    $('#create-new')
+  );
   app.saveSpinner = new app.buttonSpinner(
     $('#save-invoice'),
     '&nbsp;',

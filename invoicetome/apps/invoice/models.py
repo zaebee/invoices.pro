@@ -63,6 +63,11 @@ class Invoice(models.Model):
                               default=STATUS_DRAFT)
     uuid = models.CharField(_('Uuid'), max_length=255, blank=True, null=True)
 
+    class Meta:
+        verbose_name = _('Invoice')
+        verbose_name_plural = _('Invoices')
+        ordering = ('-date_added',)
+
     def __unicode__(self):
         return "%s - #%s" % (self.email, self.invoice_uid)
 

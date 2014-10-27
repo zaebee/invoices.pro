@@ -2,7 +2,7 @@
 <div class="aside">
   {% if user.is_authenticated %}
   <div class="tools" id="invoice-list">
-    <a id="create-new" onclick="app.invoice.fire('save');return false;" href="#" class="button">{% trans 'Create New' %}</a>
+    <a id="create-new" onclick="app.invoice.fire('save');return false;" href="#" class="button btn-success">{% trans 'Create New' %}</a>
     <!--
     <a class="toggler btn btn-default pull-left">
       <i class="glyphicon glyphicon-chevron-right"></i>
@@ -22,14 +22,18 @@
   <div class="tools" id="two">
     <h5>{% trans 'Finished editing?' %}</h5>
     <ul class="nav nav-pills nav-stacked">
-      <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button" href="#">{% trans 'Get PDF' %}</a></li>
+      <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button btn-primary" href="#">{% trans 'Get PDF' %}</a></li>
       {% if user.is_authenticated %}
-      <li><a role="button" id="save-invoice" onclick="app.invoice.fire('save');return false;" class="button" href="#">{% trans 'Save' %}</a></li>
+      <li><a role="button" id="copy-invoice" onclick="app.invoice.fire('copy');return false;" class="button btn-primary" href="#">{% trans 'Copy' %}</a></li>
+      <li><a role="button" id="save-invoice" onclick="app.invoice.fire('save');return false;" class="button btn-success" href="#">{% trans 'Save' %}</a></li>
       <li class="divider"><hr></li>
-      <li><a role="button" id="send-invoice" onclick="app.invoice.fire('send');return false;" data-trigger="manual" data-html="true" data-toggle="popover" data-placement="left" data-content="<input style='width:200px' type='text' class='form-control' name='client_email' placeholder='{% trans 'Enter client email' %}'>" class="button" href="#">{% trans 'Send' %}</a></li>
+      <li><a role="button" id="send-invoice" onclick="app.invoice.fire('send');return false;" data-trigger="manual" data-html="true" data-toggle="popover" data-placement="left" data-content="<input style='width:200px' type='text' class='form-control' name='client_email' placeholder='{% trans 'Enter client email' %}'>" class="button btn-primary" href="#">{% trans 'Send' %}</a></li>
+      <li class="divider"><hr></li>
+      <li><a role="button" id="delete-invoice" onclick="app.invoice.fire('delete');return false;" class="button btn-danger" href="#">{% trans 'Delete' %}</a></li>
       {% endif %}
     </ul>
   </div>
+  {% if not share %}
   <div class="tools" id="three">
     <h5>{% trans 'Resize table' %}</h5>
     <ul>
@@ -45,6 +49,7 @@
       </li>
     </ul>
   </div>
+  {% endif %}
   <!--
   -->
 </div>
