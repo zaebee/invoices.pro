@@ -115,7 +115,7 @@
       </button>
     </div>
   </div>
-  <br>
+  <span class="list-group-item"></span>
   {{#each invoices:i}}
   <a on-click="activate:{{this}}" title="{{invoice_uid}}" href="#" class="list-group-item">
   {{client_name}} <small>({{client_company}}) <i>{{date_short()}}</i></small>

@@ -91,6 +91,7 @@ var app = app || {};
   app.invoice.on({
     save: function( event ) {
       app.saveSpinner.start();
+      app.createNewSpinner.start();
 
       var tasks = app.tasks.get('tasks').toJSON();
       this.set('invoice.records', tasks);
@@ -101,6 +102,7 @@ var app = app || {};
           tasks = new app.Tasks(tasks);
           app.tasks.set('tasks', tasks);
           app.saveSpinner.stop();
+          app.createNewSpinner.stop();
         },
       });
     },

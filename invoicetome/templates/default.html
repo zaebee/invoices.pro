@@ -45,17 +45,19 @@
   {% endblock %}
   </div>
 
-  <script>
-    window.USER = {
-      email: '{{ user.email }}' || 'email@yourcompany.com',
-      username: '{{user.username}}',
-    };
-  </script>
-  {% assets  "all_js" %}
-    <script type="text/javascript" language="javascript" src="{{ ASSET_URL }}" charset="utf-8">
-        // <![CDATA[// ]]>
+  {% block js %}
+    <script>
+      window.USER = {
+        email: '{{ user.email }}' || 'email@yourcompany.com',
+        username: '{{user.username}}',
+      };
     </script>
-  {% endassets %}
+    {% assets  "all_js" %}
+      <script type="text/javascript" language="javascript" src="{{ ASSET_URL }}" charset="utf-8">
+          // <![CDATA[// ]]>
+      </script>
+    {% endassets %}
+  {% endblock %}
 
   {% block extrajs %}{% endblock %}
 
