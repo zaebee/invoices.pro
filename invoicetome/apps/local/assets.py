@@ -28,7 +28,6 @@ register('all_js',
 register('all_css',
         Bundle(
                'css/bootstrap.min.css',
-               'css/app.css',
                'css/main.css',
         ),
         filters='cssmin',
