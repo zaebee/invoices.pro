@@ -5,8 +5,9 @@ from django.views.generic import TemplateView, RedirectView
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
+from apps.local.forms import RegistrationForm
 from registration.backends.default.views import RegistrationView
-from local.forms import RegistrationForm
+
 
 admin.autodiscover()
 
@@ -24,7 +25,6 @@ urlpatterns = patterns('',
     url(r'^localeurl/', include('localeurl.urls')),
     url(r'^registration/register/$', RegistrationView.as_view(form_class=RegistrationForm), name='registration_register'),
     url(r'^registration/', include('registration.backends.default.urls')),
-
 )
 
 urlpatterns += patterns('',
@@ -66,3 +66,4 @@ if settings.DEBUG:
         url(r'^static/(?P<path>.*)', 'django.views.static.serve', {'document_root':settings.STATIC_ROOT,'show_indexes': True}),
         url(r'^media/(?P<path>.*)', 'django.views.static.serve', {'document_root':settings.MEDIA_ROOT,'show_indexes': True}),
     )
+
