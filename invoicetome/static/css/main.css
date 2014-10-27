@@ -394,7 +394,7 @@ a.button:active {
     border-radius: 0;
     width: 260px;
     overflow: hidden;
-    padding: 20px 0 10px 30px;
+    padding: 20px 10px 10px 10px;
 }
 
 #invoice-list a i {
@@ -406,6 +406,16 @@ a.button:active {
 
 #invoice-list a.active i {
     color: #404040;
+}
+#invoice-history {
+    width: 860px;
+    margin: 0 auto;
+}
+#invoice-history .list-group {
+    margin-right:0;
+}
+#invoice-history h3 {
+    color: #fff;
 }
 .toggler {
     border-radius: 0 3px 3px 0;
