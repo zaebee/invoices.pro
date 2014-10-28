@@ -217,44 +217,44 @@ msgstr "Компания клиента"
 
 #: static/js/app.js:152
 msgid "Item Description"
-msgstr ""
+msgstr "Описание"
 
 #: static/js/app.js:153
 msgid "Quantity"
-msgstr ""
+msgstr "Кол-во"
 
 #: static/js/app.js:154
 msgid "Unit Price (€)"
-msgstr ""
+msgstr "Ед. изм. (€)"
 
 #: static/js/app.js:155
 msgid "Total (€)"
-msgstr ""
+msgstr "Итого (€)"
 
 #: static/js/app.js:156
 msgid "Subtotal"
-msgstr ""
+msgstr "ПОдитог"
 
 #: static/js/app.js:157
 msgid "Sales tax (20%)"
-msgstr ""
+msgstr "Скидка (20%)"
 
 #: static/js/app.js:158
 msgid "Total"
-msgstr ""
+msgstr "Итого"
 
 #: static/js/invoice.js:11
 msgid "Draft"
-msgstr ""
+msgstr "Черновики"
 
 #: static/js/invoice.js:12
 msgid "Sent"
-msgstr "Отправлено"
+msgstr "Отправлены"
 
 #: static/js/invoice.js:13
 msgid "Recieved"
-msgstr "Получени"
+msgstr "Получены"
 
 #: static/js/task.js:35
 msgid "Supporting of in-house project (hours worked)"
-msgstr ""
+msgstr "Поддержка проекта"

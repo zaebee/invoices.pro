@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-08 02:08+0000\n"
+"POT-Creation-Date: 2014-10-28 05:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,169 +19,206 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: settings.py:104
+#: settings.py:108
 msgid "rus"
 msgstr "рус"
 
-#: settings.py:105
+#: settings.py:109
 msgid "eng"
 msgstr "енг"
 
-#: apps/invoice/models.py:19
+#: apps/invoice/models.py:25
 msgid "Draft"
-msgstr ""
+msgstr "Черновики"
 
-#: apps/invoice/models.py:20
+#: apps/invoice/models.py:26
 msgid "Saved"
 msgstr "Сохранено"
 
-#: apps/invoice/models.py:21
+#: apps/invoice/models.py:27
 msgid "Sended"
-msgstr "Отправлено"
+msgstr "Отправлены"
 
-#: apps/invoice/models.py:22
+#: apps/invoice/models.py:28
 msgid "Recieved"
-msgstr "Получено"
+msgstr "Получены"
 
-#: apps/invoice/models.py:25
+#: apps/invoice/models.py:31
 msgid "Owner"
 msgstr "Владелец"
 
-#: apps/invoice/models.py:26
-msgid "Recipient"
+#: apps/invoice/models.py:32
+#, fuzzy
+msgid "Recipient Email"
 msgstr "Получатель"
 
-#: apps/invoice/models.py:28
+#: apps/invoice/models.py:34
 msgid "Company Name"
 msgstr "название компании"
 
-#: apps/invoice/models.py:29 apps/invoice/models.py:31
+#: apps/invoice/models.py:35 apps/invoice/models.py:37
 msgid "Address"
 msgstr "Адрес"
 
-#: apps/invoice/models.py:30
+#: apps/invoice/models.py:36
 msgid "City"
 msgstr "Город"
 
-#: apps/invoice/models.py:33
+#: apps/invoice/models.py:39
 msgid "Phone"
 msgstr "Телефон"
 
-#: apps/invoice/models.py:34
+#: apps/invoice/models.py:40
 msgid "Email"
 msgstr ""
 
-#: apps/invoice/models.py:36
+#: apps/invoice/models.py:42
 msgid "Invoice Name"
 msgstr "Название счета"
 
-#: apps/invoice/models.py:37
+#: apps/invoice/models.py:43
 msgid "Invoice Uid"
 msgstr "Uid счета"
 
-#: apps/invoice/models.py:38
+#: apps/invoice/models.py:44
 msgid "Invoice PO"
 msgstr "PO счета"
 
-#: apps/invoice/models.py:40
+#: apps/invoice/models.py:46
 msgid "Client Name"
 msgstr "Имя клиента"
 
-#: apps/invoice/models.py:41
+#: apps/invoice/models.py:47
 msgid "Client Company"
 msgstr "Компания клиента"
 
-#: apps/invoice/models.py:43
+#: apps/invoice/models.py:49
 msgid "Notes Top"
 msgstr "Заметка вверху"
 
-#: apps/invoice/models.py:45
+#: apps/invoice/models.py:51
 msgid "Notes Bottom"
 msgstr "Заметка внизу"
 
-#: apps/invoice/models.py:48
+#: apps/invoice/models.py:54
 msgid "Subtotal Price"
 msgstr "Итого"
 
-#: apps/invoice/models.py:50
+#: apps/invoice/models.py:56
 msgid "Sales Tax %"
 msgstr "Скидка"
 
-#: apps/invoice/models.py:52
+#: apps/invoice/models.py:58
 msgid "Total Price"
 msgstr "Общая сумма"
 
-#: apps/invoice/models.py:55
+#: apps/invoice/models.py:61
 msgid "Date Added"
 msgstr "Дата добавления"
 
-#: apps/invoice/models.py:58
+#: apps/invoice/models.py:64
 msgid "Uuid"
 msgstr ""
 
-#: apps/invoice/models.py:74 apps/invoice/models.py:86
+#: apps/invoice/models.py:67 apps/invoice/models.py:85
+#: apps/invoice/models.py:97
 msgid "Invoice"
 msgstr "Счет"
 
-#: apps/invoice/models.py:76 apps/invoice/models.py:88
+#: apps/invoice/models.py:68
+#, fuzzy
+msgid "Invoices"
+msgstr "Счет"
+
+#: apps/invoice/models.py:87 apps/invoice/models.py:99
 msgid "Description"
 msgstr "Описание"
 
-#: apps/invoice/models.py:77 apps/invoice/models.py:89
+#: apps/invoice/models.py:88 apps/invoice/models.py:100
 msgid "Quantity"
 msgstr "Количество"
 
-#: apps/invoice/models.py:78 apps/invoice/models.py:90
+#: apps/invoice/models.py:89 apps/invoice/models.py:101
 msgid "Unit Price"
 msgstr "Ед. изм."
 
-#: apps/invoice/models.py:79 apps/invoice/models.py:91
-#: apps/invoice/models.py:94
+#: apps/invoice/models.py:90 apps/invoice/models.py:102
+#: apps/invoice/models.py:105
 msgid "Total"
 msgstr "ИТОГО"
 
-#: apps/invoice/models.py:92
+#: apps/invoice/models.py:103
 msgid "Subtotal"
 msgstr "Цена без скидки"
 
-#: apps/invoice/models.py:93
+#: apps/invoice/models.py:104
 msgid "Tax"
 msgstr "Налог"
 
-#: templates/base.html:19 templates/default.html:19 templates/detail.html:19
+#: apps/local/forms.py:15
+msgid "Username"
+msgstr ""
+
+#: apps/local/forms.py:16
+msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
+msgstr ""
+
+#: templates/base.html:19 templates/default.html:19
 msgid "invoiceto.me &middot; Make a free invoice PDF online"
 msgstr "invoiceto.me &middot; Создание счетов PDF онлайн"
 
 #: templates/include/_aside.html:5
+msgid "Create New"
+msgstr ""
+
+#: templates/include/_aside.html:11
 msgid "My invoices"
 msgstr "Мои счета"
 
-#: templates/include/_aside.html:15
+#: templates/include/_aside.html:20
 msgid "&larr; Edit the fields to make an invoice"
 msgstr "&larr; Редактируйте поля для создания счета"
 
-#: templates/include/_aside.html:18
+#: templates/include/_aside.html:23
 msgid "Finished editing?"
 msgstr "Закончили?"
 
-#: templates/include/_aside.html:20
+#: templates/include/_aside.html:25
 msgid "Get PDF"
 msgstr "Получить PDF"
 
-#: templates/include/_aside.html:22
+#: templates/include/_aside.html:27
+msgid "Copy"
+msgstr ""
+
+#: templates/include/_aside.html:28
 #: templates/registration/password_change_form.html:34
 msgid "Save"
 msgstr "Сохранить"
 
-#: templates/include/_aside.html:27
+#: templates/include/_aside.html:30
+msgid "Enter client email"
+msgstr ""
+
+#: templates/include/_aside.html:30
+#, fuzzy
+msgid "Send"
+msgstr "Отправлены"
+
+#: templates/include/_aside.html:32
+#, fuzzy
+msgid "Delete"
+msgstr "Удалить"
+
+#: templates/include/_aside.html:38
 msgid "Resize table"
 msgstr "Изменить таблицу"
 
-#: templates/include/_aside.html:31
+#: templates/include/_aside.html:42
 msgid "Add row"
 msgstr "Добавить"
 
-#: templates/include/_aside.html:36
+#: templates/include/_aside.html:47
 msgid "Delete row"
 msgstr "Удалить"
 
@@ -194,7 +231,6 @@ msgid "Language"
 msgstr "Язык"
 
 #: templates/include/_header.html:33
-#: templates/registration/registration_form.html:12
 msgid "Register"
 msgstr "Регистрация"
 
@@ -210,17 +246,23 @@ msgstr "выйти"
 msgid "Signed in as"
 msgstr "Вы вошли как"
 
+#: templates/include/_order_form.html:16
+#, fuzzy
+msgid "Invoice History"
+msgstr "Uid счета"
+
 #: templates/include/_pdf_detail.html:54 templates/include/_pdf_detail.html:58
 msgid "This field is done automatically"
 msgstr "Это поле заполняется автоатически"
 
-#: templates/registration/activation_complete.html:6
+#: templates/registration/activation_complete.html:8
+#, fuzzy
 msgid ""
 "\n"
-"    <h1>Activation</h1>\n"
-"    Hello!<br/>\n"
-"    Your account is activated.\n"
-"    "
+"      <h1>Activation</h1>\n"
+"      Hello!<br/>\n"
+"      Your account is activated.\n"
+"      "
 msgstr ""
 "\n"
 "    <h1>Активация</h1>\n"
@@ -228,11 +270,11 @@ msgstr ""
 "    Ваш аккаунт активирован.\n"
 "    "
 
-#: templates/registration/activation_complete.html:11
+#: templates/registration/activation_complete.html:13
 msgid "Welcome"
 msgstr "Добро пожаловать"
 
-#: templates/registration/activation_complete.html:11
+#: templates/registration/activation_complete.html:13
 msgid " to our site."
 msgstr "на наш сайт."
 
@@ -245,6 +287,7 @@ msgid "You already logged in. You can"
 msgstr "Вы уже залогинены. Вы можете"
 
 #: templates/registration/login_form.html:2
+#: templates/registration/registration_form.html:11
 msgid "Join on site"
 msgstr "Войти на сайт"
 
@@ -302,7 +345,9 @@ msgstr "Спасибо. Проверьте ваш email для получени�
 msgid ""
 "You're receiving this e-mail because you requested a password reset for your "
 "user account at %(site_name)s."
-msgstr "Вы получили этот email, потому что запросили смену пароля для вашего аккаунта на %(site_name)s"
+msgstr ""
+"Вы получили этот email, потому что запросили смену пароля для вашего "
+"аккаунта на %(site_name)s"
 
 #: templates/registration/password_reset_email.html:4
 msgid "Please go to the following page and choose a new password:"
@@ -325,18 +370,58 @@ msgstr ""
 msgid "Send email"
 msgstr "Отправить письмо"
 
-#: templates/registration/registration_complete.html:8
+#: templates/registration/registration_complete.html:9
 msgid "Registration is almost done!"
 msgstr "Регистрация завершена!"
 
-#: templates/registration/registration_complete.html:9
+#: templates/registration/registration_complete.html:10
 msgid "Check your e-mail and activate your account!"
 msgstr "Проверьте ваш email и активируйте аккаунт!"
 
-#: templates/registration/registration_form.html:28
-msgid "Field is required"
-msgstr "Обязательное поле"
+#: templates/registration/registration_email.txt:3
+#, python-format
+msgid ""
+"\n"
+"You (or someone pretending to be you) have asked to register an account at\n"
+"%(sitename)s.  If this wasn't you, please ignore this email\n"
+"and your address will be removed from our records.\n"
+"\n"
+"To activate this account, please click the following link within the next \n"
+"%(expiration_days)s days:\n"
+"\n"
+"http://%(siteurl)s%(activation_key_url)s\n"
+"\n"
+"Sincerely,\n"
+"%(sitename)s Management\n"
+msgstr ""
+
+#: templates/registration/registration_email_subject.txt:1
+#, python-format
+msgid "Account registration for %(sitename)s"
+msgstr ""
 
 #: templates/registration/registration_form.html:38
-msgid "register"
-msgstr "регистрация"
+#, fuzzy
+msgid "Sign up"
+msgstr "Войти"
+
+#: templates/templated_email/invoice.html:2
+#: templates/templated_email/invoice.html:34
+msgid "You got new invoice"
+msgstr ""
+
+#: templates/templated_email/invoice.html:24
+#, fuzzy
+msgid "Make a free invoice PDF online"
+msgstr "invoiceto.me &middot; Создание счетов PDF онлайн"
+
+#: templates/templated_email/invoice.html:47
+#, fuzzy
+msgid "Thank you for using our service. Invoiceto.me team"
+msgstr "Спасибо за то, что используете наш сервис!"
+
+#~ msgid "Field is required"
+#~ msgstr "Обязательное поле"
+
+#~ msgid "register"
+#~ msgstr "регистрация"

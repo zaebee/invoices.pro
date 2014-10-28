@@ -137,7 +137,7 @@
       city: gettext('Your Town'),
       address_second: gettext('Address Line 3'),
       phone: gettext('(123) 456 789'),
-      email: gettext('email@yourcompany.com'),
+      email: USER.email || gettext('email@yourcompany.com'),
       invoice_name: gettext('Invoice'),
       invoice_uid: gettext('Invoice #') + _.random('10000'),
       invoice_po: gettext('PO 456001200'),
