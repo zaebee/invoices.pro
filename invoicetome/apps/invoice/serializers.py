@@ -20,9 +20,27 @@ class HeaderSerializer(serializers.ModelSerializer):
 
 
 class RecordSerializer(serializers.ModelSerializer):
+    disabled = serializers.Field(source='_extra_fields.disabled')
 
     class Meta:
         model = Record
+
+    def extra_fields(self, obj):
+        request = self.context.get('request', None)
+        if obj.invoice.owner == request.user:
+            disabled = False
+        else:
+            disabled = True
+        data = {
+            'disabled' : disabled
+        }
+        return data
+
+    def to_native(self, obj):
+        if obj:
+            fields = self.extra_fields(obj)
+            obj._extra_fields = fields
+        return super(RecordSerializer, self).to_native(obj)
 
 
 class InvoiceSerializer(serializers.ModelSerializer):
@@ -31,9 +49,27 @@ class InvoiceSerializer(serializers.ModelSerializer):
     histories = HistorySerializer(source='histories', required=False, read_only=True)
     date_added = serializers.DateTimeField(read_only=True)
     recipient_email = serializers.EmailField(source="recipient_email", read_only=True)
+    disabled = serializers.Field(source='_extra_fields.disabled')
 
     class Meta:
         model = Invoice
         exclude = ('owner',)
         #ordering_fields = ('id',)
         #ordering = '-id'
+
+    def extra_fields(self, obj):
+        request = self.context.get('request', None)
+        if obj.owner == request.user:
+            disabled = False
+        else:
+            disabled = True
+        data = {
+            'disabled' : disabled
+        }
+        return data
+
+    def to_native(self, obj):
+        if obj:
+            fields = self.extra_fields(obj)
+            obj._extra_fields = fields
+        return super(InvoiceSerializer, self).to_native(obj)
