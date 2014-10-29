@@ -45,11 +45,15 @@ class InvoiceViewSet(viewsets.ModelViewSet):
         for the currently authenticated user.
         """
         status = self.request.QUERY_PARAMS.get('status')
+        recipient_email = self.request.QUERY_PARAMS.get('recipient_email')
         user = self.request.user
         if user.is_anonymous():
             qs = Invoice.objects.none()
         else:
-            qs = Invoice.objects.filter(Q(owner=user)|Q(recipient_email=user.email))
+            if recipient_email == user.email:
+                qs = Invoice.objects.filter(recipient_email=user.email)
+            else:
+                qs = Invoice.objects.filter(owner=user)
         return qs
 
     def pre_save(self, obj):
