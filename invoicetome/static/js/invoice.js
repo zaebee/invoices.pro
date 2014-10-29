@@ -10,7 +10,7 @@ var app = app || {};
       user: USER,
       status: {
         draft: gettext('Draft'),
-        sended: gettext('Sent'),
+        sent: gettext('Sent'),
         recieved: gettext('Recieved'),
       },
       title: function (recipient) {

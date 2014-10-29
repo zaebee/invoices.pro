@@ -18,13 +18,13 @@ DEFAULT_FROM_EMAIL = getattr(settings, 'DEFAULT_FROM_EMAIL', 'info@invoiceto.me'
 class Invoice(models.Model):
     STATUS_DRAFT = 'draft'
     STATUS_SAVED = 'saved'
-    STATUS_SENDED = 'sended'
+    STATUS_SENT = 'sent'
     STATUS_RECIEVED = 'recieved'
 
     STATUS_CHOICES = {
         STATUS_DRAFT: _("Draft"),
         STATUS_SAVED: _("Saved"),
-        STATUS_SENDED: _("Sended"),
+        STATUS_SENT: _("Sent"),
         STATUS_RECIEVED: _("Recieved"),
     }
 
@@ -132,7 +132,7 @@ class History(models.Model):
 
 
 def send_invoice(sender, invoice, request, **kwargs):
-    invoice.status = Invoice.STATUS_SENDED
+    invoice.status = Invoice.STATUS_SENT
     data = {
         'invoice': invoice
     }
