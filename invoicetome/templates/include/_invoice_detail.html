@@ -75,10 +75,13 @@
   {{#if invoice.histories}}
   <div class="" id="invoice-history">
     <hr>
-    <h3>{% trans 'Invoice History' %}</h3>
+    <h3>Invoice History</h3>
     <ul class="list-group">
       {{#each invoice.histories}}
-      <li class="list-group-item">{{action}} {{date_added}}</li>
+      <li class="list-group-item">
+        <span class="label label-success">{{action}}</span>
+        <span class="pull-right">{{history_date(date_added)}}</span>
+      </li>
       {{/each}}
     </ul>
   </div>

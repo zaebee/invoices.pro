@@ -42,6 +42,11 @@ var app = app || {};
         var date = moment(date);
         return date.lang('en').format('DD MMMM YYYY');
       },
+      history_date: function (date) {
+        var date = new Date(date);
+        var date = moment(date);
+        return date.lang('en').format('DD MMMM YYYY H:m');
+      },
 
       // хэлпер используется в шаблоне {{ format(price) }}
       format: function ( num ) {
