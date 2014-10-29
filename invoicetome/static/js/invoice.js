@@ -59,24 +59,34 @@ var app = app || {};
   });
 
   app.invoiceList.on({
-    activate: function(event) {
+    activate: function (event ) {
       event.original.preventDefault();
-      $(event.node).addClass('active');
       $(event.node).siblings().removeClass('active');
+      $(event.node).addClass('active');
       app.invoice.set('invoice', event.context);
       var tasks = event.context.get('records');
       tasks = new app.Tasks(tasks);
       app.tasks.set('tasks', tasks);
     },
-    filter: function(event, status) {
-      console.log(event, status);
+    delete: function( event ) {
+      event.original.preventDefault();
+      event.original.stopPropagation();
+      var invoice = event.context;
+      app.deleteSpinner.start();
+      invoice.destroy({
+        success: function(model, response) {
+          //app.invoiceList.get('invoices').add(model);
+          app.deleteSpinner.stop();
+        },
+      });
+    },
+    filter: function( event, status ) {
       $(event.node).parent().siblings().find('.btn').removeClass('active');
       $(event.node).addClass('active');
       if (status == 'recieved') {
         var data = {
           recipient_email: this.get('user.email'),
         };
-        console.log(data);
       } else {
         var data = {
           status: status,
@@ -89,10 +99,30 @@ var app = app || {};
   });
 
   app.invoice.on({
+    new: function( event ) {
+      app.createNewSpinner.start();
+      setTimeout(function() {
+        app.createNewSpinner.stop();
+      }, 1000);
+    },
+    copy: function( event ) {
+      app.copySpinner.start();
+      setTimeout(function() {
+        app.copySpinner.stop();
+      }, 1000);
+    },
+    delete: function( event ) {
+      console.log(event);
+      app.deleteSpinner.start();
+      this.get('invoice').destroy({
+        success: function(model, response) {
+          //app.invoiceList.get('invoices').add(model);
+          app.deleteSpinner.stop();
+        },
+      });
+    },
     save: function( event ) {
       app.saveSpinner.start();
-      app.createNewSpinner.start();
-
       var tasks = app.tasks.get('tasks').toJSON();
       this.set('invoice.records', tasks);
       this.get('invoice').save(null, {
@@ -102,7 +132,6 @@ var app = app || {};
           tasks = new app.Tasks(tasks);
           app.tasks.set('tasks', tasks);
           app.saveSpinner.stop();
-          app.createNewSpinner.stop();
         },
       });
     },

@@ -175,9 +175,19 @@
   });
 
   app.createNewSpinner = new app.buttonSpinner(
-    $('#create-new'),
+    $('#new-invoice'),
     '&nbsp;',
-    $('#create-new')
+    $('#new-invoice')
+  );
+  app.copySpinner = new app.buttonSpinner(
+    $('#copy-invoice'),
+    '&nbsp;',
+    $('#copy-invoice')
+  );
+  app.deleteSpinner = new app.buttonSpinner(
+    $('#delete-invoice'),
+    '&nbsp;',
+    $('#delete-invoice')
   );
   app.saveSpinner = new app.buttonSpinner(
     $('#save-invoice'),

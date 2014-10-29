@@ -2,7 +2,7 @@
 <div class="aside">
   {% if user.is_authenticated %}
   <div class="tools" id="invoice-list">
-    <a id="create-new" onclick="app.invoice.fire('save');return false;" href="#" class="button btn-success">{% trans 'Create New' %}</a>
+    <a id="new-invoice" onclick="app.invoice.fire('new');return false;" href="#" class="button btn-success">{% trans 'Create New' %}</a>
     <!--
     <a class="toggler btn btn-default pull-left">
       <i class="glyphicon glyphicon-chevron-right"></i>
@@ -20,7 +20,7 @@
     <p>{% trans '&larr; Edit the fields to make an invoice' %}</p>
   </div>
   <div class="tools" id="two">
-    <h5>{% trans 'Finished editing?' %}</h5>
+    <h5 class="text-center">{% trans 'Finished editing?' %}</h5>
     <ul class="nav nav-pills nav-stacked">
       <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button btn-primary" href="#">{% trans 'Get PDF' %}</a></li>
       {% if user.is_authenticated %}

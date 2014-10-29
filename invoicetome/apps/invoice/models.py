@@ -66,7 +66,7 @@ class Invoice(models.Model):
     class Meta:
         verbose_name = _('Invoice')
         verbose_name_plural = _('Invoices')
-        ordering = ('-date_added',)
+        ordering = ('-id',)
 
     def __unicode__(self):
         return "%s - #%s" % (self.email, self.invoice_uid)
