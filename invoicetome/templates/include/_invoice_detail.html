@@ -71,6 +71,19 @@
 
     </div>
   {{/with}}
+
+  {{#if invoice.histories}}
+  <div class="" id="invoice-history">
+    <hr>
+    <h3>{% trans 'Invoice History' %}</h3>
+    <ul class="list-group">
+      {{#each invoice.histories}}
+      <li class="list-group-item">{{action}} {{date_added}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}}
+
 </script>
 
 <script id="task-template" type="text/ractive">

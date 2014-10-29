@@ -34,6 +34,6 @@ class InvoiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Invoice
-        exclude = ('owner',)
+        exclude = ('owner', 'histories')
         #ordering_fields = ('id',)
         #ordering = '-id'

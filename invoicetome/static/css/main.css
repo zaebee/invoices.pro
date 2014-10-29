@@ -414,14 +414,10 @@ a.button:active {
     background: #c9302c;
 }
 #invoice-history {
-    width: 860px;
     margin: 0 auto;
 }
 #invoice-history .list-group {
     margin-right:0;
-}
-#invoice-history h3 {
-    color: #fff;
 }
 .toggler {
     border-radius: 0 3px 3px 0;
