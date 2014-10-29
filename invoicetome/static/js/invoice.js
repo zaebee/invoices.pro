@@ -100,16 +100,14 @@ var app = app || {};
 
   app.invoice.on({
     new: function( event ) {
-      app.createNewSpinner.start();
-      setTimeout(function() {
-        app.createNewSpinner.stop();
-      }, 1000);
+      var invoice = new app.Invoice();
+      app.invoiceList.get('invoices').add(invoice);
     },
     copy: function( event ) {
-      app.copySpinner.start();
-      setTimeout(function() {
-        app.copySpinner.stop();
-      }, 1000);
+      var invoice = app.invoice.get('invoice').clone();
+      invoice.id = null;
+      invoice.set('id', null);
+      app.invoiceList.get('invoices').add(invoice);
     },
     delete: function( event ) {
       console.log(event);

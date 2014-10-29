@@ -108,6 +108,28 @@ class Header(models.Model):
         return self.h_description
 
 
+class History(models.Model):
+    ACTION_CREATED = 'created'
+    ACTION_SENT = 'sent'
+    ACTION_RECIEVED = 'recieved'
+    ACTION_DECLINED = 'declined'
+
+    ACTION_CHOICES = {
+        ACTION_CREATED: _('Created'),
+        ACTION_SENT: _('Sent to email'),
+        ACTION_RECIEVED: _('Recieved from email'),
+        ACTION_DECLINED: _('Declined'),
+    }
+    invoice = models.ForeignKey(Invoice, verbose_name=_('Invoice'),
+                                   related_name='histories', null=True, blank=True)
+    email = models.CharField(_('Email'), max_length=255)
+    action = models.CharField(max_length=255, choices=ACTION_CHOICES.items(),
+                              default=ACTION_CREATED)
+
+    def __unicode__(self):
+        return self.action
+
+
 def send_invoice(sender, invoice, request, **kwargs):
     invoice.status = Invoice.STATUS_SENDED
     data = {
