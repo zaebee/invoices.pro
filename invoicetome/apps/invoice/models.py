@@ -125,6 +125,7 @@ class History(models.Model):
     email = models.CharField(_('Email'), max_length=255)
     action = models.CharField(max_length=255, choices=ACTION_CHOICES.items(),
                               default=ACTION_CREATED)
+    date_added = models.DateTimeField(_(u'Date Added'), auto_now_add=True)
 
     def __unicode__(self):
         return self.action
@@ -138,4 +139,13 @@ def send_invoice(sender, invoice, request, **kwargs):
     send_templated_mail('invoice', DEFAULT_FROM_EMAIL, [invoice.recipient_email], data)
     invoice.save()
 
+
+def create_history_log(sender, instance, created, **kwargs):
+    if created:
+        pass
+        #profile, created = UserProfile.objects.get_or_create(user=instance)
+
+
 signals.invoice_sended.connect(send_invoice)
+
+#models.signals.post_save.connect(create_history_log, sender=Invoice)
