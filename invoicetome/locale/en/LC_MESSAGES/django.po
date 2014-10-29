@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 20:59+0000\n"
+"POT-Creation-Date: 2014-10-28 05:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,281 +17,264 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:97
+#: settings.py:108
 msgid "rus"
 msgstr ""
 
-#: settings.py:98
+#: settings.py:109
 msgid "eng"
 msgstr ""
 
-#: apps/invoice/models.py:17
+#: apps/invoice/models.py:25
+msgid "Draft"
+msgstr ""
+
+#: apps/invoice/models.py:26
 msgid "Saved"
 msgstr ""
 
-#: apps/invoice/models.py:18
+#: apps/invoice/models.py:27
 msgid "Sended"
 msgstr ""
 
-#: apps/invoice/models.py:19
+#: apps/invoice/models.py:28
 msgid "Recieved"
 msgstr ""
 
-#: apps/invoice/models.py:22
+#: apps/invoice/models.py:31
 msgid "Owner"
 msgstr ""
 
-#: apps/invoice/models.py:23
-msgid "Recipient"
-msgstr ""
-
-#: apps/invoice/models.py:25
-msgid "Company Name"
-msgstr ""
-
-#: apps/invoice/models.py:26 apps/invoice/models.py:28
-msgid "Address"
-msgstr ""
-
-#: apps/invoice/models.py:27
-msgid "City"
-msgstr ""
-
-#: apps/invoice/models.py:30
-msgid "Phone"
-msgstr ""
-
-#: apps/invoice/models.py:31
-msgid "Email"
-msgstr ""
-
-#: apps/invoice/models.py:33
-msgid "Invoice Name"
+#: apps/invoice/models.py:32
+msgid "Recipient Email"
 msgstr ""
 
 #: apps/invoice/models.py:34
-msgid "Invoice Uid"
+msgid "Company Name"
 msgstr ""
 
-#: apps/invoice/models.py:35
-msgid "Invoice PO"
+#: apps/invoice/models.py:35 apps/invoice/models.py:37
+msgid "Address"
 msgstr ""
 
-#: apps/invoice/models.py:37
-msgid "Client Name"
+#: apps/invoice/models.py:36
+msgid "City"
 msgstr ""
 
-#: apps/invoice/models.py:38
-msgid "Client Company"
+#: apps/invoice/models.py:39
+msgid "Phone"
 msgstr ""
 
 #: apps/invoice/models.py:40
-msgid "Notes Top"
+msgid "Email"
 msgstr ""
 
-#: apps/invoice/models.py:41
-msgid "Notes Bottom"
+#: apps/invoice/models.py:42
+msgid "Invoice Name"
 msgstr ""
 
 #: apps/invoice/models.py:43
-msgid "Subtotal Price"
+msgid "Invoice Uid"
 msgstr ""
 
 #: apps/invoice/models.py:44
-msgid "Sales Tax %"
+msgid "Invoice PO"
 msgstr ""
 
-#: apps/invoice/models.py:45
-msgid "Total Price"
+#: apps/invoice/models.py:46
+msgid "Client Name"
 msgstr ""
 
 #: apps/invoice/models.py:47
+msgid "Client Company"
+msgstr ""
+
+#: apps/invoice/models.py:49
+msgid "Notes Top"
+msgstr ""
+
+#: apps/invoice/models.py:51
+msgid "Notes Bottom"
+msgstr ""
+
+#: apps/invoice/models.py:54
+msgid "Subtotal Price"
+msgstr ""
+
+#: apps/invoice/models.py:56
+msgid "Sales Tax %"
+msgstr ""
+
+#: apps/invoice/models.py:58
+msgid "Total Price"
+msgstr ""
+
+#: apps/invoice/models.py:61
 msgid "Date Added"
 msgstr ""
 
-#: apps/invoice/models.py:48
-msgid "Records"
+#: apps/invoice/models.py:64
+msgid "Uuid"
 msgstr ""
 
-#: apps/invoice/models.py:63
+#: apps/invoice/models.py:67 apps/invoice/models.py:85
+#: apps/invoice/models.py:97
+msgid "Invoice"
+msgstr ""
+
+#: apps/invoice/models.py:68
+msgid "Invoices"
+msgstr ""
+
+#: apps/invoice/models.py:87 apps/invoice/models.py:99
 msgid "Description"
 msgstr ""
 
-#: apps/invoice/models.py:64 templates/include/_invoice_detail.html:38
+#: apps/invoice/models.py:88 apps/invoice/models.py:100
 msgid "Quantity"
 msgstr ""
 
-#: apps/invoice/models.py:65
+#: apps/invoice/models.py:89 apps/invoice/models.py:101
 msgid "Unit Price"
 msgstr ""
 
-#: apps/invoice/models.py:66 templates/include/_invoice_detail.html:111
+#: apps/invoice/models.py:90 apps/invoice/models.py:102
+#: apps/invoice/models.py:105
 msgid "Total"
+msgstr ""
+
+#: apps/invoice/models.py:103
+msgid "Subtotal"
+msgstr ""
+
+#: apps/invoice/models.py:104
+msgid "Tax"
+msgstr ""
+
+#: apps/local/forms.py:15
+msgid "Username"
+msgstr ""
+
+#: apps/local/forms.py:16
+msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr ""
 
 #: templates/base.html:19 templates/default.html:19
 msgid "invoiceto.me &middot; Make a free invoice PDF online"
 msgstr ""
 
-#: templates/include/_invoice_detail.html:5
-msgid "Your Company Name"
+#: templates/include/_aside.html:5
+msgid "Create New"
 msgstr ""
 
-#: templates/include/_invoice_detail.html:6
-msgid "INVOICE"
-msgstr ""
-
-#: templates/include/_invoice_detail.html:8
-msgid "123 Your Street"
-msgstr ""
-
-#: templates/include/_invoice_detail.html:9
-msgid "Your Town"
-msgstr ""
-
-#: templates/include/_invoice_detail.html:10
-msgid "Address Line 3"
-msgstr ""
-
-#: templates/include/_invoice_detail.html:16
-msgid "Invoice #2334889"
-msgstr ""
-
-#: templates/include/_invoice_detail.html:18
-msgid "Att: Ms. Jane Doe"
-msgstr ""
-
-#: templates/include/_invoice_detail.html:19
-msgid "Client Company Name"
-msgstr ""
-
-#: templates/include/_invoice_detail.html:25
-msgid ""
-"Dear Ms. Jane Doe,\n"
-"\n"
-"  Please find below a cost-breakdown for the recent work completed. Please "
-"make payment at your earliest convenience, and do not hesitate to contact me "
-"with any questions.\n"
-"\n"
-"  Many thanks,\n"
-"  Your Name"
-msgstr ""
-
-#: templates/include/_invoice_detail.html:37
-msgid "Item Description"
-msgstr ""
-
-#: templates/include/_invoice_detail.html:39
-msgid "Unit price (€)"
-msgstr ""
-
-#: templates/include/_invoice_detail.html:40
-msgid "Total (€)"
-msgstr ""
-
-#: templates/include/_invoice_detail.html:45
-#: templates/include/_invoice_detail.html:49
-#: templates/include/_invoice_detail.html:52
-#: templates/include/_invoice_detail.html:56
-#: templates/include/_invoice_detail.html:59
-#: templates/include/_invoice_detail.html:63
-#: templates/include/_invoice_detail.html:66
-#: templates/include/_invoice_detail.html:70
-#: templates/include/_invoice_detail.html:73
-#: templates/include/_invoice_detail.html:77
-#: templates/include/_invoice_detail.html:80
-#: templates/include/_invoice_detail.html:84
-#: templates/include/_invoice_detail.html:87
-#: templates/include/_invoice_detail.html:91
-#: templates/include/_invoice_detail.html:94
-#: templates/include/_invoice_detail.html:98
-msgid "This field is done automatically"
-msgstr ""
-
-#: templates/include/_invoice_detail.html:46
-msgid "Supporting of in-house project (hours worked)"
-msgstr ""
-
-#: templates/include/_invoice_detail.html:103
-msgid "Subtotal"
-msgstr ""
-
-#: templates/include/_invoice_detail.html:107
-#, python-format
-msgid "Sales Tax (20%%)"
-msgstr ""
-
-#: templates/include/_invoice_detail.html:117
-msgid ""
-"Many thanks for your custom! I look forward to doing business with you again "
-"in due course.\n"
-"\n"
-"    Payment terms: to be received within 60 days."
-msgstr ""
-
-#: templates/include/_order_form.html:6
-#: templates/registration/login_form.html:27
-msgid "join"
-msgstr ""
-
-#: templates/include/_order_form.html:10
-msgid "Hi,"
-msgstr ""
-
-#: templates/include/_order_form.html:11
-msgid "Logout"
-msgstr ""
-
-#: templates/include/_order_form.html:16
+#: templates/include/_aside.html:11
 msgid "My invoices"
 msgstr ""
 
-#: templates/include/_order_form.html:28
-msgid "Edit the fields to make an invoice &rarr;"
+#: templates/include/_aside.html:20
+msgid "&larr; Edit the fields to make an invoice"
 msgstr ""
 
-#: templates/include/_order_form.html:31
+#: templates/include/_aside.html:23
 msgid "Finished editing?"
 msgstr ""
 
-#: templates/include/_order_form.html:33
+#: templates/include/_aside.html:25
 msgid "Get PDF"
 msgstr ""
 
-#: templates/include/_order_form.html:34
+#: templates/include/_aside.html:27
+msgid "Copy"
+msgstr ""
+
+#: templates/include/_aside.html:28
+#: templates/registration/password_change_form.html:34
 msgid "Save"
 msgstr ""
 
-#: templates/include/_order_form.html:38
+#: templates/include/_aside.html:30
+msgid "Enter client email"
+msgstr ""
+
+#: templates/include/_aside.html:30
+msgid "Send"
+msgstr ""
+
+#: templates/include/_aside.html:32
+msgid "Delete"
+msgstr ""
+
+#: templates/include/_aside.html:38
 msgid "Resize table"
 msgstr ""
 
-#: templates/include/_order_form.html:40
+#: templates/include/_aside.html:42
 msgid "Add row"
 msgstr ""
 
-#: templates/include/_order_form.html:41
+#: templates/include/_aside.html:47
 msgid "Delete row"
 msgstr ""
 
-#: templates/registration/activation_complete.html:6
-msgid ""
-"\n"
-"    <h1>Activation</h1>\n"
-"    Hello!<br/>\n"
-"    Your account is activated.\n"
-"    "
+#: templates/include/_header.html:7
+msgid "Toggle navigation"
 msgstr ""
 
-#: templates/registration/activation_complete.html:11
+#: templates/include/_header.html:19
+msgid "Language"
+msgstr ""
+
+#: templates/include/_header.html:33
+msgid "Register"
+msgstr ""
+
+#: templates/include/_header.html:42 templates/registration/login_form.html:27
+msgid "Sign in"
+msgstr ""
+
+#: templates/include/_header.html:45 templates/registration/login.html:15
+msgid "logout"
+msgstr ""
+
+#: templates/include/_header.html:46
+msgid "Signed in as"
+msgstr ""
+
+#: templates/include/_order_form.html:16
+msgid "Invoice History"
+msgstr ""
+
+#: templates/include/_pdf_detail.html:54 templates/include/_pdf_detail.html:58
+msgid "This field is done automatically"
+msgstr ""
+
+#: templates/registration/activation_complete.html:8
+msgid ""
+"\n"
+"      <h1>Activation</h1>\n"
+"      Hello!<br/>\n"
+"      Your account is activated.\n"
+"      "
+msgstr ""
+
+#: templates/registration/activation_complete.html:13
 msgid "Welcome"
 msgstr ""
 
-#: templates/registration/activation_complete.html:11
+#: templates/registration/activation_complete.html:13
 msgid " to our site."
 msgstr ""
 
+#: templates/registration/login.html:14
+msgid "Login"
+msgstr ""
+
+#: templates/registration/login.html:15
+msgid "You already logged in. You can"
+msgstr ""
+
 #: templates/registration/login_form.html:2
+#: templates/registration/registration_form.html:11
 msgid "Join on site"
 msgstr ""
 
@@ -301,6 +284,15 @@ msgstr ""
 
 #: templates/registration/login_form.html:20
 msgid "Register account"
+msgstr ""
+
+#: templates/registration/password_change_done.html:11
+msgid "Password was changed"
+msgstr ""
+
+#: templates/registration/password_change_form.html:11
+#: templates/registration/password_reset_form.html:11
+msgid "Password Reset"
 msgstr ""
 
 #: templates/registration/password_reset_complete.html:9
@@ -359,30 +351,53 @@ msgstr ""
 msgid "The %(site_name)s team"
 msgstr ""
 
-#: templates/registration/password_reset_form.html:11
-msgid "Password Reset"
-msgstr ""
-
 #: templates/registration/password_reset_form.html:23
 msgid "Send email"
 msgstr ""
 
-#: templates/registration/registration_complete.html:8
+#: templates/registration/registration_complete.html:9
 msgid "Registration is almost done!"
 msgstr ""
 
-#: templates/registration/registration_complete.html:9
+#: templates/registration/registration_complete.html:10
 msgid "Check your e-mail and activate your account!"
 msgstr ""
 
-#: templates/registration/registration_form.html:12
-msgid "Register"
+#: templates/registration/registration_email.txt:3
+#, python-format
+msgid ""
+"\n"
+"You (or someone pretending to be you) have asked to register an account at\n"
+"%(sitename)s.  If this wasn't you, please ignore this email\n"
+"and your address will be removed from our records.\n"
+"\n"
+"To activate this account, please click the following link within the next \n"
+"%(expiration_days)s days:\n"
+"\n"
+"http://%(siteurl)s%(activation_key_url)s\n"
+"\n"
+"Sincerely,\n"
+"%(sitename)s Management\n"
 msgstr ""
 
-#: templates/registration/registration_form.html:28
-msgid "Field is required"
+#: templates/registration/registration_email_subject.txt:1
+#, python-format
+msgid "Account registration for %(sitename)s"
 msgstr ""
 
 #: templates/registration/registration_form.html:38
-msgid "register"
+msgid "Sign up"
+msgstr ""
+
+#: templates/templated_email/invoice.html:2
+#: templates/templated_email/invoice.html:34
+msgid "You got new invoice"
+msgstr ""
+
+#: templates/templated_email/invoice.html:24
+msgid "Make a free invoice PDF online"
+msgstr ""
+
+#: templates/templated_email/invoice.html:47
+msgid "Thank you for using our service. Invoiceto.me team"
 msgstr ""
