@@ -28,12 +28,12 @@ class RecordSerializer(serializers.ModelSerializer):
 class InvoiceSerializer(serializers.ModelSerializer):
     records = RecordSerializer(source='records', many=True, required=False)
     headers = HeaderSerializer(source='headers', required=False)
-    histories = HistorySerializer(source='histories', required=False)
+    histories = HistorySerializer(source='histories', required=False, read_only=True)
     date_added = serializers.DateTimeField(read_only=True)
     recipient_email = serializers.EmailField(source="recipient_email", read_only=True)
 
     class Meta:
         model = Invoice
-        exclude = ('owner', 'histories')
+        exclude = ('owner',)
         #ordering_fields = ('id',)
         #ordering = '-id'

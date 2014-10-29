@@ -75,10 +75,14 @@
   {{#if invoice.histories}}
   <div class="" id="invoice-history">
     <hr>
-    <h3>{% trans 'Invoice History' %}</h3>
+    <h3>Invoice History</h3>
     <ul class="list-group">
       {{#each invoice.histories}}
-      <li class="list-group-item">{{action}} {{date_added}}</li>
+      <li class="list-group-item">
+        <span class="label label-success">{{action}}</span>
+        <span>{{#if email}} to {{email}}{{/if}}</span>
+        <span class="pull-right">{{history_date(date_added)}}</span>
+      </li>
       {{/each}}
     </ul>
   </div>
@@ -110,10 +114,10 @@
       </button>
     </div>
     <div class="btn-group">
-      <button on-click="filter:'sended'" type="button"
+      <button on-click="filter:'sent'" type="button"
         data-toggle="tooltip"
         data-placement="bottom"
-        title="{{status.sended}}"
+        title="{{status.sent}}"
         class="btn btn-default">
         <i class="glyphicon glyphicon-export"></i>
       </button>
@@ -131,8 +135,9 @@
   <span class="list-group-item"></span>
   {{#each invoices:i}}
   <a on-click="activate:{{this}}" title="{{invoice_uid}}" href="#" class="list-group-item {{#if active}}active{{/if}}">
-    {{client_name}} <small>({{client_company}})
-    <i>{{date_short()}}</i></small>&nbsp;<i tltle="Delete invoice" on-click="delete:{{this}}" class="btn-remove glyphicon glyphicon-remove pull-right"></i>
+    {{client_name}}
+    <small>({{client_company}}) <i>{{date_short()}}</i></small>&nbsp;
+    <i tltle="Delete invoice" on-click="delete:{{this}}" class="btn-remove glyphicon glyphicon-remove pull-right"></i>
   </a>
   {{/each}}
 </script>

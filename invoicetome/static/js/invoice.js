@@ -10,7 +10,7 @@ var app = app || {};
       user: USER,
       status: {
         draft: gettext('Draft'),
-        sended: gettext('Sent'),
+        sent: gettext('Sent'),
         recieved: gettext('Recieved'),
       },
       title: function (recipient) {
@@ -41,6 +41,11 @@ var app = app || {};
         var date = this.get('invoice.date_added') || new Date();
         var date = moment(date);
         return date.lang('en').format('DD MMMM YYYY');
+      },
+      history_date: function (date) {
+        var date = new Date(date);
+        var date = moment(date);
+        return date.lang('en').format('DD MMMM YYYY H:m');
       },
 
       // хэлпер используется в шаблоне {{ format(price) }}

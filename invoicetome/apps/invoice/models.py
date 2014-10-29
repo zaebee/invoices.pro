@@ -18,13 +18,13 @@ DEFAULT_FROM_EMAIL = getattr(settings, 'DEFAULT_FROM_EMAIL', 'info@invoiceto.me'
 class Invoice(models.Model):
     STATUS_DRAFT = 'draft'
     STATUS_SAVED = 'saved'
-    STATUS_SENDED = 'sended'
+    STATUS_SENT = 'sent'
     STATUS_RECIEVED = 'recieved'
 
     STATUS_CHOICES = {
         STATUS_DRAFT: _("Draft"),
         STATUS_SAVED: _("Saved"),
-        STATUS_SENDED: _("Sended"),
+        STATUS_SENT: _("Sent"),
         STATUS_RECIEVED: _("Recieved"),
     }
 
@@ -132,20 +132,20 @@ class History(models.Model):
 
 
 def send_invoice(sender, invoice, request, **kwargs):
-    invoice.status = Invoice.STATUS_SENDED
+    invoice.status = Invoice.STATUS_SENT
     data = {
         'invoice': invoice
     }
     send_templated_mail('invoice', DEFAULT_FROM_EMAIL, [invoice.recipient_email], data)
     invoice.save()
+    History.objects.create(invoice=invoice, action=History.ACTION_SENT, email=invoice.recipient_email)
 
 
 def create_history_log(sender, instance, created, **kwargs):
     if created:
-        pass
-        #profile, created = UserProfile.objects.get_or_create(user=instance)
+        History.objects.create(invoice=instance, action=History.ACTION_CREATED)
 
 
 signals.invoice_sended.connect(send_invoice)
 
-#models.signals.post_save.connect(create_history_log, sender=Invoice)
+models.signals.post_save.connect(create_history_log, sender=Invoice)

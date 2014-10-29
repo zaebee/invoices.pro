@@ -13,6 +13,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 from django.conf import settings
+from django.db.models import Q
 
 from rest_framework.decorators import detail_route
 from rest_framework import viewsets
@@ -48,7 +49,7 @@ class InvoiceViewSet(viewsets.ModelViewSet):
         if user.is_anonymous():
             qs = Invoice.objects.none()
         else:
-            qs = Invoice.objects.filter(owner=user)
+            qs = Invoice.objects.filter(Q(owner=user)|Q(recipient_email=user.email))
         return qs
 
     def pre_save(self, obj):
