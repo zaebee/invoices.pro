@@ -137,4 +137,42 @@
   {{/each}}
 </script>
 
+<script id="invoice-aside-template" type="text/ractive">
+  <div class="tools" id="two">
+    <h5 class="text-center">Finished editing?</h5>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button btn-primary" href="#">Get PDF</a></li>
+      {{#unless status === 'recieved' }}
+      <li><a role="button" id="copy-invoice" onclick="app.invoice.fire('copy');return false;" class="button btn-primary" href="#">Copy</a></li>
+      {{/unless}}
+      {{#if status === 'draft' }}
+      <li><a role="button" id="save-invoice" onclick="app.invoice.fire('save');return false;" class="button btn-success" href="#">Save</a></li>
+      <li class="divider"><hr></li>
+      <li><a role="button" id="send-invoice" onclick="app.invoice.fire('send');return false;" data-trigger="manual" data-html="true" data-toggle="popover" data-placement="left" data-content="<input style='width:200px' type='text' class='form-control' name='client_email' placeholder='Enter client email'>" class="button btn-primary" href="#">Send</a></li>
+      {{/if}}
+      {{#unless status === 'recieved' }}
+      <li class="divider"><hr></li>
+      <li><a role="button" id="delete-invoice" onclick="app.invoice.fire('delete');return false;" class="button btn-danger" href="#">Delete</a></li>
+      {{/unless}}
+    </ul>
+  </div>
+
+  {{#if status === 'draft' }}
+  <div class="tools" id="three">
+    <h5>Resize table</h5>
+    <ul>
+      <li>
+        <a id="addRow" onclick="app.tasks.fire('add');return false;" href="#" title="test">
+          <span style="padding-right:5px;">+</span> Add row
+        </a>
+      </li>
+      <li>
+      <a id="delRow" onclick="app.tasks.fire('destroy');return false;" href="#">
+        <span style="padding-right:5px;padding-left:1px;">&ndash;</span> Delete row
+      </a>
+      </li>
+    </ul>
+  </div>
+  {{/if}}
+</script>
 {% endverbatim %}
