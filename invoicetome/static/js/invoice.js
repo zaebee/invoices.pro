@@ -63,6 +63,17 @@ var app = app || {};
     adaptors: [ Ractive.adaptors.Backbone ],
   });
 
+  app.aside = new Ractive({
+    el: '#aside-actions',
+    template: '#invoice-aside-template',
+    data: {
+      user: USER,
+      invoice: app.invoice.get('invoice'),
+      status: 'draft',
+    },
+    adaptors: [ Ractive.adaptors.Backbone ],
+  });
+
   app.invoiceList.on({
     activate: function (event ) {
       event.original.preventDefault();
@@ -87,6 +98,7 @@ var app = app || {};
     },
     filter: function( event, status ) {
       app.router.navigate(status);
+      app.aside.set('status', status);
       if (status == 'recieved') {
         var data = {
           recipient_email: this.get('user.email'),
@@ -203,6 +215,9 @@ var app = app || {};
     //
     //***
     generate_pdf: function( event ) {
+      app.makeMarkup();
+      $(app.invoice.el).parent('form').submit();
+      /*
       app.pdfSpinner.start();
       var tasks = app.tasks.get('tasks').toJSON();
       this.set('invoice.records', tasks);
@@ -217,6 +232,7 @@ var app = app || {};
           $(app.invoice.el).parent('form').submit();
         }
       });
+      */
 
     },
   });
