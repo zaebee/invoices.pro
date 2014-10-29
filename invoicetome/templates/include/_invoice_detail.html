@@ -5,26 +5,26 @@
   {{#with invoice}}
     <div class="container-fluid" id="header">
       <div class="row">
-        <input id="company" class="col-md-6" value="{{company_name}}" />
-        <input id="title" class="col-md-6 pull-right text-right" value="{{invoice_name}}" />
+        <input disabled="{{disabled}}" id="company" class="col-md-6" value="{{company_name}}" />
+        <input disabled="{{disabled}}" id="title" class="col-md-6 pull-right text-right" value="{{invoice_name}}" />
       </div>
       <div class="row">
         <div id="address" class="col-md-6">
           <div class="row">
-            <input class="ll col-md-12" value="{{address}}" />
-            <input class="ll col-md-12" value="{{city}}" />
-            <input class="ll col-md-12" value="{{address_second}}" />
-            <input style="margin-top:20px;" class="ll col-md-12" value="{{phone}}" />
-            <input style="margin-bottom:30px;" class="ll col-md-12" value="{{email}}" />
+            <input disabled="{{disabled}}" class="ll col-md-12" value="{{address}}" />
+            <input disabled="{{disabled}}" class="ll col-md-12" value="{{city}}" />
+            <input disabled="{{disabled}}" class="ll col-md-12" value="{{address_second}}" />
+            <input disabled="{{disabled}}" style="margin-top:20px;" class="ll col-md-12" value="{{phone}}" />
+            <input disabled="{{disabled}}" style="margin-bottom:30px;" class="ll col-md-12" value="{{email}}" />
           </div>
         </div>
         <div id="meta" class="col-md-6">
           <div class="row">
-            <input id="date" class="rr col-md-12" value="{{date()}}" />
-            <input class="rr col-md-12" value="{{invoice_uid}}" />
-            <input class="rr col-md-12" value="{{invoice_po}}" />
-            <input style="margin-top:20px;" class="client rr col-md-12" value="{{client_name}}" />
-            <input style="margin-bottom:30px;" class="client rr col-md-12" value="{{client_company}}" />
+            <input disabled="{{disabled}}" id="date" class="rr col-md-12" value="{{date()}}" />
+            <input disabled="{{disabled}}" class="rr col-md-12" value="{{invoice_uid}}" />
+            <input disabled="{{disabled}}" class="rr col-md-12" value="{{invoice_po}}" />
+            <input disabled="{{disabled}}" style="margin-top:20px;" class="client rr col-md-12" value="{{client_name}}" />
+            <input disabled="{{disabled}}" style="margin-bottom:30px;" class="client rr col-md-12" value="{{client_company}}" />
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@
     <hr>
 
     <div class="row">
-    <textarea class="notes col-md-12" id="textone" cols="95" rows="1">{{notes_top}}</textarea>
+    <textarea disabled="{{disabled}}" class="notes col-md-12" id="textone" cols="95" rows="1">{{notes_top}}</textarea>
     </div>
 
 
@@ -40,25 +40,25 @@
       <table class="col-md-12">
         <thead>
         <tr>
-          <th class="span-2" ><input value="#" /></th>
-          <th class="span-10"><input value="{{headers.h_description}}" /></th>
-          <th class="span-4"><input value="{{headers.h_quantity}}" /></th>
-          <th class="span-4"><input value="{{headers.h_unit_price}}" /></th>
-          <th class="span-4"><input value="{{headers.h_total}}" /></th>
+          <th class="span-2"><input disabled="{{disabled}}" value="#" /></th>
+          <th class="span-10"><input disabled="{{disabled}}" value="{{headers.h_description}}" /></th>
+          <th class="span-4"><input disabled="{{disabled}}" value="{{headers.h_quantity}}" /></th>
+          <th class="span-4"><input disabled="{{disabled}}" value="{{headers.h_unit_price}}" /></th>
+          <th class="span-4"><input disabled="{{disabled}}" value="{{headers.h_total}}" /></th>
         </tr>
         </thead>
         <tbody id="task-list"></tbody>
         <tfoot>
           <tr>
-            <th id="subtotallabel" colspan="4" class="span-20"><input value="{{headers.subtotal}}" /></th>
+            <th id="subtotallabel" colspan="4" class="span-20"><input disabled="{{disabled}}" value="{{headers.subtotal}}" /></th>
             <th id="formsubtotal" class="span-4 noteditable">{{format(subtotal)}}</th>
           </tr>
           <tr>
-            <th id="taxrate" colspan="4" class="span-20"><input value="{{headers.tax}}" /></th>
+            <th id="taxrate" colspan="4" class="span-20"><input disabled="{{disabled}}" value="{{headers.tax}}" /></th>
             <th id="formtax" class="span-4 noteditable">{{format(tax)}}</th>
           </tr>
           <tr id="total">
-            <th id="totallabel" colspan="4" class="span-20"><input value="{{headers.total}}" /></th>
+            <th id="totallabel" colspan="4" class="span-20"><input disabled="{{disabled}}" value="{{headers.total}}" /></th>
             <th id="formtotal" class="span-4 noteditable">{{format(total)}}</th>
           </tr>
         </tfoot>
@@ -66,7 +66,7 @@
     </div>
 
     <div class="row">
-      <textarea class="notes col-md-12" id="texttwo" cols="95">{{notes_bottom}}</textarea>
+      <textarea disabled="{{disabled}}" class="notes col-md-12" id="texttwo" cols="95">{{notes_bottom}}</textarea>
     </div>
 
     </div>
@@ -94,50 +94,45 @@
 {{#each tasks:i}}
   <tr>
   <td class="noteditable" title="{% trans 'This field is done automatically' %}">{{i+1}}</td>
-    <td><input value="{{description}}" /></td>
-    <td><input value="{{quantity}}" /></td>
-    <td><input value="{{unit_price}}" /></td>
+    <td><input disabled="{{disabled}}" value="{{description}}" /></td>
+    <td><input disabled="{{disabled}}" value="{{quantity}}" /></td>
+    <td><input disabled="{{disabled}}" value="{{unit_price}}" /></td>
     <td class="noteditable" title="{% trans 'This field is done automatically' %}">{{format(total)}}</td>
   </tr>
 {{/each}}
 </script>
 
 <script id="invoice-list-template" type="text/ractive">
-  <div class="btn-group btn-group-justified">
-    <div class="btn-group">
-      <button on-click="filter:'draft'" type="button"
-        data-toggle="tooltip"
-        data-placement="bottom"
-        title="{{status.draft}}"
-        class="btn btn-default active">
+  <div class="btn-group btn-group-justified" data-toggle="buttons">
+    <label class="btn btn-default btn-draft active" on-click="filter:'draft'">
+      <div data-toggle="tooltip" data-placement="bottom" title="{{status.draft}}">
         <i class="glyphicon glyphicon-saved"></i>
-      </button>
-    </div>
-    <div class="btn-group">
-      <button on-click="filter:'sent'" type="button"
-        data-toggle="tooltip"
-        data-placement="bottom"
-        title="{{status.sent}}"
-        class="btn btn-default">
+        <input type="radio" name="options" id="{{status.draft}}" checked>
+      </div>
+    </label>
+
+    <label class="btn btn-default btn-sent" on-click="filter:'sent'">
+      <div data-toggle="tooltip" data-placement="bottom" title="{{status.sent}}">
         <i class="glyphicon glyphicon-export"></i>
-      </button>
-    </div>
-    <div class="btn-group">
-      <button on-click="filter:'recieved'" type="button"
-        data-toggle="tooltip"
-        data-placement="bottom"
-        title="{{status.recieved}}"
-        class="btn btn-default">
+        <input type="radio" name="options" id="{{statis.sent}}">
+      </div>
+    </label>
+
+    <label class="btn btn-default btn-recieved" on-click="filter:'recieved'">
+      <div data-toggle="tooltip" data-placement="bottom" title="{{status.recieved}}">
         <i class="glyphicon glyphicon-import"></i>
-      </button>
-    </div>
+        <input type="radio" name="options" id="{{status.recieved}}">
+      </div>
+    </label>
   </div>
   <span class="list-group-item"></span>
   {{#each invoices:i}}
   <a on-click="activate:{{this}}" title="{{invoice_uid}}" href="#" class="list-group-item {{#if active}}active{{/if}}">
     {{client_name}}
     <small>({{client_company}}) <i>{{date_short()}}</i></small>&nbsp;
+    {{#unless disabled}}
     <i tltle="Delete invoice" on-click="delete:{{this}}" class="btn-remove glyphicon glyphicon-remove pull-right"></i>
+    {{/unless}}
   </a>
   {{/each}}
 </script>

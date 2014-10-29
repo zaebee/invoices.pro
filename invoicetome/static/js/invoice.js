@@ -86,8 +86,7 @@ var app = app || {};
       });
     },
     filter: function( event, status ) {
-      $(event.node).parent().siblings().find('.btn').removeClass('active');
-      $(event.node).addClass('active');
+      app.router.navigate(status);
       if (status == 'recieved') {
         var data = {
           recipient_email: this.get('user.email'),
@@ -108,6 +107,7 @@ var app = app || {};
     //
     //***
     new: function( event ) {
+      //app.router.navigate('draft', {trigger: true});
       var invoice = new app.Invoice();
       app.invoiceList.get('invoices').add(invoice);
       var params = {
@@ -233,10 +233,12 @@ var app = app || {};
   });
 
   $("textarea.notes").growfield();
+  /*
   app.invoiceList.get('invoices').fetch({
     data: {
       status: 'draft'
     }
   });
+  */
 
 })(app);

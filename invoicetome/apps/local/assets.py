@@ -15,11 +15,14 @@ register('all_js',
             'js/bootstrap.min.js',
             'js/moment.min.js',
             'js/moment.ru.js',
+
             'js/app.js',
+            'js/utils.js',
             'js/invoice.js',
             'js/task.js',
             'js/user.js',
-            'js/utils.js',
+
+            'js/router.js',
         ),
         filters='jsmin',
         output='cache/packed.js')
