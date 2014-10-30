@@ -174,36 +174,9 @@
     model: app.Task
   });
 
-  app.createNewSpinner = new app.buttonSpinner(
-    $('#new-invoice'),
-    '&nbsp;',
-    $('#new-invoice')
-  );
-  app.copySpinner = new app.buttonSpinner(
-    $('#copy-invoice'),
-    '&nbsp;',
-    $('#copy-invoice')
-  );
-  app.deleteSpinner = new app.buttonSpinner(
-    $('#delete-invoice'),
-    '&nbsp;',
-    $('#delete-invoice')
-  );
-  app.saveSpinner = new app.buttonSpinner(
-    $('#save-invoice'),
-    '&nbsp;',
-    $('#save-invoice')
-  );
-  app.sendSpinner = new app.buttonSpinner(
-    $('#send-invoice'),
-    '&nbsp;',
-    $('#send-invoice')
-  );
-  app.pdfSpinner = new app.buttonSpinner(
-    $('#get-pdf'),
-    '&nbsp;',
-    $('#get-pdf')
-  );
+  app.Spinner = function($el) {
+    return new app.buttonSpinner($el, '&nbsp;', $el);
+  };
 
 })(app);
 

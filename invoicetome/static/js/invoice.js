@@ -74,6 +74,7 @@ var app = app || {};
     adaptors: [ Ractive.adaptors.Backbone ],
   });
 
+
   app.invoiceList.on({
     activate: function (event ) {
       event.original.preventDefault();
@@ -88,11 +89,12 @@ var app = app || {};
       event.original.preventDefault();
       event.original.stopPropagation();
       var invoice = event.context;
-      app.deleteSpinner.start();
+      var spinner = app.Spinner($('#delete-invoice'));
+      spinner.start();
       invoice.destroy({
         success: function(model, response) {
           //app.invoiceList.get('invoices').add(model);
-          app.deleteSpinner.stop();
+          spinner.stop();
         },
       });
     },
@@ -153,11 +155,12 @@ var app = app || {};
     //***
     delete: function( event ) {
       console.log(event);
-      app.deleteSpinner.start();
+      var spinner = app.Spinner($('#delete-invoice'));
+      spinner.start();
       this.get('invoice').destroy({
         success: function(model, response) {
           //app.invoiceList.get('invoices').add(model);
-          app.deleteSpinner.stop();
+          spinner.stop();
         },
       });
     },
@@ -166,7 +169,8 @@ var app = app || {};
     //
     //***
     save: function( event ) {
-      app.saveSpinner.start();
+      var spinner = app.Spinner($('#save-invoice'));
+      spinner.start();
       var tasks = app.tasks.get('tasks').toJSON();
       this.set('invoice.records', tasks);
       this.get('invoice').save(null, {
@@ -175,7 +179,7 @@ var app = app || {};
           var tasks = model.get('records');
           tasks = new app.Tasks(tasks);
           app.tasks.set('tasks', tasks);
-          app.saveSpinner.stop();
+          spinner.stop();
         },
       });
     },
@@ -189,7 +193,8 @@ var app = app || {};
       if ($client_email.length) {
         var email = $client_email.val();
         if (email) {
-          app.sendSpinner.start();
+          var spinner = app.Spinner($('#send-invoice'));
+          spinner.start();
           var tasks = app.tasks.get('tasks').toJSON();
           this.set('invoice.records', tasks);
           this.set('invoice.recipient_email', email);
@@ -199,7 +204,7 @@ var app = app || {};
               var tasks = model.get('records');
               tasks = new app.Tasks(tasks);
               app.tasks.set('tasks', tasks);
-              app.sendSpinner.stop();
+              spinner.stop();
               $('[data-toggle=popover]').popover('hide');
             },
           });
@@ -219,7 +224,8 @@ var app = app || {};
       app.makeMarkup();
       $(app.invoice.el).parent('form').submit();
       /*
-      app.pdfSpinner.start();
+      var spinner = app.Spinner($('#get-pdf'));
+      spinner.start();
       var tasks = app.tasks.get('tasks').toJSON();
       this.set('invoice.records', tasks);
       this.get('invoice').save(null, {
@@ -228,7 +234,7 @@ var app = app || {};
           var tasks = model.get('records');
           tasks = new app.Tasks(tasks);
           app.tasks.set('tasks', tasks);
-          app.pdfSpinner.stop();
+          spinner.stop();
           app.makeMarkup();
           $(app.invoice.el).parent('form').submit();
         }
