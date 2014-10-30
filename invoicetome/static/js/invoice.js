@@ -45,9 +45,8 @@ var app = app || {};
       history_date: function (date) {
         var date = new Date(date);
         var date = moment(date);
-        return date.lang('en').format('DD MMMM YYYY H:m');
+        return date.lang('en').format('DD MMMM YYYY H:mm');
       },
-
       // хэлпер используется в шаблоне {{ format(price) }}
       format: function ( num ) {
         return parseFloat(num).toFixed( 2 );
@@ -80,6 +79,7 @@ var app = app || {};
       event.original.preventDefault();
       $(event.node).siblings().removeClass('active');
       $(event.node).addClass('active');
+      //app.router.navigate('share');
       app.invoice.set('invoice', event.context);
       var tasks = event.context.get('records');
       tasks = new app.Tasks(tasks);
@@ -93,7 +93,6 @@ var app = app || {};
       spinner.start();
       invoice.destroy({
         success: function(model, response) {
-          //app.invoiceList.get('invoices').add(model);
           spinner.stop();
         },
       });
@@ -121,9 +120,9 @@ var app = app || {};
     //
     //***
     new: function( event ) {
-      //app.router.navigate('draft', {trigger: true});
+      var spinner = app.Spinner($('#new-invoice'));
+      spinner.start();
       var invoice = new app.Invoice();
-      app.invoiceList.get('invoices').add(invoice);
       var params = {
         description: '',
         quantity: 0,
@@ -138,6 +137,15 @@ var app = app || {};
 
       var tasks = tasks.toJSON();
       invoice.set('records', tasks);
+
+      invoice.save(null, {
+        success: function(model, response) {
+          if ($('[name=options]:checked').val() == 'draft') {
+            app.invoiceList.get('invoices').add(model);
+          };
+          spinner.stop();
+        },
+      });
     },
 
     //***
@@ -145,21 +153,33 @@ var app = app || {};
     //***
     copy: function( event ) {
       var invoice = app.invoice.get('invoice').clone();
+      var spinner = app.Spinner($('#copy-invoice'));
+      spinner.start();
       invoice.id = null;
-      invoice.set('id', null);
-      app.invoiceList.get('invoices').add(invoice);
+      invoice.set({
+        id: null,
+        status: 'draft',
+        histories: [],
+        recipient_email: null,
+      });
+      invoice.save(null, {
+        success: function(model, response) {
+          if ($('[name=options]:checked').val() == 'draft') {
+            app.invoiceList.get('invoices').add(model);
+          };
+          spinner.stop();
+        },
+      });
     },
 
     //***
     //
     //***
     delete: function( event ) {
-      console.log(event);
       var spinner = app.Spinner($('#delete-invoice'));
       spinner.start();
       this.get('invoice').destroy({
         success: function(model, response) {
-          //app.invoiceList.get('invoices').add(model);
           spinner.stop();
         },
       });
@@ -200,12 +220,12 @@ var app = app || {};
           this.set('invoice.recipient_email', email);
           this.get('invoice').save(null, {
             success: function (model, response) {
-              app.invoiceList.get('invoices').add(model);
+              app.invoiceList.get('invoices').remove(model);
               var tasks = model.get('records');
               tasks = new app.Tasks(tasks);
               app.tasks.set('tasks', tasks);
-              spinner.stop();
               $('[data-toggle=popover]').popover('hide');
+              spinner.stop();
             },
           });
         } else {
@@ -222,24 +242,6 @@ var app = app || {};
     generate_pdf: function( event ) {
       app.makeMarkup();
       $(app.invoice.el).parent('form').submit();
-      /*
-      var spinner = app.Spinner($('#get-pdf'));
-      spinner.start();
-      var tasks = app.tasks.get('tasks').toJSON();
-      this.set('invoice.records', tasks);
-      this.get('invoice').save(null, {
-        success: function (model, response) {
-          app.invoiceList.get('invoices').add(model);
-          var tasks = model.get('records');
-          tasks = new app.Tasks(tasks);
-          app.tasks.set('tasks', tasks);
-          spinner.stop();
-          app.makeMarkup();
-          $(app.invoice.el).parent('form').submit();
-        }
-      });
-      */
-
     },
   });
 
