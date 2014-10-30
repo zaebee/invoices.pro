@@ -124,8 +124,8 @@ def _invoice_pdf(request, pk):
 
 
 @login_required
-def invoice_detail(request, pk):
-    invoice = get_object_or_404(Invoice.objects.filter(owner=request.user), pk=pk)
+def invoice_detail(request, uuid):
+    invoice = get_object_or_404(Invoice.objects.filter(owner=request.user), uuid=uuid)
     data = {
         'invoice': invoice
     }
