@@ -76,13 +76,5 @@ var app = app || {};
     var subtotal = this.data.total_tasks(this.data.tasks);
     app.invoice.set('invoice.subtotal', parseFloat(subtotal));
   });
-  // Добавляем первый заполненный таск и 7 пустых
-  app.tasks.fire('add', {first: true});
-  _.each(_.range(7), function(el){
-    app.tasks.fire('add');
-  });
-
-  var tasks = app.tasks.get('tasks').toJSON();
-  app.invoice.set('invoice.records', tasks);
 
 })(app);

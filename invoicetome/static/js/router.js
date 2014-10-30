@@ -4,29 +4,62 @@ var app = app || {};
   app.Router = Backbone.Router.extend({
     routes: {
       '': 'draft',
+      ':status/:uuid': 'detail',
       'draft': 'draft',
       'sent': 'sent',
       'recieved': 'recieved',
-      'share/:uuid': 'share',
+    },
+
+    init_tasks: function () {
+      // Добавляем первый заполненный таск и 7 пустых
+      app.tasks.fire('add', {first: true});
+      _.each(_.range(7), function(el){
+        app.tasks.fire('add');
+      });
+
+      var tasks = app.tasks.get('tasks').toJSON();
+      app.invoice.set('invoice.records', tasks);
     },
 
     draft: function () {
+      this.init_tasks();
+      console.log('draft');
       app.invoiceList.fire('filter', null, 'draft');
       $('.btn-draft').button('toggle');
     },
 
     sent: function () {
+      this.init_tasks();
       app.invoiceList.fire('filter', null, 'sent');
       $('.btn-sent').button('toggle');
     },
 
     recieved: function () {
+      this.init_tasks();
       app.invoiceList.fire('filter', null, 'recieved');
       $('.btn-recieved').button('toggle');
     },
 
-    share: function (uuid) {
-      console.log('share', uuid);
+    detail: function (status, uuid) {
+      app.invoice.set('invoice.uuid', uuid);
+      app.invoice.get('invoice').fetch({
+        success: function(model, response) {
+          var tasks = model.get('records');
+          tasks = new app.Tasks(tasks);
+          app.tasks.set('tasks', tasks);
+          app.aside.set('status', status);
+          $('.btn-' + status).button('toggle');
+          app.invoiceList.get('invoices').fetch({
+            data: {
+              status: status,
+            },
+            success: function() {
+              $('[data-uuid=' + uuid + ']').addClass('active');
+            },
+          });
+        },
+      });
+      console.log('detail', uuid);
     },
   });
   app.router = new app.Router();

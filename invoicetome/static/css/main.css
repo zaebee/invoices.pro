@@ -399,6 +399,9 @@ a.button:active {
     padding: 20px 10px 10px 10px;
 }
 
+#invoice-list a {
+    padding: 10px 5px;
+}
 #invoice-list a i {
     font-weight: 100;
     background: #fdefde;
@@ -412,6 +415,10 @@ a.button:active {
 #invoice-list a i.btn-remove {
     color: #fff;
     background: #c9302c;
+	transition: bottom 0.3s;
+}
+#invoice-list a i.btn-remove:hover {
+    padding: 5px;
 }
 #invoice-history {
     margin: 0 auto;
