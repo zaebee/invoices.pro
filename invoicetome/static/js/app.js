@@ -37,36 +37,31 @@
         },
 
         show_success_message = function(message, fixed) {
-          var msg = $('#success-message').clone();
+          var msg = $('#success-message').clone().hide();
           if (fixed) {
             msg.addClass('fixed-block');
           } else {
             msg.removeClass('fixed-block');
           }
           msg.find('span').html(message);
-          $('#message-placeholder').html(msg);
+          $('#message-placeholder').html(msg).find('.alert').fadeIn();
+          setTimeout(function() {
+            $('#message-placeholder').find('.alert-success').fadeOut();
+          }, 3000);
         },
 
         show_failure_message = function (message, fixed) {
-          var msg = $('#failure-message').clone();
+          var msg = $('#failure-message').clone().hide();
           if (fixed) {
             msg.addClass('fixed-block');
           } else {
             msg.removeClass('fixed-block');
           }
           msg.find('span').text(message);
-          $('#message-placeholder').html(msg);
-        },
-
-        show_info_message = function (message, fixed) {
-          var msg = $('#info-message').clone();
-          if (fixed) {
-            msg.addClass('fixed-block');
-          } else {
-            msg.removeClass('fixed-block');
-          }
-          msg.find('span').text(message);
-          $('#message-placeholder').html(msg);
+          $('#message-placeholder').html(msg).find('.alert').fadeIn();
+          setTimeout(function() {
+            $('#message-placeholder').find('.alert-error').fadeOut();
+          }, 3000);
         },
 
         api_request = function(options) {
@@ -104,7 +99,6 @@
       apiRequest: api_request,
       showSuccessMessage: show_success_message,
       showFailureMessage: show_failure_message,
-      showInfoMessage: show_info_message,
     }
 
   }());

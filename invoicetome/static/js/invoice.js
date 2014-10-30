@@ -93,6 +93,7 @@ var app = app || {};
       spinner.start();
       invoice.destroy({
         success: function(model, response) {
+          app.showSuccessMessage(gettext('Invoice was deleted.'));
           spinner.stop();
         },
       });
@@ -143,6 +144,7 @@ var app = app || {};
           if ($('[name=options]:checked').val() == 'draft') {
             app.invoiceList.get('invoices').add(model);
           };
+          app.showSuccessMessage(gettext('New Invoice was saved in draft.'));
           spinner.stop();
         },
       });
@@ -167,6 +169,7 @@ var app = app || {};
           if ($('[name=options]:checked').val() == 'draft') {
             app.invoiceList.get('invoices').add(model);
           };
+          app.showSuccessMessage(gettext('Invoice copied and saved in draft.'));
           spinner.stop();
         },
       });
@@ -180,6 +183,7 @@ var app = app || {};
       spinner.start();
       this.get('invoice').destroy({
         success: function(model, response) {
+          app.showSuccessMessage(gettext('Invoice was deleted.'));
           spinner.stop();
         },
       });
@@ -199,6 +203,7 @@ var app = app || {};
           var tasks = model.get('records');
           tasks = new app.Tasks(tasks);
           app.tasks.set('tasks', tasks);
+          app.showSuccessMessage(gettext('Invoice was saved.'));
           spinner.stop();
         },
       });
@@ -225,6 +230,7 @@ var app = app || {};
               tasks = new app.Tasks(tasks);
               app.tasks.set('tasks', tasks);
               $('[data-toggle=popover]').popover('hide');
+              app.showSuccessMessage(gettext('Invoice sent success to ') + email);
               spinner.stop();
             },
           });

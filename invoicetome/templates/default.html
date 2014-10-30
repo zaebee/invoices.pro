@@ -38,11 +38,23 @@
 <body>
 
   <div class="wrapper container">
+  <div id="message-placeholder"></div>
   {% block content %}
   {% include 'include/_header.html' %}
   {% include 'include/_aside.html' %}
   {% include 'include/_order_form.html' %}
   {% endblock %}
+  </div>
+
+  <div class="hide">
+    <div class="alert alert-success" role="alert" id="success-message">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <span class="message"></span>
+    </div>
+    <div class="alert alert-error" role="alert" id="failure-message">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <span class="message"></span>
+    </div>
   </div>
 
   {% block js %}
