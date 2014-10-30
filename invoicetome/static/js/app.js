@@ -124,6 +124,7 @@
 
   app.Invoice = Backbone.Model.extend({
     urlRoot: '/api/invoices/',
+    idAttribute: 'uuid',
     defaults: {
       status: 'draft',
       company_name: gettext('Your Company Name'),

@@ -79,11 +79,11 @@ var app = app || {};
       event.original.preventDefault();
       $(event.node).siblings().removeClass('active');
       $(event.node).addClass('active');
-      //app.router.navigate('share');
       app.invoice.set('invoice', event.context);
       var tasks = event.context.get('records');
       tasks = new app.Tasks(tasks);
       app.tasks.set('tasks', tasks);
+      app.router.navigate(app.invoice.get('invoice.status') + '/' + app.invoice.get('invoice.uuid'));
     },
     delete: function( event ) {
       event.original.preventDefault();
@@ -158,12 +158,11 @@ var app = app || {};
       var spinner = app.Spinner($('#copy-invoice'));
       spinner.start();
       invoice.id = null;
-      invoice.set({
-        id: null,
-        status: 'draft',
-        histories: [],
-        recipient_email: null,
-      });
+      invoice.unset('id');
+      invoice.unset('uuid');
+      invoice.unset('status');
+      invoice.unset('histories');
+      invoice.unset('recipient_email');
       invoice.save(null, {
         success: function(model, response) {
           if ($('[name=options]:checked').val() == 'draft') {
