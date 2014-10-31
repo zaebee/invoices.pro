@@ -1,0 +1,6 @@
+ErrorDocument 503 /error/
+ErrorDocument 401 /error/
+ErrorDocument 500 /notfound/
+ErrorDocument 403 /notfound/
+ErrorDocument 400 /error/
+ErrorDocument 404 /notfound/
