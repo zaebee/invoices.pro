@@ -8,17 +8,17 @@
   ),
   'times' => 
   array (
-    'normal' => DOMPDF_FONT_DIR . 'times',
-    'bold' => DOMPDF_FONT_DIR . 'timesbd',
-    'italic' => DOMPDF_FONT_DIR . 'timesi',
-    'bold_italic' => DOMPDF_FONT_DIR . 'timesbi',
+    'normal' => DOMPDF_FONT_DIR . 'Times-Roman',
+    'bold' => DOMPDF_FONT_DIR . 'Times-Bold',
+    'italic' => DOMPDF_FONT_DIR . 'Times-Italic',
+    'bold_italic' => DOMPDF_FONT_DIR . 'Times-BoldItalic',
   ),
   'times-roman' => 
   array (
-    'normal' => DOMPDF_FONT_DIR . 'times',
-    'bold' => DOMPDF_FONT_DIR . 'timesbd',
-    'italic' => DOMPDF_FONT_DIR . 'timesi',
-    'bold_italic' => DOMPDF_FONT_DIR . 'timesbi',
+    'normal' => DOMPDF_FONT_DIR . 'Times-Roman',
+    'bold' => DOMPDF_FONT_DIR . 'Times-Bold',
+    'italic' => DOMPDF_FONT_DIR . 'Times-Italic',
+    'bold_italic' => DOMPDF_FONT_DIR . 'Times-BoldItalic',
   ),
   'courier' => 
   array (

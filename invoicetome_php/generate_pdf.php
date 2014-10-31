@@ -9,15 +9,15 @@ $is_local = true;
 if ( isset( $_POST["html"] ) && $is_local ) {
 
   if ( get_magic_quotes_gpc() )
-    $_POST["html"] = utf8_decode(stripslashes($_POST["html"]));
+    //$_POST["html"] = utf8_decode(stripslashes($_POST["html"]));
+    $_POST["html"] = utf8_encode(stripslashes($_POST["html"]));
 //    $_POST["html"] = str_replace(array('7','&euro;'),array('&0128;','&0128;'), $_POST["html"]);
-
   
   $dompdf = new DOMPDF();
   $dompdf->load_html("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">
 <head>
-
+<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">
 <style>
 
 
@@ -31,7 +31,7 @@ body, div, h1, h2, h3, p {
 
 body {
 	margin:50px 57px !important;
-	font-family: Helvetica;
+	font-family: times;
 	}
 
 .left {text-align:left;}
@@ -166,7 +166,7 @@ div p {
 <div class="tools" id="two">
 	<h5>Finished editing?</h5>
 	<ul>
-		<li><a class="button" href="#">Get PDF</a></li>
+		<li><a class="btn btn-success" href="#">Get PDF</a></li>
 	</ul>
 </div>
 <div class="tools" id="three">
