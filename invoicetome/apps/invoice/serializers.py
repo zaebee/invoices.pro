@@ -27,7 +27,7 @@ class RecordSerializer(serializers.ModelSerializer):
 
     def extra_fields(self, obj):
         request = self.context.get('request', None)
-        if obj.invoice.owner == request.user:
+        if obj.invoice.owner == request.user and obj.invoice.status == obj.invoice.STATUS_DRAFT:
             disabled = False
         else:
             disabled = True
@@ -54,12 +54,10 @@ class InvoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Invoice
         exclude = ('owner',)
-        #ordering_fields = ('id',)
-        #ordering = '-id'
 
     def extra_fields(self, obj):
         request = self.context.get('request', None)
-        if obj.owner == request.user:
+        if obj.owner == request.user and obj.status == obj.STATUS_DRAFT:
             disabled = False
         else:
             disabled = True

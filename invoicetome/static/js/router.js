@@ -12,6 +12,7 @@ var app = app || {};
 
     init_tasks: function () {
       // Добавляем первый заполненный таск и 7 пустых
+      app.tasks.get('tasks').reset();
       app.tasks.fire('add', {first: true});
       _.each(_.range(7), function(el){
         app.tasks.fire('add');
