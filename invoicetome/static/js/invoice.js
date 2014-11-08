@@ -20,10 +20,10 @@ var app = app || {};
           return '';
         } 
       },
-      date_short: function () {
-        var date = this.get('invoice.date_added') || new Date();
+      date_short: function (date) {
+        var date = new Date(date);
         var date = moment(date);
-        return date.lang('en').format('DD.MM.YYYY');
+        return date.lang('en').format('DD.MM.YYYY HH:mm');
       },
 
     },
@@ -45,7 +45,7 @@ var app = app || {};
       history_date: function (date) {
         var date = new Date(date);
         var date = moment(date);
-        return date.lang('en').format('DD MMMM YYYY H:mm');
+        return date.lang('en').format('DD MMMM YYYY HH:mm');
       },
       // хэлпер используется в шаблоне {{ format(price) }}
       format: function ( num ) {

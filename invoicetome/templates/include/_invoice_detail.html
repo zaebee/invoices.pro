@@ -129,7 +129,7 @@
   {{#each invoices:i}}
   <a data-uuid="{{uuid}}" on-click="activate:{{this}}" title="{{invoice_uid}}" href="#{{status}}/{{uuid}}" class="list-group-item {{#if active}}active{{/if}}">
     {{client_name}}
-    <small>({{client_company}})<br><i>{{date_short()}}</i></small>
+    <small>({{client_company}})<br><i>{{date_short(date_added)}}</i></small>
     {{#unless disabled}}
     <i tltle="Delete invoice" on-click="delete:{{this}}" class="btn-remove glyphicon glyphicon-remove pull-right"></i>
     {{/unless}}
