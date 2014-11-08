@@ -150,11 +150,9 @@
           <li><a role="button" id="save-invoice" onclick="app.invoice.fire('save');return false;" class="button btn-success" href="#">Save</a></li>
           <li class="divider"><hr></li>
           <li><a role="button" id="send-invoice" onclick="app.invoice.fire('send');return false;" data-trigger="manual" data-html="true" data-toggle="popover" data-placement="left" data-content="<input style='width:200px' type='text' class='form-control' name='client_email' placeholder='Enter client email'>" class="button btn-primary" href="#">Send</a></li>
-        {{/if}}
-        {{#unless status === 'recieved' }}
           <li class="divider"><hr></li>
           <li><a role="button" id="delete-invoice" onclick="app.invoice.fire('delete');return false;" class="button btn-danger" href="#">Delete</a></li>
-        {{/unless}}
+        {{/if}}
       {{else}}
         <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button btn-primary" href="#">Get PDF</a></li>
       {{/if}}

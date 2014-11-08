@@ -62,6 +62,7 @@ var app = app || {};
       console.log('detail', uuid);
     },
   });
+  $('#company').focus();
   app.router = new app.Router();
   Backbone.history.start();
 })(app);
