@@ -5,7 +5,7 @@ from django.views.generic import TemplateView, RedirectView
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
-from apps.local.views import RegistrationView, MainView
+from apps.local.views import RegistrationView, ActivationView, MainView
 
 
 admin.autodiscover()
@@ -19,6 +19,7 @@ urlpatterns = patterns('',
     url(r'^api/', include('invoice.urls')),
     url(r'^localeurl/', include('localeurl.urls')),
     url(r'^registration/register/$', RegistrationView.as_view(), name='registration_register'),
+    url(r'^registration/activate/(?P<activation_key>\w+)/$', ActivationView.as_view(), name='registration_activate'),
     url(r'^registration/', include('registration.backends.default.urls')),
 )
 
