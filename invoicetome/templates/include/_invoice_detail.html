@@ -79,8 +79,8 @@
     <ul class="list-group">
       {{#each invoice.histories}}
       <li class="list-group-item">
-        <span class="label label-success">{{action}}</span>
-        <span>{{#if email}} to {{email}}{{/if}}</span>
+        <span class="label label-success">{{action_display}}</span>
+        <span>{{#if email}} {{email}}{{/if}}</span>
         <span class="pull-right">{{history_date(date_added)}}</span>
       </li>
       {{/each}}
@@ -127,9 +127,16 @@
   </div>
   <span class="list-group-item"></span>
   {{#each invoices:i}}
-  <a data-uuid="{{uuid}}" on-click="activate:{{this}}" title="{{invoice_uid}}" href="#{{status}}/{{uuid}}" class="list-group-item {{#if active}}active{{/if}}">
+  <a data-uuid="{{uuid}}" on-click="activate:{{this}}" title="{{invoice_uid}}" href="#{{status}}/{{uuid}}" class="list-group-item">
     {{client_name}}
-    <small>({{client_company}})<br><i>{{date_short(date_added)}}</i></small>
+    <small>({{client_company}})</small>
+    {{#if recipient_email !== user.email}}
+      <small><span class="label label-success">{{recipient_email}}</span></small>
+    {{/if}}
+    {{#if recipient_email == user.email}}
+      <small><span class="label label-success">{{company_name}}</span></small>
+    {{/if}}
+    <br><small><i>{{date_short(date_added)}}</i></small>
     {{#unless disabled}}
     <i tltle="Delete invoice" on-click="delete:{{this}}" class="btn-remove glyphicon glyphicon-remove pull-right"></i>
     {{/unless}}
@@ -139,38 +146,38 @@
 
 <script id="invoice-aside-template" type="text/ractive">
   <div class="tools" id="two">
-    <h5 class="text-center">Finished editing?</h5>
+    <h5 class="text-center">{{text.finished}}</h5>
     <ul class="nav nav-pills nav-stacked">
       {{#if user.authenticated}}
-        <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button btn-primary" href="#">Get PDF</a></li>
+        <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button btn-primary" href="#">{{text.get_pdf}}</a></li>
         {{#unless status === 'recieved' }}
-          <li><a role="button" id="copy-invoice" onclick="app.invoice.fire('copy');return false;" class="button btn-primary" href="#">Copy</a></li>
+          <li><a role="button" id="copy-invoice" onclick="app.invoice.fire('copy');return false;" class="button btn-primary" href="#">{{text.copy}}</a></li>
         {{/unless}}
         {{#if status === 'draft' }}
-          <li><a role="button" id="save-invoice" onclick="app.invoice.fire('save');return false;" class="button btn-success" href="#">Save</a></li>
+          <li><a role="button" id="save-invoice" onclick="app.invoice.fire('save');return false;" class="button btn-success" href="#">{{text.save}}</a></li>
           <li class="divider"><hr></li>
-          <li><a role="button" id="send-invoice" onclick="app.invoice.fire('send');return false;" data-trigger="manual" data-html="true" data-toggle="popover" data-placement="left" data-content="<input style='width:200px' type='text' class='form-control' name='client_email' placeholder='Enter client email'>" class="button btn-primary" href="#">Send</a></li>
+          <li><a role="button" id="send-invoice" onclick="app.invoice.fire('send');return false;" data-trigger="manual" data-html="true" data-toggle="popover" data-placement="left" data-content="<input style='width:200px' type='text' class='form-control' name='client_email' placeholder='Enter client email'>" class="button btn-primary" href="#">{{text.send}}</a></li>
           <li class="divider"><hr></li>
-          <li><a role="button" id="delete-invoice" onclick="app.invoice.fire('delete');return false;" class="button btn-danger" href="#">Delete</a></li>
+          <li><a role="button" id="delete-invoice" onclick="app.invoice.fire('delete');return false;" class="button btn-danger" href="#">{{text.delete}}</a></li>
         {{/if}}
       {{else}}
-        <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button btn-primary" href="#">Get PDF</a></li>
+        <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button btn-primary" href="#">{{text.get_pdf}}</a></li>
       {{/if}}
     </ul>
   </div>
 
   {{#if status === 'draft' }}
   <div class="tools" id="three">
-    <h5>Resize table</h5>
+    <h5>{{text.resize_table}}</h5>
     <ul>
       <li>
         <a id="addRow" onclick="app.tasks.fire('add');return false;" href="#" title="test">
-          <span style="padding-right:5px;">+</span> Add row
+          <span style="padding-right:5px;">+</span> {{text.add_row}}
         </a>
       </li>
       <li>
       <a id="delRow" onclick="app.tasks.fire('destroy');return false;" href="#">
-        <span style="padding-right:5px;padding-left:1px;">&ndash;</span> Delete row
+        <span style="padding-right:5px;padding-left:1px;">&ndash;</span> {{text.delete_row}}
       </a>
       </li>
     </ul>

@@ -66,6 +66,17 @@ var app = app || {};
     el: '#aside-actions',
     template: '#invoice-aside-template',
     data: {
+      text: {
+        get_pdf: gettext('Get Pdf'),
+        copy: gettext('Copy'),
+        save: gettext('Save'),
+        send: gettext('Send'),
+        delete: gettext('Delete'),
+        resize_table: gettext('Resize Table'),
+        add_row: gettext('Add Row'),
+        delete_row: gettext('Delete Row'),
+        finished: gettext('Finished editing?'),
+      },
       user: USER,
       invoice: app.invoice.get('invoice'),
       status: 'draft',

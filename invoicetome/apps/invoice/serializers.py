@@ -6,6 +6,7 @@ from .models import Invoice, Record, Header, History
 
 
 class HistorySerializer(serializers.ModelSerializer):
+    action_display = serializers.Field(source='get_action_display')
 
     class Meta:
         model = History

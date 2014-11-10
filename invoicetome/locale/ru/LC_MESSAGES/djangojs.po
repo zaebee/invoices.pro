@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-08 02:08+0000\n"
+"POT-Creation-Date: 2014-11-10 09:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -171,90 +171,151 @@ msgstr ""
 msgid "Tomorrow"
 msgstr ""
 
-#: static/js/app.js:135
+#: static/cache/packed.js:72 static/js/app.js:130
 msgid "Your Company Name"
 msgstr "Ваша компания"
 
-#: static/js/app.js:136
+#: static/cache/packed.js:72 static/js/app.js:131
 msgid "123 Your Street"
 msgstr "Улица, дом"
 
-#: static/js/app.js:137
+#: static/cache/packed.js:72 static/js/app.js:132
 msgid "Your Town"
 msgstr "Ваш город"
 
-#: static/js/app.js:138
+#: static/cache/packed.js:72 static/js/app.js:133
 msgid "Address Line 3"
 msgstr "Дополнительный адрес"
 
-#: static/js/app.js:139
+#: static/cache/packed.js:72 static/js/app.js:134
 msgid "(123) 456 789"
 msgstr "(123) 456 789"
 
-#: static/js/app.js:140
+#: static/cache/packed.js:72 static/js/app.js:135
 msgid "email@yourcompany.com"
 msgstr ""
 
-#: static/js/app.js:141
+#: static/cache/packed.js:72 static/js/app.js:136
 msgid "Invoice"
 msgstr "Счет"
 
-#: static/js/app.js:142
+#: static/cache/packed.js:72 static/js/app.js:137
 msgid "Invoice #"
 msgstr "Счет #"
 
-#: static/js/app.js:143
+#: static/cache/packed.js:72 static/js/app.js:138
 msgid "PO 456001200"
 msgstr ""
 
-#: static/js/app.js:144
+#: static/cache/packed.js:72 static/js/app.js:139
 msgid "Att: Ms. Jane Doe"
 msgstr "Клиент: Иванов И.И."
 
-#: static/js/app.js:145
+#: static/cache/packed.js:72 static/js/app.js:140
 msgid "Client Company Name"
 msgstr "Компания клиента"
 
-#: static/js/app.js:152
+#: static/cache/packed.js:72 static/js/app.js:147
 msgid "Item Description"
 msgstr "Описание"
 
-#: static/js/app.js:153
+#: static/cache/packed.js:72 static/js/app.js:148
 msgid "Quantity"
 msgstr "Кол-во"
 
-#: static/js/app.js:154
+#: static/cache/packed.js:72 static/js/app.js:149
 msgid "Unit Price (€)"
 msgstr "Ед. изм. (€)"
 
-#: static/js/app.js:155
+#: static/cache/packed.js:72 static/js/app.js:150
 msgid "Total (€)"
 msgstr "Итого (€)"
 
-#: static/js/app.js:156
+#: static/cache/packed.js:72 static/js/app.js:151
 msgid "Subtotal"
-msgstr "ПОдитог"
+msgstr "Подитог"
 
-#: static/js/app.js:157
+#: static/cache/packed.js:72 static/js/app.js:152
 msgid "Sales tax (20%)"
 msgstr "Скидка (20%)"
 
-#: static/js/app.js:158
+#: static/cache/packed.js:72 static/js/app.js:153
 msgid "Total"
 msgstr "Итого"
 
-#: static/js/invoice.js:11
+#: static/cache/packed.js:72 static/js/invoice.js:12
 msgid "Draft"
 msgstr "Черновики"
 
-#: static/js/invoice.js:12
+#: static/cache/packed.js:72 static/js/invoice.js:13
 msgid "Sent"
-msgstr "Отправлены"
+msgstr "Отправленые"
 
-#: static/js/invoice.js:13
+#: static/cache/packed.js:72 static/js/invoice.js:14
 msgid "Recieved"
-msgstr "Получены"
+msgstr "Полученые"
 
-#: static/js/task.js:35
+#: static/cache/packed.js:72 static/js/invoice.js:18
+msgid "Sent to "
+msgstr "Отправлено на"
+
+#: static/cache/packed.js:72 static/js/invoice.js:70
+msgid "Get Pdf"
+msgstr "Получить pdf"
+
+#: static/cache/packed.js:72 static/js/invoice.js:71
+msgid "Copy"
+msgstr "Копировать"
+
+#: static/cache/packed.js:72 static/js/invoice.js:72
+msgid "Save"
+msgstr "Сохранить"
+
+#: static/cache/packed.js:72 static/js/invoice.js:73
+msgid "Send"
+msgstr "Отправить"
+
+#: static/cache/packed.js:72 static/js/invoice.js:74
+msgid "Delete"
+msgstr "Удалить"
+
+#: static/cache/packed.js:72 static/js/invoice.js:75
+msgid "Resize Table"
+msgstr "Изменить таблицу"
+
+#: static/cache/packed.js:72 static/js/invoice.js:76
+msgid "Add Row"
+msgstr "Дбоавить строку"
+
+#: static/cache/packed.js:72 static/js/invoice.js:77
+msgid "Delete Row"
+msgstr "Удалить строку"
+
+#: static/cache/packed.js:72 static/js/invoice.js:78
+msgid "Finished editing?"
+msgstr "Закончили редактирование?"
+
+#: static/cache/packed.js:72 static/cache/packed.js.c:73
+#: static/js/invoice.js:107 static/js/invoice.js.c:196
+msgid "Invoice was deleted."
+msgstr "Счет был удален."
+
+#: static/cache/packed.js:73 static/js/invoice.js:158
+msgid "New Invoice was saved in draft."
+msgstr "Новый счет был сохранен в черновики."
+
+#: static/cache/packed.js:73 static/js/invoice.js:182
+msgid "Invoice copied and saved in draft."
+msgstr "Счет скопирован и сохранен в черновики"
+
+#: static/cache/packed.js:73 static/js/invoice.js:216
+msgid "Invoice was saved."
+msgstr "Счет был сохранен."
+
+#: static/cache/packed.js:73 static/js/invoice.js:243
+msgid "Invoice sent success to "
+msgstr "Счет успешно отправлен на"
+
+#: static/cache/packed.js:73 static/js/task.js:35
 msgid "Supporting of in-house project (hours worked)"
 msgstr "Поддержка проекта"
