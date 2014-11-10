@@ -55,7 +55,7 @@
               <td class=""><input disabled value="{{task.description}}"></td>
               <td class=""><input disabled value="{{task.quantity|default:''|floatformat:2}}"></td>
               <td class=""><input disabled value="{{task.unit_price|default:''|floatformat:2}}"></td>
-              <td class=""><input disabled value="{{task.total|default:'-'|floatformat:"2"}}"></td>
+              <td class="">{{task.total|default:'-'|floatformat:2}}</td>
             </tr>
           {% endfor %}
         </tbody>
