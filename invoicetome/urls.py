@@ -5,8 +5,7 @@ from django.views.generic import TemplateView, RedirectView
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
-from apps.local.forms import RegistrationForm
-from registration.backends.default.views import RegistrationView
+from local.views import RegistrationView, MainView
 
 
 admin.autodiscover()
@@ -16,14 +15,10 @@ js_info_dict = {
 }
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'invoicetome.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include('invoice.urls')),
     url(r'^localeurl/', include('localeurl.urls')),
-    url(r'^registration/register/$', RegistrationView.as_view(form_class=RegistrationForm), name='registration_register'),
+    url(r'^registration/register/$', RegistrationView.as_view(), name='registration_register'),
     url(r'^registration/', include('registration.backends.default.urls')),
 )
 
@@ -58,7 +53,7 @@ urlpatterns += patterns('',
 )
 
 urlpatterns += patterns('',
-    (r'^$', TemplateView.as_view(template_name="default.html")),
+    url(r'^$', MainView.as_view(), name='main-view'),
 )
 
 if settings.DEBUG:
