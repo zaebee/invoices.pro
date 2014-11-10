@@ -51,6 +51,7 @@ class InvoiceSerializer(serializers.ModelSerializer):
     date_added = serializers.DateTimeField(read_only=True)
     recipient_email = serializers.EmailField(source="recipient_email", read_only=True)
     disabled = serializers.Field(source='_extra_fields.disabled')
+    status = serializers.Field(source='_extra_fields.status')
     share_link = serializers.Field(source='get_absolute_url')
 
     class Meta:
@@ -63,8 +64,13 @@ class InvoiceSerializer(serializers.ModelSerializer):
             disabled = False
         else:
             disabled = True
+        if obj.recipient_email == request.user.email:
+            status = obj.STATUS_RECIEVED
+        else:
+            status = obj.status
         data = {
-            'disabled' : disabled
+            'disabled' : disabled,
+            'status' : status,
         }
         return data
 

@@ -128,13 +128,18 @@
   <span class="list-group-item"></span>
   {{#each invoices:i}}
   <a data-uuid="{{uuid}}" on-click="activate:{{this}}" title="{{invoice_uid}}" href="#{{status}}/{{uuid}}" class="list-group-item">
-    {{client_name}}
-    <small>({{client_company}})</small>
-    {{#if recipient_email !== user.email}}
+    {{#if status == 'draft'}}
+      {{client_name}}
+      <small>({{client_company}})</small>
+    {{/if}}
+    {{#if status == 'sent'}}
+      {{client_name}}
+      <small>({{client_company}})</small>
       <small><span class="label label-success">{{recipient_email}}</span></small>
     {{/if}}
-    {{#if recipient_email == user.email}}
-      <small><span class="label label-success">{{company_name}}</span></small>
+    {{#if status == 'recieved'}}
+      {{company_name}}
+      <small>({{email}}</span>)
     {{/if}}
     <br><small><i>{{date_short(date_added)}}</i></small>
     {{#unless disabled}}
