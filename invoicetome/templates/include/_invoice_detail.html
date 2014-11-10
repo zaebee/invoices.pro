@@ -150,7 +150,7 @@
     <ul class="nav nav-pills nav-stacked">
       {{#if user.authenticated}}
         <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button btn-primary" href="#">{{text.get_pdf}}</a></li>
-        {{#unless status === 'recieved' }}
+        {{#unless status === 'recieved'}}
           <li><a role="button" id="copy-invoice" onclick="app.invoice.fire('copy');return false;" class="button btn-primary" href="#">{{text.copy}}</a></li>
         {{/unless}}
         {{#if status === 'draft' }}

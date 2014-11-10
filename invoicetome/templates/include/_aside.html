@@ -1,6 +1,6 @@
 {% load i18n %}
 <div class="aside">
-  {% if user.is_authenticated %}
+  {% if user.is_authenticated and not share %}
   <div class="tools" id="invoice-list">
     <a id="new-invoice" onclick="app.invoice.fire('new');return false;" href="#" class="button btn-success">{% trans 'Create New' %}</a>
     <!--
@@ -13,12 +13,22 @@
   </div>
   {% endif %}
 
-  <div class="tools" id="one">
-    <h5>
-      <a href="/">invoiceto.me</a>
-    </h5>
-    <p>{% trans '&larr; Edit the fields to make an invoice' %}</p>
-  </div>
+  {% if not share %}
+    <div class="tools" id="one">
+      <h5>
+        <a href="/">invoiceto.me</a>
+      </h5>
+      <p>{% trans '&larr; Edit the fields to make an invoice' %}</p>
+    </div>
+
+  {% else %}
+
+    <div class="tools" id="one">
+      <ul class="nav nav-pills nav-stacked">
+        <li><a role="button" id="get-pdf" onclick="app.makeMarkup();$('.invoice-form').submit();" class="button btn-primary" href="#">{% trans 'Get PDF' %}</a></li>
+      </ul>
+    </div>
+  {% endif %}
 
   <div id="aside-actions"></div>
   <!--

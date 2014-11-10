@@ -1,5 +1,5 @@
 {% load i18n %}
-<form class="" role="form" action="/index.php" method="post">
+<form class="invoice-form" role="form" action="/generate_pdf.php" method="post">
 
   <div id="invoice">
   
@@ -83,4 +83,5 @@
     </div>
 
   </div>
+  <textarea name="html" id="markup" cols="60" rows="20" style="display:none;"></textarea>
 </form>

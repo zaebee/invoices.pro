@@ -68,6 +68,7 @@ var app = app || {};
     data: {
       text: {
         get_pdf: gettext('Get Pdf'),
+        get_share_link: gettext('Get Share Link'),
         copy: gettext('Copy'),
         save: gettext('Save'),
         send: gettext('Send'),
@@ -95,6 +96,12 @@ var app = app || {};
       tasks = new app.Tasks(tasks);
       app.tasks.set('tasks', tasks);
       app.router.navigate(app.invoice.get('invoice.status') + '/' + app.invoice.get('invoice.uuid'));
+    },
+    share: function( event ) {
+      event.original.preventDefault();
+      event.original.stopPropagation();
+      var invoice = event.context;
+      console.log('share');
     },
     delete: function( event ) {
       event.original.preventDefault();

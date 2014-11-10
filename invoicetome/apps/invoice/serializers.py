@@ -51,6 +51,7 @@ class InvoiceSerializer(serializers.ModelSerializer):
     date_added = serializers.DateTimeField(read_only=True)
     recipient_email = serializers.EmailField(source="recipient_email", read_only=True)
     disabled = serializers.Field(source='_extra_fields.disabled')
+    share_link = serializers.Field(source='get_absolute_url')
 
     class Meta:
         model = Invoice
