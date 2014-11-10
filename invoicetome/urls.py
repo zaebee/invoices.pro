@@ -5,7 +5,7 @@ from django.views.generic import TemplateView, RedirectView
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
-from local.views import RegistrationView, MainView
+from apps.local.views import RegistrationView, MainView
 
 
 admin.autodiscover()
