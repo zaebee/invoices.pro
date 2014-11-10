@@ -1,13 +1,7 @@
 {% load i18n %}
 <div class="aside">
-  {% if user.is_authenticated and not share %}
+  {% if user.is_authenticated %}
   <div class="tools" id="invoice-list">
-    <a id="new-invoice" onclick="app.invoice.fire('new');return false;" href="#" class="button btn-success">{% trans 'Create New' %}</a>
-    <!--
-    <a class="toggler btn btn-default pull-left">
-      <i class="glyphicon glyphicon-chevron-right"></i>
-    </a>
-    -->
     <h5>{% trans 'My invoices' %}</h5>
     <div class="list-group"></div>
   </div>

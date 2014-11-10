@@ -160,7 +160,7 @@ var app = app || {};
       invoice.save(null, {
         success: function(model, response) {
           if ($('[name=options]:checked').val() == 'draft') {
-            app.invoiceList.get('invoices').add(model);
+            app.invoiceList.get('invoices').add(model, {at: 0});
           };
           app.showSuccessMessage(gettext('New Invoice was saved in draft.'));
           spinner.stop();
@@ -184,7 +184,7 @@ var app = app || {};
       invoice.save(null, {
         success: function(model, response) {
           if ($('[name=options]:checked').val() == 'draft') {
-            app.invoiceList.get('invoices').add(model);
+            app.invoiceList.get('invoices').add(model, {at:0});
           };
           app.showSuccessMessage(gettext('Invoice copied and saved in draft.'));
           spinner.stop();
@@ -216,7 +216,7 @@ var app = app || {};
       this.set('invoice.records', tasks);
       this.get('invoice').save(null, {
         success: function(model, response) {
-          app.invoiceList.get('invoices').add(model);
+          app.invoiceList.get('invoices').add(model, {at: 0});
           var tasks = model.get('records');
           tasks = new app.Tasks(tasks);
           app.tasks.set('tasks', tasks);

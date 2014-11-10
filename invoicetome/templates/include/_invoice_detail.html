@@ -125,7 +125,6 @@
       </div>
     </label>
   </div>
-  <span class="list-group-item"></span>
   {{#each invoices:i}}
   <a data-uuid="{{uuid}}" on-click="activate:{{this}}" title="{{invoice_uid}}" href="#{{status}}/{{uuid}}" class="list-group-item">
     {{#if status == 'draft'}}
@@ -151,6 +150,7 @@
 
 <script id="invoice-aside-template" type="text/ractive">
   <div class="tools" id="two">
+    <a id="new-invoice" onclick="app.invoice.fire('new');return false;" href="#" class="button btn-success">Create New</a>
     <h5 class="text-center">{{text.finished}}</h5>
     <ul class="nav nav-pills nav-stacked">
       {{#if user.authenticated}}
