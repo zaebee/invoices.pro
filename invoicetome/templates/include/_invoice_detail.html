@@ -134,7 +134,7 @@
     {{#if status == 'sent'}}
       {{client_name}}
       <small>({{client_company}})</small>
-      <small><span class="label label-success">{{recipient_email}}</span></small>
+      <small><span class="label label-default">{{recipient_email}}</span></small>
     {{/if}}
     {{#if status == 'recieved'}}
       {{company_name}}
@@ -162,8 +162,6 @@
           <li><a role="button" id="save-invoice" onclick="app.invoice.fire('save');return false;" class="button btn-success" href="#">{{text.save}}</a></li>
           <li class="divider"><hr></li>
           <li><a role="button" id="send-invoice" onclick="app.invoice.fire('send');return false;" data-trigger="manual" data-html="true" data-toggle="popover" data-placement="left" data-content="<input style='width:200px' type='text' class='form-control' name='client_email' placeholder='Enter client email'>" class="button btn-primary" href="#">{{text.send}}</a></li>
-          <li class="divider"><hr></li>
-          <li><a role="button" id="delete-invoice" onclick="app.invoice.fire('delete');return false;" class="button btn-danger" href="#">{{text.delete}}</a></li>
         {{/if}}
       {{else}}
         <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button btn-primary" href="#">{{text.get_pdf}}</a></li>
