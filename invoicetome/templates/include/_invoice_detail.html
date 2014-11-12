@@ -150,7 +150,9 @@
 
 <script id="invoice-aside-template" type="text/ractive">
   <div class="tools" id="two">
+    {{#if user.authenticated}}
     <a id="new-invoice" onclick="app.invoice.fire('new');return false;" href="#" class="button btn-success">Create New</a>
+    {{/if}}
     <h5 class="text-center">{{text.finished}}</h5>
     <ul class="nav nav-pills nav-stacked">
       {{#if user.authenticated}}
