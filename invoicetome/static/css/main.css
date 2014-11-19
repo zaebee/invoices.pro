@@ -25,7 +25,6 @@ body {
 #invoice {
 	position: relative;
 	opacity: 0.99;
-	width: 860px;
 	padding:45px;
 	background: #fcffff url(../images/paper.png);
 	-webkit-border-radius: 5px;
@@ -61,7 +60,8 @@ input, textarea {
 /*	width: 400px;*/
 }
 
-#header {
+.header {
+    margin-bottom: 50px;
 }
 
 #company {
@@ -299,7 +299,7 @@ input {
 
 
 #invoice {
-    margin: 50px auto 0;
+    margin: 0 auto 0;
 }
 
 .btn-custom {
@@ -321,8 +321,8 @@ a.button:link, a.button:visited {
 	text-decoration: none;
 	font-weight: bold;
 	line-height: 1;
-	-moz-border-radius: 15px;
-	-webkit-border-radius: 15px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	text-shadow: 0 -1px 1px rgba(0,0,0,0.3);
 	margin-left:0;
 	position: relative;
@@ -390,14 +390,11 @@ a.button:active {
 }
 
 #invoice-list {
-    position: absolute;
-    top: 20px;
-    left: 0px;
     z-index:10;
     border-radius: 0;
-    width: 260px;
     overflow: hidden;
-    padding: 20px 10px 10px 10px;
+    padding-top: 20px;
+    padding-right: 0;
 }
 
 #invoice-list a {
@@ -440,8 +437,14 @@ a.button:active {
 #invoice-list a i.btn-share:hover {
     padding: 5px;
 }
+#invoice-list .invoice-list-title {
+    color: #fff;
+}
 #invoice-history {
     margin: 0 auto;
+}
+#invoice-history h3 {
+    color: #fff;
 }
 #invoice-history .list-group {
     margin-right:0;
@@ -467,9 +470,9 @@ a.button:active {
 }
 
 #message-placeholder {
-    position: absolute;
-    top: 50px;
-    left: 260px;
+    position: fixed;
+    top: 60px;
+    right: 15px;
     width: 860px;
     z-index: 10;
 }

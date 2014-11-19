@@ -9,9 +9,9 @@ var app = app || {};
       invoices: new app.Invoices(), // наша Backbone модель
       user: USER,
       status: {
-        draft: gettext('Draft'),
-        sent: gettext('Sent'),
-        recieved: gettext('Recieved'),
+        draft: gettext('Draft Invoices'),
+        sent: gettext('Sent Invoices'),
+        recieved: gettext('Recieved Invoices'),
       },
       title: function (recipient) {
         if (recipient) {
@@ -31,9 +31,12 @@ var app = app || {};
   });
 
   app.invoice = new Ractive({
-    el: '#invoice',
+    el: '#invoice-detail',
     template: '#invoice-template',
     data: {
+      text: {
+        history_title: gettext('Invoice History'),
+      },
       user: USER,
       invoice: new app.Invoice, // наша Backbone модель
 
@@ -63,8 +66,8 @@ var app = app || {};
   });
 
   app.aside = new Ractive({
-    el: '#aside-actions',
-    template: '#invoice-aside-template',
+    el: '#actions-bar',
+    template: '#invoice-actions-template',
     data: {
       text: {
         get_pdf: gettext('Get Pdf'),
@@ -128,6 +131,7 @@ var app = app || {};
           status: status,
         };
       }
+      this.set('active_status', this.get('status')[status]);
       this.get('invoices').fetch({
         data: data,
       });

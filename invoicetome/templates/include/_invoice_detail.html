@@ -3,7 +3,7 @@
 
 <script id="invoice-template" type="text/ractive">
   {{#with invoice}}
-    <div class="container-fluid" id="header">
+    <div class="container-fluid" id="invoice">
       <div class="row">
         <input disabled="{{disabled}}" id="company" class="col-md-6" value="{{company_name}}" />
         <input disabled="{{disabled}}" id="title" class="col-md-6 pull-right text-right" value="{{invoice_name}}" />
@@ -74,8 +74,7 @@
 
   {{#if invoice.histories}}
   <div class="" id="invoice-history">
-    <hr>
-    <h3>Invoice History</h3>
+  <h3>{{text.history_title}}</h3>
     <ul class="list-group">
       {{#each invoice.histories}}
       <li class="list-group-item">
@@ -103,7 +102,8 @@
 </script>
 
 <script id="invoice-list-template" type="text/ractive">
-  <div class="btn-group btn-group-justified" data-toggle="buttons">
+<h5 class="pull-right invoice-list-title">{{active_status}}</h5>
+  <div class="btn-group btn-group" data-toggle="buttons">
     <label class="btn btn-default btn-draft active" on-click="filter:'draft'">
       <div data-toggle="tooltip" data-placement="bottom" title="{{status.draft}}">
         <i class="glyphicon glyphicon-saved"></i>
@@ -148,14 +148,11 @@
   {{/each}}
 </script>
 
-<script id="invoice-aside-template" type="text/ractive">
-  <div class="tools" id="two">
-    {{#if user.authenticated}}
-    <a id="new-invoice" onclick="app.invoice.fire('new');return false;" href="#" class="button btn-success">Create New</a>
-    {{/if}}
-    <h5 class="text-center">{{text.finished}}</h5>
-    <ul class="nav nav-pills nav-stacked">
+<script id="invoice-actions-template" type="text/ractive">
+  <div class="col-md-12">
+    <ul class="nav nav-pills">
       {{#if user.authenticated}}
+        <li><a role="button" id="new-invoice" onclick="app.invoice.fire('new');return false;" href="#" class="button btn-success">Create New</a></li>
         <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button btn-primary" href="#">{{text.get_pdf}}</a></li>
         {{#unless status === 'recieved'}}
           <li><a role="button" id="copy-invoice" onclick="app.invoice.fire('copy');return false;" class="button btn-primary" href="#">{{text.copy}}</a></li>

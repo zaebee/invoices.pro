@@ -37,7 +37,7 @@
 
 <body>
 
-  <div class="wrapper container">
+  <div class="wrapper">
   <div id="message-placeholder"></div>
   {% include 'include/_header.html' %}
 
@@ -61,7 +61,6 @@
   {% endif %}
 
   {% block content %}
-  {% include 'include/_aside.html' %}
   {% include 'include/_order_form.html' %}
   {% endblock %}
   </div>

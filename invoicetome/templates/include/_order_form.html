@@ -1,12 +1,37 @@
 {% load i18n %}
-<div class="container">
-<form class="col-md-12" role="form" action="/generate_pdf.php" method="post">
+<div id="actions-bar"></div>
 
-  <input id="rowCounter" type="hidden" value="8" />
+<div class="container-fluid">
 
-  <div id="invoice"></div>
-  <textarea name="html" id="markup" cols="60" rows="20" style="display:none;"></textarea>
-</form>
+  <div class="row">
+    {% if user.is_authenticated %}
+    <div class="col-md-3" id="invoice-list">
+      <div class="list-group"></div>
+    </div>
+    {% endif %}
+
+    <form class="col-md-9" role="form" action="/generate_pdf.php" method="post">
+
+      <input id="rowCounter" type="hidden" value="8" />
+      {% if not share %}
+        <div class="col-md-12 col-sm-12 col-xs-12 pull-right text-right">
+          <p class="label label-success">{% trans '&larr; Edit the fields to make an invoice' %}</p>
+        </div>
+
+      {% else %}
+
+        <div class="col-md-12 pull-right text-right">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a role="button" id="get-pdf" onclick="app.makeMarkup();$('.invoice-form').submit();" class="button btn-primary" href="#">{% trans 'Get PDF' %}</a></li>
+          </ul>
+        </div>
+      {% endif %}
+
+
+      <div class="col-sm-12 col-xs-12" id="invoice-detail"></div>
+      <textarea name="html" id="markup" cols="60" rows="20" style="display:none;"></textarea>
+    </form>
+  </div>
 </div>
 
 {% include 'include/_invoice_detail.html' %}
