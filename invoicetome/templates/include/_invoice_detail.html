@@ -36,7 +36,21 @@
     </div>
 
 
-    <div class="row">
+    <div class="row" style="position:relative;">
+      {{#if status === 'draft' }}
+        <ul class="table-manage">
+          <li>
+          <a class="label label-danger" id="delRow" onclick="app.tasks.fire('destroy');return false;" href="#" title="Delete Row">
+            <span class="glyphicon glyphicon-minus"></span>
+          </a>
+          </li>
+          <li>
+            <a class="label label-success" id="addRow" onclick="app.tasks.fire('add');return false;" href="#" title="Add Row">
+              <span class="glyphicon glyphicon-plus"></span>
+            </a>
+          </li>
+        </ul>
+      {{/if}}
       <table class="col-md-12">
         <thead>
         <tr>
@@ -166,7 +180,6 @@
         {{/unless}}
         {{#if status === 'draft' }}
           <li><a role="button" id="save-invoice" onclick="app.invoice.fire('save');return false;" class="button btn-success" href="#">{{text.save}}</a></li>
-          <li class="divider"><hr></li>
           <li><a role="button" id="send-invoice" onclick="app.invoice.fire('send');return false;" data-trigger="manual" data-html="true" data-toggle="popover" data-placement="left" data-content="<input style='width:200px' type='text' class='form-control' name='client_email' placeholder='Enter client email'>" class="button btn-primary" href="#">{{text.send}}</a></li>
         {{/if}}
       {{else}}
@@ -175,22 +188,5 @@
     </ul>
   </div>
 
-  {{#if status === 'draft' }}
-  <div class="tools" id="three">
-    <h5>{{text.resize_table}}</h5>
-    <ul>
-      <li>
-        <a id="addRow" onclick="app.tasks.fire('add');return false;" href="#" title="test">
-          <span style="padding-right:5px;">+</span> {{text.add_row}}
-        </a>
-      </li>
-      <li>
-      <a id="delRow" onclick="app.tasks.fire('destroy');return false;" href="#">
-        <span style="padding-right:5px;padding-left:1px;">&ndash;</span> {{text.delete_row}}
-      </a>
-      </li>
-    </ul>
-  </div>
-  {{/if}}
 </script>
 {% endverbatim %}

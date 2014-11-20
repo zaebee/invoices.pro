@@ -483,3 +483,20 @@ a.button:active {
     top: 10px;
     left: 120px;
 }
+
+.table-manage {
+    position: absolute;
+    bottom: 75px;
+    left: -25px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.table-manage #addRow {
+    margin-top: 5px;
+}
+.table-manage #addRow,
+.table-manage #delRow {
+    padding: 5px;
+    display:block;
+}
