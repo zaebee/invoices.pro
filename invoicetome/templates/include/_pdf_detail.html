@@ -1,9 +1,25 @@
 {% load i18n %}
-<form class="invoice-form" role="form" action="/generate_pdf.php" method="post">
+<div id="actions-bar">
+  {% if not share %}
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <p class="label label-success">{% trans '&larr; Edit the fields to make an invoice' %}</p>
+    </div>
+
+  {% else %}
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <ul class="nav nav-pills">
+        <li><a role="button" id="get-pdf" onclick="app.makeMarkup();$('.invoice-form').submit();" class="button btn-primary" href="#">{% trans 'Get PDF' %}</a></li>
+      </ul>
+    </div>
+  {% endif %}
+</div>
+
+<form class="invoice-form col-md-9" role="form" action="/generate_pdf.php" method="post">
 
   <div id="invoice">
   
-    <div class="container-fluid" id="header">
+    <div class="container-fluid">
       <div class="row">
         <input disabled id="company" class="col-md-6" value="{{invoice.company_name}}" />
         <input disabled id="title" class="col-md-6 pull-right text-right" value="{{invoice.invoice_name}}" />
