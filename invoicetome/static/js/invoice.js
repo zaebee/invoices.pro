@@ -270,7 +270,7 @@ var app = app || {};
     //***
     generate_pdf: function( event ) {
       app.makeMarkup();
-      $(app.invoice.el).parent('form').submit();
+      $(app.invoice.el).parents('form').submit();
     },
   });
 
