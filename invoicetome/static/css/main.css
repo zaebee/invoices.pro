@@ -476,3 +476,10 @@ a.button:active {
     width: 860px;
     z-index: 10;
 }
+
+#actions-bar .fixed {
+    position: fixed;
+    z-index: 9999;
+    top: 10px;
+    left: 120px;
+}
