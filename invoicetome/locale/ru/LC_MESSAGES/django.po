@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-10 09:22+0000\n"
+"POT-Creation-Date: 2014-11-20 13:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -177,25 +177,13 @@ msgstr ""
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr ""
 
-#: apps/local/views.py:30
-msgid "Your account was created! You need confirm email address."
-msgstr "Ваш аккаунт был успешно создан! Вы должны подтвердить ваш email."
+#: apps/local/views.py:29
+msgid "Your account was activated!"
+msgstr ""
 
 #: templates/default.html:19
 msgid "invoiceto.me &middot; Make a free invoice PDF online"
 msgstr "invoiceto.me &middot; Создание счетов PDF онлайн"
-
-#: templates/include/_aside.html:5
-msgid "Create New"
-msgstr "Создать новый"
-
-#: templates/include/_aside.html:11
-msgid "My invoices"
-msgstr "Мои счета"
-
-#: templates/include/_aside.html:20
-msgid "&larr; Edit the fields to make an invoice"
-msgstr "&larr; Редактируйте поля для создания счета"
 
 #: templates/include/_header.html:7
 msgid "Toggle navigation"
@@ -221,9 +209,13 @@ msgstr "выйти"
 msgid "Signed in as"
 msgstr "Вы вошли как"
 
-#: templates/include/_pdf_detail.html:54 templates/include/_pdf_detail.html:58
-msgid "This field is done automatically"
-msgstr "Это поле заполняется автоатически"
+#: templates/include/_order_form.html:19 templates/include/_pdf_detail.html:5
+msgid "&larr; Edit the fields to make an invoice"
+msgstr "&larr; Редактируйте поля для создания счета"
+
+#: templates/include/_order_form.html:26 templates/include/_pdf_detail.html:12
+msgid "Get PDF"
+msgstr "Получить PDF"
 
 #: templates/registration/activation_complete.html:8
 #, fuzzy
@@ -391,14 +383,23 @@ msgstr "invoiceto.me &middot; Создание счетов PDF онлайн"
 msgid "Thank you for using our service. Invoiceto.me team"
 msgstr "Спасибо за то, что используете наш сервис!"
 
+#~ msgid "Your account was created! You need confirm email address."
+#~ msgstr "Ваш аккаунт был успешно создан! Вы должны подтвердить ваш email."
+
+#~ msgid "Create New"
+#~ msgstr "Создать новый"
+
+#~ msgid "My invoices"
+#~ msgstr "Мои счета"
+
+#~ msgid "This field is done automatically"
+#~ msgstr "Это поле заполняется автоатически"
+
 #~ msgid "Sended"
 #~ msgstr "Отправлены"
 
 #~ msgid "Finished editing?"
 #~ msgstr "Закончили?"
-
-#~ msgid "Get PDF"
-#~ msgstr "Получить PDF"
 
 #~ msgid "Copy"
 #~ msgstr "Копировать"

@@ -159,7 +159,7 @@
   <div class="col-md-12">
     <ul class="nav nav-pills">
       {{#if user.authenticated}}
-        <li><a role="button" id="new-invoice" onclick="app.invoice.fire('new');return false;" href="#" class="button btn-success">Create New</a></li>
+      <li><a role="button" id="new-invoice" onclick="app.invoice.fire('new');return false;" href="#" class="button btn-success">{{text.create_new}}</a></li>
         <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button btn-primary" href="#">{{text.get_pdf}}</a></li>
         {{#unless status === 'recieved'}}
           <li><a role="button" id="copy-invoice" onclick="app.invoice.fire('copy');return false;" class="button btn-primary" href="#">{{text.copy}}</a></li>

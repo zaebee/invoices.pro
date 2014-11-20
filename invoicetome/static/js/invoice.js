@@ -70,6 +70,7 @@ var app = app || {};
     template: '#invoice-actions-template',
     data: {
       text: {
+        create_new: gettext('Create New'),
         get_pdf: gettext('Get Pdf'),
         get_share_link: gettext('Get Share Link'),
         copy: gettext('Copy'),
@@ -269,7 +270,7 @@ var app = app || {};
     //***
     generate_pdf: function( event ) {
       app.makeMarkup();
-      $(app.invoice.el).parent('form').submit();
+      $(app.invoice.el).parents('form').submit();
     },
   });
 
