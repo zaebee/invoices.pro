@@ -12,23 +12,25 @@
 
     <form class="col-md-9" role="form" action="/generate_pdf.php" method="post">
 
-      <input id="rowCounter" type="hidden" value="8" />
-      {% if not share %}
-        <div class="col-md-12 col-sm-12 col-xs-12 pull-right text-right">
-          <p class="label label-success">{% trans '&larr; Edit the fields to make an invoice' %}</p>
-        </div>
+      <div class="row">
+        <input id="rowCounter" type="hidden" value="8" />
+        {% if not share %}
+          <div class="col-md-12 col-sm-12 col-xs-12 pull-right text-right">
+            <p class="label label-success">{% trans '&larr; Edit the fields to make an invoice' %}</p>
+          </div>
 
-      {% else %}
+        {% else %}
 
-        <div class="col-md-12 pull-right text-right">
-          <ul class="nav nav-pills nav-stacked">
-            <li><a role="button" id="get-pdf" onclick="app.makeMarkup();$('.invoice-form').submit();" class="button btn-primary" href="#">{% trans 'Get PDF' %}</a></li>
-          </ul>
-        </div>
-      {% endif %}
+          <div class="col-md-12 pull-right text-right">
+            <ul class="nav nav-pills nav-stacked">
+              <li><a role="button" id="get-pdf" onclick="app.makeMarkup();$('.invoice-form').submit();" class="button btn-primary" href="#">{% trans 'Get PDF' %}</a></li>
+            </ul>
+          </div>
+        {% endif %}
 
-      <div class="col-sm-12 col-xs-12" id="invoice-detail"></div>
-      <textarea name="html" id="markup" cols="60" rows="20" style="display:none;"></textarea>
+        <div class="col-sm-12 col-xs-12" id="invoice-detail"></div>
+        <textarea name="html" id="markup" cols="60" rows="20" style="display:none;"></textarea>
+      </div>
     </form>
   </div>
 </div>
