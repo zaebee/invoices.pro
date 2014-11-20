@@ -477,8 +477,7 @@ a.button:active {
     z-index: 10;
 }
 
-#actions-bar .fixed {
-    position: fixed;
+#actions-bar.affix {
     z-index: 9999;
     top: 10px;
     left: 120px;
