@@ -19,6 +19,7 @@
   <title>{% block pagetitle %}{% trans 'invoiceto.me &middot; Make a free invoice PDF online' %}{% endblock %}</title>
 
   <!-- Included CSS Files (Compressed) -->
+  <link rel="stylesheet" href="{% static 'css/print.css' %}" type="text/css" media="print">
   <link rel="stylesheet" href="{% static 'css/screen.css' %}" type="text/css" media="screen, projection">
 
   {% block extracss %}{% endblock extracss %}
