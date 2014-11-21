@@ -5,13 +5,13 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  {% load assets i18n %}
+  {% load staticfiles assets i18n %}
 
   <!-- Set the viewport width to device width for mobile -->
   <meta name="viewport" content="width=device-width">
-  <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico" />
-  <link rel="shortcut icon" href="{{ STATIC_URL }}icon.png" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="{{ STATIC_URL }}/apple-touch-icon.png" />
+  <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
+  <link rel="shortcut icon" href="{% static 'icon.png' %}" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="{% static 'apple-touch-icon.png' %}" />
 
   <meta name='title' content="{% block meta_title %}{% endblock %}">
 	<meta name="description" content="Quickly edit and publish a PDF invoice">
@@ -19,7 +19,7 @@
   <title>{% block pagetitle %}{% trans 'invoiceto.me &middot; Make a free invoice PDF online' %}{% endblock %}</title>
 
   <!-- Included CSS Files (Compressed) -->
-  <link rel="stylesheet" href="{{ STATIC_URL }}css/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="{% static 'css/screen.css' %}" type="text/css" media="screen, projection">
 
   {% block extracss %}{% endblock extracss %}
   {% assets "all_css" %}
@@ -29,40 +29,30 @@
         /* ]]> */
     </style>
   {% endassets %}
-  <link rel="stylesheet" href="{{ STATIC_URL }}css/print.css" type="text/css" media="print">
-  <script src="{{ STATIC_URL }}js/modernizr.js"></script>
-  <script src="{{ STATIC_URL }}js/jquery-1.11.1.min.js"></script>
+  <script src="{% static 'js/modernizr.js' %}"></script>
+  <script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
   <script type="text/javascript" src="{% url 'django.views.i18n.javascript_catalog' %}"></script>
 </head>
 
 <body>
 
   <div class="wrapper">
-  <div id="message-placeholder"></div>
-  {% include 'include/_header.html' %}
+    <div id="message-placeholder"></div>
+    {% include 'include/_header.html' %}
 
-  <script>
-    setTimeout(function(){
-      $(".messages").fadeOut("slow");
-    }, 4000 );
-  </script>
-  <div class="messages">
-    {% for message in messages %}
-      <div class="alert alert-{% if message.extra_tags %}{{ message.extra_tags }}{% else %}success{% endif %}" role="alert" style="margin-top:40px;margin-bottom:-20px;">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <span class="message">
-          {{ message }}
-        </span>
-      </div>
-    {% endfor %}
-  </div>
+    <div class="messages">
+      {% for message in messages %}
+      <div class="alert alert-{% if message.extra_tags %}{{ message.extra_tags }}{% else %}success{% endif %}" role="alert"
+        style="margin-top:40px;margin-bottom:-20px;">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <span class="message">{{ message }}</span>
+        </div>
+      {% endfor %}
+    </div>
 
-  {% if user.is_authenticated and not user.is_active %}
-  {% endif %}
-
-  {% block content %}
-  {% include 'include/_order_form.html' %}
-  {% endblock %}
+    {% block content %}
+      {% include 'include/_order_form.html' %}
+    {% endblock %}
   </div>
 
   <div class="hide">

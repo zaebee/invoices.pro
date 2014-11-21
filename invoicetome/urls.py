@@ -4,6 +4,7 @@ from django.conf import settings
 from django.views.generic import TemplateView, RedirectView
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from apps.local.views import RegistrationView, ActivationView, MainView
 
@@ -58,8 +59,4 @@ urlpatterns += patterns('',
 )
 
 if settings.DEBUG:
-    urlpatterns += (
-        url(r'^static/(?P<path>.*)', 'django.views.static.serve', {'document_root':settings.STATIC_ROOT,'show_indexes': True}),
-        url(r'^media/(?P<path>.*)', 'django.views.static.serve', {'document_root':settings.MEDIA_ROOT,'show_indexes': True}),
-    )
-
+    urlpatterns += staticfiles_urlpatterns()

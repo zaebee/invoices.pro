@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.staticfiles',
     'django.contrib.messages',
     'django_assets',
     'annoying',
@@ -95,7 +96,7 @@ DATABASES = {
 EMAIL_BACKEND = "mailer.backend.DbBackend"
 
 TEMPLATE_DIRS = (
-    rel('templates')
+    rel('templates'),
 )
 
 # Internationalization
@@ -129,17 +130,21 @@ REST_FRAMEWORK = {
     'ORDERING_PARAM': '-id',
 }
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-
 ACCOUNT_ACTIVATION_DAYS = 5
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 MEDIA_ROOT = rel('media')
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = rel('static')
-STATIC_URL = '/static/'
+STATIC_ROOT = rel('st')
+STATIC_URL = '/st/'
+
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    rel('static'),
+)
 
 LOCALE_INDEPENDENT_PATHS = (
     r'^/api/',

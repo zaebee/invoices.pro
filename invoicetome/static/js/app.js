@@ -177,6 +177,9 @@
 
 
 $(document).ready(function() {
+  setTimeout(function(){
+    $(".messages").fadeOut("slow");
+  }, 4000 );
   $.ajaxSetup({
     beforeSend: function (xhr) {
       xhr.setRequestHeader('X-CSRFToken', $.cookie('csrftoken'));
