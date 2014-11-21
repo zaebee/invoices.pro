@@ -116,7 +116,7 @@
 </script>
 
 <script id="invoice-list-template" type="text/ractive">
-<h5 class="pull-right invoice-list-title">{{active_status}}</h5>
+  <a class="pull-right invoice-list-title label" href="#">{{active_status}}</a>
   <div class="btn-group btn-group" data-toggle="buttons">
     <label class="btn btn-default btn-draft active" on-click="filter:'draft'">
       <div data-toggle="tooltip" data-placement="bottom" title="{{status.draft}}">
@@ -170,20 +170,21 @@
 </script>
 
 <script id="invoice-actions-template" type="text/ractive">
-  <div class="col-md-12">
+  <div class="col-md-9 col-md-push-3">
     <ul class="nav nav-pills">
       {{#if user.authenticated}}
-      <li><a role="button" id="new-invoice" onclick="app.invoice.fire('new');return false;" href="#" class="button btn-success">{{text.create_new}}</a></li>
+        <li><a role="button" id="new-invoice" onclick="app.invoice.fire('new');return false;" href="#" class="button btn-success">{{text.create_new}}</a></li>
         <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button btn-primary" href="#">{{text.get_pdf}}</a></li>
         {{#unless status === 'recieved'}}
           <li><a role="button" id="copy-invoice" onclick="app.invoice.fire('copy');return false;" class="button btn-primary" href="#">{{text.copy}}</a></li>
         {{/unless}}
         {{#if status === 'draft' }}
           <li><a role="button" id="save-invoice" onclick="app.invoice.fire('save');return false;" class="button btn-success" href="#">{{text.save}}</a></li>
-          <li><a role="button" id="send-invoice" onclick="app.invoice.fire('send');return false;" data-trigger="manual" data-html="true" data-toggle="popover" data-placement="left" data-content="<input style='width:200px' type='text' class='form-control' name='client_email' placeholder='Enter client email'>" class="button btn-primary" href="#">{{text.send}}</a></li>
+          <li><a role="button" id="send-invoice" onclick="app.invoice.fire('send');return false;" data-trigger="manual" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<input style='width:200px' type='text' class='form-control' name='client_email' placeholder='Enter client email'>" class="button btn-primary" href="#">{{text.send}}</a></li>
+          <li><a role="button" id="delete-invoice" onclick="app.invoice.fire('delete');return false;" class="button btn-danger" href="#">{{text.delete}}</a></li>
         {{/if}}
       {{else}}
-        <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button btn-primary" href="#">{{text.get_pdf}}</a></li>
+      <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button btn-primary" href="#">{{text.get_pdf}}</a></li>
       {{/if}}
     </ul>
   </div>

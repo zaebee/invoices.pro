@@ -1,7 +1,10 @@
 {% load i18n %}
-<div _data-spy="affix" data-offset-top="40" data-offset-bottom="200" id="actions-bar"></div>
 
 <div class="container-fluid">
+
+  <div class="row">
+    <div _data-spy="affix" data-offset-top="40" data-offset-bottom="200" id="actions-bar"></div>
+  </div>
 
   <div class="row">
     {% if user.is_authenticated %}
@@ -9,13 +12,12 @@
       <div class="list-group"></div>
     </div>
     {% endif %}
-
-    <form class="col-md-9" role="form" action="/generate_pdf.php" method="post">
+    <form id="invoice-form" class="col-md-9" role="form" action="/generate_pdf.php" method="post">
 
       <div class="row">
         <input id="rowCounter" type="hidden" value="8" />
         {% if not share %}
-          <div class="col-md-12 col-sm-12 col-xs-12 pull-right text-right">
+          <div class="col-md-12 col-sm-12 col-xs-12 pull-right text-right edit-help">
             <p class="label label-success">{% trans '&darr; Edit the fields to make an invoice' %}</p>
           </div>
 
