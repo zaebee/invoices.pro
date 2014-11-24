@@ -30,6 +30,7 @@ body {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+    border-top-left-radius: 0;
 	border: 1px solid white;
 	-webkit-box-shadow: -1px -1px 5px rgba(0,0,0,0.7);
 	-moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.7);
@@ -400,6 +401,8 @@ a.button:active {
 }
 
 #invoice-list {
+    position: fixed;
+    top: 50px;
     z-index:10;
     border-radius: 0;
     overflow: hidden;
