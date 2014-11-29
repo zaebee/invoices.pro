@@ -475,7 +475,6 @@ a.button:active {
     margin: 0 auto;
 }
 #invoice-history h3 {
-    color: #fff;
 }
 #invoice-history .list-group {
     margin-right:0;
@@ -502,11 +501,13 @@ a.button:active {
 
 #message-placeholder {
     position: fixed;
-    top: 60px;
+    top: 50px;
     right: 0;
     left: 0;
-    margin: 0 15px;
     z-index: 99;
+}
+#message-placeholder .alert {
+    border-radius: 0;
 }
 
 #actions-bar.affix {
