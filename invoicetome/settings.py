@@ -86,14 +86,24 @@ WSGI_APPLICATION = 'invoicetome.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'invoicetome',
+        'USER': 'invoicetome',
+        'PASSWORD': 'invoicetome_password',
     }
 }
 
-EMAIL_BACKEND = "mailer.backend.DbBackend"
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+
+#EMAIL_BACKEND = "mailer.backend.DbBackend"
 
 TEMPLATE_DIRS = (
     rel('templates'),
@@ -155,7 +165,7 @@ LOCALE_INDEPENDENT_PATHS = (
 TEMPLATED_EMAIL_TEMPLATE_DIR = 'templated_email/' #use '' for top level template dir, ensure there is a trailing slash
 TEMPLATED_EMAIL_FILE_EXTENSION = 'html'
 
-try:
-    from settings_local import *
-except:
-    pass
+#try:
+from settings_local import *
+#except:
+#    pass
