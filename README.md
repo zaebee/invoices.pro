@@ -1,9 +1,9 @@
 Установка
 ============
-* cd /<project>/<path>/
+* cd /{project}/{path}/
 * virtualenv .env --distribute (устнавааливаем виртуальное окружение)
 * source .env/bin/activate (активируем окружение)
-* pip install -r hackthon/req.txt (ставим зависимости)
+* pip install -r invoicetome/req.txt (ставим зависимости)
 * python manage.py syncdb (создаем БД)
 * python manage.py migrate --all (накатываем миграции)
 
