@@ -23,7 +23,7 @@ body {
     */
 }
 
-._main-nav {
+.main-nav {
     position: absolute;
 }
 
@@ -415,10 +415,19 @@ a.button:active {
     padding-left: 0;
     margin-top: -20px;
 }
+#invoice-list.affix {
+    top: 10px;
+}
 
 #invoice-list a {
     padding: 10px 5px;
     z-index: 1;
+}
+#invoice-list.affix .btn-group {
+    padding-bottom: 9px;
+}
+#invoice-list.affix .btn-group .btn {
+    border-bottom: 1px solid #ccc;
 }
 #invoice-list .btn-group .btn {
     border-bottom: none;
@@ -501,9 +510,12 @@ a.button:active {
 }
 
 #actions-bar.affix {
-    z-index: 9999;
-    top: 10px;
-    left: 120px;
+    z-index: 9;
+    top: 0;
+    width: 100%;
+    padding: 10px 0;
+    background:#f8f8f8;
+    border-bottom: 1px solid #e7e7e7;
 }
 
 .table-manage {
@@ -521,4 +533,8 @@ a.button:active {
 .table-manage #delRow {
     padding: 5px;
     display:block;
+}
+
+#actions-bar.affix .col-md-9 {
+    width: 100%;
 }
