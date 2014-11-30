@@ -42,6 +42,7 @@ body {
 	border: 1px solid #ddd;
 	overflow: hidden;
     margin: 0 auto 0;
+    border-top: 0;
 }
 
 input  {
@@ -407,7 +408,7 @@ a.button:active {
 
 #invoice-list {
     position: fixed;
-    top: 50px;
+    top: 60px;
     z-index:10;
     border-radius: 0;
     overflow: hidden;
@@ -423,21 +424,12 @@ a.button:active {
     padding: 10px 5px;
     z-index: 1;
 }
-#invoice-list.affix .btn-group {
-    padding-bottom: 9px;
-}
-#invoice-list.affix .btn-group .btn {
-    border-bottom: 1px solid #ccc;
+#invoice-list .btn-group {
+    padding-bottom: 10px;
 }
 #invoice-list .btn-group .btn {
-    border-bottom: none;
+    border-bottom: 1px solid #ccc;
     border-radius: 0;
-}
-#invoice-list .btn-group .btn:first-child {
-    border-bottom-left-radius: 0;
-}
-#invoice-list .btn-group .btn:last-child {
-    border-bottom-right-radius: 0;
 }
 #invoice-list a i {
     font-weight: 100;
@@ -446,6 +438,9 @@ a.button:active {
     padding: 3px;
 }
 
+#invoice-list .btn-group + .list-group-item {
+    border-top: 0;
+}
 #invoice-list a.list-group-item {
     border-radius: 0;
 }
@@ -510,6 +505,17 @@ a.button:active {
     border-radius: 0;
 }
 
+.actions-nav {
+    width: 100%;
+    z-index: 9;
+    top: 0;
+    margin-bottom: 0;
+    border-width: 0 0 1px;
+    border-radius: 0;
+}
+#actions-bar {
+    padding: 10px 0;
+}
 #actions-bar.affix {
     z-index: 9;
     top: 0;
@@ -517,6 +523,10 @@ a.button:active {
     padding: 10px 0;
     background:#f8f8f8;
     border-bottom: 1px solid #e7e7e7;
+}
+
+#actions-bar.affix .col-md-9 {
+    width: 100%;
 }
 
 .table-manage {
@@ -534,8 +544,4 @@ a.button:active {
 .table-manage #delRow {
     padding: 5px;
     display:block;
-}
-
-#actions-bar.affix .col-md-9 {
-    width: 100%;
 }
