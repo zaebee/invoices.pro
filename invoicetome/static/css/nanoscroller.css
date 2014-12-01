@@ -40,9 +40,6 @@
   -webkit-border-radius : 5px;
   border-radius         : 5px;
   z-index: 1;
-  height: 97%;
-  overflow: hidden;
-  top: 45px;
 }
 .nano > .nano-pane > .nano-slider {
   background: #444;

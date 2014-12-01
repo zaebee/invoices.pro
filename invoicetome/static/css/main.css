@@ -416,6 +416,7 @@ a.button:active {
 }
 #invoice-list.affix {
     top: 50px;
+    padding-bottom: 50px;
 }
 
 #invoice-list a {

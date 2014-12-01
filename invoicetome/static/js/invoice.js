@@ -279,7 +279,7 @@ var app = app || {};
       app.invoiceList.get('invoices').fetch({
         data: data,
         success: function () {
-          //$('.nano').nanoScroller();
+          $('.nano').nanoScroller();
         },
       });
     },
