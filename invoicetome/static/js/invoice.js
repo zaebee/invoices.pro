@@ -135,6 +135,9 @@ var app = app || {};
       this.set('active_status', this.get('status')[status]);
       this.get('invoices').fetch({
         data: data,
+        success: function () {
+          $('.nano').nanoScroller();
+        },
       });
     },
   });
@@ -285,7 +288,6 @@ var app = app || {};
   });
 
   $("textarea.notes").growfield();
-  $('.nano').nanoScroller();
   /*
   app.invoiceList.get('invoices').fetch({
     data: {
