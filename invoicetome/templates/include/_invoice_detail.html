@@ -116,78 +116,101 @@
 </script>
 
 <script id="invoice-list-template" type="text/ractive">
-  <a class="pull-right invoice-list-title label" href="#">{{active_status}}</a>
-  <div class="btn-group" data-toggle="buttons">
-    <label class="btn btn-default btn-draft active" on-click="filter:'draft'">
-      <div data-toggle="tooltip" data-placement="bottom" title="{{status.draft}}">
-        <i class="glyphicon glyphicon-saved"></i>
-        <input type="radio" name="options" value="draft" checked>
-      </div>
-    </label>
-
-    <label class="btn btn-default btn-sent" on-click="filter:'sent'">
-      <div data-toggle="tooltip" data-placement="bottom" title="{{status.sent}}">
-        <i class="glyphicon glyphicon-export"></i>
-        <input type="radio" name="options" value="sent">
-      </div>
-    </label>
-
-    <label class="btn btn-default btn-recieved" on-click="filter:'recieved'">
-      <div data-toggle="tooltip" data-placement="bottom" title="{{status.recieved}}">
-        <i class="glyphicon glyphicon-import"></i>
-        <input type="radio" name="options" value="recieved">
-      </div>
-    </label>
+  <div class="nano-content">
+    {{#each invoices:i}}
+    <a data-uuid="{{uuid}}" on-click="activate:{{this}}" title="{{invoice_uid}}" href="#{{status}}/{{uuid}}" class="list-group-item">
+      {{#if status == 'draft'}}
+        {{client_name}}
+        <small>({{client_company}})</small>
+      {{/if}}
+      {{#if status == 'sent'}}
+        {{client_name}}
+        <small>({{client_company}})</small>
+        <small><span class="label label-default">{{recipient_email}}</span></small>
+      {{/if}}
+      {{#if status == 'recieved'}}
+        {{company_name}}
+        <small><span class="label label-default">{{email}}</span></small>
+      {{/if}}
+      <br><small><i>{{date_short(date_added)}}</i></small>
+      {{#unless disabled}}
+      <i tltle="Delete invoice" on-click="delete:{{this}}" class="btn-remove glyphicon glyphicon-remove pull-right"></i>
+      {{/unless}}
+    </a>
+    {{/each}}
   </div>
-  {{#each invoices:i}}
-  <a data-uuid="{{uuid}}" on-click="activate:{{this}}" title="{{invoice_uid}}" href="#{{status}}/{{uuid}}" class="list-group-item">
-    {{#if status == 'draft'}}
-      {{client_name}}
-      <small>({{client_company}})</small>
-    {{/if}}
-    {{#if status == 'sent'}}
-      {{client_name}}
-      <small>({{client_company}})</small>
-      <small><span class="label label-default">{{recipient_email}}</span></small>
-    {{/if}}
-    {{#if status == 'recieved'}}
-      {{company_name}}
-      <small><span class="label label-default">{{email}}</span></small>
-    {{/if}}
-    <br><small><i>{{date_short(date_added)}}</i></small>
-    {{#unless disabled}}
-    <i tltle="Delete invoice" on-click="delete:{{this}}" class="btn-remove glyphicon glyphicon-remove pull-right"></i>
-    {{/unless}}
-  </a>
-  {{/each}}
   {{#unless invoices}}
   <span class="list-group-item">
-      {{client_name}}
-      No invoices
-    {{/unless}}
+    No invoices
   </span>
   {{/unless}}
 </script>
 
 <script id="invoice-actions-template" type="text/ractive">
-  <div class="col-md-9 col-md-push-3">
-    <ul class="nav nav-pills">
+<div class="row">
+  <div class="col-md-3">
+    <p class="navbar-text navbar-right">{{active_status}}</p>
+    <div class="btn-group navbar-btn" data-toggle="buttons">
+      <label class="btn btn-default btn-draft btn-sm active" on-click="filter:'draft'">
+        <div data-toggle="tooltip" data-placement="bottom" title="{{text.status.draft}}">
+          <i class="glyphicon glyphicon-saved"></i>
+          <input type="radio" name="options" value="draft" checked>
+        </div>
+      </label>
+
+      <label class="btn btn-default btn-sent btn-sm" on-click="filter:'sent'">
+        <div data-toggle="tooltip" data-placement="bottom" title="{{text.status.sent}}">
+          <i class="glyphicon glyphicon-export"></i>
+          <input type="radio" name="options" value="sent">
+        </div>
+      </label>
+
+      <label class="btn btn-default btn-recieved btn-sm" on-click="filter:'recieved'">
+        <div data-toggle="tooltip" data-placement="bottom" title="{{text.status.recieved}}">
+          <i class="glyphicon glyphicon-import"></i>
+          <input type="radio" name="options" value="recieved">
+        </div>
+      </label>
+    </div>
+  </div>
+  <div class="col-md-9">
       {{#if user.authenticated}}
-        <li><a role="button" id="new-invoice" onclick="app.invoice.fire('new');return false;" href="#" class="button btn-primary">{{text.create_new}}</a></li>
-        <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button btn-primary" href="#">{{text.get_pdf}}</a></li>
+        <a role="button" id="new-invoice"
+          onclick="app.invoice.fire('new');return false;"
+          class="btn btn-primary btn-sm navbar-btn" href="#">{{text.create_new}}</a>
+
+        <a role="button" id="get-pdf"
+          onclick="app.invoice.fire('generate_pdf');return false;"
+          class="btn btn-primary btn-sm navbar-btn" href="#">{{text.get_pdf}}</a>
+
         {{#unless status === 'recieved'}}
-          <li><a role="button" id="copy-invoice" onclick="app.invoice.fire('copy');return false;" class="button btn-primary" href="#">{{text.copy}}</a></li>
+          <a role="button" id="copy-invoice" onclick="app.invoice.fire('copy');return false;"
+            class="btn btn-primary btn-sm navbar-btn" href="#">{{text.copy}}</a>
         {{/unless}}
+
         {{#if status === 'draft' }}
-          <li><a role="button" id="save-invoice" onclick="app.invoice.fire('save');return false;" class="button btn-primary" href="#">{{text.save}}</a></li>
-          <li><a role="button" id="send-invoice" onclick="app.invoice.fire('send');return false;" data-trigger="manual" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<input style='width:200px' type='text' class='form-control' name='client_email' placeholder='Enter client email'>" class="button btn-primary" href="#">{{text.send}}</a></li>
-          <li><a role="button" id="delete-invoice" onclick="app.invoice.fire('delete');return false;" class="button btn-danger" href="#">{{text.delete}}</a></li>
+          <a role="button" id="save-invoice"
+            onclick="app.invoice.fire('save');return false;"
+            class="btn btn-primary btn-sm navbar-btn" href="#">{{text.save}}</a>
+
+          <a role="button" id="send-invoice"
+            onclick="app.invoice.fire('send');return false;"
+            data-trigger="manual" data-html="true"
+            data-toggle="popover" data-placement="bottom"
+            data-content="<input style='width:200px' type='text' class='form-control' name='client_email' placeholder='Enter client email'>"
+            class="btn btn-primary btn-sm navbar-btn" href="#">{{text.send}}</a>
+          <a role="button" id="delete-invoice"
+            onclick="app.invoice.fire('delete');return false;"
+            class="btn btn-danger btn-sm navbar-btn" href="#">{{text.delete}}</a>
         {{/if}}
+
       {{else}}
-      <li><a role="button" id="get-pdf" onclick="app.invoice.fire('generate_pdf');return false;" class="button btn-primary" href="#">{{text.get_pdf}}</a></li>
+      <a role="button" id="get-pdf"
+        onclick="app.invoice.fire('generate_pdf');return false;"
+        class="btn btn-primary btn-sm navbar-btn" href="#">{{text.get_pdf}}</a>
       {{/if}}
-    </ul>
   </div>
 
+</div>
 </script>
 {% endverbatim %}

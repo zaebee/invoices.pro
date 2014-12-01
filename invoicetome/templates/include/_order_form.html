@@ -21,7 +21,7 @@
   <div class="row">
     <div data-spy="affix" data-offset-top="50" class="col-md-3 affix nano" id="invoice-list">
     {% if user.is_authenticated %}
-      <div class="list-group nano-content"></div>
+      <div class="list-group"></div>
     {% endif %}
     </div>
     <form id="invoice-form" class="col-md-9 col-md-push-3" role="form" action="/generate_pdf.php" method="post">

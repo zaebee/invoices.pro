@@ -25,19 +25,19 @@ var app = app || {};
     draft: function () {
       this.init_tasks();
       console.log('draft');
-      app.invoiceList.fire('filter', null, 'draft');
+      app.aside.fire('filter', null, 'draft');
       $('.btn-draft').button('toggle');
     },
 
     sent: function () {
       this.init_tasks();
-      app.invoiceList.fire('filter', null, 'sent');
+      app.aside.fire('filter', null, 'sent');
       $('.btn-sent').button('toggle');
     },
 
     recieved: function () {
       this.init_tasks();
-      app.invoiceList.fire('filter', null, 'recieved');
+      app.aside.fire('filter', null, 'recieved');
       $('.btn-recieved').button('toggle');
     },
 

@@ -70,6 +70,11 @@ var app = app || {};
     template: '#invoice-actions-template',
     data: {
       text: {
+        status: {
+          draft: gettext('Draft Invoices'),
+          sent: gettext('Sent Invoices'),
+          recieved: gettext('Recieved Invoices'),
+        },
         create_new: gettext('Create New'),
         get_pdf: gettext('Get Pdf'),
         get_share_link: gettext('Get Share Link'),
@@ -117,26 +122,6 @@ var app = app || {};
         success: function(model, response) {
           app.showSuccessMessage(gettext('Invoice was deleted.'));
           spinner.stop();
-        },
-      });
-    },
-    filter: function( event, status ) {
-      app.router.navigate(status);
-      app.aside.set('status', status);
-      if (status == 'recieved') {
-        var data = {
-          recipient_email: this.get('user.email'),
-        };
-      } else {
-        var data = {
-          status: status,
-        };
-      }
-      this.set('active_status', this.get('status')[status]);
-      this.get('invoices').fetch({
-        data: data,
-        success: function () {
-          $('.nano').nanoScroller();
         },
       });
     },
@@ -264,7 +249,7 @@ var app = app || {};
         }
       } else {
         $('[data-toggle=popover]').popover('show');
-	$client_email.focus();
+        $client_email.focus();
       }
     },
 
@@ -274,6 +259,29 @@ var app = app || {};
     generate_pdf: function( event ) {
       app.makeMarkup();
       $(app.invoice.el).parents('form').submit();
+    },
+  });
+
+  app.aside.on({
+    filter: function( event, status ) {
+      app.router.navigate(status);
+      app.aside.set('status', status);
+      if (status == 'recieved') {
+        var data = {
+          recipient_email: this.get('user.email'),
+        };
+      } else {
+        var data = {
+          status: status,
+        };
+      }
+      app.aside.set('active_status', app.invoiceList.get('status')[status]);
+      app.invoiceList.get('invoices').fetch({
+        data: data,
+        success: function () {
+          //$('.nano').nanoScroller();
+        },
+      });
     },
   });
 
@@ -288,12 +296,5 @@ var app = app || {};
   });
 
   $("textarea.notes").growfield();
-  /*
-  app.invoiceList.get('invoices').fetch({
-    data: {
-      status: 'draft'
-    }
-  });
-  */
 
 })(app);
