@@ -285,6 +285,7 @@ var app = app || {};
   });
 
   $("textarea.notes").growfield();
+  $('.nano').nanoScroller();
   /*
   app.invoiceList.get('invoices').fetch({
     data: {

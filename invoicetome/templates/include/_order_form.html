@@ -19,9 +19,9 @@
   </div>
 
   <div class="row">
-    <div data-spy="affix" data-offset-top="50" class="col-md-3 affix" id="invoice-list">
+    <div data-spy="affix" data-offset-top="50" class="col-md-3 affix nano" id="invoice-list">
     {% if user.is_authenticated %}
-      <div class="list-group"></div>
+      <div class="list-group nano-content"></div>
     {% endif %}
     </div>
     <form id="invoice-form" class="col-md-9 col-md-push-3" role="form" action="/generate_pdf.php" method="post">
@@ -29,12 +29,6 @@
       <div class="row">
         <input id="rowCounter" type="hidden" value="8" />
         {% if not share %}
-        <!--
-          <div class="col-md-12 col-sm-12 col-xs-12 pull-right text-right edit-help">
-            <p class="label label-success">{% trans '&darr; Edit the fields to make an invoice' %}</p>
-          </div>
-          -->
-
         {% else %}
 
           <div class="col-md-12 pull-right text-right">

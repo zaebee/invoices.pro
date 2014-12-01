@@ -408,16 +408,21 @@ a.button:active {
 
 #invoice-list {
     position: fixed;
-    top: 60px;
+    top: 80px;
     z-index:10;
     border-radius: 0;
     overflow: hidden;
     padding-top: 20px;
     padding-left: 0;
     margin-top: -20px;
+    width: 24%;
+}
+#invoice-list .nano-content {
+    margin-bottom: 0;
+    top: 45px;
 }
 #invoice-list.affix {
-    top: 10px;
+    top: 30px;
 }
 
 #invoice-list a {
@@ -426,6 +431,16 @@ a.button:active {
 }
 #invoice-list .btn-group {
     padding-bottom: 10px;
+    position: fixed;
+    top: 60px;
+    z-index: 19;
+}
+#invoice-list.affix .btn-group {
+    top: 0;
+}
+#invoice-list.affix .invoice-list-title {
+    top: 0;
+    left: 78%;
 }
 #invoice-list .btn-group .btn {
     border-bottom: 1px solid #ccc;
@@ -465,6 +480,10 @@ a.button:active {
     padding: 5px;
 }
 #invoice-list .invoice-list-title {
+    position: fixed;
+    top: 60px;
+    z-index: 19;
+    left: 18%;
 }
 #invoice-history {
     margin: 0 auto;
