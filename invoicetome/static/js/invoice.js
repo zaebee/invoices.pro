@@ -255,6 +255,7 @@ var app = app || {};
               $('[data-toggle=popover]').popover('hide');
               app.showSuccessMessage(gettext('Invoice sent success to ') + email);
               spinner.stop();
+              app.invoiceList.fire('activate');
             },
           });
         } else {
