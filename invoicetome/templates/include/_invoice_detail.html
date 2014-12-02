@@ -149,6 +149,7 @@
 <script id="invoice-actions-template" type="text/ractive">
 <div class="row">
   <div class="col-md-3">
+    {{#if user.authenticated}}
     <p class="navbar-text navbar-right">{{active_status}}</p>
     <div class="btn-group navbar-btn" data-toggle="buttons">
       <label class="btn btn-default btn-draft active" on-click="filter:'draft'">
@@ -172,6 +173,9 @@
         </div>
       </label>
     </div>
+    {{else}}
+    <p class="navbar-text navbar-right">Download PDF Invoice!</p>
+    {{/if}}
   </div>
   <div class="col-md-9">
       {{#if user.authenticated}}
