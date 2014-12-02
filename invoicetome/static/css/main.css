@@ -1,6 +1,6 @@
 html {
 	/*background:#27a url(../images/scuff.png);*/
-	background:#fafafa;
+	background: #fcffff url(../images/paper.png);
     position: relative;
     /*
 	margin-top: -50px;
@@ -34,7 +34,7 @@ body {
 	position: relative;
 	opacity: 0.99;
 	padding:45px;
-	background: #fcffff url(../images/paper.png);
+	background: #fff;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -423,21 +423,9 @@ a.button:active {
     padding: 10px 5px 10px 15px;
     z-index: 1;
 }
-#invoice-list .btn-group {
-    position: fixed;
-    top: 60px;
-    z-index: 19;
-}
-#invoice-list.affix .btn-group {
-    top: -40px;
-}
 #invoice-list.affix .invoice-list-title {
     top: -40px;
     left: 220px;
-}
-#invoice-list .btn-group .btn {
-    border-bottom: 1px solid #ccc;
-    border-radius: 0;
 }
 #invoice-list a i {
     font-weight: 100;
@@ -446,11 +434,11 @@ a.button:active {
     padding: 3px;
 }
 
-#invoice-list .btn-group + .list-group-item {
-    border-top: 0;
-}
-#invoice-list a.list-group-item {
+#invoice-list .list-group-item {
     border-radius: 0;
+}
+.list-group-item {
+    background-color: #f9f9f9;
 }
 #invoice-list a.active i {
     color: #404040;

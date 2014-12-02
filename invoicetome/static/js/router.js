@@ -49,6 +49,7 @@ var app = app || {};
           tasks = new app.Tasks(tasks);
           app.tasks.set('tasks', tasks);
           app.aside.set('status', status);
+          app.aside.set('active_status', app.invoiceList.get('status')[status]);
           $('.btn-' + status).button('toggle');
           app.invoiceList.get('invoices').fetch({
             data: {
@@ -56,6 +57,7 @@ var app = app || {};
             },
             success: function() {
               $('[data-uuid=' + uuid + ']').addClass('active');
+              $('.nano').nanoScroller();
             },
           });
         },
