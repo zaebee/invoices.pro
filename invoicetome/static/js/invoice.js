@@ -97,14 +97,23 @@ var app = app || {};
 
   app.invoiceList.on({
     activate: function (event ) {
-      event.original.preventDefault();
-      $(event.node).siblings().removeClass('active');
-      $(event.node).addClass('active');
-      app.invoice.set('invoice', event.context);
-      var tasks = event.context.get('records');
+      if (event) {
+        event.original.preventDefault();
+        $(event.node).siblings().removeClass('active');
+        $(event.node).addClass('active');
+        var invoice = event.context;
+      } else {
+        var invoice = this.get('invoices').at(0);
+        if (!invoice) return;
+        var $node = $('[data-uuid=' + invoice.get('uuid') + ']');
+        $node.siblings().removeClass('active');
+        $node.addClass('active');
+      };
+      app.invoice.set('invoice', invoice);
+      var tasks = invoice.get('records');
       tasks = new app.Tasks(tasks);
       app.tasks.set('tasks', tasks);
-      app.router.navigate(app.invoice.get('invoice.status') + '/' + app.invoice.get('invoice.uuid'));
+      app.router.navigate(invoice.get('status') + '/' + invoice.get('uuid'));
     },
     share: function( event ) {
       event.original.preventDefault();
@@ -122,6 +131,7 @@ var app = app || {};
         success: function(model, response) {
           app.showSuccessMessage(gettext('Invoice was deleted.'));
           spinner.stop();
+          app.invoiceList.fire('activate');
         },
       });
     },
@@ -154,6 +164,7 @@ var app = app || {};
         success: function(model, response) {
           if ($('[name=options]:checked').val() == 'draft') {
             app.invoiceList.get('invoices').add(model, {at: 0});
+            app.invoiceList.fire('activate');
           };
           app.showSuccessMessage(gettext('New Invoice was saved in draft.'));
           spinner.stop();
@@ -178,6 +189,7 @@ var app = app || {};
         success: function(model, response) {
           if ($('[name=options]:checked').val() == 'draft') {
             app.invoiceList.get('invoices').add(model, {at:0});
+            app.invoiceList.fire('activate');
           };
           app.showSuccessMessage(gettext('Invoice copied and saved in draft.'));
           spinner.stop();
@@ -195,6 +207,7 @@ var app = app || {};
         success: function(model, response) {
           app.showSuccessMessage(gettext('Invoice was deleted.'));
           spinner.stop();
+          app.invoiceList.fire('activate');
         },
       });
     },
@@ -280,6 +293,7 @@ var app = app || {};
         data: data,
         success: function () {
           $('.nano').nanoScroller();
+          app.invoiceList.fire('activate');
         },
       });
     },
