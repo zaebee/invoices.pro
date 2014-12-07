@@ -7,6 +7,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from apps.local.views import RegistrationView, ActivationView, MainView
+from apps.local.forms import CustomPasswordChangeForm
 
 
 admin.autodiscover()
@@ -35,6 +36,7 @@ urlpatterns += patterns('',
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'^password/change/$',
         auth_views.password_change,
+        {'password_change_form': CustomPasswordChangeForm},
         name='password_change'),
     url(r'^password/change/done/$',
         auth_views.password_change_done,

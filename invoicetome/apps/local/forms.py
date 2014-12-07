@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.forms import PasswordChangeForm
 
 from registration.forms import RegistrationFormUniqueEmail
 
@@ -43,3 +44,10 @@ class RegistrationForm(RegistrationFormUniqueEmail):
         if 'email' in self.data:
             self.cleaned_data['username'] = self.data['email']
         return self.cleaned_data['username']
+
+
+class CustomPasswordChangeForm(PasswordChangeForm):
+
+    def __init__(self, *args, **kwargs):
+        super(CustomPasswordChangeForm, self).__init__(*args, **kwargs)
+        self.fields['new_password1'].validators.append(validate_password_strength)
