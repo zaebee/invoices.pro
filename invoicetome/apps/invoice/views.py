@@ -37,7 +37,9 @@ class InvoiceViewSet(viewsets.ModelViewSet):
     queryset = Invoice.objects.all()
     serializer_class = InvoiceSerializer
     permission_classes = (IsInvoiceOwner,)
+    filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter)
     lookup_field = 'uuid'
+    ordering = ('-date_added',)
 
     def get_queryset(self):
         """

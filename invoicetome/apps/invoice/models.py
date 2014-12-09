@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import uuid
+from datetime import datetime
 
 from django.conf import settings
 from django.db import models
@@ -66,7 +67,7 @@ class Invoice(models.Model):
     class Meta:
         verbose_name = _('Invoice')
         verbose_name_plural = _('Invoices')
-        ordering = ('-id',)
+        ordering = ('-date_added',)
 
     def __unicode__(self):
         return "%s - #%s" % (self.email, self.invoice_uid)
@@ -137,6 +138,7 @@ def send_invoice(sender, invoice, request, **kwargs):
         'invoice': invoice
     }
     send_templated_mail('invoice', DEFAULT_FROM_EMAIL, [invoice.recipient_email], data)
+    invoice.date_added = datetime.now()
     invoice.save()
     History.objects.create(invoice=invoice, action=History.ACTION_SENT, email=invoice.recipient_email)
 
