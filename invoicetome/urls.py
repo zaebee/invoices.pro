@@ -7,7 +7,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from apps.local.views import RegistrationView, ActivationView, MainView
-from apps.local.forms import CustomPasswordChangeForm
+from apps.local.forms import CustomPasswordChangeForm, CustomSetPasswordForm
 
 
 admin.autodiscover()
@@ -47,6 +47,7 @@ urlpatterns += patterns('',
 
     url(r'^password/reset/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         auth_views.password_reset_confirm,
+        {'set_password_form': CustomSetPasswordForm},
         name='password_reset_confirm'),
     url(r'^password/reset/complete/$',
         auth_views.password_reset_complete,

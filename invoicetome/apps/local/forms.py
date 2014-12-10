@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
 
 from registration.forms import RegistrationFormUniqueEmail
 
@@ -50,4 +50,11 @@ class CustomPasswordChangeForm(PasswordChangeForm):
 
     def __init__(self, *args, **kwargs):
         super(CustomPasswordChangeForm, self).__init__(*args, **kwargs)
+        self.fields['new_password1'].validators.append(validate_password_strength)
+
+
+class CustomSetPasswordForm(SetPasswordForm):
+
+    def __init__(self, user, *args, **kwargs):
+        super(CustomSetPasswordForm, self).__init__(user, *args, **kwargs)
         self.fields['new_password1'].validators.append(validate_password_strength)

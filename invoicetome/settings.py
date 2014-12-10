@@ -103,7 +103,7 @@ DATABASES = {
 #    }
 #}
 
-#EMAIL_BACKEND = "mailer.backend.DbBackend"
+EMAIL_BACKEND = "mailer.backend.DbBackend"
 
 TEMPLATE_DIRS = (
     rel('templates'),
