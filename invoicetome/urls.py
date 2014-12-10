@@ -22,7 +22,7 @@ urlpatterns = patterns('',
     url(r'^localeurl/', include('localeurl.urls')),
     url(r'^registration/register/$', RegistrationView.as_view(), name='registration_register'),
     url(r'^registration/activate/(?P<activation_key>\w+)/$', ActivationView.as_view(), name='registration_activate'),
-    url(r'^registration/', include('registration.backends.default.urls')),
+    url(r'^registration/', include('customregistration.urls')),
 )
 
 urlpatterns += patterns('',
