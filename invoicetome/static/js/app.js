@@ -186,4 +186,5 @@ $(document).ready(function() {
     }
   });
   $('[data-toggle=tooltip]').tooltip();
+  $("textarea.notes").growfield();
 });

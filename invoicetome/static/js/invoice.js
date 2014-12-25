@@ -114,6 +114,7 @@ var app = app || {};
       tasks = new app.Tasks(tasks);
       app.tasks.set('tasks', tasks);
       app.router.navigate(invoice.get('status') + '/' + invoice.get('uuid'));
+      $(".notes:not(.growfieldDummy)").growfield('restart');
     },
     share: function( event ) {
       event.original.preventDefault();
@@ -309,7 +310,5 @@ var app = app || {};
     var tax_percent = this.get('invoice.headers.tax').replace(/\,/g, '').replace(/,/g,'.').replace(/[^\d\.]/g,'') / 100;
     this.data.set_total(tax_percent);
   });
-
-  $("textarea.notes").growfield();
 
 })(app);

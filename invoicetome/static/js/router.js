@@ -58,6 +58,7 @@ var app = app || {};
             success: function() {
               $('[data-uuid=' + uuid + ']').addClass('active');
               $('.nano').nanoScroller();
+              $(".notes:not(.growfieldDummy)").growfield('restart');
             },
           });
         },

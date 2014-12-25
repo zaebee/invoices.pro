@@ -47,10 +47,8 @@ class Invoice(models.Model):
     client_name = models.CharField(_('Client Name'), max_length=255)
     client_company = models.CharField(_('Client Company'), max_length=255)
 
-    notes_top = models.CharField(_('Notes Top'),
-                                 max_length=255, null=True, blank=True)
-    notes_bottom = models.CharField(_('Notes Bottom'),
-                                    max_length=255, null=True, blank=True)
+    notes_top = models.TextField(_('Notes Top'), null=True, blank=True)
+    notes_bottom = models.TextField(_('Notes Bottom'), null=True, blank=True)
 
     subtotal = models.DecimalField(_('Subtotal Price'),
                                    decimal_places=2, max_digits=20)
