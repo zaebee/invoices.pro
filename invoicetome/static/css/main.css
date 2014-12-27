@@ -24,7 +24,8 @@ body {
 }
 
 .main-nav {
-    position: absolute;
+    /*position: absolute;*/
+    z-index: 8;
 }
 
 #invoice-detail {
@@ -506,13 +507,23 @@ a.button:active {
 }
 
 .actions-nav {
-    width: 100%;
     z-index: 9;
-    top: 0;
+    top: 1px;
     margin-bottom: 0;
     border-width: 0 0 1px;
     border-radius: 0;
     z-index: 19;
+}
+.actions-nav.affix {
+    width: 100%;
+}
+.actions-nav.in {
+    margin-top: 50px;
+    z-index: 7;
+}
+.offcanvas-toggle.pull-left {
+    margin-left: 15px;
+    margin-right: 0;
 }
 #actions-bar {
     padding: 0;
@@ -520,7 +531,6 @@ a.button:active {
 #actions-bar.affix {
     z-index: 9;
     top: 0;
-    width: 100%;
     background:#f8f8f8;
     border-bottom: 1px solid #e7e7e7;
 }
@@ -529,6 +539,9 @@ a.button:active {
     width: 100%;
 }
 
+@media (max-width: 768px) {
+    #actions-navbar-collapse.affix { width: 0; }
+}
 .table-manage {
     position: absolute;
     bottom: 75px;

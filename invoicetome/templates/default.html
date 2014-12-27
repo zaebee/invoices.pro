@@ -35,7 +35,7 @@
   <script type="text/javascript" src="{% url 'django.views.i18n.javascript_catalog' %}"></script>
 </head>
 
-<body>
+<body class="body-offcanvas">
 
   <div class="wrapper">
     <div id="message-placeholder"></div>
@@ -81,6 +81,7 @@
       </script>
     {% endassets %}
   {% endblock %}
+  <script type="text/javascript" src="//s3.amazonaws.com/cdn.hellofax.com/js/embedded.js"></script>
 
   {% block extrajs %}{% endblock %}
 
