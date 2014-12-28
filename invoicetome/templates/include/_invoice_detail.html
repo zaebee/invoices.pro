@@ -50,7 +50,7 @@
           </li>
         </ul>
       {{/if}}
-      <table class="col-md-12">
+      <table>
         <thead>
         <tr>
           <th class="span-2"><input disabled="{{disabled}}" value="#" /></th>
@@ -139,9 +139,11 @@
     {{/each}}
   </div>
   {{#unless invoices}}
-  <span class="list-group-item">
-    No invoices
-  </span>
+  <div class="nano-content">
+    <span class="list-group-item">
+      No invoices
+    </span>
+  </div>
   {{/unless}}
 </script>
 

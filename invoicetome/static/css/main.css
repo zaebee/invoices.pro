@@ -395,9 +395,6 @@ a.button:active {
     color: #fff;
 }
 
-#invoice-form {
-    padding-left: 0;
-}
 #invoice-form .edit-help {
     /*
     position:absolute;
@@ -414,10 +411,11 @@ a.button:active {
     padding-left: 0;
     height:100%;
     top: 100px;
+    padding-right: 0;
 }
 #invoice-list.affix {
-    top: 50px;
-    padding-bottom: 50px;
+    top: 52px;
+    padding-bottom: 52px;
 }
 
 #invoice-list a {
