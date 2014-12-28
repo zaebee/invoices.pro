@@ -4,6 +4,9 @@
 <script id="invoice-template" type="text/ractive">
   {{#with invoice}}
     <div class="container-fluid" id="invoice">
+      {{#if status === 'draft'}}
+        <a on-click="sign:{{this}}" id="invoice-sign" href="#" class="ribbon-wrapper-green"><div class="ribbon-green">Sign</div></a>
+      {{/if}}
       <div class="row">
         <input disabled="{{disabled}}" id="company" class="col-md-6 col-xs-6" value="{{company_name}}" />
         <input disabled="{{disabled}}" id="title" class="col-md-6 col-xs-6 pull-right text-right" value="{{invoice_name}}" />
@@ -137,14 +140,12 @@
       {{/unless}}
     </a>
     {{/each}}
+    {{#unless invoices}}
+      <span class="list-group-item">
+        No invoices
+      </span>
+    {{/unless}}
   </div>
-  {{#unless invoices}}
-  <div class="nano-content">
-    <span class="list-group-item">
-      No invoices
-    </span>
-  </div>
-  {{/unless}}
 </script>
 
 <script id="invoice-actions-template" type="text/ractive">

@@ -18,7 +18,7 @@ var app = app || {};
           return gettext('Sent to ') + recipient;
         } else {
           return '';
-        } 
+        }
       },
       date_short: function (date) {
         var date = new Date(date);
@@ -115,12 +115,6 @@ var app = app || {};
       app.tasks.set('tasks', tasks);
       app.router.navigate(invoice.get('status') + '/' + invoice.get('uuid'));
       $(".notes:not(.growfieldDummy)").growfield('restart');
-    },
-    share: function( event ) {
-      event.original.preventDefault();
-      event.original.stopPropagation();
-      var invoice = event.context;
-      console.log('share');
     },
     delete: function( event ) {
       event.original.preventDefault();
@@ -274,6 +268,16 @@ var app = app || {};
     generate_pdf: function( event ) {
       app.makeMarkup();
       $(app.invoice.el).parents('form').submit();
+    },
+
+    //***
+    //
+    //***
+    sign: function( event ) {
+      event.original.preventDefault();
+      event.original.stopPropagation();
+      var invoice = event.context;
+      console.log('sign', invoice);
     },
   });
 
