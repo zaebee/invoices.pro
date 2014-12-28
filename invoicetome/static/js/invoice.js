@@ -285,7 +285,7 @@ var app = app || {};
         url: '/generate_pdf.php',
         type: 'POST',
         data : {
-          html: $('#html').val(),
+          html: $('#markup').val(),
           file: true,
         },
         successCallback: function(response) {
