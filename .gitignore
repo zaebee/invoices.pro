@@ -9,6 +9,7 @@ dist/
 *.swp
 *.zip
 *.orig
+*.mo
 .env
 invoicetome/static/.webassets-cache
 invoicetome/static/cache
