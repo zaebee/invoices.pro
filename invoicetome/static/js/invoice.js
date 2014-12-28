@@ -291,7 +291,7 @@ var app = app || {};
           if (response.created) {
             invoice.sign(response.filename).done(function (response) {
               spinner.stop();
-              if (!response.created) {
+              if (!response.sign_url) {
                 spinner.stop();
                 app.showFailureMessage(gettext('PDF file wasn\'t created.'));
                 return;

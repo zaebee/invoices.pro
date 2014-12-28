@@ -144,7 +144,7 @@ def invoice_sign(request, uuid):
                 files=[filename]
             )
         else:
-            return http.HttpResponse(json.dumps({'created': False}), content_type="application/json")
+            return http.HttpResponse(json.dumps({'sign_url': False}), content_type="application/json")
     signature = response.signatures[0]
     data = client.get_embedded_object(signature.signature_id)
 
