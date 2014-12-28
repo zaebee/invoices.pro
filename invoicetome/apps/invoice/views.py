@@ -123,7 +123,7 @@ def invoice_sign(request, uuid):
     invoice = get_object_or_404(Invoice, uuid=uuid)
     client = HSClient(api_key=HELLOSIGN_API_KEY)
     try:
-        response = client.get_signature_request(invoice.signature_request)
+        response = client.get_signature_request('%s' % invoice.signature_request)
     except NotFound:
         response = client.send_signature_request_embedded(
             test_mode=True,
