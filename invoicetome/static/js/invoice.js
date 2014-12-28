@@ -280,15 +280,29 @@ var app = app || {};
       var spinner = app.Spinner($('#sign-invoice-spinner'));
       spinner.start();
       console.log('sign', invoice);
-      invoice.sign().done(function (response) {
-        spinner.stop();
-        HelloSign.open({
-          url: response.sign_url,
-          allowCancel: true,
-          messageListener: function(eventData) {
-            alert("HelloSign event received");
+      app.makeMarkup();
+      app.apiRequest({
+        url: '/generate_pdf.php',
+        type: 'POST',
+        data : {
+          html: $('#html').val(),
+          file: true,
+        },
+        successCallback: function(response) {
+          if (response.created) {
+            invoice.sign(response.filename).done(function (response) {
+              spinner.stop();
+              HelloSign.open({
+                url: response.sign_url,
+                allowCancel: true,
+                messageListener: function(eventData) {
+                  alert("HelloSign event received");
+                  console.log(eventData);
+                }
+              });
+            });
           }
-        });
+        },
       });
     },
   });

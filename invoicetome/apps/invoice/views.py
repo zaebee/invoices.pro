@@ -122,6 +122,7 @@ def invoice_sign(request, uuid):
     #import ipdb;ipdb.set_trace()
     invoice = get_object_or_404(Invoice, uuid=uuid)
     client = HSClient(api_key=HELLOSIGN_API_KEY)
+    filename = request.POST.get('filename', '')
     try:
         response = client.get_signature_request('%s' % invoice.signature_request)
     except NotFound:
@@ -136,7 +137,7 @@ def invoice_sign(request, uuid):
                     'name': invoice.company_name
                 }
             ],
-            files=['/tmp/invoiceto.me.pdf']
+            files=['/tmp/%s' % filename]
         )
     signature = response.signatures[0]
     data = client.get_embedded_object(signature.signature_id)
