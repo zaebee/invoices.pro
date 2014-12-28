@@ -5,7 +5,9 @@
   {{#with invoice}}
     <div class="container-fluid" id="invoice">
       {{#if status === 'draft'}}
-        <a on-click="sign:{{this}}" id="invoice-sign" href="#" class="ribbon-wrapper-green"><div class="ribbon-green">Sign</div></a>
+      <a on-click="sign:{{this}}" id="sign-invoice" href="#" class="ribbon-wrapper-green">
+        <div id="sign-invoice-spinner" class="ribbon-green">Sign</div>
+      </a>
       {{/if}}
       <div class="row">
         <input disabled="{{disabled}}" id="company" class="col-md-6 col-xs-6" value="{{company_name}}" />

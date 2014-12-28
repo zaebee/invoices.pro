@@ -1,8 +1,13 @@
 from django.contrib.sites.models import Site
+from django.conf import settings
 
-def get_site_name(request):
-    site = Site.objects.get_current()
+HELLOSIGN_CLIENT_ID = getattr(settings, 'HELLOSIGN_CLIENT_ID', '')
+HELLOSIGN_API_KEY = getattr(settings, 'HELLOSIGN_API_KEY', '')
+
+
+def common(request):
 
     return {
-        'site' : site,
+        'HELLOSIGN_CLIENT_ID': HELLOSIGN_CLIENT_ID,
+        'HELLOSIGN_API_KEY': HELLOSIGN_API_KEY,
     }

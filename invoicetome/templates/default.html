@@ -82,6 +82,11 @@
     {% endassets %}
   {% endblock %}
   <script type="text/javascript" src="//s3.amazonaws.com/cdn.hellofax.com/js/embedded.js"></script>
+  <script>
+    $(document).ready(function(){
+      HelloSign.init("{{HELLOSIGN_CLIENT_ID}}");
+    });
+  </script>
 
   {% block extrajs %}{% endblock %}
 

@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import uuid
-#import xhtml2pdf.pisa as pisa
-#import cStringIO as StringIO
+import json
+
+from hellosign_sdk import HSClient
+from hellosign_sdk.utils import NotFound
 
 from django import http
 from django.shortcuts import get_object_or_404, render, redirect
@@ -24,6 +26,9 @@ from . import signals
 from .serializers import InvoiceSerializer, RecordSerializer
 from .permissions import IsInvoiceOwner
 
+
+HELLOSIGN_CLIENT_ID = getattr(settings, 'HELLOSIGN_CLIENT_ID', '')
+HELLOSIGN_API_KEY = getattr(settings, 'HELLOSIGN_API_KEY', '')
 
 
 class InvoiceViewSet(viewsets.ModelViewSet):
@@ -111,3 +116,29 @@ def invoice_share(request, uuid):
         'share': True
     }
     return render(request, 'detail.html', data)
+
+
+def invoice_sign(request, uuid):
+    #import ipdb;ipdb.set_trace()
+    invoice = get_object_or_404(Invoice, uuid=uuid)
+    client = HSClient(api_key=HELLOSIGN_API_KEY)
+    try:
+        response = client.get_signature_request(invoice.signature_request)
+    except NotFound:
+        response = client.send_signature_request_embedded(
+            test_mode=True,
+            client_id=HELLOSIGN_CLIENT_ID,
+            subject=invoice.uuid,
+            message="Awesome, right?",
+            signers=[
+                {
+                    'email_address': invoice.email,
+                    'name': invoice.company_name
+                }
+            ],
+            files=['/tmp/invoiceto.me.pdf']
+        )
+    signature = response.signatures[0]
+    data = client.get_embedded_object(signature.signature_id)
+
+    return http.HttpResponse(json.dumps(data.json_data), content_type="application/json")

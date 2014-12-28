@@ -153,6 +153,12 @@
         total: gettext('Total'),
       },
     },
+    sign: function () {
+      return app.apiRequest({
+        url: '/api/sign/' + this.get('uuid') + '/',
+        type: 'POST',
+      });
+    },
   });
 
   app.Invoices = Backbone.Collection.extend({

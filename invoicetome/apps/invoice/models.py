@@ -61,6 +61,7 @@ class Invoice(models.Model):
     status = models.CharField(max_length=255, choices=STATUS_CHOICES.items(),
                               default=STATUS_DRAFT)
     uuid = models.CharField(_('Uuid'), max_length=255, blank=True, null=True)
+    signature_request = models.CharField(_('Signature Request ID'), max_length=255, blank=True, null=True)
 
     class Meta:
         verbose_name = _('Invoice')

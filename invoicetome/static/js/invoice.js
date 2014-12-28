@@ -277,7 +277,19 @@ var app = app || {};
       event.original.preventDefault();
       event.original.stopPropagation();
       var invoice = event.context;
+      var spinner = app.Spinner($('#sign-invoice-spinner'));
+      spinner.start();
       console.log('sign', invoice);
+      invoice.sign().done(function (response) {
+        spinner.stop();
+        HelloSign.open({
+          url: response.sign_url,
+          allowCancel: true,
+          messageListener: function(eventData) {
+            alert("HelloSign event received");
+          }
+        });
+      });
     },
   });
 
