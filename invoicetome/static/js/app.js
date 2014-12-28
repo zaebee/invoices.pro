@@ -153,10 +153,13 @@
         total: gettext('Total'),
       },
     },
-    sign: function () {
+    sign: function (filename) {
       return app.apiRequest({
         url: '/api/sign/' + this.get('uuid') + '/',
         type: 'POST',
+        data: {
+          filename: filename,
+        },
       });
     },
   });
