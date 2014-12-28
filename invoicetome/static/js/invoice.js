@@ -279,7 +279,6 @@ var app = app || {};
       var invoice = event.context;
       var spinner = app.Spinner($('#sign-invoice-spinner'));
       spinner.start();
-      console.log('sign', invoice);
       app.makeMarkup();
       app.apiRequest({
         url: '/generate_pdf.php',
@@ -292,6 +291,11 @@ var app = app || {};
           if (response.created) {
             invoice.sign(response.filename).done(function (response) {
               spinner.stop();
+              if (!response.created) {
+                spinner.stop();
+                app.showFailureMessage(gettext('PDF file wasn\'t created.'));
+                return;
+              };
               HelloSign.open({
                 url: response.sign_url,
                 allowCancel: true,
@@ -301,6 +305,9 @@ var app = app || {};
                 }
               });
             });
+          } else {
+            spinner.stop();
+            app.showFailureMessage(gettext('PDF file wasn\'t created.'));
           }
         },
       });
