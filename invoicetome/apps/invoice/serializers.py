@@ -50,6 +50,8 @@ class InvoiceSerializer(serializers.ModelSerializer):
     histories = HistorySerializer(source='histories', required=False, read_only=True)
     date_added = serializers.DateTimeField(read_only=True)
     recipient_email = serializers.EmailField(source="recipient_email", read_only=True)
+    signature_id = serializers.CharField(source="signature_id", read_only=True)
+    signature_request_id = serializers.CharField(source="signature_request_id", read_only=True)
     disabled = serializers.Field(source='_extra_fields.disabled')
     status = serializers.Field(source='_extra_fields.status')
     share_link = serializers.Field(source='get_absolute_url')
