@@ -306,7 +306,7 @@ var app = app || {};
                 container: document.getElementById('sign-container'),
                 messageListener: function(eventData) {
                   console.log(eventData);
-                  if (eventData.event == 'signature_request_signed') {
+                  if (eventData.event == HelloSign.EVENT_SIGNED) {
                     app.invoice.set('invoice.signed', true);
                     invoice.save();
                   };

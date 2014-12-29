@@ -509,6 +509,7 @@ a.button:active {
     left: 0;
     right: 0;
     width: 100%;
+    min-width: 900px;
     z-index: 9999;
 }
 #sign-container {
@@ -522,8 +523,8 @@ a.button:active {
 }
 #close-sign-container {
     position: absolute;
-    right: 20px;
-    top: 10px;
+    right: 0;
+    top: 25px;
     font-size: 64px;
     color: red;
     z-index: 20;
@@ -535,7 +536,7 @@ a.button:active {
 }
 #hsEmbeddedWrapper {
     margin: 0 auto;
-    width: 70%;
+    width: 900px;
     top: 40px;
     position: relative;
 }
