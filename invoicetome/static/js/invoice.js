@@ -303,6 +303,7 @@ var app = app || {};
               HelloSign.open({
                 url: response.sign_url,
                 allowCancel: true,
+                container: document.getElementById('sign-container'),
                 messageListener: function(eventData) {
                   console.log(eventData);
                   if (eventData.event == 'signature_request_signed') {
@@ -311,6 +312,7 @@ var app = app || {};
                   };
                 }
               });
+              $('#sign-container-wrapper').removeClass('hide');
             });
           } else {
             spinner.stop();

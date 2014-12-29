@@ -502,3 +502,40 @@ a.button:active {
 #hsEmbeddedOverlay {
     display: block !important;
 }
+#sign-container-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+}
+#sign-container {
+    position: absolute;
+    background: rgba(240,240,240,.8);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+#close-sign-container {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 64px;
+    color: red;
+    z-index: 20;
+    text-decoration: none;
+    opacity: 0.4;
+}
+#close-sign-container:hover {
+    opacity: 1;
+}
+#hsEmbeddedWrapper {
+    margin: 0 auto;
+    width: 70%;
+    top: 40px;
+    position: relative;
+}

@@ -67,6 +67,11 @@
     </div>
   </div>
 
+  <div class="container hide" id="sign-container-wrapper">
+    <a onclick="HelloSign.close();$('#sign-container-wrapper').addClass('hide');return false;" role="button" href="#" id="close-sign-container">&times;</a>
+    <div id="sign-container"></div>
+  </div>
+
   {% block js %}
     <script>
       window.USER = {
