@@ -4,10 +4,16 @@
 <script id="invoice-template" type="text/ractive">
   {{#with invoice}}
     <div class="container-fluid" id="invoice">
-      {{#if status === 'draft'}}
-      <a on-click="sign:{{this}}" id="sign-invoice" href="#" class="ribbon-wrapper-green">
-        <div id="sign-invoice-spinner" class="ribbon-green">Sign</div>
-      </a>
+      {{#if signed}}
+        <div href="#" class="ribbon-wrapper signed">
+          <div id="sign-invoice-spinner" class="ribbon">Signed</div>
+        </div>
+      {{else}}
+        {{#if status === 'draft'}}
+        <a on-click="sign:{{this}}" id="sign-invoice" href="#" class="ribbon-wrapper">
+          <div id="sign-invoice-spinner" class="ribbon">Sign</div>
+        </a>
+        {{/if}}
       {{/if}}
       <div class="row">
         <input disabled="{{disabled}}" id="company" class="col-md-6 col-xs-6" value="{{company_name}}" />

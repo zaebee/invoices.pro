@@ -13,7 +13,7 @@ from templated_email import send_templated_mail
 from . import signals
 
 DEFAULT_FROM_EMAIL = getattr(settings, 'DEFAULT_FROM_EMAIL', 'info@invoiceto.me')
-#from transmeta import TransMeta
+BASE_PDF_DIR = '/tmp'
 
 
 class Invoice(models.Model):
@@ -61,7 +61,9 @@ class Invoice(models.Model):
     status = models.CharField(max_length=255, choices=STATUS_CHOICES.items(),
                               default=STATUS_DRAFT)
     uuid = models.CharField(_('Uuid'), max_length=255, blank=True, null=True)
-    signature_request = models.CharField(_('Signature Request ID'), max_length=255, blank=True, null=True)
+    signature_request_id = models.CharField(_('Signature Request ID'), max_length=255, blank=True, null=True)
+    signature_id = models.CharField(_('Signature ID'), max_length=255, blank=True, null=True)
+    signed = models.BooleanField(_('Signed'), default=False)
 
     class Meta:
         verbose_name = _('Invoice')
@@ -74,6 +76,17 @@ class Invoice(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('invoice_share', None, {'uuid': self.uuid})
+
+    @property
+    def get_signature_request_file(self):
+        filename = '%s/%s.pdf' % (BASE_PDF_DIR, self.uuid)
+        if self.signature_request_id:
+            created = client.get_signature_request_file(
+                self.signature_request_id,
+                filename)
+            if created:
+                return filename
+        return False
 
     def save(self, *args, **kwargs):
         if not self.uuid:

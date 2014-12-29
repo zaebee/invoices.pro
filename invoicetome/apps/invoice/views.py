@@ -31,6 +31,7 @@ from .permissions import IsInvoiceOwner
 HELLOSIGN_CLIENT_ID = getattr(settings, 'HELLOSIGN_CLIENT_ID', '')
 HELLOSIGN_API_KEY = getattr(settings, 'HELLOSIGN_API_KEY', '')
 HELLOSIGN_TEST_MODE = getattr(settings, 'HELLOSIGN_TEST_MODE', True)
+BASE_PDF_DIR = '/tmp'
 
 
 class InvoiceViewSet(viewsets.ModelViewSet):
@@ -121,20 +122,18 @@ def invoice_share(request, uuid):
 
 
 def invoice_sign(request, uuid):
-    #import ipdb;ipdb.set_trace()
     invoice = get_object_or_404(Invoice, uuid=uuid)
     client = HSClient(api_key=HELLOSIGN_API_KEY)
     try:
-        response = client.get_signature_request('%s' % invoice.signature_request)
+        response = client.get_signature_request('%s' % invoice.signature_request_id)
     except NotFound:
         filename = request.POST.get('filename', invoice.uuid)
-        filename = '/tmp/%s' % filename
+        filename = '%s/%s' % (BASE_PDF_DIR, filename)
         if os.path.exists(filename):
             response = client.send_signature_request_embedded(
                 test_mode=HELLOSIGN_TEST_MODE,
                 client_id=HELLOSIGN_CLIENT_ID,
-                subject=invoice.uuid,
-                message="Awesome, right?",
+                title=invoice.uuid,
                 signers=[
                     {
                         'email_address': invoice.email,
@@ -143,9 +142,12 @@ def invoice_sign(request, uuid):
                 ],
                 files=[filename]
             )
+            invoice.signature_request_id = response.signature_request_id
         else:
             return http.HttpResponse(json.dumps({'sign_url': False}), content_type="application/json")
     signature = response.signatures[0]
+    invoice.signature_id = signature.signature_id
+    invoice.save()
     data = client.get_embedded_object(signature.signature_id)
 
     return http.HttpResponse(json.dumps(data.json_data), content_type="application/json")

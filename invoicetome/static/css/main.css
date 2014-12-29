@@ -451,7 +451,7 @@ a.button:active {
     display:block;
 }
 
-.ribbon-green {
+.ribbon {
     font: 13px Sans-Serif;
     color: #333;
     text-align: center;
@@ -476,7 +476,7 @@ a.button:active {
     -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
     box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
 }
-.ribbon-wrapper-green {
+.ribbon-wrapper {
     width: 85px;
     height: 88px;
     overflow: hidden;
@@ -485,10 +485,11 @@ a.button:active {
     right: 0;
     z-index:10;
 }
-.ribbon-wrapper-green:hover {
+.ribbon-wrapper:hover {
     text-decoration: none;
 }
-.ribbon-wrapper-green:hover .ribbon-green {
+.ribbon-wrapper:hover .ribbon,
+.ribbon-wrapper.signed .ribbon {
     background-color: #BFDC7A;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45));
     background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45);
@@ -496,4 +497,8 @@ a.button:active {
     background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45);
     background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45);
     color: #6a6340;
+}
+
+#hsEmbeddedOverlay {
+    display: block !important;
 }

@@ -300,8 +300,11 @@ var app = app || {};
                 url: response.sign_url,
                 allowCancel: true,
                 messageListener: function(eventData) {
-                  alert("HelloSign event received");
                   console.log(eventData);
+                  if (eventData.event == 'signature_request_signed') {
+                    invoice.set('signed', true);
+                    invoice.save();
+                  };
                 }
               });
             });
