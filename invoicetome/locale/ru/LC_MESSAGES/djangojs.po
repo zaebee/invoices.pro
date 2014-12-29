@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-20 13:25+0000\n"
+"POT-Creation-Date: 2014-12-29 03:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,65 +19,66 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: static/admin/js/SelectFilter2.js:45
+#: st/admin/js/SelectFilter2.js:45 static/admin/js/SelectFilter2.js:45
 #, c-format
 msgid "Available %s"
 msgstr ""
 
-#: static/admin/js/SelectFilter2.js:46
+#: st/admin/js/SelectFilter2.js:46 static/admin/js/SelectFilter2.js:46
 #, c-format
 msgid ""
 "This is the list of available %s. You may choose some by selecting them in "
 "the box below and then clicking the \"Choose\" arrow between the two boxes."
 msgstr ""
 
-#: static/admin/js/SelectFilter2.js:53
+#: st/admin/js/SelectFilter2.js:53 static/admin/js/SelectFilter2.js:53
 #, c-format
 msgid "Type into this box to filter down the list of available %s."
 msgstr ""
 
-#: static/admin/js/SelectFilter2.js:57
+#: st/admin/js/SelectFilter2.js:57 static/admin/js/SelectFilter2.js:57
 msgid "Filter"
 msgstr ""
 
-#: static/admin/js/SelectFilter2.js:61
+#: st/admin/js/SelectFilter2.js:61 static/admin/js/SelectFilter2.js:61
 msgid "Choose all"
 msgstr ""
 
-#: static/admin/js/SelectFilter2.js:61
+#: st/admin/js/SelectFilter2.js:61 static/admin/js/SelectFilter2.js:61
 #, c-format
 msgid "Click to choose all %s at once."
 msgstr ""
 
-#: static/admin/js/SelectFilter2.js:67
+#: st/admin/js/SelectFilter2.js:67 static/admin/js/SelectFilter2.js:67
 msgid "Choose"
 msgstr ""
 
-#: static/admin/js/SelectFilter2.js:69
+#: st/admin/js/SelectFilter2.js:69 static/admin/js/SelectFilter2.js:69
 msgid "Remove"
 msgstr ""
 
-#: static/admin/js/SelectFilter2.js:75
+#: st/admin/js/SelectFilter2.js:75 static/admin/js/SelectFilter2.js:75
 #, c-format
 msgid "Chosen %s"
 msgstr ""
 
-#: static/admin/js/SelectFilter2.js:76
+#: st/admin/js/SelectFilter2.js:76 static/admin/js/SelectFilter2.js:76
 #, c-format
 msgid ""
 "This is the list of chosen %s. You may remove some by selecting them in the "
 "box below and then clicking the \"Remove\" arrow between the two boxes."
 msgstr ""
 
-#: static/admin/js/SelectFilter2.js:80
+#: st/admin/js/SelectFilter2.js:80 static/admin/js/SelectFilter2.js:80
 msgid "Remove all"
 msgstr ""
 
-#: static/admin/js/SelectFilter2.js:80
+#: st/admin/js/SelectFilter2.js:80 static/admin/js/SelectFilter2.js:80
 #, c-format
 msgid "Click to remove all chosen %s at once."
 msgstr ""
 
+#: st/admin/js/actions.js:18 st/admin/js/actions.min.js:1
 #: static/admin/js/actions.js:18 static/admin/js/actions.min.js:1
 msgid "%(sel)s of %(cnt)s selected"
 msgid_plural "%(sel)s of %(cnt)s selected"
@@ -85,12 +86,14 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
+#: st/admin/js/actions.js:109 st/admin/js/actions.min.js:5
 #: static/admin/js/actions.js:109 static/admin/js/actions.min.js:5
 msgid ""
 "You have unsaved changes on individual editable fields. If you run an "
 "action, your unsaved changes will be lost."
 msgstr ""
 
+#: st/admin/js/actions.js:121 st/admin/js/actions.min.js:5
 #: static/admin/js/actions.js:121 static/admin/js/actions.min.js:5
 msgid ""
 "You have selected an action, but you haven't saved your changes to "
@@ -98,6 +101,7 @@ msgid ""
 "action."
 msgstr ""
 
+#: st/admin/js/actions.js:123 st/admin/js/actions.min.js:6
 #: static/admin/js/actions.js:123 static/admin/js/actions.min.js:6
 msgid ""
 "You have selected an action, and you haven't made any changes on individual "
@@ -105,240 +109,258 @@ msgid ""
 "button."
 msgstr ""
 
-#: static/admin/js/calendar.js:8
+#: st/admin/js/calendar.js:8 static/admin/js/calendar.js:8
 msgid ""
 "January February March April May June July August September October November "
 "December"
 msgstr ""
 
-#: static/admin/js/calendar.js:9
+#: st/admin/js/calendar.js:9 static/admin/js/calendar.js:9
 msgid "S M T W T F S"
 msgstr ""
 
-#: static/admin/js/collapse.js:8 static/admin/js/collapse.js.c:19
-#: static/admin/js/collapse.min.js:1
+#: st/admin/js/collapse.js:8 st/admin/js/collapse.js.c:19
+#: st/admin/js/collapse.min.js:1 static/admin/js/collapse.js:8
+#: static/admin/js/collapse.js.c:19 static/admin/js/collapse.min.js:1
 msgid "Show"
 msgstr ""
 
+#: st/admin/js/collapse.js:16 st/admin/js/collapse.min.js:1
 #: static/admin/js/collapse.js:16 static/admin/js/collapse.min.js:1
 msgid "Hide"
 msgstr ""
 
+#: st/admin/js/admin/DateTimeShortcuts.js:52
+#: st/admin/js/admin/DateTimeShortcuts.js:88
 #: static/admin/js/admin/DateTimeShortcuts.js:52
 #: static/admin/js/admin/DateTimeShortcuts.js:88
 msgid "Now"
 msgstr ""
 
+#: st/admin/js/admin/DateTimeShortcuts.js:56
 #: static/admin/js/admin/DateTimeShortcuts.js:56
 msgid "Clock"
 msgstr ""
 
+#: st/admin/js/admin/DateTimeShortcuts.js:84
 #: static/admin/js/admin/DateTimeShortcuts.js:84
 msgid "Choose a time"
 msgstr ""
 
+#: st/admin/js/admin/DateTimeShortcuts.js:89
 #: static/admin/js/admin/DateTimeShortcuts.js:89
 msgid "Midnight"
 msgstr ""
 
+#: st/admin/js/admin/DateTimeShortcuts.js:90
 #: static/admin/js/admin/DateTimeShortcuts.js:90
 msgid "6 a.m."
 msgstr ""
 
+#: st/admin/js/admin/DateTimeShortcuts.js:91
 #: static/admin/js/admin/DateTimeShortcuts.js:91
 msgid "Noon"
 msgstr ""
 
+#: st/admin/js/admin/DateTimeShortcuts.js:95
+#: st/admin/js/admin/DateTimeShortcuts.js:208
 #: static/admin/js/admin/DateTimeShortcuts.js:95
 #: static/admin/js/admin/DateTimeShortcuts.js:208
 msgid "Cancel"
 msgstr ""
 
+#: st/admin/js/admin/DateTimeShortcuts.js:148
+#: st/admin/js/admin/DateTimeShortcuts.js:201
 #: static/admin/js/admin/DateTimeShortcuts.js:148
 #: static/admin/js/admin/DateTimeShortcuts.js:201
 msgid "Today"
 msgstr ""
 
+#: st/admin/js/admin/DateTimeShortcuts.js:152
 #: static/admin/js/admin/DateTimeShortcuts.js:152
 msgid "Calendar"
 msgstr ""
 
+#: st/admin/js/admin/DateTimeShortcuts.js:199
 #: static/admin/js/admin/DateTimeShortcuts.js:199
 msgid "Yesterday"
 msgstr ""
 
+#: st/admin/js/admin/DateTimeShortcuts.js:203
 #: static/admin/js/admin/DateTimeShortcuts.js:203
 msgid "Tomorrow"
 msgstr ""
 
-#: static/cache/packed.js:73 static/js/app.js:130
+#: st/js/app.js:130 static/js/app.js:130
 msgid "Your Company Name"
 msgstr "Ваша компания"
 
-#: static/cache/packed.js:73 static/js/app.js:131
+#: st/js/app.js:131 static/js/app.js:131
 msgid "123 Your Street"
 msgstr "Улица, дом"
 
-#: static/cache/packed.js:73 static/js/app.js:132
+#: st/js/app.js:132 static/js/app.js:132
 msgid "Your Town"
 msgstr "Ваш город"
 
-#: static/cache/packed.js:73 static/js/app.js:133
+#: st/js/app.js:133 static/js/app.js:133
 msgid "Address Line 3"
 msgstr "Дополнительный адрес"
 
-#: static/cache/packed.js:73 static/js/app.js:134
+#: st/js/app.js:134 static/js/app.js:134
 msgid "(123) 456 789"
 msgstr "(123) 456 789"
 
-#: static/cache/packed.js:73 static/js/app.js:135
+#: st/js/app.js:135 static/js/app.js:135
 msgid "email@yourcompany.com"
 msgstr ""
 
-#: static/cache/packed.js:73 static/js/app.js:136
+#: st/js/app.js:136 static/js/app.js:136
 msgid "Invoice"
 msgstr "Счет"
 
-#: static/cache/packed.js:73 static/js/app.js:137
+#: st/js/app.js:137 static/js/app.js:137
 msgid "Invoice #"
 msgstr "Счет #"
 
-#: static/cache/packed.js:73 static/js/app.js:138
+#: st/js/app.js:138 static/js/app.js:138
 msgid "PO 456001200"
 msgstr ""
 
-#: static/cache/packed.js:73 static/js/app.js:139
+#: st/js/app.js:139 static/js/app.js:139
 msgid "Att: Ms. Jane Doe"
 msgstr "Клиент: Иванов И.И."
 
-#: static/cache/packed.js:73 static/js/app.js:140
+#: st/js/app.js:140 static/js/app.js:140
 msgid "Client Company Name"
 msgstr "Компания клиента"
 
-#: static/cache/packed.js:73 static/js/app.js:147
+#: st/js/app.js:147 static/js/app.js:147
 msgid "Item Description"
 msgstr "Описание"
 
-#: static/cache/packed.js:73 static/js/app.js:148
+#: st/js/app.js:148 static/js/app.js:148
 msgid "Quantity"
 msgstr "Кол-во"
 
-#: static/cache/packed.js:73 static/js/app.js:149
+#: st/js/app.js:149 static/js/app.js:149
 msgid "Unit Price (€)"
 msgstr "Ед. изм. (€)"
 
-#: static/cache/packed.js:73 static/js/app.js:150
+#: st/js/app.js:150 static/js/app.js:150
 msgid "Total (€)"
 msgstr "Итого (€)"
 
-#: static/cache/packed.js:73 static/js/app.js:151
+#: st/js/app.js:151 static/js/app.js:151
 msgid "Subtotal"
 msgstr "Подитог"
 
-#: static/cache/packed.js:73 static/js/app.js:152
+#: st/js/app.js:152 static/js/app.js:152
 msgid "Sales tax (20%)"
 msgstr "Скидка (20%)"
 
-#: static/cache/packed.js:73 static/js/app.js:153
+#: st/js/app.js:153 static/js/app.js:153
 msgid "Total"
 msgstr "Итого"
 
-#: static/cache/packed.js:74
-msgid "Draft"
-msgstr "Черновики"
-
-#: static/cache/packed.js:74
-msgid "Sent"
-msgstr "Отправленые"
-
-#: static/cache/packed.js:74
-msgid "Recieved"
-msgstr "Полученые"
-
-#: static/cache/packed.js:74 static/js/invoice.js:18
-msgid "Sent to "
-msgstr "Отправлено на"
-
-#: static/cache/packed.js:75 static/js/task.js:35
-msgid "Supporting of in-house project (hours worked)"
-msgstr "Поддержка проекта"
-
-#: static/js/invoice.js:12
+#: st/js/invoice.js:12 static/js/invoice.js:12 static/js/invoice.js.c:74
 msgid "Draft Invoices"
 msgstr "Черновики"
 
-#: static/js/invoice.js:13
+#: st/js/invoice.js:13 static/js/invoice.js:13 static/js/invoice.js.c:75
 msgid "Sent Invoices"
 msgstr "Отправленные счета"
 
-#: static/js/invoice.js:14
+#: st/js/invoice.js:14 static/js/invoice.js:14 static/js/invoice.js.c:76
 msgid "Recieved Invoices"
 msgstr "Полученые счета"
 
-#: static/js/invoice.js:38
+#: st/js/invoice.js:18 static/js/invoice.js:18
+msgid "Sent to "
+msgstr "Отправлено на"
+
+#: st/js/invoice.js:38 static/js/invoice.js:38
 msgid "Invoice History"
 msgstr "История счета"
 
-#: static/js/invoice.js:73
+#: st/js/invoice.js:73 static/js/invoice.js:78
 msgid "Create New"
 msgstr "Создать новый"
 
-#: static/js/invoice.js:74
+#: st/js/invoice.js:74 static/js/invoice.js:79
 msgid "Get Pdf"
 msgstr "Получить pdf"
 
-#: static/js/invoice.js:75
+#: st/js/invoice.js:75 static/js/invoice.js:80
 msgid "Get Share Link"
 msgstr "Получить публичную ссылку"
 
-#: static/js/invoice.js:76
+#: st/js/invoice.js:76 static/js/invoice.js:81
 msgid "Copy"
 msgstr "Копировать"
 
-#: static/js/invoice.js:77
+#: st/js/invoice.js:77 static/js/invoice.js:82
 msgid "Save"
 msgstr "Сохранить"
 
-#: static/js/invoice.js:78
+#: st/js/invoice.js:78 static/js/invoice.js:83
 msgid "Send"
 msgstr "Отправить"
 
-#: static/js/invoice.js:79
+#: st/js/invoice.js:79 static/js/invoice.js:84
 msgid "Delete"
 msgstr "Удалить"
 
-#: static/js/invoice.js:80
+#: st/js/invoice.js:80 static/js/invoice.js:85
 msgid "Resize Table"
 msgstr "Изменить таблицу"
 
-#: static/js/invoice.js:81
+#: st/js/invoice.js:81 static/js/invoice.js:86
 msgid "Add Row"
 msgstr "Дбоавить строку"
 
-#: static/js/invoice.js:82
+#: st/js/invoice.js:82 static/js/invoice.js:87
 msgid "Delete Row"
 msgstr "Удалить строку"
 
-#: static/js/invoice.js:83
+#: st/js/invoice.js:83 static/js/invoice.js:88
 msgid "Finished editing?"
 msgstr "Закончили редактирование?"
 
-#: static/js/invoice.js:118 static/js/invoice.js.c:208
+#: st/js/invoice.js:118 st/js/invoice.js.c:208 static/js/invoice.js:127
+#: static/js/invoice.js.c:203
 msgid "Invoice was deleted."
 msgstr "Счет был удален."
 
-#: static/js/invoice.js:170
+#: st/js/invoice.js:170 static/js/invoice.js:164
 msgid "New Invoice was saved in draft."
 msgstr "Новый счет был сохранен в черновики."
 
-#: static/js/invoice.js:194
+#: st/js/invoice.js:194 static/js/invoice.js:189
 msgid "Invoice copied and saved in draft."
 msgstr "Счет скопирован и сохранен в черновики"
 
-#: static/js/invoice.js:228
+#: st/js/invoice.js:228 static/js/invoice.js:224
 msgid "Invoice was saved."
 msgstr "Счет был сохранен."
 
-#: static/js/invoice.js:255
+#: st/js/invoice.js:255 static/js/invoice.js:251
 msgid "Invoice sent success to "
 msgstr "Счет успешно отправлен на"
+
+#: st/js/task.js:35 static/js/task.js:35
+msgid "Supporting of in-house project (hours worked)"
+msgstr "Поддержка проекта"
+
+#: static/js/invoice.js:300 static/js/invoice.js.c:318
+msgid "PDF file wasn't created."
+msgstr "PDF файл не был создан."
+
+#~ msgid "Draft"
+#~ msgstr "Черновики"
+
+#~ msgid "Sent"
+#~ msgstr "Отправленые"
+
+#~ msgid "Recieved"
+#~ msgstr "Полученые"
