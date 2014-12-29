@@ -2,6 +2,7 @@
 import os
 import uuid
 from datetime import datetime
+from hellosign_sdk import HSClient
 
 from django.conf import settings
 from django.db import models
@@ -13,6 +14,10 @@ from templated_email import send_templated_mail
 from . import signals
 
 DEFAULT_FROM_EMAIL = getattr(settings, 'DEFAULT_FROM_EMAIL', 'info@invoiceto.me')
+
+HELLOSIGN_CLIENT_ID = getattr(settings, 'HELLOSIGN_CLIENT_ID', '')
+HELLOSIGN_API_KEY = getattr(settings, 'HELLOSIGN_API_KEY', '')
+HELLOSIGN_TEST_MODE = getattr(settings, 'HELLOSIGN_TEST_MODE', True)
 BASE_PDF_DIR = '/tmp'
 
 
@@ -79,6 +84,7 @@ class Invoice(models.Model):
 
     @property
     def get_signature_request_file(self):
+        client = HSClient(api_key=HELLOSIGN_API_KEY)
         filename = '%s/%s.pdf' % (BASE_PDF_DIR, self.uuid)
         if self.signature_request_id:
             created = client.get_signature_request_file(

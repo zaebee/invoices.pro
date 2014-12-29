@@ -121,6 +121,16 @@ def invoice_share(request, uuid):
     return render(request, 'detail.html', data)
 
 
+def invoice_pdf(request, uuid):
+    invoice = get_object_or_404(Invoice, uuid=uuid)
+    path = invoice.get_signature_request_file
+    with open(path, "rb") as f:
+        data = f.read()
+    response = http.HttpResponse(data, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="invoiceto.me.pdf"'
+    return response
+
+
 def invoice_sign(request, uuid):
     invoice = get_object_or_404(Invoice, uuid=uuid)
     client = HSClient(api_key=HELLOSIGN_API_KEY)
