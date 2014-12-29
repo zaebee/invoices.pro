@@ -23,7 +23,7 @@ var app = app || {};
       date_short: function (date) {
         var date = new Date(date);
         var date = moment(date);
-        return date.lang('en').format('DD.MM.YYYY HH:mm');
+        return date.lang(USER.lang).format('DD.MM.YYYY HH:mm');
       },
 
     },
@@ -43,12 +43,12 @@ var app = app || {};
       date: function () {
         var date = this.get('invoice.date_added') || new Date();
         var date = moment(date);
-        return date.lang('en').format('DD MMMM YYYY');
+        return date.lang(USER.lang).format('DD MMMM YYYY');
       },
       history_date: function (date) {
         var date = new Date(date);
         var date = moment(date);
-        return date.lang('en').format('DD MMMM YYYY HH:mm');
+        return date.lang(USER.lang).format('DD MMMM YYYY HH:mm');
       },
       // хэлпер используется в шаблоне {{ format(price) }}
       format: function ( num ) {

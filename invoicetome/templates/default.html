@@ -73,6 +73,7 @@
         email: '{{ user.email }}' || 'email@yourcompany.com',
         username: '{{user.username}}',
         authenticated: {{user.is_authenticated|lower}},
+        lang: '{{ LANGUAGE_CODE }}',
       };
     </script>
     {% assets  "all_js" %}
