@@ -300,7 +300,7 @@ a.button:active {
 
 #invoice-list {
     position: fixed;
-    z-index:10;
+    z-index:6;
     border-radius: 0;
     padding-left: 0;
     height:100%;
@@ -403,6 +403,7 @@ a.button:active {
     margin-bottom: 0;
     border-width: 1px 0 1px 0;
     border-radius: 0;
+    z-index:7;
 }
 .actions-nav.affix {
     width: 100%;
