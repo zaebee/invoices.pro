@@ -23,6 +23,9 @@ from rest_framework import viewsets
 from rest_framework import permissions
 from rest_framework import filters
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 from .models import Invoice, Record
 from . import signals
 from .serializers import InvoiceSerializer, RecordSerializer
@@ -166,10 +169,11 @@ def invoice_sign(request, uuid):
     return http.HttpResponse(json.dumps(data.json_data), content_type="application/json")
 
 
+@api_view(['POST'])
 def hellosign_callback(request):
     data = {}
-    event_data = request.POST
+    event_data = request.DATA
     print event_data
 
     #event_hash = hmac.new(apikey, (event_time + event_type), hashlib.sha256).hexdigest()
-    return http.HttpResponse(json.dumps(data), content_type="application/json")
+    return Response(data, content_type="application/json")
