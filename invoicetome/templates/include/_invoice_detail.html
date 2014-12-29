@@ -9,7 +9,7 @@
           <div id="sign-invoice-spinner" class="ribbon">Signed</div>
         </div>
       {{else}}
-        {{#if status === 'draft'}}
+        {{#if status === 'draft' && invoice.uuid}}
         <a on-click="sign:{{this}}" id="sign-invoice" href="#" class="ribbon-wrapper">
           <div id="sign-invoice-spinner" class="ribbon">Sign</div>
         </a>
