@@ -267,7 +267,11 @@ var app = app || {};
     //***
     generate_pdf: function( event ) {
       app.makeMarkup();
-      $(app.invoice.el).parents('form').submit();
+      if (app.invoice.get('invoice.signed')) {
+        document.location.pathname = '/api/pdf/' + app.invoice.get('invoice.uuid');
+      } else {
+        $(app.invoice.el).parents('form').submit();
+      };
     },
 
     //***
@@ -302,7 +306,7 @@ var app = app || {};
                 messageListener: function(eventData) {
                   console.log(eventData);
                   if (eventData.event == 'signature_request_signed') {
-                    invoice.set('signed', true);
+                    app.invoice.set('invoice.signed', true);
                     invoice.save();
                   };
                 }
