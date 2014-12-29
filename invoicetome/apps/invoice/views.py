@@ -3,6 +3,7 @@
 import os
 import uuid
 import json
+import hashlib, hmac
 
 from hellosign_sdk import HSClient
 from hellosign_sdk.utils import NotFound, Gone
@@ -163,3 +164,12 @@ def invoice_sign(request, uuid):
     data = client.get_embedded_object(signature.signature_id)
 
     return http.HttpResponse(json.dumps(data.json_data), content_type="application/json")
+
+
+def hellosign_callback(request):
+    data = {}
+    event_data = request.POST
+    print event_data
+
+    #event_hash = hmac.new(apikey, (event_time + event_type), hashlib.sha256).hexdigest()
+    return http.HttpResponse(json.dumps(data), content_type="application/json")

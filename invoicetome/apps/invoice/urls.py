@@ -21,5 +21,6 @@ urlpatterns += patterns('invoice.views',
     url(r'^pdf/(?P<uuid>[-_\d\w]+)/$', 'invoice_pdf', name='invoice_pdf'),
     url(r'^share/(?P<uuid>[-_\d\w]+)/$', 'invoice_share', name='invoice_share'),
     url(r'^sign/(?P<uuid>[-_\d\w]+)/$', 'invoice_sign', name='invoice_sign'),
+    url(r'^hellosign_callback/$', 'hellosign_callback', name='hellosign_callback'),
 
 )
