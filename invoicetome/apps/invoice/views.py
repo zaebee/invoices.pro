@@ -5,7 +5,7 @@ import uuid
 import json
 
 from hellosign_sdk import HSClient
-from hellosign_sdk.utils import NotFound
+from hellosign_sdk.utils import NotFound, Gone
 
 from django import http
 from django.shortcuts import get_object_or_404, render, redirect
@@ -126,25 +126,27 @@ def invoice_sign(request, uuid):
     client = HSClient(api_key=HELLOSIGN_API_KEY)
     try:
         response = client.get_signature_request('%s' % invoice.signature_request_id)
-    except NotFound:
-        filename = request.POST.get('filename', invoice.uuid)
-        filename = '%s/%s' % (BASE_PDF_DIR, filename)
-        if os.path.exists(filename):
-            response = client.send_signature_request_embedded(
-                test_mode=HELLOSIGN_TEST_MODE,
-                client_id=HELLOSIGN_CLIENT_ID,
-                title=invoice.uuid,
-                signers=[
-                    {
-                        'email_address': invoice.email,
-                        'name': invoice.company_name
-                    }
-                ],
-                files=[filename]
-            )
-            invoice.signature_request_id = response.signature_request_id
-        else:
-            return http.HttpResponse(json.dumps({'sign_url': False}), content_type="application/json")
+        client.cancel_signature_request(invoice.signature_request_id)
+    except (NotFound, Gone):
+        pass
+    filename = request.POST.get('filename', invoice.uuid)
+    filename = '%s/%s' % (BASE_PDF_DIR, filename)
+    if os.path.exists(filename):
+        response = client.send_signature_request_embedded(
+            test_mode=HELLOSIGN_TEST_MODE,
+            client_id=HELLOSIGN_CLIENT_ID,
+            title=invoice.uuid,
+            signers=[
+                {
+                    'email_address': invoice.email,
+                    'name': invoice.company_name
+                }
+            ],
+            files=[filename]
+        )
+        invoice.signature_request_id = response.signature_request_id
+    else:
+        return http.HttpResponse(json.dumps({'sign_url': False}), content_type="application/json")
     signature = response.signatures[0]
     invoice.signature_id = signature.signature_id
     invoice.save()
