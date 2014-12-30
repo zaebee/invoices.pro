@@ -310,6 +310,7 @@ var app = app || {};
                     app.invoice.set('invoice.signed', true);
                     invoice.save();
                   };
+                  $('#sign-container-wrapper').addClass('hide');
                 }
               });
               $('#sign-container-wrapper').removeClass('hide');

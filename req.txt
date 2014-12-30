@@ -17,3 +17,4 @@ webassets==0.10
 MySQL-python==1.2.5
 hellosign-python-sdk==3.5
 stripe==1.19.1
+django-json-field==0.5.7
