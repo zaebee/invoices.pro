@@ -133,11 +133,18 @@ class History(models.Model):
     ACTION_RECIEVED = 'recieved'
     ACTION_DECLINED = 'declined'
 
+    ACTION_SIGNATURE_REQUEST_VIEWED = 'signature_request_viewed'
+    ACTION_SIGNATURE_REQUEST_SENT = 'signature_request_sent'
+    ACTION_SIGNATURE_REQUEST_SIGNED = 'signature_request_signed'
+
     ACTION_CHOICES = {
         ACTION_CREATED: _('Created'),
         ACTION_SENT: _('Sent to email'),
-        ACTION_RECIEVED: _('Recieved from email'),
+        ACTION_RECIEVED: _('Recieved by email'),
         ACTION_DECLINED: _('Declined'),
+        ACTION_SIGNATURE_REQUEST_VIEWED: _('Signature Request Viewed'),
+        ACTION_SIGNATURE_REQUEST_SENT: _('Signature Request Sent'),
+        ACTION_SIGNATURE_REQUEST_SIGNED: _('Signature Request Signed'),
     }
     invoice = models.ForeignKey(Invoice, verbose_name=_('Invoice'),
                                    related_name='histories', null=True, blank=True)
