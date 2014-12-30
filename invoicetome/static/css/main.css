@@ -496,7 +496,6 @@ a.button:active {
     background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45);
     background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45);
     background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45);
-    color: #6a6340;
 }
 
 #hsEmbeddedOverlay {
