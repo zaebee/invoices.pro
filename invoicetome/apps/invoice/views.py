@@ -185,7 +185,7 @@ def hellosign_callback(request):
             HELLOSIGN_API_KEY,
             (event_time + event_type),
             hashlib.sha256).hexdigest()
-        invoice = get_object_or_None(Invoice, invoice_uid=invoice_uid)
+        invoice = get_object_or_None(Invoice, uuid=invoice_uid)
     except:
         print 'Hellosign API Callback ERROR'
 

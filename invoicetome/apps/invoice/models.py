@@ -178,6 +178,7 @@ def send_invoice(sender, invoice, request, **kwargs):
 
 
 def signature_invoice(sender, invoice, request, signature_event, **kwargs):
+    print 'EVENT', signature_event
     History.objects.create(
         invoice=invoice,
         action=signature_event,
