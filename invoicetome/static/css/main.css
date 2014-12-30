@@ -524,7 +524,7 @@ a.button:active {
 #close-sign-container {
     position: absolute;
     right: 0;
-    top: 25px;
+    top: -25px;
     font-size: 64px;
     color: red;
     z-index: 20;

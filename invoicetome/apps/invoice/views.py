@@ -172,13 +172,22 @@ def invoice_sign(request, uuid):
 @api_view(['POST'])
 def hellosign_callback(request):
     response = 'Hello API Event Received'
-    json_event_data = request.DATA.get('json')
-    data = json.loads(json_event_data)
-    event_time = data['event']['event_time']
-    event_type = data['event']['event_type']
-    event_time = data['event']['event_time']
-    event_hash = data['event']['event_hash']
-    print event_data
+    hash_match = False
+    try:
+        json_event_data = request.DATA.get('json')
+        data = json.loads(json_event_data)
+        event_time = data['event']['event_time']
+        event_type = data['event']['event_type']
+        event_time = data['event']['event_time']
+        event_hash = data['event']['event_hash']
+        print data
+        hash_match = event_hash == hmac.new(
+            HELLOSIGN_API_KEY,
+            (event_time + event_type),
+            hashlib.sha256).hexdigest()
+    except:
+        print 'Hellosign API Callback ERROR'
 
-    hash_match == hmac.new(HELLOSIGN_API_KEY, (event_time + event_type), hashlib.sha256).hexdigest()
+    if hash_match:
+        pass
     return Response(response, content_type="application/json")
