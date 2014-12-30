@@ -9,6 +9,8 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
+from json_field import JSONField
+
 from templated_email import send_templated_mail
 
 from . import signals
@@ -136,6 +138,7 @@ class History(models.Model):
     ACTION_SIGNATURE_REQUEST_VIEWED = 'signature_request_viewed'
     ACTION_SIGNATURE_REQUEST_SENT = 'signature_request_sent'
     ACTION_SIGNATURE_REQUEST_SIGNED = 'signature_request_signed'
+    ACTION_SIGNATURE_REQUEST_ALL_SIGNED = 'signature_request_all_signed'
 
     ACTION_CHOICES = {
         ACTION_CREATED: _('Created'),
@@ -145,6 +148,7 @@ class History(models.Model):
         ACTION_SIGNATURE_REQUEST_VIEWED: _('Signature Request Viewed'),
         ACTION_SIGNATURE_REQUEST_SENT: _('Signature Request Sent'),
         ACTION_SIGNATURE_REQUEST_SIGNED: _('Signature Request Signed'),
+        ACTION_SIGNATURE_REQUEST_ALL_SIGNED: _('Signature Request All Signed'),
     }
     invoice = models.ForeignKey(Invoice, verbose_name=_('Invoice'),
                                    related_name='histories', null=True, blank=True)
@@ -152,6 +156,7 @@ class History(models.Model):
     action = models.CharField(max_length=255, choices=ACTION_CHOICES.items(),
                               default=ACTION_CREATED)
     date_added = models.DateTimeField(_(u'Date Added'), auto_now_add=True)
+    #json = JSONField(_('JSON Data'))
 
     def __unicode__(self):
         return self.action
@@ -165,14 +170,30 @@ def send_invoice(sender, invoice, request, **kwargs):
     send_templated_mail('invoice', DEFAULT_FROM_EMAIL, [invoice.recipient_email], data)
     invoice.date_added = datetime.now()
     invoice.save()
-    History.objects.create(invoice=invoice, action=History.ACTION_SENT, email=invoice.recipient_email)
+    History.objects.create(
+        invoice=invoice,
+        action=History.ACTION_SENT,
+        email=invoice.recipient_email
+    )
+
+
+def signature_invoice(sender, invoice, request, signature_event, **kwargs):
+    History.objects.create(
+        invoice=invoice,
+        action=signature_event,
+        email=invoice.email
+    )
 
 
 def create_history_log(sender, instance, created, **kwargs):
     if created:
-        History.objects.create(invoice=instance, action=History.ACTION_CREATED)
+        History.objects.create(
+            invoice=instance,
+            action=History.ACTION_CREATED
+        )
 
 
 signals.invoice_sended.connect(send_invoice)
+signals.invoice_signature_called.connect(signature_invoice)
 
 models.signals.post_save.connect(create_history_log, sender=Invoice)

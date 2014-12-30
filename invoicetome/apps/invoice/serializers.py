@@ -10,7 +10,7 @@ class HistorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = History
-        exclude = ('invoice',)
+        exclude = ('invoice', 'json')
 
 
 class HeaderSerializer(serializers.ModelSerializer):

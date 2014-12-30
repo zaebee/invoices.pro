@@ -8,17 +8,15 @@ import hashlib, hmac
 from hellosign_sdk import HSClient
 from hellosign_sdk.utils import NotFound, Gone
 
+from annoying.functions import get_object_or_None
+
 from django import http
-from django.shortcuts import get_object_or_404, render, redirect
-from django.template.loader import render_to_string
+from django.conf import settings
 from django.utils import translation
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, render, redirect
 
-from django.conf import settings
-from django.db.models import Q
-
-from rest_framework.decorators import detail_route
 from rest_framework import viewsets
 from rest_framework import permissions
 from rest_framework import filters
@@ -173,6 +171,7 @@ def invoice_sign(request, uuid):
 def hellosign_callback(request):
     response = 'Hello API Event Received'
     hash_match = False
+    event_type = event_time = ''
     try:
         json_event_data = request.DATA.get('json')
         data = json.loads(json_event_data)
@@ -180,14 +179,21 @@ def hellosign_callback(request):
         event_type = data['event']['event_type']
         event_time = data['event']['event_time']
         event_hash = data['event']['event_hash']
+        invoice_uid = data['signature_request']['title']
         print data
         hash_match = event_hash == hmac.new(
             HELLOSIGN_API_KEY,
             (event_time + event_type),
             hashlib.sha256).hexdigest()
+        invoice = get_object_or_None(Invoice, invoice_uid=invoice_uid)
     except:
         print 'Hellosign API Callback ERROR'
 
-    if hash_match:
+
+    if hash_match and invoice:
+        signals.invoice_signature_called.send(sender=None,
+                                    invoice=invoice,
+                                    request=request,
+                                    signature_event=event_type)
         pass
     return Response(response, content_type="application/json")
