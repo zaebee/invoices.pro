@@ -309,8 +309,8 @@ var app = app || {};
                   if (eventData.event == HelloSign.EVENT_SIGNED) {
                     app.invoice.set('invoice.signed', true);
                     invoice.save();
+                    $('#sign-container-wrapper').addClass('hide');
                   };
-                  $('#sign-container-wrapper').addClass('hide');
                 }
               });
               $('#sign-container-wrapper').removeClass('hide');
