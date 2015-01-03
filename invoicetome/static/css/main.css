@@ -398,10 +398,10 @@ a.button:active {
     border-radius: 0;
 }
 
-.navmenu-fixed-left, .navbar-offcanvas.navmenu-fixed-left.actions-nav {
+.navbar-offcanvas.navmenu-fixed-left.actions-nav {
     border-width: 1px 0 1px 0;
 }
-.navmenu-fixed-left, .navbar-offcanvas.navmenu-fixed-left.actions-nav.in {
+.navbar-offcanvas.navmenu-fixed-left.actions-nav.in {
     border-width: 0 1px 0 0;
 }
 .actions-nav {
@@ -443,6 +443,9 @@ a.button:active {
     width: 100%;
 }
 
+@media (min-width: 768px) {
+    .actions-nav {position:relative !important;}
+}
 @media (max-width: 768px) {
     .actions-nav {top: 50px;}
 }
