@@ -306,10 +306,17 @@ a.button:active {
     height:100%;
     top: 100px;
     padding-right: 0;
+    width: 25%;
+    overflow-y: hidden;
+    border-right: none;
 }
+#invoice-list.in,
 #invoice-list.affix {
     top: 50px;
     padding-bottom: 50px;
+}
+#invoice-list.in {
+    width: 300px;
 }
 
 #invoice-list a {
