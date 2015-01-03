@@ -308,8 +308,8 @@ a.button:active {
     padding-right: 0;
 }
 #invoice-list.affix {
-    top: 52px;
-    padding-bottom: 52px;
+    top: 50px;
+    padding-bottom: 50px;
 }
 
 #invoice-list a {
@@ -398,20 +398,33 @@ a.button:active {
     border-radius: 0;
 }
 
+.navmenu-fixed-left, .navbar-offcanvas.navmenu-fixed-left.actions-nav {
+    border-width: 1px 0 1px 0;
+}
+.navmenu-fixed-left, .navbar-offcanvas.navmenu-fixed-left.actions-nav.in {
+    border-width: 0 1px 0 0;
+}
 .actions-nav {
     top: 0;
     margin-bottom: 0;
-    border-width: 1px 0 1px 0;
     border-radius: 0;
     z-index:7;
 }
 .actions-nav.affix {
     width: 100%;
     z-index: 9;
+    position: fixed;
+    height: 50px!important;
+    border-bottom: 0;
 }
 .actions-nav.in {
     z-index: 7;
 }
+.actions-nav.affix.in {
+    height: auto !important;
+    width: 300px;
+}
+
 .offcanvas-toggle.pull-left {
     margin-left: 15px;
     margin-right: 0;
@@ -431,7 +444,6 @@ a.button:active {
 }
 
 @media (max-width: 768px) {
-    #actions-navbar-collapse.affix { width: 0; }
     .actions-nav {top: 50px;}
 }
 .table-manage {
