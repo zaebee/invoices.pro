@@ -443,9 +443,6 @@ a.button:active {
     width: 100%;
 }
 
-@media (min-width: 768px) {
-    .actions-nav {position:relative !important;}
-}
 @media (max-width: 768px) {
     .actions-nav {top: 50px;}
 }
