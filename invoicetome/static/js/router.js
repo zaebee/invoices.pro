@@ -50,7 +50,7 @@ var app = app || {};
           var tasks = model.get('records');
           tasks = new app.Tasks(tasks);
           app.tasks.set('tasks', tasks);
-          app.filters.set('status', status);
+          app.actions.set('status', status);
           app.filters.set('active_status', app.invoiceList.get('status')[status]);
           $('.btn-' + status).button('toggle');
           app.invoiceList.get('invoices').fetch({

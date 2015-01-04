@@ -134,7 +134,7 @@ var app = app || {};
       app.tasks.set('tasks', tasks);
       app.router.navigate(invoice.get('status') + '/' + invoice.get('uuid'));
       $(".notes:not(.growfieldDummy)").growfield('restart');
-      $('#invoice-list-collapse').offcanvas('hide');
+      //$('#invoice-list-collapse').offcanvas('hide');
     },
     delete: function( event ) {
       event.original.preventDefault();
@@ -146,7 +146,7 @@ var app = app || {};
         success: function(model, response) {
           app.showSuccessMessage(gettext('Invoice was deleted.'));
           spinner.stop();
-          $('#invoice-list-collapse').offcanvas('hide');
+          //$('#invoice-list-collapse').offcanvas('hide');
           app.invoiceList.fire('activate');
         },
       });
@@ -184,7 +184,7 @@ var app = app || {};
           };
           app.showSuccessMessage(gettext('New Invoice was saved in draft.'));
           spinner.stop();
-          $('.actions-nav').offcanvas('hide');
+          //$('.actions-nav').offcanvas('hide');
         },
       });
     },
@@ -210,7 +210,7 @@ var app = app || {};
           };
           app.showSuccessMessage(gettext('Invoice copied and saved in draft.'));
           spinner.stop();
-          $('.actions-nav').offcanvas('hide');
+          //$('.actions-nav').offcanvas('hide');
         },
       });
     },
@@ -225,7 +225,7 @@ var app = app || {};
         success: function(model, response) {
           app.showSuccessMessage(gettext('Invoice was deleted.'));
           spinner.stop();
-          $('.actions-nav').offcanvas('hide');
+          //$('.actions-nav').offcanvas('hide');
           app.invoiceList.fire('activate');
         },
       });
@@ -247,7 +247,7 @@ var app = app || {};
           app.tasks.set('tasks', tasks);
           app.showSuccessMessage(gettext('Invoice was saved.'));
           spinner.stop();
-          $('.actions-nav').offcanvas('hide');
+          //$('.actions-nav').offcanvas('hide');
         },
       });
     },
@@ -275,7 +275,7 @@ var app = app || {};
               $('[data-toggle=popover]').popover('hide');
               app.showSuccessMessage(gettext('Invoice sent success to ') + email);
               spinner.stop();
-              $('.actions-nav').offcanvas('hide');
+              //$('.actions-nav').offcanvas('hide');
               app.invoiceList.fire('activate');
             },
           });
@@ -298,7 +298,7 @@ var app = app || {};
       } else {
         $(app.invoice.el).parents('form').submit();
       };
-      $('.actions-nav').offcanvas('hide');
+      //$('.actions-nav').offcanvas('hide');
     },
 
     //***
@@ -354,7 +354,7 @@ var app = app || {};
   app.filters.on({
     filter: function( event, status ) {
       app.router.navigate(status);
-      app.filters.set('status', status);
+      app.actions.set('status', status);
       if (status == 'recieved') {
         var data = {
           recipient_email: this.get('user.email'),
