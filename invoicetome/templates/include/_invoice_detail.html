@@ -165,37 +165,37 @@
       {{#if user.authenticated}}
         <a role="button" id="new-invoice"
           onclick="app.invoice.fire('new');return false;"
-          class="btn btn-primary navbar-btn" href="#">{{text.create_new}}</a>
+          class="btn btn-primary navbar-btn btn-actions" href="#">{{text.create_new}}</a>
 
         <a role="button" id="get-pdf"
           onclick="app.invoice.fire('generate_pdf');return false;"
-          class="btn btn-primary navbar-btn" href="#">{{text.get_pdf}}</a>
+          class="btn btn-primary navbar-btn btn-actions" href="#">{{text.get_pdf}}</a>
 
         {{#unless status === 'recieved'}}
           <a role="button" id="copy-invoice" onclick="app.invoice.fire('copy');return false;"
-            class="btn btn-primary navbar-btn" href="#">{{text.copy}}</a>
+            class="btn btn-primary navbar-btn btn-actions" href="#">{{text.copy}}</a>
         {{/unless}}
 
         {{#if status === 'draft' }}
           <a role="button" id="save-invoice"
             onclick="app.invoice.fire('save');return false;"
-            class="btn btn-primary navbar-btn" href="#">{{text.save}}</a>
+            class="btn btn-primary navbar-btn btn-actions" href="#">{{text.save}}</a>
 
           <a role="button" id="send-invoice"
             onclick="app.invoice.fire('send');return false;"
             data-trigger="manual" data-html="true"
             data-toggle="popover" data-placement="bottom"
             data-content="<input style='width:200px' type='text' class='form-control' name='client_email' placeholder='Enter client email'>"
-            class="btn btn-primary navbar-btn" href="#">{{text.send}}</a>
+            class="btn btn-primary navbar-btn btn-actions" href="#">{{text.send}}</a>
           <a role="button" id="delete-invoice"
             onclick="app.invoice.fire('delete');return false;"
-            class="btn btn-danger navbar-btn" href="#">{{text.delete}}</a>
+            class="btn btn-danger navbar-btn btn-actions" href="#">{{text.delete}}</a>
         {{/if}}
 
       {{else}}
       <a role="button" id="get-pdf"
         onclick="app.invoice.fire('generate_pdf');return false;"
-        class="btn btn-primary navbar-btn" href="#">{{text.get_pdf}}</a>
+        class="btn btn-primary navbar-btn btn-actions" href="#">{{text.get_pdf}}</a>
       {{/if}}
   </div>
 

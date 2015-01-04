@@ -325,7 +325,6 @@ a.button:active {
     width: 300px;
     background: #fff;
     border-right: 1px solid #ddd;
-    padding-bottom: 100px;
 }
 #invoice-list-collapse.affix {
     height:100%;
@@ -459,6 +458,9 @@ a.button:active {
     position: fixed;
     height: 50px!important;
     border-bottom: 0;
+}
+.actions-nav.in .btn-actions {
+    display: block;
 }
 .actions-nav.in {
     z-index: 7;

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-29 03:57+0000\n"
+"POT-Creation-Date: 2015-01-04 14:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,168 +19,183 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: settings.py:119
+#: settings.py:120
 msgid "rus"
 msgstr "рус"
 
-#: settings.py:120
+#: settings.py:121
 msgid "eng"
 msgstr "енг"
 
-#: apps/invoice/models.py:31
+#: apps/invoice/models.py:33
 msgid "Draft"
 msgstr "Черновики"
 
-#: apps/invoice/models.py:32
+#: apps/invoice/models.py:34
 msgid "Saved"
 msgstr "Сохранено"
 
-#: apps/invoice/models.py:33
+#: apps/invoice/models.py:35
 msgid "Sent"
 msgstr "Отправлено"
 
-#: apps/invoice/models.py:34
+#: apps/invoice/models.py:36
 msgid "Recieved"
 msgstr "Получено"
 
-#: apps/invoice/models.py:37
+#: apps/invoice/models.py:39
 msgid "Owner"
 msgstr "Владелец"
 
-#: apps/invoice/models.py:38
+#: apps/invoice/models.py:40
 msgid "Recipient Email"
 msgstr "Получатель"
 
-#: apps/invoice/models.py:40
+#: apps/invoice/models.py:42
 msgid "Company Name"
 msgstr "название компании"
 
-#: apps/invoice/models.py:41 apps/invoice/models.py:43
+#: apps/invoice/models.py:43 apps/invoice/models.py:45
 msgid "Address"
 msgstr "Адрес"
 
-#: apps/invoice/models.py:42
+#: apps/invoice/models.py:44
 msgid "City"
 msgstr "Город"
 
-#: apps/invoice/models.py:45
+#: apps/invoice/models.py:47
 msgid "Phone"
 msgstr "Телефон"
 
-#: apps/invoice/models.py:46 apps/invoice/models.py:144
+#: apps/invoice/models.py:48 apps/invoice/models.py:155
 msgid "Email"
 msgstr ""
 
-#: apps/invoice/models.py:48
+#: apps/invoice/models.py:50
 msgid "Invoice Name"
 msgstr "Название счета"
 
-#: apps/invoice/models.py:49
+#: apps/invoice/models.py:51
 msgid "Invoice Uid"
 msgstr "Uid счета"
 
-#: apps/invoice/models.py:50
+#: apps/invoice/models.py:52
 msgid "Invoice PO"
 msgstr "PO счета"
 
-#: apps/invoice/models.py:52
+#: apps/invoice/models.py:54
 msgid "Client Name"
 msgstr "Имя клиента"
 
-#: apps/invoice/models.py:53
+#: apps/invoice/models.py:55
 msgid "Client Company"
 msgstr "Компания клиента"
 
-#: apps/invoice/models.py:55
+#: apps/invoice/models.py:57
 msgid "Notes Top"
 msgstr "Заметка вверху"
 
-#: apps/invoice/models.py:56
+#: apps/invoice/models.py:58
 msgid "Notes Bottom"
 msgstr "Заметка внизу"
 
-#: apps/invoice/models.py:58
+#: apps/invoice/models.py:60
 msgid "Subtotal Price"
 msgstr "Итого"
 
-#: apps/invoice/models.py:60
+#: apps/invoice/models.py:62
 msgid "Sales Tax %"
 msgstr "Скидка"
 
-#: apps/invoice/models.py:62
+#: apps/invoice/models.py:64
 msgid "Total Price"
 msgstr "Общая сумма"
 
-#: apps/invoice/models.py:65 apps/invoice/models.py:147
+#: apps/invoice/models.py:67 apps/invoice/models.py:158
 msgid "Date Added"
 msgstr "Дата добавления"
 
-#: apps/invoice/models.py:68
+#: apps/invoice/models.py:70
 msgid "Uuid"
 msgstr ""
 
-#: apps/invoice/models.py:69
+#: apps/invoice/models.py:71
 msgid "Signature Request ID"
 msgstr ""
 
-#: apps/invoice/models.py:70
+#: apps/invoice/models.py:72
 msgid "Signature ID"
 msgstr ""
 
-#: apps/invoice/models.py:71
-#, fuzzy
+#: apps/invoice/models.py:73
 msgid "Signed"
 msgstr "Вы вошли как"
 
-#: apps/invoice/models.py:74 apps/invoice/models.py:104
-#: apps/invoice/models.py:116 apps/invoice/models.py:142
+#: apps/invoice/models.py:76 apps/invoice/models.py:106
+#: apps/invoice/models.py:118 apps/invoice/models.py:153
 msgid "Invoice"
 msgstr "Счет"
 
-#: apps/invoice/models.py:75
+#: apps/invoice/models.py:77
 msgid "Invoices"
 msgstr "Счета"
 
-#: apps/invoice/models.py:106 apps/invoice/models.py:118
+#: apps/invoice/models.py:108 apps/invoice/models.py:120
 msgid "Description"
 msgstr "Описание"
 
-#: apps/invoice/models.py:107 apps/invoice/models.py:119
+#: apps/invoice/models.py:109 apps/invoice/models.py:121
 msgid "Quantity"
 msgstr "Количество"
 
-#: apps/invoice/models.py:108 apps/invoice/models.py:120
+#: apps/invoice/models.py:110 apps/invoice/models.py:122
 msgid "Unit Price"
 msgstr "Ед. изм."
 
-#: apps/invoice/models.py:109 apps/invoice/models.py:121
-#: apps/invoice/models.py:124
+#: apps/invoice/models.py:111 apps/invoice/models.py:123
+#: apps/invoice/models.py:126
 msgid "Total"
 msgstr "ИТОГО"
 
-#: apps/invoice/models.py:122
+#: apps/invoice/models.py:124
 msgid "Subtotal"
 msgstr "Цена без скидки"
 
-#: apps/invoice/models.py:123
+#: apps/invoice/models.py:125
 msgid "Tax"
 msgstr "Налог"
 
-#: apps/invoice/models.py:137
+#: apps/invoice/models.py:144
 msgid "Created"
 msgstr "Создано"
 
-#: apps/invoice/models.py:138
+#: apps/invoice/models.py:145
 msgid "Sent to email"
 msgstr "Отправлено на email"
 
-#: apps/invoice/models.py:139
-msgid "Recieved from email"
+#: apps/invoice/models.py:146
+msgid "Recieved by email"
 msgstr "Получено от email"
 
-#: apps/invoice/models.py:140
+#: apps/invoice/models.py:147
 msgid "Declined"
 msgstr "Отклонено"
+
+#: apps/invoice/models.py:148
+msgid "Signature Request Viewed"
+msgstr "Документ на подпись ппрсмотрен"
+
+#: apps/invoice/models.py:149
+msgid "Signature Request Sent"
+msgstr "Документ на подпись получен"
+
+#: apps/invoice/models.py:150
+msgid "Signature Request Signed"
+msgstr "Документ подписан"
+
+#: apps/invoice/models.py:151
+msgid "Signature Request All Signed"
+msgstr "Все документы подписаны"
 
 #: apps/local/forms.py:19
 msgid "Password must be at least {0} characters long."
@@ -204,43 +219,49 @@ msgstr ""
 
 #: apps/local/views.py:32
 msgid "Your account was activated!"
-msgstr ""
+msgstr "Ваш аккаунт был активирован!"
 
 #: templates/default.html:19
 msgid "invoiceto.me &middot; Make a free invoice PDF online"
 msgstr "invoiceto.me &middot; Создание счетов PDF онлайн"
 
-#: templates/include/_header.html:7 templates/include/_header.html.py:10
-#: templates/include/_pdf_detail.html:9
+#: templates/include/_header.html:7 templates/include/_pdf_detail.html:9
 msgid "Toggle navigation"
 msgstr "Переключить навиагацию"
 
-#: templates/include/_header.html:22
+#: templates/include/_header.html:10
+msgid "Toggle Action Menu"
+msgstr "Переключить меню действий"
+
+#: templates/include/_header.html:16
+msgid "Toggle Invoice List"
+msgstr "Переключить меню списка счетов"
+
+#: templates/include/_header.html:28
 msgid "Language"
 msgstr "Язык"
 
-#: templates/include/_header.html:36
+#: templates/include/_header.html:42
 msgid "Register"
 msgstr "Регистрация"
 
-#: templates/include/_header.html:45 templates/registration/login_form.html:27
+#: templates/include/_header.html:51 templates/registration/login_form.html:27
 msgid "Sign in"
 msgstr "Войти"
 
-#: templates/include/_header.html:48 templates/registration/login.html:15
+#: templates/include/_header.html:54 templates/registration/login.html:15
 msgid "logout"
 msgstr "выйти"
 
-#: templates/include/_header.html:49
+#: templates/include/_header.html:55
 msgid "Signed in as"
 msgstr "Вы вошли как"
 
-#: templates/include/_order_form.html:30 templates/include/_pdf_detail.html:19
+#: templates/include/_order_form.html:31 templates/include/_pdf_detail.html:19
 msgid "Get PDF"
 msgstr "Получить PDF"
 
 #: templates/registration/activation_complete.html:8
-#, fuzzy
 msgid ""
 "\n"
 "      <h1>Activation</h1>\n"
@@ -352,7 +373,7 @@ msgstr "Спасибо за то, что используете наш серв�
 #: templates/registration/password_reset_email.html:12
 #, python-format
 msgid "The %(site_name)s team"
-msgstr ""
+msgstr "Команда %(site_name)s"
 
 #: templates/registration/password_reset_form.html:23
 msgid "Send email"
@@ -446,9 +467,6 @@ msgstr "Спасибо за то, что используете наш серв�
 
 #~ msgid "Delete row"
 #~ msgstr "Удалить"
-
-#~ msgid "Invoice History"
-#~ msgstr "История действий"
 
 #~ msgid "Field is required"
 #~ msgstr "Обязательное поле"

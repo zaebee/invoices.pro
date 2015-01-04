@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-29 03:57+0000\n"
+"POT-Creation-Date: 2015-01-04 14:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -264,14 +264,17 @@ msgid "Total"
 msgstr "Итого"
 
 #: st/js/invoice.js:12 static/js/invoice.js:12 static/js/invoice.js.c:74
+#: static/js/invoice.js:104
 msgid "Draft Invoices"
 msgstr "Черновики"
 
 #: st/js/invoice.js:13 static/js/invoice.js:13 static/js/invoice.js.c:75
+#: static/js/invoice.js:105
 msgid "Sent Invoices"
 msgstr "Отправленные счета"
 
 #: st/js/invoice.js:14 static/js/invoice.js:14 static/js/invoice.js.c:76
+#: static/js/invoice.js:106
 msgid "Recieved Invoices"
 msgstr "Полученые счета"
 
@@ -327,24 +330,24 @@ msgstr "Удалить строку"
 msgid "Finished editing?"
 msgstr "Закончили редактирование?"
 
-#: st/js/invoice.js:118 st/js/invoice.js.c:208 static/js/invoice.js:127
-#: static/js/invoice.js.c:203
+#: st/js/invoice.js:118 st/js/invoice.js.c:208 static/js/invoice.js:146
+#: static/js/invoice.js.c:222
 msgid "Invoice was deleted."
 msgstr "Счет был удален."
 
-#: st/js/invoice.js:170 static/js/invoice.js:164
+#: st/js/invoice.js:170 static/js/invoice.js:183
 msgid "New Invoice was saved in draft."
 msgstr "Новый счет был сохранен в черновики."
 
-#: st/js/invoice.js:194 static/js/invoice.js:189
+#: st/js/invoice.js:194 static/js/invoice.js:208
 msgid "Invoice copied and saved in draft."
 msgstr "Счет скопирован и сохранен в черновики"
 
-#: st/js/invoice.js:228 static/js/invoice.js:224
+#: st/js/invoice.js:228 static/js/invoice.js:243
 msgid "Invoice was saved."
 msgstr "Счет был сохранен."
 
-#: st/js/invoice.js:255 static/js/invoice.js:251
+#: st/js/invoice.js:255 static/js/invoice.js:270
 msgid "Invoice sent success to "
 msgstr "Счет успешно отправлен на"
 
@@ -352,15 +355,6 @@ msgstr "Счет успешно отправлен на"
 msgid "Supporting of in-house project (hours worked)"
 msgstr "Поддержка проекта"
 
-#: static/js/invoice.js:300 static/js/invoice.js.c:318
+#: static/js/invoice.js:319 static/js/invoice.js.c:340
 msgid "PDF file wasn't created."
 msgstr "PDF файл не был создан."
-
-#~ msgid "Draft"
-#~ msgstr "Черновики"
-
-#~ msgid "Sent"
-#~ msgstr "Отправленые"
-
-#~ msgid "Recieved"
-#~ msgstr "Полученые"
