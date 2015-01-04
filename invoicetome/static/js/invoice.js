@@ -65,7 +65,7 @@ var app = app || {};
     adaptors: [ Ractive.adaptors.Backbone ],
   });
 
-  app.aside = new Ractive({
+  app.actions = new Ractive({
     el: '#actions-bar',
     template: '#invoice-actions-template',
     data: {
@@ -86,6 +86,25 @@ var app = app || {};
         add_row: gettext('Add Row'),
         delete_row: gettext('Delete Row'),
         finished: gettext('Finished editing?'),
+      },
+      user: USER,
+      invoice: app.invoice.get('invoice'),
+      status: 'draft',
+    },
+    adaptors: [ Ractive.adaptors.Backbone ],
+  });
+
+
+  app.filters = new Ractive({
+    el: '.invoice-list-filter',
+    template: '#invoice-list-filter-template',
+    data: {
+      text: {
+        status: {
+          draft: gettext('Draft Invoices'),
+          sent: gettext('Sent Invoices'),
+          recieved: gettext('Recieved Invoices'),
+        },
       },
       user: USER,
       invoice: app.invoice.get('invoice'),
@@ -324,10 +343,10 @@ var app = app || {};
     },
   });
 
-  app.aside.on({
+  app.filters.on({
     filter: function( event, status ) {
       app.router.navigate(status);
-      app.aside.set('status', status);
+      app.filters.set('status', status);
       if (status == 'recieved') {
         var data = {
           recipient_email: this.get('user.email'),
@@ -337,7 +356,7 @@ var app = app || {};
           status: status,
         };
       }
-      app.aside.set('active_status', app.invoiceList.get('status')[status]);
+      app.filters.set('active_status', app.invoiceList.get('status')[status]);
       app.invoiceList.get('invoices').fetch({
         data: data,
         success: function () {

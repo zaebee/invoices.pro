@@ -12,32 +12,8 @@
 
   <div class="row">
     <div class="navbar-offcanvas offcanvas-xs navmenu-fixed-left" id="invoice-list-collapse" data-spy="affix" data-offset-top="50">
-      <div class="invoice-list-filter">
-        <p class="navbar-text navbar-right pull-right">long long test</p>
-        <div class="btn-group navbar-btn" data-toggle="buttons">
-          <label class="btn btn-default btn-draft active" on-click="filter:'draft'">
-            <div data-toggle="tooltip" data-placement="bottom" title="{{text.status.draft}}">
-              <i class="glyphicon glyphicon-saved"></i>
-              <input type="radio" name="options" value="draft" checked>
-            </div>
-          </label>
-
-          <label class="btn btn-default btn-sent" on-click="filter:'sent'">
-            <div data-toggle="tooltip" data-placement="bottom" title="{{text.status.sent}}">
-              <i class="glyphicon glyphicon-export"></i>
-              <input type="radio" name="options" value="sent">
-            </div>
-          </label>
-
-          <label class="btn btn-default btn-recieved" on-click="filter:'recieved'">
-            <div data-toggle="tooltip" data-placement="bottom" title="{{text.status.recieved}}">
-              <i class="glyphicon glyphicon-import"></i>
-              <input type="radio" name="options" value="recieved">
-            </div>
-          </label>
-        </div>
-      </div>
-      <div class="" id="invoice-list">
+      <div class="invoice-list-filter"></div>
+      <div id="invoice-list">
       {% if user.is_authenticated %}
         <div class="list-group nano"></div>
       {% endif %}

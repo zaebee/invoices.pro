@@ -27,19 +27,19 @@ var app = app || {};
     draft: function () {
       this.init_tasks();
       console.log('draft');
-      app.aside.fire('filter', null, 'draft');
+      app.filters.fire('filter', null, 'draft');
       $('.btn-draft').button('toggle');
     },
 
     sent: function () {
       this.init_tasks();
-      app.aside.fire('filter', null, 'sent');
+      app.filters.fire('filter', null, 'sent');
       $('.btn-sent').button('toggle');
     },
 
     recieved: function () {
       this.init_tasks();
-      app.aside.fire('filter', null, 'recieved');
+      app.filters.fire('filter', null, 'recieved');
       $('.btn-recieved').button('toggle');
     },
 
@@ -50,8 +50,8 @@ var app = app || {};
           var tasks = model.get('records');
           tasks = new app.Tasks(tasks);
           app.tasks.set('tasks', tasks);
-          app.aside.set('status', status);
-          app.aside.set('active_status', app.invoiceList.get('status')[status]);
+          app.filters.set('status', status);
+          app.filters.set('active_status', app.invoiceList.get('status')[status]);
           $('.btn-' + status).button('toggle');
           app.invoiceList.get('invoices').fetch({
             data: {
