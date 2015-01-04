@@ -298,15 +298,45 @@ a.button:active {
     */
 }
 
+.invoice-list-filter {
+    z-index: 9;
+    padding: 0 15px;
+    background: #f8f8f8;
+}
+.invoice-list-filter.affix {
+    top:0;
+}
+#invoice-list-collapse {
+    width:25%;
+    top: 50px;
+    overflow: hidden;
+    border: none;
+    z-index: 6;
+}
+#invoice-list-collapse.in .invoice-list-filter {
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+#invoice-list-collapse.affix.in {
+    top: 51px;
+}
+#invoice-list-collapse.in {
+    width: 300px;
+}
+#invoice-list-collapse.affix {
+    height:100%;
+    top: 0;
+    z-index: 9;
+}
+#invoice-list-collapse.affix #invoice-list {
+    top: 1px;
+}
 #invoice-list {
-    position: fixed;
     z-index:6;
     border-radius: 0;
     padding-left: 0;
     height:100%;
-    top: 100px;
     padding-right: 0;
-    width: 25%;
     overflow-y: hidden;
     border-right: none;
 }

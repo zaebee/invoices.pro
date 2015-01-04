@@ -196,7 +196,7 @@ $(document).ready(function() {
   });
   $('[data-toggle=tooltip]').tooltip();
   $("textarea.notes").growfield();
-  $('#invoice-list').on('shown.bs.offcanvas', function(){
+  $('#invoice-list-collapse').on('shown.bs.offcanvas', function(){
     $('.nano').nanoScroller('reset');
   });
 });
