@@ -312,15 +312,15 @@ a.button:active {
 }
 #invoice-list.in,
 #invoice-list.affix {
-    top: 50px;
-    padding-bottom: 50px;
+    top: 51px;
+    padding-bottom: 51px;
 }
 #invoice-list.in {
     width: 300px;
 }
 
 #invoice-list a {
-    padding: 10px 5px 10px 15px;
+    padding: 10px 10px 10px 15px;
     z-index: 1;
 }
 #invoice-list.affix .invoice-list-title {

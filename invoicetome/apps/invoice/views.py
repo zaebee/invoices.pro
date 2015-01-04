@@ -195,5 +195,4 @@ def hellosign_callback(request):
                                     invoice=invoice,
                                     request=request,
                                     signature_event=event_type)
-        pass
     return Response(response, content_type="application/json")
