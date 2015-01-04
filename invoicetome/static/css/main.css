@@ -317,6 +317,8 @@ a.button:active {
 }
 #invoice-list.in {
     width: 300px;
+    background: #fff;
+    border-right: 1px solid #ddd;
 }
 
 #invoice-list a {
