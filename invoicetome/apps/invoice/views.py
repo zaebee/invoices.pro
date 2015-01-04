@@ -143,6 +143,22 @@ def invoice_sign(request, uuid):
         pass
     filename = request.POST.get('filename', invoice.uuid)
     filename = '%s/%s' % (BASE_PDF_DIR, filename)
+    fields = [
+        [
+            {
+                "api_id": "uniqueIdHere_2",
+                "name": "",
+                "type": "signature",
+                "x": 160,
+                "y": 620,
+                "width": 240,
+                "height": 60,
+                "required": True,
+                "signer": 0
+            }
+        ]
+    ]
+
     if os.path.exists(filename):
         response = client.send_signature_request_embedded(
             test_mode=HELLOSIGN_TEST_MODE,
@@ -151,9 +167,10 @@ def invoice_sign(request, uuid):
             signers=[
                 {
                     'email_address': invoice.email,
-                    'name': invoice.company_name
+                    'name': invoice.company_name,
                 }
             ],
+            form_fields_per_document=json.dumps(fields),
             files=[filename]
         )
         invoice.signature_request_id = response.signature_request_id
