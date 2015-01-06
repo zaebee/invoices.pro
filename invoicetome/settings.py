@@ -47,9 +47,11 @@ INSTALLED_APPS = (
     'django_assets',
     'annoying',
 
-    'mailer',
-    'local',
+    'api',
     'invoice',
+    'local',
+    'mailer',
+    'profiles',
 
     'registration',
     'widget_tweaks',

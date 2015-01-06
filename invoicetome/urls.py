@@ -18,7 +18,7 @@ js_info_dict = {
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^api/', include('invoice.urls')),
+    url(r'^api/', include('api.urls')),
     url(r'^localeurl/', include('localeurl.urls')),
     url(r'^registration/register/$', RegistrationView.as_view(), name='registration_register'),
     url(r'^registration/activate/(?P<activation_key>\w+)/$', ActivationView.as_view(), name='registration_activate'),

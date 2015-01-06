@@ -8,6 +8,7 @@ var app = app || {};
       'draft': 'draft',
       'sent': 'sent',
       'recieved': 'recieved',
+      'profile': 'profile',
     },
 
     init_tasks: function () {
@@ -66,6 +67,10 @@ var app = app || {};
         },
       });
       console.log('detail', uuid);
+    },
+
+    profile: function() {
+      console.log('profile');
     },
   });
   $('#company').focus();

@@ -164,6 +164,11 @@
     },
   });
 
+  app.Users = Backbone.Collection.extend({
+    url: '/api/users/',
+    model: app.User
+  });
+
   app.Invoices = Backbone.Collection.extend({
     url: '/api/invoices/',
     model: app.Invoice

@@ -52,7 +52,7 @@
           </form>
         {% else %}
           <a role="button" href="{% url 'logout' %}" class="btn btn-default navbar-btn navbar-right">{% trans 'logout' %}</a>
-          <p class="navbar-text navbar-right">{% trans 'Signed in as' %} <a href="#" class="navbar-link">{{ user.email }}</a>&nbsp;</p>
+          <p class="navbar-text navbar-right">{% trans 'Signed in as' %} <a data-toggle="modal" data-target="#profileModal" href="#" class="navbar-link">{{ user.email }}</a>&nbsp;</p>
         {% endif %}
 
       </div>
