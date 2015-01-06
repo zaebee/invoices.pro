@@ -19,13 +19,11 @@
       {% endif %}
       </div>
     </div>
-    <form id="invoice-form" class="col-md-9 col-md-push-3" role="form" action="/generate_pdf.php" method="post">
+    <form id="invoice-form" class="col-md-9 col-sm-9 col-sm-push-3 col-md-push-3" role="form" action="/generate_pdf.php" method="post">
 
       <div class="row">
         <input id="rowCounter" type="hidden" value="8" />
-        {% if not share %}
-        {% else %}
-
+        {% if share %}
           <div class="col-md-12 pull-right text-right">
             <ul class="nav nav-pills nav-stacked">
               <li><a role="button" id="get-pdf" onclick="app.makeMarkup();$('.invoice-form').submit();" class="button btn-primary" href="#">{% trans 'Get PDF' %}</a></li>
