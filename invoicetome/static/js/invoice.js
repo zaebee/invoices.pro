@@ -196,12 +196,14 @@ var app = app || {};
       var invoice = app.invoice.get('invoice').clone();
       var spinner = app.Spinner($('#copy-invoice'));
       spinner.start();
-      invoice.id = null;
       invoice.unset('id');
       invoice.unset('uuid');
       invoice.unset('status');
       invoice.unset('histories');
       invoice.unset('recipient_email');
+      invoice.unset('signed');
+      invoice.unset('signature_id');
+      invoice.unset('signature_request_id');
       invoice.save(null, {
         success: function(model, response) {
           if ($('[name=options]:checked').val() == 'draft') {
