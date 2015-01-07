@@ -312,7 +312,6 @@ a.button:active {
     overflow: hidden;
     border: none;
     z-index: 6;
-    padding-bottom: 50px;
 }
 #invoice-list-collapse.in .invoice-list-filter {
     border-right: 1px solid #ddd;
@@ -330,6 +329,7 @@ a.button:active {
     height:100%;
     top: 0;
     z-index: 9;
+    padding-bottom: 51px;
 }
 #invoice-list-collapse.affix #invoice-list {
     top: 1px;
@@ -346,7 +346,6 @@ a.button:active {
 #invoice-list.in,
 #invoice-list.affix {
     top: 51px;
-    padding-bottom: 51px;
 }
 #invoice-list.in {
     width: 300px;
