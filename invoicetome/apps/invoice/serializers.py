@@ -62,7 +62,7 @@ class InvoiceSerializer(serializers.ModelSerializer):
 
     def extra_fields(self, obj):
         request = self.context.get('request', None)
-        if obj.owner == request.user and obj.status == obj.STATUS_DRAFT:
+        if obj.owner == request.user and obj.status == obj.STATUS_DRAFT and not obj.signed:
             disabled = False
         else:
             disabled = True
