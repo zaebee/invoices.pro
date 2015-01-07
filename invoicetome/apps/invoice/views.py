@@ -33,7 +33,7 @@ from .permissions import IsInvoiceOwner
 HELLOSIGN_CLIENT_ID = getattr(settings, 'HELLOSIGN_CLIENT_ID', '')
 HELLOSIGN_API_KEY = getattr(settings, 'HELLOSIGN_API_KEY', '')
 HELLOSIGN_TEST_MODE = getattr(settings, 'HELLOSIGN_TEST_MODE', True)
-BASE_PDF_DIR = '/tmp'
+HELLOSIGN_PRESIGN_DIR = getattr(settings, 'HELLOSIGN_PRESIGN_DIR', '/tmp')
 
 
 class InvoiceViewSet(viewsets.ModelViewSet):
@@ -142,7 +142,7 @@ def invoice_sign(request, uuid):
     except (NotFound, Gone):
         pass
     filename = request.POST.get('filename', invoice.uuid)
-    filename = '%s/%s' % (BASE_PDF_DIR, filename)
+    filename = '%s/%s' % (HELLOSIGN_PRESIGN_DIR, filename)
     fields = [
         [
             {

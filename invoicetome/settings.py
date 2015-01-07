@@ -169,6 +169,9 @@ LOCALE_INDEPENDENT_PATHS = (
 TEMPLATED_EMAIL_TEMPLATE_DIR = 'templated_email/' #use '' for top level template dir, ensure there is a trailing slash
 TEMPLATED_EMAIL_FILE_EXTENSION = 'html'
 
+HELLOSIGN_PRESIGN_DIR = rel('hellosign_presign')
+HELLOSIGN_SIGNED_DIR = rel('hellosign_signed')
+
 try:
     from settings_local import *
 except:
