@@ -27,7 +27,7 @@ var app = app || {};
       },
 
     },
-    adaptors: [ Ractive.adaptors.Backbone ],
+    adapt: [ Ractive.adaptors.Backbone ],
   });
 
   app.invoice = new Ractive({
@@ -62,7 +62,7 @@ var app = app || {};
         this.invoice.set('total', parseFloat(subtotal) + parseFloat(tax));
       }
     },
-    adaptors: [ Ractive.adaptors.Backbone ],
+    adapt: [ Ractive.adaptors.Backbone ],
   });
 
   app.actions = new Ractive({
@@ -88,10 +88,9 @@ var app = app || {};
         finished: gettext('Finished editing?'),
       },
       user: USER,
-      invoice: app.invoice.get('invoice'),
       status: 'draft',
     },
-    adaptors: [ Ractive.adaptors.Backbone ],
+    adapt: [ Ractive.adaptors.Backbone ],
   });
 
 
@@ -110,7 +109,7 @@ var app = app || {};
       invoice: app.invoice.get('invoice'),
       status: 'draft',
     },
-    adaptors: [ Ractive.adaptors.Backbone ],
+    adapt: [ Ractive.adaptors.Backbone ],
   });
 
 
@@ -123,7 +122,10 @@ var app = app || {};
         var invoice = event.context;
       } else {
         var invoice = this.get('invoices').at(0);
-        if (!invoice) return;
+        if (!invoice) {
+          app.router.init_tasks();
+          return;
+        };
         var $node = $('[data-uuid=' + invoice.get('uuid') + ']');
         $node.siblings().removeClass('active');
         $node.addClass('active');
@@ -337,6 +339,7 @@ var app = app || {};
                   console.log(eventData);
                   if (eventData.event == HelloSign.EVENT_SIGNED) {
                     app.invoice.set('invoice.signed', true);
+                    app.invoice.set('invoice.disabled', true);
                     invoice.save();
                     $('#sign-container-wrapper').addClass('hide');
                   };
@@ -385,6 +388,9 @@ var app = app || {};
   app.invoice.observe('invoice.subtotal', function(subtotal, old, keypath){
     var tax_percent = this.get('invoice.headers.tax').replace(/\,/g, '').replace(/,/g,'.').replace(/[^\d\.]/g,'') / 100;
     this.data.set_total(tax_percent);
+  });
+  app.invoice.observe('invoice.uuid', function(val, old, keypath){
+    app.actions.set('invoice', app.invoice.get('invoice'));
   });
 
 })(app);

@@ -65,8 +65,10 @@ var app = app || {};
             },
           });
         },
+        error: function(model, response) {
+          app.router.navigate(status, {trigger:true});
+        },
       });
-      console.log('detail', uuid);
     },
 
     profile: function() {

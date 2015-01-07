@@ -9,7 +9,7 @@ var app = app || {};
       user: new app.User(USER), // наша Backbone модель
 
     },
-    adaptors: [ Ractive.adaptors.Backbone ],
+    adapt: [ Ractive.adaptors.Backbone ],
   });
 
 

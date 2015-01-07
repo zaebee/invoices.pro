@@ -22,7 +22,7 @@ var app = app || {};
         return total.toFixed( 2 );
       },
     },
-    adaptors: [ Ractive.adaptors.Backbone ],
+    adapt: [ Ractive.adaptors.Backbone ],
   });
 
   app.tasks.on({

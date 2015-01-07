@@ -189,7 +189,7 @@
             class="btn btn-primary navbar-btn btn-actions" href="#">{{text.send}}</a>
           <a role="button" id="delete-invoice"
             onclick="app.invoice.fire('delete');return false;"
-            class="btn btn-danger navbar-btn btn-actions" href="#">{{text.delete}}</a>
+            class="{{ invoice.uuid ? '' : 'disabled' }} btn btn-danger navbar-btn btn-actions" href="#">{{text.delete}}</a>
         {{/if}}
 
       {{else}}
