@@ -12,12 +12,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+        {% if user.is_authenticated and not share %}
         <button type="button" class="navbar-toggle offcanvas-toggle pull-left collapsed" data-toggle="offcanvas" data-target="#invoice-list-collapse">
           <span class="sr-only">{% trans 'Toggle Invoice List' %}</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+        {% endif %}
         <a class="navbar-brand" href="/">Invoiceto.me</a>
       </div>
 

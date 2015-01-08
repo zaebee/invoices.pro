@@ -1,18 +1,26 @@
 @media (max-width: 768px) {
     .span-5 {
-        width: 16.666666666666664%;
+        /*width: 16.666666666666664%;*/
     }
     .actions-nav {
         margin-top: 50px;
     }
+    .noteditable {
+        text-indent: 2px;
+    }
     #invoice {
         padding:40px 20px;
     }
-    #invoice table thead input {
+    tbody tr > td > span {
+        padding-left: 2px;
+    }
+    #invoice table thead input,
+    #invoice table tbody input {
         font-size: .8em;
+        text-indent: 2px;
     }
     #invoice table .expanded {
-        width: 50%;
+        width: 30%;
         transition: width 0.5s;
     }
     #company {

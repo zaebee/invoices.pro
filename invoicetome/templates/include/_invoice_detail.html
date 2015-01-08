@@ -65,10 +65,10 @@
         <thead>
         <tr>
           <th class="span-1"><input disabled="{{disabled}}" value="#" /></th>
-          <th class="span-5"><input on-focus="focus" on-blur="blur" disabled="{{disabled}}" value="{{headers.h_description}}" /></th>
-          <th class="span-2"><input on-focus="focus" on-blur="blur" disabled="{{disabled}}" value="{{headers.h_quantity}}" /></th>
-          <th class="span-2"><input on-focus="focus" on-blur="blur" disabled="{{disabled}}" value="{{headers.h_unit_price}}" /></th>
-          <th class="span-2"><input on-focus="focus" on-blur="blur" disabled="{{disabled}}" value="{{headers.h_total}}" /></th>
+          <th class="span-14"><input on-focus="focus" on-blur="blur" disabled="{{disabled}}" value="{{headers.h_description}}" /></th>
+          <th class="span-3"><input on-focus="focus" on-blur="blur" disabled="{{disabled}}" value="{{headers.h_quantity}}" /></th>
+          <th class="span-3"><input on-focus="focus" on-blur="blur" disabled="{{disabled}}" value="{{headers.h_unit_price}}" /></th>
+          <th class="span-3"><input on-focus="focus" on-blur="blur" disabled="{{disabled}}" value="{{headers.h_total}}" /></th>
         </tr>
         </thead>
         <tbody id="task-list"></tbody>
@@ -122,10 +122,10 @@
 {{#each tasks:i}}
   <tr>
     <td class="noteditable span-1" title="This field is done automatically">{{i+1}}</td>
-    <td class="span-5"><input on-focus="focus" on-blur="blur" disabled="{{disabled}}" value="{{description}}" /></td>
-    <td class="span-2"><input on-focus="focus" on-blur="blur" disabled="{{disabled}}" value="{{quantity}}" /></td>
-    <td class="span-2"><input on-focus="focus" on-blur="blur" disabled="{{disabled}}" value="{{unit_price}}" /></td>
-    <td class="noteditable span-2" title="This field is done automatically">{{format(total)}}</td>
+    <td class="span-14"><input on-focus="focus" on-blur="blur" disabled="{{disabled}}" value="{{description}}" /></td>
+    <td class="span-3"><input on-focus="focus" on-blur="blur" disabled="{{disabled}}" value="{{quantity}}" /></td>
+    <td class="span-3"><input on-focus="focus" on-blur="blur" disabled="{{disabled}}" value="{{unit_price}}" /></td>
+    <td class="noteditable span-3" title="This field is done automatically">{{format(total)}}</td>
   </tr>
 {{/each}}
 </script>
@@ -233,7 +233,7 @@
     </label>
   </div>
   {{else}}
-  <p class="navbar-text navbar-right">Download PDF Invoice!</p>
+  <p class="navbar-text navbar-right pull-right">Download PDF Invoice!</p>
   {{/if}}
 </script>
 

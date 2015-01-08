@@ -99,7 +99,7 @@
         username: '{{user.username}}',
         authenticated: {{user.is_authenticated|lower}},
         lang: '{{ LANGUAGE_CODE }}',
-        id: {{user.id}}
+        id: {{user.id|default:'false'}},
       };
     </script>
 
