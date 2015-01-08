@@ -39,6 +39,9 @@ body {
     margin: 0 auto 0;
     border-top: 0;
 }
+#invoice table tbody td {
+    transition: width 1s;
+}
 
 input  {
 	border:0;
@@ -201,31 +204,10 @@ textarea:focus, input:focus {
 	text-shadow: none;
 	}
 
-#taxrate:hover:after, #taxrate:focus:after {
-	content: "(Include the tax rate percentage here for calculation)";
-	float:right;
-	margin-top:-24px;
-	margin-right:40px;
-	font-weight: normal;
-	color: #27a;
-	font-family: monospace;
-	overflow: hidden;
-	}
-
-
-.noteditable:hover:after {
-		clear: both;
-		float: left;
-		content: "Auto";
-		font-weight: normal;
-		color: #27a;
-		font-family: monospace;
-	}
-
 
 input {
 	overflow: hidden;
-	}
+}
 
 
 

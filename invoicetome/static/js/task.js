@@ -66,6 +66,16 @@ var app = app || {};
       };
     },
 
+    focus: function ( event ) {
+      $node = $(event.node).parent();
+      $node.addClass('expanded');
+    },
+
+    blur: function ( event ) {
+      $node = $(event.node).parent();
+      $node.removeClass('expanded');
+    },
+
   });
 
   // подписываемся на изменения параметров `quantity` и `unit_price` для тасков

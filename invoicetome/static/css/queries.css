@@ -1,3 +1,40 @@
 @media (max-width: 768px) {
-    .actions-nav {margin-top: 50px;}
+    .span-5 {
+        width: 16.666666666666664%;
+    }
+    .actions-nav {
+        margin-top: 50px;
+    }
+    #invoice {
+        padding:40px 20px;
+    }
+    #invoice table thead input {
+        font-size: .8em;
+    }
+    #invoice table .expanded {
+        width: 50%;
+        transition: width 0.5s;
+    }
+    #company {
+        font-size: 1em;
+        height:38px;
+        line-height:38px;
+    }
+
+    #title {
+        font-size: 1.5em;
+        height:38px;
+        line-height:38px;
+        z-index: 12;
+    }
+
+    .client {
+        font-weight: bold;
+        font-size: 1em;
+        line-height: 24px;
+    }
+    textarea.notes {
+        padding: 0;
+    }
+
 }
