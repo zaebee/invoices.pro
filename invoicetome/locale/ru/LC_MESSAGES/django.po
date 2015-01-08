@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-04 14:43+0000\n"
+"POT-Creation-Date: 2015-01-08 16:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,11 +19,11 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: settings.py:120
+#: settings.py:122
 msgid "rus"
 msgstr "рус"
 
-#: settings.py:121
+#: settings.py:123
 msgid "eng"
 msgstr "енг"
 
@@ -67,7 +67,7 @@ msgstr "Город"
 msgid "Phone"
 msgstr "Телефон"
 
-#: apps/invoice/models.py:48 apps/invoice/models.py:155
+#: apps/invoice/models.py:48 apps/invoice/models.py:157
 msgid "Email"
 msgstr ""
 
@@ -111,7 +111,7 @@ msgstr "Скидка"
 msgid "Total Price"
 msgstr "Общая сумма"
 
-#: apps/invoice/models.py:67 apps/invoice/models.py:158
+#: apps/invoice/models.py:67 apps/invoice/models.py:160
 msgid "Date Added"
 msgstr "Дата добавления"
 
@@ -127,12 +127,12 @@ msgstr ""
 msgid "Signature ID"
 msgstr ""
 
-#: apps/invoice/models.py:73
+#: apps/invoice/models.py:73 templates/include/_pdf_detail.html:45
 msgid "Signed"
 msgstr "Вы вошли как"
 
-#: apps/invoice/models.py:76 apps/invoice/models.py:106
-#: apps/invoice/models.py:118 apps/invoice/models.py:153
+#: apps/invoice/models.py:76 apps/invoice/models.py:108
+#: apps/invoice/models.py:120 apps/invoice/models.py:155
 msgid "Invoice"
 msgstr "Счет"
 
@@ -140,60 +140,60 @@ msgstr "Счет"
 msgid "Invoices"
 msgstr "Счета"
 
-#: apps/invoice/models.py:108 apps/invoice/models.py:120
+#: apps/invoice/models.py:110 apps/invoice/models.py:122
 msgid "Description"
 msgstr "Описание"
 
-#: apps/invoice/models.py:109 apps/invoice/models.py:121
+#: apps/invoice/models.py:111 apps/invoice/models.py:123
 msgid "Quantity"
 msgstr "Количество"
 
-#: apps/invoice/models.py:110 apps/invoice/models.py:122
+#: apps/invoice/models.py:112 apps/invoice/models.py:124
 msgid "Unit Price"
 msgstr "Ед. изм."
 
-#: apps/invoice/models.py:111 apps/invoice/models.py:123
-#: apps/invoice/models.py:126
+#: apps/invoice/models.py:113 apps/invoice/models.py:125
+#: apps/invoice/models.py:128
 msgid "Total"
 msgstr "ИТОГО"
 
-#: apps/invoice/models.py:124
+#: apps/invoice/models.py:126
 msgid "Subtotal"
 msgstr "Цена без скидки"
 
-#: apps/invoice/models.py:125
+#: apps/invoice/models.py:127
 msgid "Tax"
 msgstr "Налог"
 
-#: apps/invoice/models.py:144
+#: apps/invoice/models.py:146
 msgid "Created"
 msgstr "Создано"
 
-#: apps/invoice/models.py:145
+#: apps/invoice/models.py:147
 msgid "Sent to email"
 msgstr "Отправлено на email"
 
-#: apps/invoice/models.py:146
+#: apps/invoice/models.py:148
 msgid "Recieved by email"
 msgstr "Получено от email"
 
-#: apps/invoice/models.py:147
+#: apps/invoice/models.py:149
 msgid "Declined"
 msgstr "Отклонено"
 
-#: apps/invoice/models.py:148
+#: apps/invoice/models.py:150
 msgid "Signature Request Viewed"
 msgstr "Документ на подпись ппрсмотрен"
 
-#: apps/invoice/models.py:149
+#: apps/invoice/models.py:151
 msgid "Signature Request Sent"
 msgstr "Документ на подпись получен"
 
-#: apps/invoice/models.py:150
+#: apps/invoice/models.py:152
 msgid "Signature Request Signed"
 msgstr "Документ подписан"
 
-#: apps/invoice/models.py:151
+#: apps/invoice/models.py:153
 msgid "Signature Request All Signed"
 msgstr "Все документы подписаны"
 
@@ -225,7 +225,20 @@ msgstr "Ваш аккаунт был активирован!"
 msgid "invoiceto.me &middot; Make a free invoice PDF online"
 msgstr "invoiceto.me &middot; Создание счетов PDF онлайн"
 
-#: templates/include/_header.html:7 templates/include/_pdf_detail.html:9
+#: templates/default.html:80
+msgid "Profile Settings"
+msgstr "Настройки профиля"
+
+#: templates/default.html:86
+msgid "Close"
+msgstr "Закрыть"
+
+#: templates/default.html:87
+#: templates/registration/password_change_form.html:34
+msgid "Save"
+msgstr "Сохранить"
+
+#: templates/include/_header.html:7
 msgid "Toggle navigation"
 msgstr "Переключить навиагацию"
 
@@ -233,33 +246,38 @@ msgstr "Переключить навиагацию"
 msgid "Toggle Action Menu"
 msgstr "Переключить меню действий"
 
-#: templates/include/_header.html:16
+#: templates/include/_header.html:17
 msgid "Toggle Invoice List"
 msgstr "Переключить меню списка счетов"
 
-#: templates/include/_header.html:28
+#: templates/include/_header.html:30
 msgid "Language"
 msgstr "Язык"
 
-#: templates/include/_header.html:42
+#: templates/include/_header.html:44
 msgid "Register"
 msgstr "Регистрация"
 
-#: templates/include/_header.html:51 templates/registration/login_form.html:27
+#: templates/include/_header.html:53 templates/registration/login_form.html:27
 msgid "Sign in"
 msgstr "Войти"
 
-#: templates/include/_header.html:54 templates/registration/login.html:15
+#: templates/include/_header.html:56 templates/registration/login.html:15
 msgid "logout"
 msgstr "выйти"
 
-#: templates/include/_header.html:55
+#: templates/include/_header.html:57
 msgid "Signed in as"
 msgstr "Вы вошли как"
 
-#: templates/include/_order_form.html:31 templates/include/_pdf_detail.html:19
+#: templates/include/_order_form.html:29 templates/include/_pdf_detail.html:14
+#: templates/include/_pdf_detail.html:19
 msgid "Get PDF"
 msgstr "Получить PDF"
+
+#: templates/include/_pdf_detail.html:35
+msgid "Download PDF Invoice!"
+msgstr "Скачать PDF!"
 
 #: templates/registration/activation_complete.html:8
 msgid ""
@@ -312,10 +330,6 @@ msgstr "Пароль был сброшен"
 #: templates/registration/password_reset_form.html:11
 msgid "Password Reset"
 msgstr "Сброс пароля"
-
-#: templates/registration/password_change_form.html:34
-msgid "Save"
-msgstr "Сохранить"
 
 #: templates/registration/password_reset_complete.html:9
 msgid "Password successfully updated"
