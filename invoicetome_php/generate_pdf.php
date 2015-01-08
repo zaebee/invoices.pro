@@ -1,6 +1,8 @@
 <?php
 
 require_once("pdf/dompdf/dompdf_config.inc.php");
+$hellosign_presign_dir = dirname(__DIR__) . '/invoicetome/hellosign_presign/';
+
 
 // We check wether the user is accessing the demo locally
 $local = array("::1", "127.0.0.1");
@@ -130,7 +132,7 @@ div p {
     $stamp = $date->getTimestamp();
     $filename = $stamp . '_invioceto.me.pdf';
     $output = $dompdf->output();
-    file_put_contents('/tmp/' . $filename, $output);
+    file_put_contents($hellosign_presign_dir . $filename, $output);
     $result = array('created' => true, 'filename' => $filename);
     echo json_encode($result);
     exit(0);

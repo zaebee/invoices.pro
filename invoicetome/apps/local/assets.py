@@ -63,6 +63,7 @@ register('all_css',
                'css/jasny-bootstrap.css',
                'css/nanoscroller.css',
                'css/main.css',
+               'css/queries.css',
         ),
         filters='cssmin',
         output='cache/packed.css')
