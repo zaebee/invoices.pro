@@ -204,4 +204,7 @@ $(document).ready(function() {
   $('#invoice-list-collapse').on('shown.bs.offcanvas', function(){
     $('.nano').nanoScroller('reset');
   });
+  $('#profileModal').on('shown.bs.modal', function(){
+    app.profile.get('user').fetch();
+  });
 });

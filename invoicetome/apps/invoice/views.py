@@ -7,6 +7,7 @@ import hashlib, hmac
 
 from hellosign_sdk import HSClient
 from hellosign_sdk.utils import NotFound, Gone
+from rauth import OAuth2Service
 
 from annoying.functions import get_object_or_None
 
@@ -213,3 +214,42 @@ def hellosign_callback(request):
                                     request=request,
                                     signature_event=event_type)
     return Response(response, content_type="application/json")
+
+
+
+@api_view(['GET'])
+def stripe_callback(request):
+    import ipdb;ipdb.set_trace()
+    # the temporary code returned from stripe
+    code = request.GET.get('code', False)
+    error = request.GET.get('error', False)
+    # identify what we are going to ask for from stripe
+    data = {
+        'grant_type': 'authorization_code',
+        'code': code
+    }
+
+    if error:
+        return redirect('main-view')
+    if not code:
+        return Response({'error': 'empty code'}, status=403)
+
+    # Get the access_token using the code provided
+    resp = stripe_connect_service.get_raw_access_token(method='POST', data=data)
+
+    # process the returned json object from stripe
+    stripe_payload = json.loads(resp.text)
+
+    # Sample return of the access_token, please don't do this! this is
+    # just an example that it does in fact return the access_token
+    return Response(stripe_payload)
+
+
+stripe_connect_service = OAuth2Service(
+    name = 'stripe',
+    client_id = 'ca_5TKyU8Il0K1qVbD0D2zV7G1wNMBd6xTy',
+    client_secret = 'sk_test_wileWVgKtzip1LstWakhbtdr',
+    authorize_url = 'https://connect.stripe.com/oauth/authorize',
+    access_token_url = 'https://connect.stripe.com/oauth/token',
+    base_url = 'https://api.stripe.com/',
+)
