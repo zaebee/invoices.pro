@@ -27,9 +27,14 @@
   </div>
 
   <div class="row">
-    <div class="navbar-offcanvas offcanvas-xs navmenu-fixed-left affix-top" id="invoice-list-collapse" data-spy="affix" data-offset-top="50">
-      <div class="invoice-list-filter"><p class="navbar-text navbar-right pull-right">Download PDF Invoice!</p></div>
-    </div>
+    <nav class="navbar navbar-offcanvas navbar-default offcanvas-xs navmenu-fixed-left affix-top" id="invoice-list-collapse" data-spy="affix" data-offset-top="50">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Invoiceto.me</a>
+      </div>
+      <div class="invoice-list-filter">
+        <p class="navbar-text navbar-right pull-right">{% trans 'Download PDF Invoice!' %}</p>
+      </div>
+    </nav>
 
     <form id="invoice-form" class="col-md-9 col-sm-9 col-sm-push-3 col-md-push-3" role="form" action="/generate_pdf.php" method="post">
       <div class="row">

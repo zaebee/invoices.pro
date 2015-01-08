@@ -290,6 +290,7 @@ a.button:active {
     padding: 0 15px;
     background: #f8f8f8;
     border-bottom: 1px solid #ddd;
+    height: 51px;
 }
 .invoice-list-filter.affix {
     top:0;
@@ -322,6 +323,12 @@ a.button:active {
 }
 #invoice-list-collapse.affix #invoice-list {
     top: 1px;
+}
+#invoice-list-collapse .navbar-brand {
+    display: none;
+}
+#invoice-list-collapse.affix .navbar-brand {
+    display: block;
 }
 #invoice-list {
     z-index:6;
