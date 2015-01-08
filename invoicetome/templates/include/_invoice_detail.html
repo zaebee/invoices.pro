@@ -43,7 +43,7 @@
     <hr>
 
     <div class="row">
-      <textarea value="{{notes_top}}" class="notes col-md-10 col-md-push-1 col-xs-10 col-xs-push-1" id="textone">{{notes_top}}</textarea>
+      <textarea disabled="{{disabled}}" value="{{notes_top}}" class="notes col-md-10 col-md-push-1 col-xs-10 col-xs-push-1" id="textone">{{notes_top}}</textarea>
     </div>
 
     <div class="row" style="position:relative;">
@@ -193,7 +193,7 @@
             class="btn btn-primary navbar-btn btn-actions" href="#">{{text.send}}</a>
           <a role="button" id="delete-invoice"
             onclick="app.invoice.fire('delete');return false;"
-            class="{{ invoice.uuid ? '' : 'disabled' }} btn btn-danger navbar-btn btn-actions" href="#">{{text.delete}}</a>
+            class="{{ invoice.uuid && !invoice.disabled ? '' : 'disabled' }} btn btn-danger navbar-btn btn-actions" href="#">{{text.delete}}</a>
         {{/if}}
 
       {{else}}

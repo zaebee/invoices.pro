@@ -81,10 +81,13 @@ var app = app || {};
   // подписываемся на изменения параметров `quantity` и `unit_price` для тасков
   // чтобы пересчитивать сумму
   // сумму также меняем у инвойса
-  // TODO нужно сохранять инвойс после изменения суммы
+  // TODO нужно сохранять инвойс после изменения суммы; удаления строк
   app.tasks.observe('tasks.*.quantity tasks.*.unit_price', function(tasks, old, keypath){
     var subtotal = this.data.total_tasks(this.data.tasks);
     app.invoice.set('invoice.subtotal', parseFloat(subtotal));
+  });
+  app.invoice.observe('invoice.disabled', function(val, old, keypath){
+    app.tasks.set('tasks.*.disabled', val);
   });
 
 })(app);

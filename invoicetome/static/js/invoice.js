@@ -399,7 +399,7 @@ var app = app || {};
     var tax_percent = this.get('invoice.headers.tax').replace(/\,/g, '').replace(/,/g,'.').replace(/[^\d\.]/g,'') / 100;
     this.data.set_total(tax_percent);
   });
-  app.invoice.observe('invoice.uuid', function(val, old, keypath){
+  app.invoice.observe('invoice.uuid invoice.disabled', function(val, old, keypath){
     app.actions.set('invoice', app.invoice.get('invoice'));
   });
 
