@@ -8,7 +8,16 @@
           {% if share %}
             <div class="row">
               <div class="col-md-9 col-sm-9 col-md-push-3 col-sm-push-3">
-                <a role="button" id="get-pdf" onclick="app.makeMarkup();$('#invoice-form').submit();" class="btn btn-primary navbar-btn btn-actions" href="#">{% trans 'Get PDF' %}</a>
+                {% if invoice.signed %}
+                <a role="button" id="get-pdf"
+                  class="btn btn-primary navbar-btn btn-actions"
+                  href="{% url 'invoice_pdf' invoice.uuid %}">{% trans 'Get PDF' %}</a>
+                {% else %}
+                <a role="button" id="get-pdf"
+                  onclick="app.makeMarkup();$('#invoice-form').submit();"
+                  class="btn btn-primary navbar-btn btn-actions"
+                  href="#">{% trans 'Get PDF' %}</a>
+                {% endif %}
               </div>
             </div>
           {% endif %}
@@ -20,13 +29,17 @@
   <div class="row">
     <div class="navbar-offcanvas offcanvas-xs navmenu-fixed-left affix-top" id="invoice-list-collapse" data-spy="affix" data-offset-top="50">
       <div class="invoice-list-filter"><p class="navbar-text navbar-right pull-right">Download PDF Invoice!</p></div>
-      <div id="invoice-list"></div>
     </div>
 
     <form id="invoice-form" class="col-md-9 col-sm-9 col-sm-push-3 col-md-push-3" role="form" action="/generate_pdf.php" method="post">
       <div class="row">
         <div class="col-sm-12 col-xs-12" id="invoice-detail">
           <div class="container-fluid" id="invoice">
+            {% if invoice.signed %}
+              <div class="ribbon-wrapper signed">
+                <div id="sign-invoice-spinner" class="ribbon">{% trans 'Signed' %}</div>
+              </div>
+            {% endif %}
             <div class="row">
               <input disabled id="company" class="col-md-6 col-xs-6" value="{{invoice.company_name}}" />
               <input disabled id="title" class="col-md-6 col-xs-6 pull-right text-right" value="{{invoice.invoice_name}}" />
@@ -75,7 +88,7 @@
                 {% for task in invoice.records.all %}
                   <tr>
                     <td class="noteditable">{{ forloop.counter }}</td>
-                    <td class=""><span>{{task.description}}</span></td>
+                    <td class=""><input value="{{task.description}}"></td>
                     <td class=""><input disabled value="{{task.quantity|default:''|floatformat:2}}"></td>
                     <td class=""><input disabled value="{{task.unit_price|default:''|floatformat:2}}"></td>
                     <td class="noteditable">{{task.total|default:'-'|floatformat:2}}</td>
