@@ -48,9 +48,26 @@
               </div>
 
               <div role="tabpanel" class="tab-pane" id="tab-payment">
-                <p>
-                  <a href="https://connect.stripe.com/oauth/authorize?response_type=code&amp;scope=read_write&amp;stripe_landing=login&amp;client_id=ca_5TKyU8Il0K1qVbD0D2zV7G1wNMBd6xTy" class="stripe-connect"><span>Connect with Stripe</span></a>
-                </p>
+                {{#user.stripes}}
+                  <dl class="dl-horizontal">
+                    <dt>Access Token</dt>
+                    <dd>{{access_token}}</dd>
+                    <dt>Refresh Token</dt>
+                    <dd>{{refresh_token}}</dd>
+                    <dt>Stripe Publishable Key</dt>
+                    <dd>{{stripe_publishable_key}}</dd>
+                    <dt>Stripe User ID</dt>
+                    <dd>{{stripe_user_id}}</dd>
+                  </dl>
+                  <p>
+                    <a disabled="" href="/api/stripe_connect/" class="stripe-connect btn disabled"><span>Stripe Connected</span></a>
+                  </p>
+                {{/user.stripes}}
+                {{#unless user.stripes}}
+                  <p>
+                    <a href="/api/stripe_connect/" class="stripe-connect btn"><span>Stripe Connected</span></a>
+                  </p>
+                {{/unless}}
               </div>
               <div role="tabpanel" class="tab-pane" id="tab-social">...</div>
             </div>

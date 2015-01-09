@@ -24,4 +24,5 @@ urlpatterns += patterns('invoice.views',
     url(r'^sign/(?P<uuid>[-_\d\w]+)/$', 'invoice_sign', name='invoice_sign'),
     url(r'^hellosign_callback/$', 'hellosign_callback', name='hellosign_callback'),
     url(r'^stripe_callback/$', 'stripe_callback', name='stripe_callback'),
+    url(r'^stripe_connect/$', 'stripe_connect', name='stripe_connect'),
 )

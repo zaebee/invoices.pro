@@ -14,6 +14,7 @@ from annoying.functions import get_object_or_None
 from django import http
 from django.conf import settings
 from django.utils import translation
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render, redirect
@@ -35,6 +36,18 @@ HELLOSIGN_CLIENT_ID = getattr(settings, 'HELLOSIGN_CLIENT_ID', '')
 HELLOSIGN_API_KEY = getattr(settings, 'HELLOSIGN_API_KEY', '')
 HELLOSIGN_TEST_MODE = getattr(settings, 'HELLOSIGN_TEST_MODE', True)
 HELLOSIGN_PRESIGN_DIR = getattr(settings, 'HELLOSIGN_PRESIGN_DIR', '/tmp')
+STRIPE_CLIENT_ID = getattr(settings, 'STRIPE_CLIENT_ID', '')
+STRIPE_CLIENT_SECRET = getattr(settings, 'STRIPE_CLIENT_SECRET', '')
+
+
+stripe_connect_service = OAuth2Service(
+    name = 'stripe',
+    client_id = STRIPE_CLIENT_ID,
+    client_secret = STRIPE_CLIENT_SECRET,
+    authorize_url = 'https://connect.stripe.com/oauth/authorize',
+    access_token_url = 'https://connect.stripe.com/oauth/token',
+    base_url = 'https://api.stripe.com/',
+)
 
 
 class InvoiceViewSet(viewsets.ModelViewSet):
@@ -219,18 +232,20 @@ def hellosign_callback(request):
 
 @api_view(['GET'])
 def stripe_callback(request):
-    import ipdb;ipdb.set_trace()
     # the temporary code returned from stripe
+    user = request.user
+    if user.is_anonymous():
+        return Response({'error': 'User is not authorized'}, status=403)
+
     code = request.GET.get('code', False)
     error = request.GET.get('error', False)
+
     # identify what we are going to ask for from stripe
     data = {
         'grant_type': 'authorization_code',
         'code': code
     }
 
-    if error:
-        return redirect('main-view')
     if not code:
         return Response({'error': 'empty code'}, status=403)
 
@@ -239,17 +254,26 @@ def stripe_callback(request):
 
     # process the returned json object from stripe
     stripe_payload = json.loads(resp.text)
+    if stripe_payload.get('error'):
+        messages.success(request, stripe_payload.get('error_description'), 'alert')
+        return redirect('main-view')
+    profile, _ = user.stripe_profiles.get_or_create(
+        stripe_user_id=stripe_payload['stripe_user_id']
+    )
+    #connect stripe profile to our user
+    profile.access_token = stripe_payload['access_token']
+    profile.stripe_publishable_key = stripe_payload['stripe_publishable_key']
+    profile.refresh_token = stripe_payload['refresh_token']
+    profile.json_data = stripe_payload
+    profile.save()
+    messages.success(request, 'Stripe successfully Connected!')
 
     # Sample return of the access_token, please don't do this! this is
     # just an example that it does in fact return the access_token
-    return Response(stripe_payload)
+    return redirect('main-view')
 
 
-stripe_connect_service = OAuth2Service(
-    name = 'stripe',
-    client_id = 'ca_5TKyU8Il0K1qVbD0D2zV7G1wNMBd6xTy',
-    client_secret = 'sk_test_wileWVgKtzip1LstWakhbtdr',
-    authorize_url = 'https://connect.stripe.com/oauth/authorize',
-    access_token_url = 'https://connect.stripe.com/oauth/token',
-    base_url = 'https://api.stripe.com/',
-)
+def stripe_connect(request):
+    params = {'response_type': 'code'}
+    url = stripe_connect_service.get_authorize_url(**params)
+    return redirect(url)
