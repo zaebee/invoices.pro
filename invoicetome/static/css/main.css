@@ -426,6 +426,14 @@ a.button:active {
     text-shadow: none;
 }
 
+.messages {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 22;
+    top: 50px;
+}
 #message-placeholder {
     position: fixed;
     top: 50px;

@@ -129,7 +129,7 @@ msgstr ""
 
 #: apps/invoice/models.py:73 templates/include/_pdf_detail.html:45
 msgid "Signed"
-msgstr "Вы вошли как"
+msgstr "Подписано"
 
 #: apps/invoice/models.py:76 apps/invoice/models.py:108
 #: apps/invoice/models.py:120 apps/invoice/models.py:155
