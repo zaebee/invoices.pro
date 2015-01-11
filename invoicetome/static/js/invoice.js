@@ -120,6 +120,7 @@ var app = app || {};
         $(event.node).siblings().removeClass('active');
         $(event.node).addClass('active');
         var invoice = event.context;
+        $('#invoice-list-collapse.in').offcanvas('hide');
       } else {
         var invoice = this.get('invoices').at(0);
         if (!invoice) {
@@ -136,7 +137,6 @@ var app = app || {};
       app.tasks.set('tasks', tasks);
       app.router.navigate(invoice.get('status') + '/' + invoice.get('uuid'));
       $(".notes:not(.growfieldDummy)").growfield('restart');
-      $('#invoice-list-collapse.in').offcanvas('hide');
     },
     delete: function( event ) {
       event.original.preventDefault();
