@@ -368,6 +368,8 @@ var app = app || {};
 
   app.filters.on({
     filter: function( event, status ) {
+      var list = $('#invoice-list').spin();
+      list.find('.nano').hide();
       app.router.navigate(status);
       app.actions.set('status', status);
       if (status == 'recieved') {
@@ -382,7 +384,10 @@ var app = app || {};
       app.filters.set('active_status', app.invoiceList.get('status')[status]);
       app.invoiceList.get('invoices').fetch({
         data: data,
+        reset: true,
         success: function () {
+          list.data('spinner').stop();
+          list.find('.nano').show();
           $('.nano').nanoScroller();
           app.invoiceList.fire('activate');
         },
