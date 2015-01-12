@@ -6,11 +6,8 @@
         <button type="button" class="navbar-toggle collapsed glyphicon glyphicon-user" data-toggle="collapse" data-target="#invoice-navbar-collapse">
           <span class="sr-only">{% trans 'Toggle navigation' %}</span>
         </button>
-        <button type="button" class="navbar-toggle offcanvas-toggle pull-left collapsed" data-toggle="offcanvas" data-target="#actions-navbar-collapse">
+        <button type="button" class="navbar-toggle offcanvas-toggle pull-left collapsed glyphicon glyphicon-wrench" data-toggle="offcanvas" data-target="#actions-navbar-collapse">
           <span class="sr-only">{% trans 'Toggle Action Menu' %}</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
         </button>
         {% if user.is_authenticated and not share %}
         <button type="button" class="navbar-toggle offcanvas-toggle pull-left collapsed" data-toggle="offcanvas" data-target="#invoice-list-collapse">
