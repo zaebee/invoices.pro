@@ -105,9 +105,10 @@
   <h3 class="text-center">{{text.history_title}}</h3>
     <ul class="list-group">
       {{#each invoice.histories}}
-      <li class="list-group-item">
+      <li class="list-group-item clearfix">
         <span class="label label-success">{{action_display}}</span>
         <span>{{#if email}} {{email}}{{/if}}</span>
+        <br class="hidden-md hidden-lg">
         <span class="pull-right">{{history_date(date_added)}}</span>
       </li>
       {{/each}}
