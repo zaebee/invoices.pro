@@ -145,7 +145,7 @@ class History(models.Model):
     ACTION_CHOICES = {
         ACTION_CREATED: _('Created'),
         ACTION_SENT: _('Sent to email'),
-        ACTION_RECIEVED: _('Recieved by email'),
+        ACTION_RECIEVED: _('Recieved from email'),
         ACTION_DECLINED: _('Declined'),
         ACTION_SIGNATURE_REQUEST_VIEWED: _('Signature Request Viewed'),
         ACTION_SIGNATURE_REQUEST_SENT: _('Signature Request Sent'),
