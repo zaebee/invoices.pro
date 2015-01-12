@@ -164,7 +164,15 @@ class History(models.Model):
         return self.action
 
 
-def send_invoice(sender, invoice, request, **kwargs):
+def create_history_log(sender, instance, created, **kwargs):
+    if created:
+        History.objects.create(
+            invoice=instance,
+            action=History.ACTION_CREATED
+        )
+
+
+def sent_invoice(sender, invoice, request, **kwargs):
     invoice.status = Invoice.STATUS_SENT
     data = {
         'invoice': invoice
@@ -179,6 +187,14 @@ def send_invoice(sender, invoice, request, **kwargs):
     )
 
 
+def recieved_invoice(sender, invoice, request, **kwargs):
+    History.objects.get_or_create(
+        invoice=invoice,
+        action=History.ACTION_RECIEVED,
+        email=invoice.email
+    )
+
+
 def signature_invoice(sender, invoice, request, signature_event, **kwargs):
     print 'EVENT', signature_event
     History.objects.create(
@@ -188,15 +204,8 @@ def signature_invoice(sender, invoice, request, signature_event, **kwargs):
     )
 
 
-def create_history_log(sender, instance, created, **kwargs):
-    if created:
-        History.objects.create(
-            invoice=instance,
-            action=History.ACTION_CREATED
-        )
-
-
-signals.invoice_sended.connect(send_invoice)
-signals.invoice_signature_called.connect(signature_invoice)
-
 models.signals.post_save.connect(create_history_log, sender=Invoice)
+
+signals.invoice_sent.connect(sent_invoice)
+signals.invoice_recieved.connect(recieved_invoice)
+signals.invoice_signature_called.connect(signature_invoice)

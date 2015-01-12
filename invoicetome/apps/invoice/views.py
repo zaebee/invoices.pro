@@ -101,9 +101,14 @@ class InvoiceViewSet(viewsets.ModelViewSet):
         Send invoice via email
         """
         recipient_email = self.request.DATA.get('recipient_email', None)
+        recieved = self.request.DATA.get('recieved', False)
         if recipient_email != obj.recipient_email:
             obj.recipient_email = recipient_email
-            signals.invoice_sended.send(sender=self.__class__,
+            signals.invoice_sent.send(sender=self.__class__,
+                                        invoice=obj,
+                                        request=self.request)
+        if recipient_email and recieved:
+            signals.invoice_recieved.send(sender=self.__class__,
                                         invoice=obj,
                                         request=self.request)
 
