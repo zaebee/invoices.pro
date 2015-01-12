@@ -295,6 +295,13 @@ a.button:active {
 .invoice-list-filter.affix {
     top:0;
 }
+.invoice-list-filter p {
+    margin: 15px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 35%;
+    text-overflow: ellipsis;
+}
 #invoice-list-collapse {
     width:25%;
     overflow: hidden;
@@ -337,7 +344,7 @@ a.button:active {
     height:100%;
     padding-right: 0;
     overflow-y: hidden;
-    border-right: none;
+    border-right: 1px solid #ddd;
 }
 #invoice-list.in,
 #invoice-list.affix {
@@ -367,7 +374,8 @@ a.button:active {
 #invoice-list .list-group-item {
     border-radius: 0;
     border: none;
-    box-shadow: 0px -1px 0px 1px #ddd inset;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 .list-group-item {
     background-color: #f9f9f9;
