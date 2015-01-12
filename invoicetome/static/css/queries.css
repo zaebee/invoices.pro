@@ -11,8 +11,15 @@
     #invoice {
         padding:40px 20px;
     }
-    tbody tr > td > span {
+    #invoice .table-manage {
+        left: -5px;
+    }
+    #invoice tbody tr > td > span {
         padding-left: 2px;
+    }
+    #invoice table {
+        width: 95%;
+        float: right;
     }
     #invoice table thead input,
     #invoice table tbody input {
