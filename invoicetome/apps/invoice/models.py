@@ -67,6 +67,7 @@ class Invoice(models.Model):
     date_added = models.DateTimeField(_(u'Date Added'), auto_now_add=True)
     status = models.CharField(max_length=255, choices=STATUS_CHOICES.items(),
                               default=STATUS_DRAFT)
+    recieved = models.BooleanField(_('Invoice Recieve'), default=False)
     uuid = models.CharField(_('Uuid'), max_length=255, blank=True, null=True)
     signature_request_id = models.CharField(_('Signature Request ID'), max_length=255, blank=True, null=True)
     signature_id = models.CharField(_('Signature ID'), max_length=255, blank=True, null=True)
