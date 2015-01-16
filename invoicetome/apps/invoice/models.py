@@ -178,7 +178,8 @@ def sent_invoice(sender, invoice, request, **kwargs):
     data = {
         'invoice': invoice
     }
-    send_templated_mail('invoice', DEFAULT_FROM_EMAIL, [invoice.recipient_email], data)
+    send_templated_mail('invoice', DEFAULT_FROM_EMAIL, [invoice.recipient_email], data,
+                        cc=[invoice.owner.email])
     invoice.date_added = datetime.now()
     invoice.save()
     History.objects.create(
