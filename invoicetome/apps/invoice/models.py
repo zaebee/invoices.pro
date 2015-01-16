@@ -213,8 +213,6 @@ def set_invoices(sender, user, request, **kwargs):
     """
     invoices = Invoice.objects.filter(email=user.email, owner__isnull=True)
     invoices.update(owner=user)
-    user.is_active = True
-    user.save()
 
 
 models.signals.post_save.connect(create_history_log, sender=Invoice)
