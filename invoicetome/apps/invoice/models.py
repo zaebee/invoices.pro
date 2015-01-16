@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 
 from json_field import JSONField
 
+from registration.signals import user_registered
 from templated_email import send_templated_mail
 
 from . import signals
@@ -36,7 +37,7 @@ class Invoice(models.Model):
         STATUS_RECIEVED: _("Recieved"),
     }
 
-    owner = models.ForeignKey(User, verbose_name=_('Owner'), related_name='created_invoices')
+    owner = models.ForeignKey(User, verbose_name=_('Owner'), related_name='created_invoices', blank=True, null=True)
     recipient_email = models.CharField(_('Recipient Email'), max_length=255, blank=True, null=True)
 
     company_name = models.CharField(_('Company Name'), max_length=255)
@@ -198,6 +199,7 @@ def recieved_invoice(sender, invoice, request, **kwargs):
 
 
 def signature_invoice(sender, invoice, request, signature_event, **kwargs):
+    ## TODO fix logging for hellosign event
     print 'EVENT', signature_event
     History.objects.create(
         invoice=invoice,
@@ -206,8 +208,19 @@ def signature_invoice(sender, invoice, request, signature_event, **kwargs):
     )
 
 
+def set_invoices(sender, user, request, **kwargs):
+    """
+    """
+    invoices = Invoice.objects.filter(email=user.email, owner__isnull=True)
+    invoices.update(owner=user)
+    user.is_active = True
+    user.save()
+
+
 models.signals.post_save.connect(create_history_log, sender=Invoice)
 
 signals.invoice_sent.connect(sent_invoice)
 signals.invoice_recieved.connect(recieved_invoice)
 signals.invoice_signature_called.connect(signature_invoice)
+
+user_registered.connect(set_invoices)

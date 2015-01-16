@@ -87,14 +87,9 @@ class InvoiceViewSet(viewsets.ModelViewSet):
         Set request.user as  owner for new invoice
         or create new user by email
         """
-        if self.request.user.is_anonymous():
-            user, created = User.objects.get_or_create(email=obj.email, username=obj.email)
-            if created:
-                user.set_password(obj.email)
-                user.save()
-        else:
-            user = self.request.user
-        obj.owner = user
+        user = self.request.user
+        if not obj.owner and user.is_authenticated():
+            obj.owner = user
 
     def post_save(self, obj, *args, **kwargs):
         """

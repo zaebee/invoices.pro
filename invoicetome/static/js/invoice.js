@@ -297,6 +297,7 @@ var app = app || {};
     //***
     generate_pdf: function( event ) {
       app.makeMarkup();
+      app.invoice.get('invoice').save();
       if (app.invoice.get('invoice.signed')) {
         document.location.pathname = '/api/pdf/' + app.invoice.get('invoice.uuid');
       } else {
