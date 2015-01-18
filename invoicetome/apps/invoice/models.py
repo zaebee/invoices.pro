@@ -26,13 +26,11 @@ HELLOSIGN_SIGNED_DIR = getattr(settings, 'HELLOSIGN_SIGNED_DIR', '/tmp')
 
 class Invoice(models.Model):
     STATUS_DRAFT = 'draft'
-    STATUS_SAVED = 'saved'
     STATUS_SENT = 'sent'
     STATUS_RECIEVED = 'recieved'
 
     STATUS_CHOICES = {
         STATUS_DRAFT: _("Draft"),
-        STATUS_SAVED: _("Saved"),
         STATUS_SENT: _("Sent"),
         STATUS_RECIEVED: _("Recieved"),
     }
