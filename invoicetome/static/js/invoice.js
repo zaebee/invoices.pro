@@ -297,12 +297,21 @@ var app = app || {};
     //***
     generate_pdf: function( event ) {
       app.makeMarkup();
-      app.invoice.get('invoice').save();
-      if (app.invoice.get('invoice.signed')) {
-        document.location.pathname = '/api/pdf/' + app.invoice.get('invoice.uuid');
-      } else {
-        $(app.invoice.el).parents('form').submit();
-      };
+      var spinner = app.Spinner($('#get-pdf'));
+      spinner.start();
+      app.invoice.get('invoice').save(null, {
+        success: function (model, response) {
+          spinner.stop();
+          if (app.invoice.get('invoice.signed')) {
+            document.location.pathname = '/api/pdf/' + app.invoice.get('invoice.uuid');
+          } else {
+            $(app.invoice.el).parents('form').submit();
+          };
+          if (!app.invoice.get('user').authenticated) {
+            app.router.navigate('/', {trigger:true});
+          }
+        },
+      });
       $('.actions-nav.in').offcanvas('hide');
     },
 
