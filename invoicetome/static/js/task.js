@@ -38,6 +38,8 @@ var app = app || {};
       };
       if (event && event.first) {
         params.description = gettext('Supporting of in-house project (hours worked)');
+        params.quantity = 40;
+        params.unit_price = 125;
       };
       var task = new app.Task(params);
       this.get('tasks').add(task);
