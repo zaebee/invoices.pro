@@ -80,7 +80,6 @@
   {% include 'js/_tasks.html' %}
   {% include 'js/_profile.html' %}
 
-  {% block js %}
     <script>
       window.USER = {
         email: '{{ user.email }}' || 'email@yourcompany.com',
@@ -91,6 +90,7 @@
       };
     </script>
 
+  {% block js %}
     {% assets  "all_js" %}
       <script type="text/javascript" language="javascript" src="{{ ASSET_URL }}" charset="utf-8">
           // <![CDATA[// ]]>

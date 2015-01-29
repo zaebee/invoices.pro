@@ -61,7 +61,7 @@
               </div>
               <div id="meta" class="col-md-6 col-xs-6">
                 <div class="row">
-                  <input disabled id="date" class="rr col-md-12 col-xs-12" value="{{invoice.date_added}}" />
+                  <input disabled id="date" class="rr col-md-12 col-xs-12" value="{{invoice.date_added|date:"d F Y"}}" />
                   <input disabled class="rr col-md-12 col-xs-12" value="{{invoice.invoice_uid}}" />
                   <input disabled class="rr col-md-12 col-xs-12" value="{{invoice.invoice_po}}" />
                   <input disabled style="margin-top:20px;" class="client rr col-md-12 col-xs-12" value="{{invoice.client_name}}" />
