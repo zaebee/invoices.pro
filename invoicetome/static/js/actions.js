@@ -36,8 +36,6 @@ var app = app || {};
     //***
     new: function( event ) {
       event.original.preventDefault();
-      console.log(event.context);
-      return;
       var spinner = app.Spinner($('#new-invoice'));
       spinner.start();
       var invoice = new app.Invoice();
