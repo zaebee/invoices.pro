@@ -299,6 +299,8 @@ var app = app || {};
       app.makeMarkup();
       var spinner = app.Spinner($('#get-pdf'));
       spinner.start();
+      var tasks = app.tasks.get('tasks').toJSON();
+      app.invoice.set('invoice.records', tasks);
       app.invoice.get('invoice').save(null, {
         success: function (model, response) {
           spinner.stop();
