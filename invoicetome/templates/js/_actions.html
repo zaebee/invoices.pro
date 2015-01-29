@@ -1,0 +1,48 @@
+{% load i18n %}
+{% verbatim %}
+
+<script id="invoice-actions-template" type="text/ractive">
+<div class="row">
+  <div class="col-md-9 col-sm-9 col-md-push-3 col-sm-push-3">
+      {{#if user.authenticated}}
+        <a role="button" id="new-invoice"
+          on-click="new:{{this}}"
+          class="btn btn-primary navbar-btn btn-actions" href="#">{{text.create_new}}</a>
+
+        <a role="button" id="get-pdf"
+          on-click="generate_pdf:{{this}}"
+          class="btn btn-primary navbar-btn btn-actions" href="#">{{text.get_pdf}}</a>
+
+        {{#unless status === 'recieved'}}
+          <a role="button" id="copy-invoice"
+            on-click="copy:{{this}}"
+            class="btn btn-primary navbar-btn btn-actions" href="#">{{text.copy}}</a>
+        {{/unless}}
+
+        {{#if status === 'draft' }}
+          <a role="button" id="save-invoice"
+            on-click="save:{{this}}"
+            class="btn btn-primary navbar-btn btn-actions" href="#">{{text.save}}</a>
+
+          <a role="button" id="send-invoice"
+            on-click="send:{{this}}"
+            data-trigger="manual" data-html="true"
+            data-toggle="popover" data-placement="bottom"
+            data-content="<input style='width:200px' type='text' class='form-control' name='client_email' placeholder='Enter client email'>"
+            class="btn btn-primary navbar-btn btn-actions" href="#">{{text.send}}</a>
+          <a role="button" id="delete-invoice"
+            on-click="delete:{{this}}"
+            class="{{ invoice.uuid && !invoice.disabled || status=="draft" ? '' : 'disabled' }} btn btn-danger navbar-btn btn-actions" href="#">{{text.delete}}</a>
+        {{/if}}
+
+      {{else}}
+      <a role="button" id="get-pdf"
+        on-click="generate_pdf:{{this}}"
+        class="btn btn-primary navbar-btn btn-actions" href="#">{{text.get_pdf}}</a>
+      {{/if}}
+  </div>
+
+</div>
+</script>
+
+{% endverbatim %}

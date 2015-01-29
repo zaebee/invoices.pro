@@ -1,0 +1,16 @@
+{% load i18n %}
+{% verbatim %}
+
+<script id="task-template" type="text/ractive">
+{{#each tasks:i}}
+  <tr>
+    <td class="noteditable span-1" title="This field is done automatically">{{i+1}}</td>
+    <td class="span-14"><input on-focus="focus" on-blur="blur" disabled="{{disabled}}" value="{{description}}" /></td>
+    <td class="span-3"><input on-focus="focus" on-blur="blur" disabled="{{disabled}}" value="{{quantity}}" /></td>
+    <td class="span-3"><input on-focus="focus" on-blur="blur" disabled="{{disabled}}" value="{{unit_price}}" /></td>
+    <td class="noteditable span-3" title="This field is done automatically">{{format(total)}}</td>
+  </tr>
+{{/each}}
+</script>
+
+{% endverbatim %}

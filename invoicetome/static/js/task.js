@@ -30,20 +30,14 @@ var app = app || {};
     // Обрабатываем нажатие на кнопку создания таска
     // в шаблоне `on-click="add"`
     add: function ( event ) {
+      var params = {
+        description: '',
+        quantity: 0,
+        unit_price: 0,
+        total: 0,
+      };
       if (event && event.first) {
-        var params =  {
-          description: gettext('Supporting of in-house project (hours worked)'),
-          quantity: 40,
-          unit_price: 125,
-          total: 6000,
-        }
-      } else {
-        var params = {
-          description: '',
-          quantity: 0,
-          unit_price: 0,
-          total: 0,
-        };
+        params.description = gettext('Supporting of in-house project (hours worked)');
       };
       var task = new app.Task(params);
       this.get('tasks').add(task);
@@ -82,7 +76,7 @@ var app = app || {};
   // чтобы пересчитивать сумму
   // сумму также меняем у инвойса
   // TODO нужно сохранять инвойс после изменения суммы; удаления строк
-  app.tasks.observe('tasks.*.quantity tasks.*.unit_price', function(tasks, old, keypath){
+  app.tasks.observe('tasks.length tasks.*.quantity tasks.*.unit_price', function(tasks, old, keypath){
     var subtotal = this.data.total_tasks(this.data.tasks);
     app.invoice.set('invoice.subtotal', parseFloat(subtotal));
   });

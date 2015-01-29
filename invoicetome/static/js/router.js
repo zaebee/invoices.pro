@@ -27,7 +27,6 @@ var app = app || {};
 
     draft: function () {
       this.init_tasks();
-      console.log('draft');
       app.filters.fire('filter', null, 'draft');
       $('.btn-draft').button('toggle');
     },

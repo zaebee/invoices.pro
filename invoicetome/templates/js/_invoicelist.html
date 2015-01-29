@@ -1,0 +1,35 @@
+{% load i18n %}
+{% verbatim %}
+
+<script id="invoice-list-template" type="text/ractive">
+  <div class="nano-content">
+    {{#each invoices:i}}
+    <a data-uuid="{{uuid}}" on-click="activate:{{this}}" title="{{invoice_uid}}" href="#{{status}}/{{uuid}}" class="list-group-item">
+      {{#if status == 'draft'}}
+        {{client_name}}
+        <small>({{client_company}})</small>
+      {{/if}}
+      {{#if status == 'sent'}}
+        {{client_name}}
+        <small>({{client_company}})</small>
+        <small><span class="label label-default">{{recipient_email}}</span></small>
+      {{/if}}
+      {{#if status == 'recieved'}}
+        {{company_name}}
+        <small><span class="label label-default">{{email}}</span></small>
+      {{/if}}
+      <br><small><i>{{date_short(date_added)}}</i></small>
+      {{#if !disabled || status=='draft'}}
+      <i tltle="Delete invoice" on-click="delete:{{this}}" class="btn-remove glyphicon glyphicon-remove pull-right"></i>
+      {{/if}}
+    </a>
+    {{/each}}
+    {{#unless invoices}}
+      <span class="list-group-item">
+        No invoices
+      </span>
+    {{/unless}}
+  </div>
+</script>
+
+{% endverbatim %}

@@ -22,9 +22,13 @@ register('all_js',
 
             'js/app.js',
             'js/utils.js',
+
             'js/invoice.js',
+            'js/invoicelist.js',
             'js/task.js',
             'js/profiles.js',
+            'js/actions.js',
+            'js/filters.js',
 
             'js/router.js',
         ),

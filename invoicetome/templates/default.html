@@ -73,8 +73,12 @@
 
   <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true"></div>
 
-  {% include 'include/_invoice_detail.html' %}
-  {% include 'include/_profile_detail.html' %}
+  {% include 'js/_invoice.html' %}
+  {% include 'js/_actions.html' %}
+  {% include 'js/_filters.html' %}
+  {% include 'js/_invoicelist.html' %}
+  {% include 'js/_tasks.html' %}
+  {% include 'js/_profile.html' %}
 
   {% block js %}
     <script>

@@ -1,0 +1,34 @@
+{% load i18n %}
+{% verbatim %}
+
+<script id="invoice-list-filter-template" type="text/ractive">
+  {{#if user.authenticated}}
+  <p class="navbar-text navbar-right pull-right hidden-sm">{{active_status}}</p>
+  <div class="btn-group navbar-btn" data-toggle="buttons">
+    <label class="btn btn-default btn-draft active" on-click="filter:'draft'">
+      <div data-toggle="tooltip" data-placement="bottom" title="{{text.status.draft}}">
+        <i class="glyphicon glyphicon-saved"></i>
+        <input type="radio" name="options" value="draft" checked>
+      </div>
+    </label>
+
+    <label class="btn btn-default btn-sent" on-click="filter:'sent'">
+      <div data-toggle="tooltip" data-placement="bottom" title="{{text.status.sent}}">
+        <i class="glyphicon glyphicon-export"></i>
+        <input type="radio" name="options" value="sent">
+      </div>
+    </label>
+
+    <label class="btn btn-default btn-recieved" on-click="filter:'recieved'">
+      <div data-toggle="tooltip" data-placement="bottom" title="{{text.status.recieved}}">
+        <i class="glyphicon glyphicon-import"></i>
+        <input type="radio" name="options" value="recieved">
+      </div>
+    </label>
+  </div>
+  {{else}}
+  <p class="navbar-text navbar-right pull-right">Download PDF Invoice!</p>
+  {{/if}}
+</script>
+
+{% endverbatim %}

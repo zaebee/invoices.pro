@@ -6,7 +6,7 @@ var app = app || {};
     el: '#profileModal',
     template: '#profile-template',
     data: {
-      user: new app.User(USER), // наша Backbone модель
+      user: new app.User(USER),
     },
     adapt: [ Ractive.adaptors.Backbone ],
   });
