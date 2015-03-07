@@ -93,10 +93,10 @@ WSGI_APPLICATION = 'invoicetome.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'invoicetome',
-        'USER': 'invoicetome',
-        'PASSWORD': 'invoicetome_password',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'invoices',
+        'USER': 'zaebee',
+        'PASSWORD': '',
     }
 }
 
