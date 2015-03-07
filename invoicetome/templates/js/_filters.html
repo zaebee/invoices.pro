@@ -3,7 +3,6 @@
 
 <script id="invoice-list-filter-template" type="text/ractive">
   {{#if user.authenticated}}
-  <p class="navbar-text navbar-right pull-right hidden-sm">{{active_status}}</p>
   <div class="btn-group navbar-btn" data-toggle="buttons">
     <label class="btn btn-default btn-draft active" on-click="filter:'draft'">
       <div data-toggle="tooltip" data-placement="bottom" title="{{text.status.draft}}">
@@ -26,6 +25,7 @@
       </div>
     </label>
   </div>
+  <p class="navbar-text navbar-right pull-right hidden-sm">{{active_status}}</p>
   {{else}}
   <p class="navbar-text navbar-right pull-right">Download PDF Invoice!</p>
   {{/if}}

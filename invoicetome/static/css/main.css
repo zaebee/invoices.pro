@@ -299,8 +299,10 @@ a.button:active {
     margin: 15px 0;
     white-space: nowrap;
     overflow: hidden;
-    width: 35%;
     text-overflow: ellipsis;
+}
+.invoice-list-filter .btn-group + p {
+    width: 40%;
 }
 #invoice-list-collapse {
     width:25%;
