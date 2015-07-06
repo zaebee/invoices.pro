@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-08 16:49+0000\n"
+"POT-Creation-Date: 2015-06-11 12:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,88 +32,89 @@ msgid "Draft"
 msgstr "Черновики"
 
 #: apps/invoice/models.py:34
-msgid "Saved"
-msgstr "Сохранено"
-
-#: apps/invoice/models.py:35
 msgid "Sent"
 msgstr "Отправлено"
 
-#: apps/invoice/models.py:36
+#: apps/invoice/models.py:35
 msgid "Recieved"
 msgstr "Получено"
 
-#: apps/invoice/models.py:39
+#: apps/invoice/models.py:38
 msgid "Owner"
 msgstr "Владелец"
 
-#: apps/invoice/models.py:40
+#: apps/invoice/models.py:39
 msgid "Recipient Email"
 msgstr "Получатель"
 
-#: apps/invoice/models.py:42
+#: apps/invoice/models.py:41
 msgid "Company Name"
 msgstr "название компании"
 
-#: apps/invoice/models.py:43 apps/invoice/models.py:45
+#: apps/invoice/models.py:42 apps/invoice/models.py:44
 msgid "Address"
 msgstr "Адрес"
 
-#: apps/invoice/models.py:44
+#: apps/invoice/models.py:43
 msgid "City"
 msgstr "Город"
 
-#: apps/invoice/models.py:47
+#: apps/invoice/models.py:46
 msgid "Phone"
 msgstr "Телефон"
 
-#: apps/invoice/models.py:48 apps/invoice/models.py:157
+#: apps/invoice/models.py:47 apps/invoice/models.py:157
 msgid "Email"
 msgstr ""
 
-#: apps/invoice/models.py:50
+#: apps/invoice/models.py:49
 msgid "Invoice Name"
 msgstr "Название счета"
 
-#: apps/invoice/models.py:51
+#: apps/invoice/models.py:50
 msgid "Invoice Uid"
 msgstr "Uid счета"
 
-#: apps/invoice/models.py:52
+#: apps/invoice/models.py:51
 msgid "Invoice PO"
 msgstr "PO счета"
 
-#: apps/invoice/models.py:54
+#: apps/invoice/models.py:53
 msgid "Client Name"
 msgstr "Имя клиента"
 
-#: apps/invoice/models.py:55
+#: apps/invoice/models.py:54
 msgid "Client Company"
 msgstr "Компания клиента"
 
-#: apps/invoice/models.py:57
+#: apps/invoice/models.py:56
 msgid "Notes Top"
 msgstr "Заметка вверху"
 
-#: apps/invoice/models.py:58
+#: apps/invoice/models.py:57
 msgid "Notes Bottom"
 msgstr "Заметка внизу"
 
-#: apps/invoice/models.py:60
+#: apps/invoice/models.py:59
 msgid "Subtotal Price"
 msgstr "Итого"
 
-#: apps/invoice/models.py:62
+#: apps/invoice/models.py:61
 msgid "Sales Tax %"
 msgstr "Скидка"
 
-#: apps/invoice/models.py:64
+#: apps/invoice/models.py:63
 msgid "Total Price"
 msgstr "Общая сумма"
 
-#: apps/invoice/models.py:67 apps/invoice/models.py:160
+#: apps/invoice/models.py:66 apps/invoice/models.py:160
 msgid "Date Added"
 msgstr "Дата добавления"
+
+#: apps/invoice/models.py:69
+#, fuzzy
+msgid "Invoice Recieve"
+msgstr "Uid счета"
 
 #: apps/invoice/models.py:70
 msgid "Uuid"
@@ -174,7 +175,8 @@ msgid "Sent to email"
 msgstr "Отправлено на email"
 
 #: apps/invoice/models.py:148
-msgid "Recieved by email"
+#, fuzzy
+msgid "Recieved from email"
 msgstr "Получено от email"
 
 #: apps/invoice/models.py:149
@@ -217,26 +219,51 @@ msgstr ""
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr ""
 
-#: apps/local/views.py:32
+#: apps/local/views.py:29
 msgid "Your account was activated!"
 msgstr "Ваш аккаунт был активирован!"
 
+#: apps/profiles/models.py:14
+msgid "Access Token"
+msgstr ""
+
+#: apps/profiles/models.py:15
+msgid "Stripe User ID"
+msgstr ""
+
+#: apps/profiles/models.py:16
+msgid "Stripe Publishable Key"
+msgstr ""
+
+#: apps/profiles/models.py:17
+msgid "Refresh Token"
+msgstr ""
+
+#: apps/profiles/models.py:18
+msgid "JSON data"
+msgstr ""
+
+#: apps/profiles/models.py:19
+#, fuzzy
+msgid "Created at"
+msgstr "Создано"
+
+#: apps/profiles/models.py:20
+msgid "Enabled"
+msgstr ""
+
+#: apps/profiles/models.py:23
+msgid "Stripe Profile"
+msgstr ""
+
+#: apps/profiles/models.py:24
+msgid "Stripe Profiles"
+msgstr ""
+
 #: templates/default.html:19
-msgid "invoiceto.me &middot; Make a free invoice PDF online"
+#, fuzzy
+msgid "Invoices.pro &middot; Make a free invoice PDF online"
 msgstr "invoiceto.me &middot; Создание счетов PDF онлайн"
-
-#: templates/default.html:80
-msgid "Profile Settings"
-msgstr "Настройки профиля"
-
-#: templates/default.html:86
-msgid "Close"
-msgstr "Закрыть"
-
-#: templates/default.html:87
-#: templates/registration/password_change_form.html:34
-msgid "Save"
-msgstr "Сохранить"
 
 #: templates/include/_header.html:7
 msgid "Toggle navigation"
@@ -246,27 +273,27 @@ msgstr "Переключить навиагацию"
 msgid "Toggle Action Menu"
 msgstr "Переключить меню действий"
 
-#: templates/include/_header.html:17
+#: templates/include/_header.html:14
 msgid "Toggle Invoice List"
 msgstr "Переключить меню списка счетов"
 
-#: templates/include/_header.html:30
+#: templates/include/_header.html:27
 msgid "Language"
 msgstr "Язык"
 
-#: templates/include/_header.html:44
+#: templates/include/_header.html:41
 msgid "Register"
 msgstr "Регистрация"
 
-#: templates/include/_header.html:53 templates/registration/login_form.html:27
+#: templates/include/_header.html:50 templates/registration/login_form.html:27
 msgid "Sign in"
 msgstr "Войти"
 
-#: templates/include/_header.html:56 templates/registration/login.html:15
+#: templates/include/_header.html:53 templates/registration/login.html:15
 msgid "logout"
 msgstr "выйти"
 
-#: templates/include/_header.html:57
+#: templates/include/_header.html:54
 msgid "Signed in as"
 msgstr "Вы вошли как"
 
@@ -330,6 +357,10 @@ msgstr "Пароль был сброшен"
 #: templates/registration/password_reset_form.html:11
 msgid "Password Reset"
 msgstr "Сброс пароля"
+
+#: templates/registration/password_change_form.html:34
+msgid "Save"
+msgstr "Сохранить"
 
 #: templates/registration/password_reset_complete.html:9
 msgid "Password successfully updated"
@@ -437,8 +468,18 @@ msgid "Make a free invoice PDF online"
 msgstr "invoiceto.me &middot; Создание счетов PDF онлайн"
 
 #: templates/templated_email/invoice.html:47
-msgid "Thank you for using our service. Invoiceto.me team"
+#, fuzzy
+msgid "Thank you for using our service. Invoices.pro team"
 msgstr "Спасибо за то, что используете наш сервис!"
+
+#~ msgid "Saved"
+#~ msgstr "Сохранено"
+
+#~ msgid "Profile Settings"
+#~ msgstr "Настройки профиля"
+
+#~ msgid "Close"
+#~ msgstr "Закрыть"
 
 #~ msgid "&larr; Edit the fields to make an invoice"
 #~ msgstr "&larr; Редактируйте поля для создания счета"

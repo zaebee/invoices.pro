@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-04 14:43+0000\n"
+"POT-Creation-Date: 2015-06-20 07:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -191,170 +191,179 @@ msgstr ""
 msgid "Tomorrow"
 msgstr ""
 
-#: st/js/app.js:130 static/js/app.js:130
+#: st/cache/packed.js:1823 st/js/app.js:130 static/js/app.js:130
 msgid "Your Company Name"
 msgstr "Ваша компания"
 
-#: st/js/app.js:131 static/js/app.js:131
+#: st/cache/packed.js:1823 st/js/app.js:131 static/js/app.js:131
 msgid "123 Your Street"
 msgstr "Улица, дом"
 
-#: st/js/app.js:132 static/js/app.js:132
+#: st/cache/packed.js:1823 st/js/app.js:132 static/js/app.js:132
 msgid "Your Town"
 msgstr "Ваш город"
 
-#: st/js/app.js:133 static/js/app.js:133
+#: st/cache/packed.js:1823 st/js/app.js:133 static/js/app.js:133
 msgid "Address Line 3"
 msgstr "Дополнительный адрес"
 
-#: st/js/app.js:134 static/js/app.js:134
+#: st/cache/packed.js:1823 st/js/app.js:134 static/js/app.js:134
 msgid "(123) 456 789"
 msgstr "(123) 456 789"
 
-#: st/js/app.js:135 static/js/app.js:135
+#: st/cache/packed.js:1823 st/js/app.js:135 static/js/app.js:135
 msgid "email@yourcompany.com"
 msgstr ""
 
-#: st/js/app.js:136 static/js/app.js:136
+#: st/cache/packed.js:1823 st/js/app.js:136 static/js/app.js:136
 msgid "Invoice"
 msgstr "Счет"
 
-#: st/js/app.js:137 static/js/app.js:137
+#: st/cache/packed.js:1823 st/js/app.js:137 static/js/app.js:137
 msgid "Invoice #"
 msgstr "Счет #"
 
-#: st/js/app.js:138 static/js/app.js:138
+#: st/cache/packed.js:1823 st/js/app.js:138 static/js/app.js:138
 msgid "PO 456001200"
 msgstr ""
 
-#: st/js/app.js:139 static/js/app.js:139
+#: st/cache/packed.js:1823 st/js/app.js:139 static/js/app.js:139
 msgid "Att: Ms. Jane Doe"
 msgstr "Клиент: Иванов И.И."
 
-#: st/js/app.js:140 static/js/app.js:140
+#: st/cache/packed.js:1823 st/js/app.js:140 static/js/app.js:140
 msgid "Client Company Name"
 msgstr "Компания клиента"
 
-#: st/js/app.js:147 static/js/app.js:147
+#: st/cache/packed.js:1823 st/js/app.js:147 static/js/app.js:147
 msgid "Item Description"
 msgstr "Описание"
 
-#: st/js/app.js:148 static/js/app.js:148
+#: st/cache/packed.js:1823 st/js/app.js:148 static/js/app.js:148
 msgid "Quantity"
 msgstr "Кол-во"
 
-#: st/js/app.js:149 static/js/app.js:149
+#: st/cache/packed.js:1823 st/js/app.js:149 static/js/app.js:149
 msgid "Unit Price (€)"
 msgstr "Ед. изм. (€)"
 
-#: st/js/app.js:150 static/js/app.js:150
+#: st/cache/packed.js:1823 st/js/app.js:150 static/js/app.js:150
 msgid "Total (€)"
 msgstr "Итого (€)"
 
-#: st/js/app.js:151 static/js/app.js:151
+#: st/cache/packed.js:1823 st/js/app.js:151 static/js/app.js:151
 msgid "Subtotal"
 msgstr "Подитог"
 
-#: st/js/app.js:152 static/js/app.js:152
+#: st/cache/packed.js:1823 st/js/app.js:152 static/js/app.js:152
 msgid "Sales tax (20%)"
 msgstr "Скидка (20%)"
 
-#: st/js/app.js:153 static/js/app.js:153
+#: st/cache/packed.js:1823 st/js/app.js:153 static/js/app.js:153
 msgid "Total"
 msgstr "Итого"
 
-#: st/js/invoice.js:12 static/js/invoice.js:12 static/js/invoice.js.c:74
-#: static/js/invoice.js:104
-msgid "Draft Invoices"
-msgstr "Черновики"
-
-#: st/js/invoice.js:13 static/js/invoice.js:13 static/js/invoice.js.c:75
-#: static/js/invoice.js:105
-msgid "Sent Invoices"
-msgstr "Отправленные счета"
-
-#: st/js/invoice.js:14 static/js/invoice.js:14 static/js/invoice.js.c:76
-#: static/js/invoice.js:106
-msgid "Recieved Invoices"
-msgstr "Полученые счета"
-
-#: st/js/invoice.js:18 static/js/invoice.js:18
-msgid "Sent to "
-msgstr "Отправлено на"
-
-#: st/js/invoice.js:38 static/js/invoice.js:38
+#: st/cache/packed.js:1823 st/js/invoice.js:10 static/js/invoice.js:10
 msgid "Invoice History"
 msgstr "История счета"
 
-#: st/js/invoice.js:73 static/js/invoice.js:78
-msgid "Create New"
-msgstr "Создать новый"
+#: st/cache/packed.js:1823 st/js/invoice.js:66 st/js/invoice.js.c:88
+#: static/js/invoice.js:66 static/js/invoice.js.c:88
+msgid "PDF file wasn't created."
+msgstr "PDF файл не был создан."
 
-#: st/js/invoice.js:74 static/js/invoice.js:79
-msgid "Get Pdf"
-msgstr "Получить pdf"
+#: st/cache/packed.js:1823 st/js/actions.js:11 st/js/filters.js:11
+#: st/js/invoicelist.js:12 static/js/actions.js:11 static/js/filters.js:11
+#: static/js/invoicelist.js:12
+msgid "Draft Invoices"
+msgstr "Черновики"
 
-#: st/js/invoice.js:75 static/js/invoice.js:80
-msgid "Get Share Link"
-msgstr "Получить публичную ссылку"
+#: st/cache/packed.js:1823 st/js/actions.js:12 st/js/filters.js:12
+#: st/js/invoicelist.js:13 static/js/actions.js:12 static/js/filters.js:12
+#: static/js/invoicelist.js:13
+msgid "Sent Invoices"
+msgstr "Отправленные счета"
 
-#: st/js/invoice.js:76 static/js/invoice.js:81
-msgid "Copy"
-msgstr "Копировать"
+#: st/cache/packed.js:1823 st/js/actions.js:13 st/js/filters.js:13
+#: st/js/invoicelist.js:14 static/js/actions.js:13 static/js/filters.js:13
+#: static/js/invoicelist.js:14
+msgid "Recieved Invoices"
+msgstr "Полученые счета"
 
-#: st/js/invoice.js:77 static/js/invoice.js:82
-msgid "Save"
-msgstr "Сохранить"
+#: st/cache/packed.js:1823 st/js/invoicelist.js:18 static/js/invoicelist.js:18
+msgid "Sent to "
+msgstr "Отправлено на"
 
-#: st/js/invoice.js:78 static/js/invoice.js:83
-msgid "Send"
-msgstr "Отправить"
-
-#: st/js/invoice.js:79 static/js/invoice.js:84
-msgid "Delete"
-msgstr "Удалить"
-
-#: st/js/invoice.js:80 static/js/invoice.js:85
-msgid "Resize Table"
-msgstr "Изменить таблицу"
-
-#: st/js/invoice.js:81 static/js/invoice.js:86
-msgid "Add Row"
-msgstr "Дбоавить строку"
-
-#: st/js/invoice.js:82 static/js/invoice.js:87
-msgid "Delete Row"
-msgstr "Удалить строку"
-
-#: st/js/invoice.js:83 static/js/invoice.js:88
-msgid "Finished editing?"
-msgstr "Закончили редактирование?"
-
-#: st/js/invoice.js:118 st/js/invoice.js.c:208 static/js/invoice.js:146
-#: static/js/invoice.js.c:222
+#: st/cache/packed.js:1823 st/js/actions.js:107 st/js/invoicelist.js:67
+#: static/js/actions.js:107 static/js/invoicelist.js:67
 msgid "Invoice was deleted."
 msgstr "Счет был удален."
 
-#: st/js/invoice.js:170 static/js/invoice.js:183
-msgid "New Invoice was saved in draft."
-msgstr "Новый счет был сохранен в черновики."
-
-#: st/js/invoice.js:194 static/js/invoice.js:208
-msgid "Invoice copied and saved in draft."
-msgstr "Счет скопирован и сохранен в черновики"
-
-#: st/js/invoice.js:228 static/js/invoice.js:243
-msgid "Invoice was saved."
-msgstr "Счет был сохранен."
-
-#: st/js/invoice.js:255 static/js/invoice.js:270
-msgid "Invoice sent success to "
-msgstr "Счет успешно отправлен на"
-
-#: st/js/task.js:35 static/js/task.js:35
+#: st/cache/packed.js:1823 st/js/task.js:40 static/js/task.js:40
 msgid "Supporting of in-house project (hours worked)"
 msgstr "Поддержка проекта"
 
-#: static/js/invoice.js:319 static/js/invoice.js.c:340
-msgid "PDF file wasn't created."
-msgstr "PDF файл не был создан."
+#: st/cache/packed.js:1823 st/js/profiles.js:25 static/js/profiles.js:25
+#, fuzzy
+msgid "Profile saved."
+msgstr "Счет был сохранен."
+
+#: st/cache/packed.js:1823 st/js/actions.js:15 static/js/actions.js:15
+msgid "Create New"
+msgstr "Создать новый"
+
+#: st/cache/packed.js:1823 st/js/actions.js:16 static/js/actions.js:16
+msgid "Get Pdf"
+msgstr "Получить pdf"
+
+#: st/cache/packed.js:1823 st/js/actions.js:17 static/js/actions.js:17
+msgid "Get Share Link"
+msgstr "Получить публичную ссылку"
+
+#: st/cache/packed.js:1823 st/js/actions.js:18 static/js/actions.js:18
+msgid "Copy"
+msgstr "Копировать"
+
+#: st/cache/packed.js:1823 st/js/actions.js:19 static/js/actions.js:19
+msgid "Save"
+msgstr "Сохранить"
+
+#: st/cache/packed.js:1823 st/js/actions.js:20 static/js/actions.js:20
+msgid "Send"
+msgstr "Отправить"
+
+#: st/cache/packed.js:1823 st/js/actions.js:21 static/js/actions.js:21
+msgid "Delete"
+msgstr "Удалить"
+
+#: st/cache/packed.js:1823 st/js/actions.js:22 static/js/actions.js:22
+msgid "Resize Table"
+msgstr "Изменить таблицу"
+
+#: st/cache/packed.js:1823 st/js/actions.js:23 static/js/actions.js:23
+msgid "Add Row"
+msgstr "Дбоавить строку"
+
+#: st/cache/packed.js:1823 st/js/actions.js:24 static/js/actions.js:24
+msgid "Delete Row"
+msgstr "Удалить строку"
+
+#: st/cache/packed.js:1823 st/js/actions.js:25 static/js/actions.js:25
+msgid "Finished editing?"
+msgstr "Закончили редактирование?"
+
+#: st/cache/packed.js:1823 st/js/actions.js:62 static/js/actions.js:62
+msgid "New Invoice was saved in draft."
+msgstr "Новый счет был сохранен в черновики."
+
+#: st/cache/packed.js:1823 st/js/actions.js:91 static/js/actions.js:91
+msgid "Invoice copied and saved in draft."
+msgstr "Счет скопирован и сохранен в черновики"
+
+#: st/cache/packed.js:1823 st/js/actions.js:130 static/js/actions.js:130
+msgid "Invoice was saved."
+msgstr "Счет был сохранен."
+
+#: st/cache/packed.js:1823 st/js/actions.js:158 static/js/actions.js:158
+msgid "Invoice sent success to "
+msgstr "Счет успешно отправлен на"
