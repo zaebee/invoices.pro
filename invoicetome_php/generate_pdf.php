@@ -137,7 +137,7 @@ div p {
     echo json_encode($result);
     exit(0);
   } else {
-    $dompdf->stream("invoiceto.me.pdf", array("Attachment" => true));
+    $dompdf->stream("invoices.pro.pdf", array("Attachment" => true));
   }
 
   $result = array('created' => true);
