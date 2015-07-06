@@ -15,6 +15,7 @@
 
   <meta name='title' content="{% block meta_title %}{% endblock %}">
 	<meta name="description" content="Quickly edit and publish a PDF invoice">
+  <meta name='yandex-verification' content='48d0e35f8132f5b2' />
 
   <title>{% block pagetitle %}{% trans 'Invoices.pro &middot; Make a free invoice PDF online' %}{% endblock %}</title>
 
@@ -106,6 +107,7 @@
   {% endblock %}
 
   {% block extrajs %}{% endblock %}
+  {% include 'include/_metrika.html' %}
 
 </body>
 </html>

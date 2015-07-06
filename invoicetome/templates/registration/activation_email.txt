@@ -1,6 +1,6 @@
 Привет,
 
-Для активации твоего аккаунта invoicetome.me - нажмите на ссылку валадиции:
+Для активации твоего аккаунта invoices.pro - нажмите на ссылку валадиции:
 http://{{ site }}/registration/activate/{{ activation_key }}/
 
 Спасибо.
@@ -9,7 +9,7 @@ http://{{ site }}/registration/activate/{{ activation_key }}/
 
 Hello,
 
-To activate your account on invoiceto.me - click on validation link:
+To activate your account on invoices.pro - click on validation link:
 http://{{ site }}/registration/activate/{{ activation_key }}/
 
 Thank you.
