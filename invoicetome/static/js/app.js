@@ -1,5 +1,7 @@
 (function(){
 
+  moment.locale(USER.lang);
+
   window.app = (function(){
     "use strict";
     var spinner_options = {
@@ -107,16 +109,13 @@
 
 (function (app) {
 
-  var notes_top =
-    "Dear Ms. Jane Doe,\n\n" +
-    "\tPlease find below a cost-breakdown for the recent work completed. Please make payment at your earliest convenience, and do not hesitate to contact me with any questions.\n\r" +
-    "\tMany thanks,\n" +
-    "\tYour Name"
+  var notes_top = gettext("Dear Ms. Jane Doe,\n\n") +
+    gettext("Please find below a cost-breakdown for the recent work completed. Please make payment at your earliest convenience, and do not hesitate to contact me with any questions.\n") +
+    gettext("Many thanks,\n\n") +
+    gettext("Your Name");
 
-  var notes_bottom =
-    "Many thanks for your custom! I look forward to doing business with you again in due course.\n\n" +
-    "\tPayment terms: to be received within 60 days."
-
+  var notes_bottom = gettext("Many thanks for your custom! I look forward to doing business with you again in due course.\n\n") +
+    gettext("Payment terms: to be received within 60 days.");
 
   app.User = Backbone.Model.extend({
     urlRoot: '/api/users/',

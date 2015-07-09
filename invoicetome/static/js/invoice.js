@@ -8,6 +8,8 @@ var app = app || {};
     data: {
       text: {
         history_title: gettext('Invoice History'),
+        sign: gettext('Sign'),
+        signed: gettext('Signed'),
       },
       user: USER,
       invoice: new app.Invoice,
@@ -15,12 +17,12 @@ var app = app || {};
       date: function () {
         var date = this.get('invoice.date_added') || new Date();
         var date = moment(date);
-        return date.lang(USER.lang).format('DD MMMM YYYY');
+        return date.format('DD MMMM YYYY');
       },
       history_date: function (date) {
         var date = new Date(date);
         var date = moment(date);
-        return date.lang(USER.lang).format('DD MMMM YYYY HH:mm');
+        return date.format('DD MMMM YYYY HH:mm');
       },
       // хэлпер используется в шаблоне {{ format(price) }}
       format: function ( num ) {
