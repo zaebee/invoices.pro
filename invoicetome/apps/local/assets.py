@@ -18,7 +18,7 @@ register('all_js',
             'js/vendor/spin.min.js',
             'js/vendor/jquery.cookie.js',
             'js/vendor/jquery.spin.js',
-            'js/vendor/bootstrap-datetimepicker.js',
+            'js/vendor/bootstrap-datetimepicker.min.js',
 
             'js/app.js',
             'js/utils.js',
