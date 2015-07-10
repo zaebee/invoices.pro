@@ -261,7 +261,7 @@ msgid ""
 "make payment at your earliest convenience, and do not hesitate to contact me "
 "with any questions.\n"
 msgstr ""
-"Пожалуйста, проверьте счет на соответсвие выполненным работам.Просим "
+"Пожалуйста, проверьте счет на соответствие выполненным работам.Просим "
 "оплатить по возможности.В случае проблем можете писать нам в любое время.\n"
 
 #: static/js/app.js:112
